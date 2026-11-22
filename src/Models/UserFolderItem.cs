@@ -144,6 +144,24 @@ namespace SophiApp.Models
         }
 
         /// <summary>
+        /// Takes a new default location: the screenshots folder stands in the pictures folder and goes where that one goes.
+        /// A folder that shows its default location shows the new one.
+        /// </summary>
+        /// <param name="defaultPath">The new default location.</param>
+        internal void SetDefaultPath(string defaultPath)
+        {
+            var follows = IsEnabled && !CanBeReset;
+            DefaultPath = defaultPath;
+
+            if (follows)
+            {
+                isTyped = false;
+            }
+
+            Path = follows ? defaultPath : Path;
+        }
+
+        /// <summary>
         /// Takes the location the user chose.
         /// </summary>
         /// <param name="newPath">The chosen location.</param>

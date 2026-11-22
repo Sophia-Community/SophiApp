@@ -85,6 +85,13 @@ namespace SophiApp.Models
         /// <inheritdoc/>
         public override string ChosenValue => SelectedId;
 
+        /// <inheritdoc/>
+        public override object? Choice
+        {
+            get => int.TryParse(SelectedId, out var id) ? id : null;
+            set => SelectedId = value is int id ? id.ToString() : SelectedId;
+        }
+
         /// <summary>
         /// Gets the address of the icon of an option, if the options have icons. The icons are the files "Name_1.svg", "Name_2.svg" and so on in the Assets folder.
         /// An option that has a symbol instead has no file.

@@ -79,6 +79,12 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool Hibernation()
         {
+            // On a device without the S4 sleep state, such as a virtual machine, hibernation cannot be enabled
+            if (!PowerCapabilities.HibernationIsSupported)
+            {
+                throw new CustomizationException(exceptionMessage: "The firmware does not support hibernation", resourceKey: "UIModel_Exception_HibernationNotSupported");
+            }
+
             using var powerKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Power");
 
             // Windows uses HibernateEnabledDefault if HibernateEnabled is not set
@@ -172,7 +178,11 @@ namespace SophiApp.Customizations
 
             return adapters.Count == 0
                 ? throw new CustomizationException(exceptionMessage: "There is no network adapter which has an AllowComputerToTurnOffDevice property", resourceKey: "UIModel_Exception_NetworkAdaptersSavePower")
-                : adapters.Select(adapter => new SettingCheckItem(adapter.Name, adapter.Name, adapter.Description, adapter.IsEnabled)).ToList();
+                : adapters.Select(adapter => new SettingCheckItem(
+                    adapter.Name,
+                    adapter.Title,
+                    adapter.IsConnected ? adapter.Description : string.Format("UIModel_NetworkAdaptersSavePower_NotConnected".GetLocalized(), adapter.Description),
+                    adapter.IsEnabled)).ToList();
         }
 
         /// <summary>
@@ -404,9 +414,8 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool RemoveWindowsAI()
         {
-            var recall = Registry.LocalMachine.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\Notifications\\OptionalFeatures\\Recall", "Selection") as int? ?? -1;
             // Windows AI is considered removed when Recall is not enabled and the Copilot app is not installed
-            return !recall.Equals(1) && !AppxPackagesService.PackageExist("Microsoft.Copilot");
+            return GetOptionalFeatureEnabled("Recall") != true && !AppxPackagesService.PackageExist("Microsoft.Copilot");
         }
 
         /// <summary>
@@ -455,13 +464,8 @@ namespace SophiApp.Customizations
         {
             static bool GetSandboxEnabled()
             {
-                // Checking whether x86 virtualization is enabled in the firmware
-                // The feature state is read from the registry: it is instant
-                var selection = Registry.LocalMachine.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\Notifications\\OptionalFeatures\\Containers-DisposableClientVM", "Selection") as int?
+                return GetOptionalFeatureEnabled("Containers-DisposableClientVM")
                     ?? throw new CustomizationException(exceptionMessage: "Windows Sandbox state undefined", resourceKey: "UIModel_Exception_WindowsSandbox_UndefinedState");
-
-                // 1 means that the feature is enabled or will be enabled after a restart
-                return selection == 1;
             }
 
             if (DataService.OsProperties.Edition.Contains("Professional", StringComparison.OrdinalIgnoreCase) || DataService.OsProperties.Edition.Contains("Enterprise", StringComparison.OrdinalIgnoreCase) || DataService.OsProperties.Edition.Contains("Education", StringComparison.OrdinalIgnoreCase))
@@ -484,6 +488,14 @@ namespace SophiApp.Customizations
             throw new CustomizationException(exceptionMessage: "Unsupported Windows edition", resourceKey: "UIModel_Exception_WindowsSandbox_UnsupportedEdition") { Arguments = ["Windows Sandbox"] };
         }
 
+        // The registry knows the state of a feature only after it was switched at least once: 1 is enabled or will be after a restart.
+        // The registry is instant; Windows itself, asked otherwise, answers in about a second
+        private static bool? GetOptionalFeatureEnabled(string name)
+        {
+            var selection = Registry.LocalMachine.GetSubKeyValue($"Software\\Microsoft\\Windows\\CurrentVersion\\Component Based Servicing\\Notifications\\OptionalFeatures\\{name}", "Selection") as int?;
+            return selection is null ? InstrumentationService.GetOptionalFeatureEnabled(name) : selection == 1;
+        }
+
         private static InstallState GetDotNetRuntimeState(string majorVersion, string? latestVersion)
         {
             // A runtime is installed if its installer is in the "Package Cache" folder
@@ -494,7 +506,7 @@ namespace SophiApp.Customizations
                 // Without the list of releases a runtime cannot be installed or updated
                 return installed
                     ? InstallState.Installed
-                    : throw new CustomizationException(exceptionMessage: $"Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/{majorVersion}.0/releases.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired") { Arguments = [$"https://builds.dotnet.microsoft.com/dotnet/release-metadata/{majorVersion}.0/releases.json"] };
+                    : throw new CustomizationException(exceptionMessage: $"Url https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json is not available", resourceKey: "UIModel_Exception_InternetConnectionRequired") { Arguments = [$"https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json"] };
             }
 
             if (!installed)

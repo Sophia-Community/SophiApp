@@ -1,9 +1,11 @@
-// <copyright file="DnsService.cs" company="Team Sophia">
+﻿// <copyright file="DnsService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
 namespace SophiApp.Services
 {
+    using Microsoft.Management.Infrastructure;
+    using Microsoft.Management.Infrastructure.Options;
     using Microsoft.Win32;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
@@ -56,17 +58,14 @@ namespace SophiApp.Services
         #pragma warning restore S1313
 
         private readonly IInstrumentationService instrumentationService;
-        private readonly IPowerShellService powerShellService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DnsService"/> class.
         /// </summary>
         /// <param name="instrumentationService">A service for working with WMI API.</param>
-        /// <param name="powerShellService">A service for working with Windows PowerShell API.</param>
-        public DnsService(IInstrumentationService instrumentationService, IPowerShellService powerShellService)
+        public DnsService(IInstrumentationService instrumentationService)
         {
             this.instrumentationService = instrumentationService;
-            this.powerShellService = powerShellService;
         }
 
         /// <inheritdoc/>
@@ -99,7 +98,7 @@ namespace SophiApp.Services
             foreach (var adapter in adapters)
             {
                 // Set primary and secondary DNS servers
-                _ = powerShellService.Invoke($"Set-DnsClientServerAddress -InterfaceIndex {GetIndex(adapter)} -ServerAddresses '{primary}', '{secondary}'");
+                SetServers(GetIndex(adapter), primary, secondary);
 
                 // Enable DNS over HTTPS for both servers
                 SetEncryption(adapter.Id, primary, template);
@@ -214,14 +213,49 @@ namespace SophiApp.Services
         /// <summary>
         /// Returns the adapters to the DNS servers the network gives and turns DNS-over-HTTPS off.
         /// </summary>
-        private void Reset(List<NetworkInterface> adapters)
+        private static void Reset(List<NetworkInterface> adapters)
         {
             foreach (var adapter in adapters)
             {
-                _ = powerShellService.Invoke($"Set-DnsClientServerAddress -InterfaceIndex {GetIndex(adapter)} -ResetServerAddresses");
+                SetServers(GetIndex(adapter));
             }
 
             RemoveEncryption();
+        }
+
+        /// <summary>
+        /// Sets the DNS servers of an adapter the way the cmdlet Set-DnsClientServerAddress does: the servers are an option
+        /// of the change of the WMI instance, not its property. Without servers the adapter returns to the ones the network gives.
+        /// </summary>
+        private static void SetServers(int interfaceIndex, params string[] servers)
+        {
+            try
+            {
+                using var session = CimSession.Create(null);
+                using var options = new CimOperationOptions();
+
+                if (servers.Length > 0)
+                {
+                    options.SetCustomOption("ServerAddresses", servers, Microsoft.Management.Infrastructure.CimType.StringArray, mustComply: false);
+                }
+                else
+                {
+                    options.SetCustomOption("ResetServerAddresses", true, Microsoft.Management.Infrastructure.CimType.Boolean, mustComply: false);
+                }
+
+                foreach (var address in session.QueryInstances("root/StandardCimv2", "WQL", $"SELECT * FROM MSFT_DNSClientServerAddress WHERE InterfaceIndex = {interfaceIndex}"))
+                {
+                    using (address)
+                    {
+                        using var changed = session.ModifyInstance("root/StandardCimv2", address, options);
+                    }
+                }
+            }
+            catch (CimException ex)
+            {
+                // The check that follows finds servers that were not set
+                App.Logger.LogSkippedException($"Setting the DNS servers of the adapter {interfaceIndex}", ex);
+            }
         }
 
         private void Refresh()

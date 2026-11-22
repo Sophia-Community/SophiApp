@@ -16,5 +16,11 @@ namespace SophiApp.Helpers
         /// </summary>
         [JsonPropertyName("latest-release")]
         public string? Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the .NET version the release belongs to, e.g. "11.0".
+        /// </summary>
+        [JsonPropertyName("channel-version")]
+        public string? Channel { get; set; }
     }
 }

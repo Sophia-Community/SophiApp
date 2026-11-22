@@ -86,7 +86,13 @@ namespace SophiApp.Customizations
         public static void Hibernation(bool enable)
         {
             var powerConfig = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "powercfg.exe");
-            _ = ProcessService.WaitForExit(name: powerConfig, arguments: $"/HIBERNATE {(enable ? "ON" : "OFF")}");
+            using var process = ProcessService.WaitForExit(name: powerConfig, arguments: $"/HIBERNATE {(enable ? "ON" : "OFF")}");
+
+            // The tool refuses, for example, when the firmware does not support hibernation
+            if (process.ExitCode != 0)
+            {
+                throw new CustomizationException(exceptionMessage: $"powercfg.exe /HIBERNATE returned {process.ExitCode}", resourceKey: "UIModel_Exception_ApplyFailed");
+            }
         }
 
         /// <summary>
@@ -589,6 +595,12 @@ namespace SophiApp.Customizations
 
             // Check for updates
             _ = ProcessService.StartProcessByName(Path.Combine(Environment.SystemDirectory, "UsoClient.exe"), "StartInteractiveScan");
+
+            // On a PC without the WSL components the first run installs only them: the distribution is installed after a restart
+            if (!WslService.GetInstalledDistributions().Contains(distribution, StringComparer.OrdinalIgnoreCase))
+            {
+                throw new CustomizationException(exceptionMessage: $"The distribution \"{distribution}\" is not installed after the WSL installer has finished", resourceKey: "UIModel_Exception_WslDistributionNotInstalled");
+            }
         }
 
         /// <summary>

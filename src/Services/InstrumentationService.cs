@@ -138,16 +138,43 @@ namespace SophiApp.Services
 
                 if (Convert.ToUInt32(keys["ReturnValue"]) != 0 || keys["IsAutoUnlockKeyStored"] is true)
                 {
+                    App.Logger.LogSkippedException("Decrypting the system drive", new InvalidOperationException("The system drive keeps the keys that unlock other drives, or they could not be read"));
                     return false;
                 }
 
                 using var decryption = volume.InvokeMethod("Decrypt", null, null);
-                return Convert.ToUInt32(decryption["ReturnValue"]) == 0;
+                var result = Convert.ToUInt32(decryption["ReturnValue"]);
+
+                if (result != 0)
+                {
+                    // The log gets the reason Windows gave
+                    App.Logger.LogSkippedException("Decrypting the system drive", new System.ComponentModel.Win32Exception(unchecked((int)result)));
+                }
+
+                return result == 0;
             }
             catch (Exception ex) when (ex is ManagementException || ex is System.Runtime.InteropServices.COMException || ex is UnauthorizedAccessException)
             {
                 App.Logger.LogSkippedException("Decrypting the system drive", ex);
                 return false;
+            }
+        }
+
+        /// <inheritdoc/>
+        public bool? GetOptionalFeatureEnabled(string name)
+        {
+            try
+            {
+                using var searcher = new ManagementObjectSearcher("root\\CIMV2", $"SELECT InstallState FROM Win32_OptionalFeature WHERE Name = '{name}'");
+                using var feature = searcher.Get().Cast<ManagementObject>().FirstOrDefault();
+
+                // InstallState: 1 is enabled, 2 is disabled, 3 is absent
+                return feature is null ? null : Convert.ToUInt32(feature["InstallState"]) == 1;
+            }
+            catch (Exception ex) when (ex is ManagementException || ex is System.Runtime.InteropServices.COMException || ex is UnauthorizedAccessException)
+            {
+                App.Logger.LogSkippedException($"Reading the state of the Windows feature {name}", ex);
+                return null;
             }
         }
 

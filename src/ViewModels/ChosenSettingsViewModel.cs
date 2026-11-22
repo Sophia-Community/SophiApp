@@ -7,6 +7,7 @@ namespace SophiApp.ViewModels
     using CommunityToolkit.Mvvm.ComponentModel;
     using CommunityToolkit.Mvvm.Input;
     using SophiApp.Contracts.Services;
+    using SophiApp.Customizations;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
     using SophiApp.Models;
@@ -66,6 +67,11 @@ namespace SophiApp.ViewModels
         public ObservableCollection<UIModel> ApplicableModels { get; } = [];
 
         /// <summary>
+        /// Gets or sets all settings of the app. A choice in one of them can decide the value of another.
+        /// </summary>
+        public IReadOnlyList<UIModel> Settings { get; set; } = [];
+
+        /// <summary>
         /// Gets the info badges counters state by <see cref="UICategoryTag"/>.
         /// </summary>
         public InfoBadgeCounters InfoBadgeCounters { get; } = new();
@@ -76,8 +82,57 @@ namespace SophiApp.ViewModels
             App.Logger.LogSearchWindowWatch(closed, ForegroundHelper.LastWatch);
         }
 
-        // A setting with a choice is applied with the others, and one whose choice is taken back is not
         private void ChoiceChanged(UIModel model)
+        {
+            Queue(model);
+            UpdateLinkedSettings(model);
+        }
+
+        // A choice can decide the value of the settings that write the same place in Windows.
+        // Such a setting shows that value and is locked until the choice is taken back
+        private void UpdateLinkedSettings(UIModel model)
+        {
+            foreach (var links in SettingLinks.All.Where(link => link.Setting == model.Name).GroupBy(link => link.Dependent))
+            {
+                if (Settings.FirstOrDefault(setting => setting.Name == links.Key) is not UIModel dependent)
+                {
+                    continue;
+                }
+
+                var link = model.IsChanged ? links.FirstOrDefault(link => link.Choice is null || link.Choice.Equals(model.Choice)) : null;
+
+                if (link is not null && (dependent.IsEnabled || dependent.IsLocked))
+                {
+                    dependent.LockChoice(link.Value, model.Name, string.Format("UIModel_Notice_SetByAnotherSetting".GetLocalized(), model.Title));
+                    Queue(dependent);
+                }
+                else if (link is null && dependent.LockedBy == model.Name)
+                {
+                    dependent.UnlockChoice(restoreChoice: true);
+                    Queue(dependent);
+                }
+            }
+        }
+
+        // The applied or canceled settings are read again, and so are the settings that share a place in Windows with them.
+        // The locks are taken off first: nothing is chosen anymore
+        private ObservableCollection<UIModel> GetSettingsToRead()
+        {
+            foreach (var locked in Settings.Where(setting => setting.IsLocked))
+            {
+                locked.UnlockChoice(restoreChoice: false);
+            }
+
+            var chosen = ApplicableModels.Select(model => model.Name).ToHashSet();
+            var linked = SettingLinks.All
+                .Where(link => chosen.Contains(link.Setting) || chosen.Contains(link.Dependent))
+                .SelectMany(link => new[] { link.Setting, link.Dependent })
+                .ToHashSet();
+            return new(ApplicableModels.Concat(Settings.Where(setting => linked.Contains(setting.Name))).Distinct());
+        }
+
+        // A setting with a choice is applied with the others, and one whose choice is taken back is not
+        private void Queue(UIModel model)
         {
             var isChanged = model.IsChanged;
             var isQueued = ApplicableModels.Contains(model);
@@ -130,7 +185,7 @@ namespace SophiApp.ViewModels
 
             await modelService.SetModelsStateAsync(ApplicableModels);
             App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
-            await modelService.GetModelsStateAsync(ApplicableModels);
+            await modelService.GetModelsStateAsync(GetSettingsToRead());
             ApplicableModels.Clear();
             InfoBadgeCounters.ResetAll();
             App.Logger.LogApplicableModelsClear();
@@ -172,7 +227,7 @@ namespace SophiApp.ViewModels
             activity.ProgressIsVisible = true;
 
             // Reading the state again drops the choice of every setting
-            await modelService.GetModelsStateAsync(ApplicableModels);
+            await modelService.GetModelsStateAsync(GetSettingsToRead());
             ApplicableModels.Clear();
             InfoBadgeCounters.ResetAll();
             App.Logger.LogApplicableModelsClear();

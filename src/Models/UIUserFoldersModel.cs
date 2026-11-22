@@ -67,7 +67,7 @@ namespace SophiApp.Models
             var path = Environment.ExpandEnvironmentVariables(text.Trim().Trim('"').Trim());
 
             // A full path starts with a drive or a network share; nothing but the drive may have a colon
-            var isFullPath = path.Length > 3 && Path.IsPathFullyQualified(path) && path.AsSpan(2).IndexOfAny("<>\"|?*:") < 0;
+            var isFullPath = path.Length >= 3 && Path.IsPathFullyQualified(path) && path.AsSpan(2).IndexOfAny("<>\"|?*:") < 0;
 
             try
             {
@@ -112,6 +112,12 @@ namespace SophiApp.Models
 
             ShowNotice(string.Empty);
             folder.SetChosenLocation(path, isTyped);
+
+            // The default place of the screenshots is in the pictures folder, wherever that one is going to be
+            if (folder.Folder == UserFolder.Pictures && Folders.FirstOrDefault(other => other.Folder == UserFolder.Screenshots) is UserFolderItem screenshots)
+            {
+                screenshots.SetDefaultPath(Path.Combine(path, UserFolder.Screenshots.ToString()));
+            }
         }
 
         /// <inheritdoc/>
@@ -153,6 +159,7 @@ namespace SophiApp.Models
         public override void SetState()
         {
             var notices = new List<string>();
+            var foldersWithFiles = new List<string>();
 
             foreach (var folder in Folders.Where(folder => folder.IsChanged))
             {
@@ -160,12 +167,14 @@ namespace SophiApp.Models
 
                 try
                 {
-                    mutator.Invoke(folder.Folder, folder.Path);
+                    // The pictures folder is moved by now, so the default place of the screenshots is read anew
+                    var newPath = folder.Folder == UserFolder.Screenshots && folder.DefaultIsChosen ? UserFolderHelper.GetDefaultPath(UserFolder.Screenshots) : folder.Path;
+                    mutator.Invoke(folder.Folder, newPath);
 
                     // The files are not moved: the user is told where they are left
                     if (UserFolderHelper.HasFiles(oldPath))
                     {
-                        notices.Add(string.Format("UIModel_UserShellFolderLocation_FilesLeft".GetLocalized(), oldPath));
+                        foldersWithFiles.Add($"\"{oldPath}\"");
                     }
                 }
                 catch (CustomizationException ex)
@@ -178,6 +187,15 @@ namespace SophiApp.Models
                     notices.Add(ApplyFailedText);
                     App.Logger.LogModelSetStateException(ex, Name, $"{folder.Folder}: {folder.Path}");
                 }
+            }
+
+            if (foldersWithFiles.Count == 1)
+            {
+                notices.Add(string.Format("UIModel_UserShellFolderLocation_FilesLeft".GetLocalized(), foldersWithFiles[0].Trim('"')));
+            }
+            else if (foldersWithFiles.Count > 1)
+            {
+                notices.Add(string.Format("UIModel_UserShellFolderLocation_FilesLeftInSeveral".GetLocalized(), string.Join(", ", foldersWithFiles)));
             }
 
             if (notices.Count > 0)

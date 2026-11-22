@@ -45,7 +45,8 @@
                                 Click="CopyDescription_Click"/>
             </MenuFlyout>
         </StackPanel.ContextFlyout>
-        <Grid>
+        <!-- A disabled card takes no clicks, and this background takes the right click for the menu -->
+        <Grid Background="Transparent">
             <!-- A row for each folder: its location, a menu to choose a new one, and a button that chooses the default one -->
             <toolkit:SettingsExpander x:Name="Expander"
                                       AutomationProperties.Name="{Binding Title}"

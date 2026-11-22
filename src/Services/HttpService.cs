@@ -25,31 +25,49 @@ namespace SophiApp.Services
             Timeout = Timeout.InfiniteTimeSpan,
         };
 
+        private readonly Lock downloadLock = new();
+        private CancellationTokenSource? activeDownload;
+
+        /// <inheritdoc/>
+        public event Action<bool>? DownloadingChanged;
+
+        /// <inheritdoc/>
+        public void CancelDownload()
+        {
+            lock (downloadLock)
+            {
+                activeDownload?.Cancel();
+            }
+        }
+
         /// <inheritdoc/>
         public void DownloadFile(string url, string saveTo)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(saveTo)!);
-            Download(url, saveTo);
+            RunCancelable(saveTo, cancellation => Download(url, saveTo, cancellation));
         }
 
         /// <inheritdoc/>
         public void DownloadOneDrive(string saveTo)
         {
-            App.Status.SetStep("Panel_Step_GettingDownloadLink");
-            var xml = new XmlDocument();
-            xml.LoadXml(GetString("https://g.live.com/1rewlive5skydrive/OneDriveProductionV2", DownloadStartTimeout));
+            RunCancelable(saveTo, cancellation =>
+            {
+                App.Status.SetStep("Panel_Step_GettingDownloadLink");
+                var xml = new XmlDocument();
+                xml.LoadXml(GetString("https://g.live.com/1rewlive5skydrive/OneDriveProductionV2", DownloadStartTimeout, cancellation));
 
-            // The feed has several installer links: take the second one, or the only one
-            var binaries = xml.DocumentElement?.SelectNodes("update/amd64binary");
-            var binary = binaries?.Count > 1 ? binaries[1] : binaries?[0];
-            var url = binary?.Attributes?.GetNamedItem("url")?.InnerText ?? string.Empty;
-            Download(url, saveTo);
+                // The feed has several installer links: take the second one, or the only one
+                var binaries = xml.DocumentElement?.SelectNodes("update/amd64binary");
+                var binary = binaries?.Count > 1 ? binaries[1] : binaries?[0];
+                var url = binary?.Attributes?.GetNamedItem("url")?.InnerText ?? string.Empty;
+                Download(url, saveTo, cancellation);
+            });
         }
 
         /// <inheritdoc/>
         public T GetFromJson<T>(string url, double timeout)
             where T : class
-            => Json.ToObject<T>(GetString(url, timeout));
+            => Json.ToObject<T>(GetString(url, timeout, CancellationToken.None));
 
         /// <inheritdoc/>
         public async Task<T> GetFromJsonAsync<T>(string url, double timeout)
@@ -89,27 +107,32 @@ namespace SophiApp.Services
         }
 
         // The whole answer has to come within the timeout
-        private static string GetString(string url, double timeout)
+        private static string GetString(string url, double timeout, CancellationToken canceledByUser)
         {
-            using var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(timeout));
+            using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(canceledByUser);
+            cancellation.CancelAfter(TimeSpan.FromSeconds(timeout));
             using var request = new HttpRequestMessage(HttpMethod.Get, url);
             using var response = Client.Send(request, cancellation.Token);
             using var reader = new StreamReader(response.Content.ReadAsStream(cancellation.Token));
             return reader.ReadToEnd();
         }
 
-        private static void Download(string url, string saveTo)
+        private static void Download(string url, string saveTo, CancellationToken canceledByUser)
         {
             App.Status.SetStep("Panel_Step_Downloading");
 
             // The timeout is for the start of the answer only: a large file is downloaded as long as it takes
-            using var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(DownloadStartTimeout));
+            using var cancellation = CancellationTokenSource.CreateLinkedTokenSource(canceledByUser);
+            cancellation.CancelAfter(TimeSpan.FromSeconds(DownloadStartTimeout));
             using var request = new HttpRequestMessage(HttpMethod.Get, url);
             using var response = Client.Send(request, HttpCompletionOption.ResponseHeadersRead, cancellation.Token);
             cancellation.CancelAfter(Timeout.InfiniteTimeSpan);
+
+            // A canceled download drops the connection, and that ends the read that waits for the data
+            using var abort = canceledByUser.Register(response.Dispose);
             _ = response.EnsureSuccessStatusCode();
             var totalBytes = response.Content.Headers.ContentLength ?? 0;
-            using var urlStream = response.Content.ReadAsStream();
+            using var urlStream = response.Content.ReadAsStream(canceledByUser);
             using var fileStream = new FileStream(saveTo, FileMode.Create);
             var buffer = new byte[81920];
             var downloadedBytes = 0L;
@@ -129,6 +152,43 @@ namespace SophiApp.Services
                     shownPercent = percent;
                     App.Status.SetStep("Panel_Step_DownloadingPercent", percent);
                 }
+            }
+        }
+
+        // The user can cancel the download. A file that was not downloaded to the end is removed
+        private void RunCancelable(string file, Action<CancellationToken> download)
+        {
+            using var cancellation = new CancellationTokenSource();
+
+            lock (downloadLock)
+            {
+                activeDownload = cancellation;
+            }
+
+            DownloadingChanged?.Invoke(true);
+
+            try
+            {
+                download(cancellation.Token);
+            }
+            catch (Exception) when (cancellation.IsCancellationRequested)
+            {
+                file.TryDelete();
+                throw new CustomizationException(exceptionMessage: "The download was canceled by the user", resourceKey: "UIModel_Exception_DownloadCanceled");
+            }
+            catch
+            {
+                file.TryDelete();
+                throw;
+            }
+            finally
+            {
+                lock (downloadLock)
+                {
+                    activeDownload = null;
+                }
+
+                DownloadingChanged?.Invoke(false);
             }
         }
     }

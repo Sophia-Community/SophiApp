@@ -48,7 +48,8 @@ public partial class App : Application
         _ = services.AddTransient<ICursorsService, CursorsService>();
         _ = services.AddTransient<IDisplayService, DisplayService>();
         _ = services.AddTransient<IGroupPolicyService, GroupPolicyService>();
-        _ = services.AddTransient<IHttpService, HttpService>();
+        // One for the whole app: it knows the download in progress, which the user can cancel
+        _ = services.AddSingleton<IHttpService, HttpService>();
         _ = services.AddTransient<INavigationViewService, NavigationViewService>();
         _ = services.AddTransient<IDnsService, DnsService>();
         _ = services.AddTransient<INetworkAdapterService, NetworkAdapterService>();

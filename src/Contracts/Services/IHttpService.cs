@@ -10,6 +10,16 @@ namespace SophiApp.Contracts.Services
     public interface IHttpService
     {
         /// <summary>
+        /// Occurs when a download starts (true) or ends (false).
+        /// </summary>
+        event Action<bool>? DownloadingChanged;
+
+        /// <summary>
+        /// Cancels the download that is in progress, if there is one.
+        /// </summary>
+        void CancelDownload();
+
+        /// <summary>
         /// Downloads and saves file. If the file exists, it will be overwritten.
         /// </summary>
         /// <param name="url">File download link.</param>

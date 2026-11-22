@@ -84,8 +84,7 @@ namespace SophiApp.Services
             externalDataTask = Task.Run(() => Task.WhenAll(
                 appReleaseTask,
                 SetDefenderStateAsync(),
-                SetNet10ReleaseAsync(),
-                SetNet11ReleaseAsync(),
+                SetNetReleasesAsync(),
                 SetVCReleaseAsync(),
                 SetSupportedBuildsAsync()));
 
@@ -148,27 +147,19 @@ namespace SophiApp.Services
             }
         }
 
-        private async Task SetNet10ReleaseAsync()
+        private async Task SetNetReleasesAsync()
         {
             try
             {
-                LatestReleaseNET10 = await httpService.GetFromJsonAsync<DotNetRelease>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json", 5);
+                // The index is a few kilobytes and names the latest release of every .NET version.
+                // The full lists of releases are hundreds of times larger and do not come in time on a slow connection
+                var index = await httpService.GetFromJsonAsync<DotNetReleaseIndex>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json", 10);
+                LatestReleaseNET10 = index.Releases.Find(release => release.Channel == "10.0");
+                LatestReleaseNET11 = index.Releases.Find(release => release.Channel == "11.0");
             }
             catch (Exception ex)
             {
-                App.Logger.LogSkippedException("Getting the latest .NET 10 release", ex);
-            }
-        }
-
-        private async Task SetNet11ReleaseAsync()
-        {
-            try
-            {
-                LatestReleaseNET11 = await httpService.GetFromJsonAsync<DotNetRelease>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/11.0/releases.json", 5);
-            }
-            catch (Exception ex)
-            {
-                App.Logger.LogSkippedException("Getting the latest .NET 11 release", ex);
+                App.Logger.LogSkippedException("Getting the latest .NET releases", ex);
             }
         }
 

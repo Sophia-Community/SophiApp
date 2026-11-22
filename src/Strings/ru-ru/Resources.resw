@@ -117,71 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NavigationItem_Privacy.Content" xml:space="preserve">
-    <value>Конфиденциальность</value>
-  </data>
-  <data name="NavigationItem_Personalization.Content" xml:space="preserve">
-    <value>Персонализация</value>
-  </data>
-  <data name="NavigationItem_System.Content" xml:space="preserve">
-    <value>Система</value>
-  </data>
-  <data name="NavigationItem_UWP_Gaming.Content" xml:space="preserve">
-    <value>UWP | Игры</value>
-  </data>
-  <data name="NavigationItem_Gaming" xml:space="preserve">
-    <value>Игры</value>
-  </data>
-  <data name="NavigationItem_TaskScheduler.Content" xml:space="preserve">
-    <value>Планировщик заданий</value>
-  </data>
-  <data name="NavigationItem_Security.Content" xml:space="preserve">
-    <value>Безопасность</value>
-  </data>
-  <data name="NavigationItem_ContextMenu.Content" xml:space="preserve">
-    <value>Контекстное меню</value>
-  </data>
-  <data name="NavigationItem_Settings.Content" xml:space="preserve">
-    <value>Параметры</value>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>SophiApp for Windows</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>SophiApp for Windows</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>SophiApp for Windows</value>
+  <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
+    <value>Получение данных из интернета…</value>
   </data>
-  <data name="Control_Slogan.Text" xml:space="preserve">
-    <value>With a passion for tweaking</value>
+  <data name="OsRequirements_GetWindowsComponentStability" xml:space="preserve">
+    <value>Проверка стабильности компонентов Windows…</value>
   </data>
-  <data name="Control_SloganEnd.Text" xml:space="preserve">
-    <value>Wisely.</value>
+  <data name="OsRequirements_WindowsComponentStabilityDisrupted" xml:space="preserve">
+    <value>Обнаружено нарушение стабильности работы компонента "{0}".</value>
   </data>
-  <data name="SettingsPage_SelectedTheme.Header" xml:space="preserve">
-    <value>Цвет темы</value>
+  <data name="OsRequirements_ReinstallWindows.Text" xml:space="preserve">
+    <value>Переустановите Windows, используя только подлинный ISO-образ.</value>
   </data>
-  <data name="SettingsPage_AboutApp.Header" xml:space="preserve">
-    <value>О программе</value>
+  <data name="OsRequirements_GetCpuArchitecture" xml:space="preserve">
+    <value>Проверка архитектуры процессора…</value>
   </data>
-  <data name="Settings_Themes_Dark" xml:space="preserve">
-    <value>Темная</value>
+  <data name="OsRequirements_UnsupportedArchitecture_1" xml:space="preserve">
+    <value>Вы используете процессор с архитектурой "{0}". SophiApp for Windows поддерживает только процессоры с архитектурой x64.</value>
   </data>
-  <data name="Settings_Themes_Default" xml:space="preserve">
-    <value>Как в Windows</value>
+  <data name="OsRequirements_GetAppNewVersion" xml:space="preserve">
+    <value>Проверка последней версии SophiApp for Windows…</value>
   </data>
-  <data name="Settings_Themes_Light" xml:space="preserve">
-    <value>Светлая</value>
+  <data name="OsRequirements_NewAppVersionFound_1" xml:space="preserve">
+    <value>Доступна новая версия: SophiApp for Windows {0}.</value>
   </data>
-  <data name="SettingsPage_Team.Header" xml:space="preserve">
-    <value>Участники проекта</value>
+  <data name="OsRequirements_NewAppVersionFound_2.Text" xml:space="preserve">
+    <value>Пожалуйста, обновите программу.</value>
   </data>
-  <data name="Button_Apply.Content" xml:space="preserve">
-    <value>Применить</value>
+  <data name="Button_Update.Content" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="OsRequirements_RunFromLoggedUser" xml:space="preserve">
+    <value>Проверка прав текущего пользователя…</value>
   </data>
   <data name="OsRequirements_LoggedUserNotAdmin_1" xml:space="preserve">
     <value>Вошедший пользователь "{0}" не обладает правами администратора.</value>
   </data>
-  <data name="OsRequirements_RunFromLoggedUser" xml:space="preserve">
-    <value>Проверка прав текущего пользователя…</value>
+  <data name="OsRequirements_LoggedUserNotAdmin_2" xml:space="preserve">
+    <value>SophiApp for Windows запущена от имени "{0}".</value>
+  </data>
+  <data name="OsRequirements_LoggedUserNotAdmin_3.Text" xml:space="preserve">
+    <value>Пожалуйста, войдите в учетную запись с правами администратора и запустите SophiApp for Windows заново.</value>
   </data>
   <data name="OsRequirements_GetHarmfulTweaker" xml:space="preserve">
     <value>Поиск вредоносных твикеров…</value>
@@ -213,26 +195,227 @@
   <data name="OsRequirements_Malware_ModernTweaker" xml:space="preserve">
     <value>Modern Tweaker</value>
   </data>
-  <data name="OsRequirements_DefenderComponentsMissing" xml:space="preserve">
-    <value>Отсутствует компонент "{0}" для Microsoft Defender.</value>
+  <data name="OsRequirements_Malware_PCNP" xml:space="preserve">
+    <value>PCNP</value>
   </data>
-  <data name="OsRequirements_GetRebootPending" xml:space="preserve">
-    <value>Проверка, ожидает ли компьютер перезагрузки…</value>
+  <data name="OsRequirements_Malware_Tron" xml:space="preserve">
+    <value>Tron</value>
   </data>
-  <data name="OsRequirements_GetAppNewVersion" xml:space="preserve">
-    <value>Проверка последней версии SophiApp for Windows…</value>
+  <data name="OsRequirements_Malware_Defendnot" xml:space="preserve">
+    <value>Defendnot</value>
+  </data>
+  <data name="OsRequirements_Malware_CrystalCry" xml:space="preserve">
+    <value>CrystalCry</value>
+  </data>
+  <data name="OsRequirements_Malware_RemoveWindowsAI" xml:space="preserve">
+    <value>RemoveWindowsAI</value>
+  </data>
+  <data name="OsRequirements_GetUWPComponents" xml:space="preserve">
+    <value>Проверка состояния UWP-компонентов…</value>
+  </data>
+  <data name="OsRequirements_UWPComponentsMissing" xml:space="preserve">
+    <value>Отсутствует UWP-компонент "{0}".</value>
   </data>
   <data name="OsRequirements_GetDefenderComponents" xml:space="preserve">
     <value>Проверка состояния компонентов Microsoft Defender…</value>
   </data>
+  <data name="OsRequirements_DefenderComponentsMissing" xml:space="preserve">
+    <value>Отсутствует компонент "{0}" для Microsoft Defender.</value>
+  </data>
+  <data name="OsRequirements_GetControlledFolderAccess" xml:space="preserve">
+    <value>Проверка состояния контролируемого доступа к папкам…</value>
+  </data>
+  <data name="OsRequirements_DisableControlledFolderAccessPanel_1.Text" xml:space="preserve">
+    <value>Вы включили контролируемый доступ к папкам.</value>
+  </data>
+  <data name="OsRequirements_DisableControlledFolderAccessPanel_2.Text" xml:space="preserve">
+    <value>Пожалуйста, отключите его и запустите SophiApp for Windows заново.</value>
+  </data>
+  <data name="Button_OpenControlledFolderSettings.Content" xml:space="preserve">
+    <value>Открыть параметры контролируемого доступа к папкам</value>
+  </data>
+  <data name="OsRequirements_GetRebootPending" xml:space="preserve">
+    <value>Проверка, ожидает ли компьютер перезагрузки…</value>
+  </data>
+  <data name="OsRequirements_RebootPending.Text" xml:space="preserve">
+    <value>Ваш компьютер ожидает перезагрузки.</value>
+  </data>
+  <data name="OsRequirements_GetWindowsVersion" xml:space="preserve">
+    <value>Проверка версии Windows…</value>
+  </data>
+  <data name="OsRequirements_WrongWindowsVersion_1" xml:space="preserve">
+    <value>SophiApp for Windows поддерживает Windows 11 26H2 и выше.</value>
+  </data>
+  <data name="OsRequirements_WrongWindowsVersion_2" xml:space="preserve">
+    <value>Вы используете {0} {1}.</value>
+  </data>
+  <data name="OsRequirements_WrongWindowsVersion_LTSC" xml:space="preserve">
+    <value>SophiApp for Windows поддерживает только Windows 11 Enterprise LTSC 2024.</value>
+  </data>
+  <data name="OsRequirements_GetWindowsBuild" xml:space="preserve">
+    <value>Проверка сборки Windows…</value>
+  </data>
+  <data name="OsRequirements_UpdateWindowsBuild_1" xml:space="preserve">
+    <value>SophiApp for Windows поддерживает Windows 11 26H2 сборки {0}.{1} и выше.</value>
+  </data>
+  <data name="OsRequirements_UpdateWindowsBuild_2" xml:space="preserve">
+    <value>Вы используете Windows 11 {0} {1}.{2}.</value>
+  </data>
+  <data name="OsRequirements_UpdateWindowsBuild_LTSC" xml:space="preserve">
+    <value>SophiApp for Windows поддерживает Windows 11 Enterprise LTSC 2024 сборки {0}.{1} и выше.</value>
+  </data>
+  <data name="OsRequirements_RunWinUpdate.Text" xml:space="preserve">
+    <value>Запустите обновление Windows и повторите попытку.</value>
+  </data>
+  <data name="OsRequirements_GetHostFileEntries" xml:space="preserve">
+    <value>Проверка файла hosts на сторонние записи…</value>
+  </data>
+  <data name="OsRequirements_HostsEntriesFound_1.Text" xml:space="preserve">
+    <value>В файле `%SystemRoot%\System32\drivers\etc\hosts` обнаружены сторонние записи.</value>
+  </data>
+  <data name="OsRequirements_HostsEntriesFound_2.Text" xml:space="preserve">
+    <value>Они могут блокировать соединение с ресурсами, используемыми в работе SophiApp for Windows.</value>
+  </data>
+  <data name="OsRequirements_DoYouWantToContinue.Text" xml:space="preserve">
+    <value>Хотите продолжить?</value>
+  </data>
+  <data name="Button_Continue.Content" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="Button_OpenHostFileFolder.Content" xml:space="preserve">
+    <value>Открыть папку файла hosts</value>
+  </data>
+  <data name="OsRequirements_GetSystemDriveEncryptedBitLocker" xml:space="preserve">
+    <value>Проверка шифрования системного диска BitLocker…</value>
+  </data>
+  <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_1.Text" xml:space="preserve">
+    <value>Системный диск зашифрован, хотя BitLocker отключен.</value>
+  </data>
+  <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_2.Text" xml:space="preserve">
+    <value>Хотите расшифровать диск?</value>
+  </data>
+  <data name="Button_Yes.Content" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="Button_No.Content" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Button_OpenBitLockerSettings.Content" xml:space="preserve">
+    <value>Открыть параметры BitLocker</value>
+  </data>
+  <data name="OsRequirements_SystemDriveDecryptionFailed.Message" xml:space="preserve">
+    <value>Windows не удалось начать расшифровку диска. Перезагрузите компьютер и попробуйте ещё раз, отключите BitLocker в его параметрах или продолжите без расшифровки.</value>
+  </data>
+  <data name="OsRequirements_GetUEFICertificates" xml:space="preserve">
+    <value>Проверка срока действия сертификатов UEFI…</value>
+  </data>
+  <data name="OsRequirements_UpdateUEFICertificates_1.Text" xml:space="preserve">
+    <value>Срок действия сертификата "Microsoft Windows Production PCA 2011" для Secure Boot истек в октябре 2026 года.</value>
+  </data>
+  <data name="OsRequirements_UpdateUEFICertificates_2.Text" xml:space="preserve">
+    <value>На вашем устройстве еще не установлены обновленные сертификаты "Windows UEFI CA 2023".</value>
+  </data>
+  <data name="OsRequirements_UpdateUEFICertificates_3.Text" xml:space="preserve">
+    <value>Хотите установить сертификаты "Windows UEFI CA 2023" вручную?</value>
+  </data>
+  <data name="Button_UpdateUEFICertificates.Content" xml:space="preserve">
+    <value>Открыть руководство</value>
+  </data>
+  <data name="OsRequirements_EnableSecureBoot.Text" xml:space="preserve">
+    <value>Включите Secure Boot.</value>
+  </data>
+  <data name="Button_EnableSecureBoot.Content" xml:space="preserve">
+    <value>Открыть руководство</value>
+  </data>
   <data name="OsRequirements_ReadWindowsSettings" xml:space="preserve">
     <value>Чтение параметров Windows…</value>
+  </data>
+  <data name="OsRequirements_GeneratingUserInterface" xml:space="preserve">
+    <value>Создание интерфейса…</value>
+  </data>
+  <data name="Page_ContextMenu_OpenLogFile.Text" xml:space="preserve">
+    <value>Открыть файл журнала</value>
+  </data>
+  <data name="Page_ContextMenu_OpenLogFolder.Text" xml:space="preserve">
+    <value>Открыть папку журнала</value>
+  </data>
+  <data name="AppFatalError_1.Text" xml:space="preserve">
+    <value>Критическая ошибка:</value>
+  </data>
+  <data name="AppFatalError_2.Text" xml:space="preserve">
+    <value>Возможно, исключение вызвано утилитой, вмешивающейся в работу Defender, например "Defender Killer".</value>
+  </data>
+  <data name="NavigationItem_Privacy.Content" xml:space="preserve">
+    <value>Конфиденциальность</value>
+  </data>
+  <data name="NavigationItem_Personalization.Content" xml:space="preserve">
+    <value>Персонализация</value>
+  </data>
+  <data name="NavigationItem_System.Content" xml:space="preserve">
+    <value>Система</value>
+  </data>
+  <data name="NavigationItem_UWP_Gaming.Content" xml:space="preserve">
+    <value>UWP | Игры</value>
+  </data>
+  <data name="NavigationItem_TaskScheduler.Content" xml:space="preserve">
+    <value>Планировщик заданий</value>
+  </data>
+  <data name="NavigationItem_Security.Content" xml:space="preserve">
+    <value>Безопасность</value>
+  </data>
+  <data name="NavigationItem_ContextMenu.Content" xml:space="preserve">
+    <value>Контекстное меню</value>
+  </data>
+  <data name="NavigationItem_Settings.Content" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="AutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="AutoSuggestBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Поиск параметров</value>
+  </data>
+  <data name="SearchButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Поиск параметров</value>
+  </data>
+  <data name="SearchButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="SearchPage_NothingFound.Text" xml:space="preserve">
+    <value>По вашему запросу ничего не найдено.</value>
+  </data>
+  <data name="Page_AboutCurrentState.Message" xml:space="preserve">
+    <value>Флажки и списки показывают текущее состояние Windows. Изменения вступают в силу после нажатия кнопки **Применить**.</value>
+  </data>
+  <data name="Page_AboutPolicies.Message" xml:space="preserve">
+    <value>SophiApp for Windows сводит использование политик к минимуму. Параметры, которые все же создают политики, отображают их также в оснастке Редактора локальной групповой политики (`gpedit.msc`), если она доступна в вашей редакции Windows.</value>
+  </data>
+  <data name="UIModel_ContextMenu_CopyTitle.Text" xml:space="preserve">
+    <value>Копировать заголовок</value>
+  </data>
+  <data name="UIModel_ContextMenu_CopyDescription.Text" xml:space="preserve">
+    <value>Копировать описание</value>
+  </data>
+  <data name="ComboBox_NoOption.PlaceholderText" xml:space="preserve">
+    <value>Не задано</value>
+  </data>
+  <data name="SettingOption_OpenWebPage" xml:space="preserve">
+    <value>Открыть веб-страницу</value>
+  </data>
+  <data name="Button_ResetToDefault.Content" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="SettingsGroup_Diagnostics" xml:space="preserve">
+    <value>Диагностика и отзывы</value>
   </data>
   <data name="UIModel_DiagTrackService_Title" xml:space="preserve">
     <value>Включить службу телеметрии (DiagTrack)</value>
   </data>
   <data name="UIModel_DiagTrackService_Description" xml:space="preserve">
     <value>Настроить службу "Функциональные возможности для подключенных пользователей и телеметрия" (DiagTrack) и соединение для исходящего трафика клиента единой телеметрии. Отключение службы может привести к тому, что вы больше не сможете получать достижения XBOX, и повлияет на работу Центра отзывов. Программа предварительной оценки Windows также станет недоступна.</value>
+  </data>
+  <data name="UIModel_Exception_DiagTrackServiceNotFound" xml:space="preserve">
+    <value>Отсутствует служба "DiagTrack".</value>
   </data>
   <data name="UIModel_DiagnosticDataLevel_Title" xml:space="preserve">
     <value>Настроить уровень сбора диагностических данных Windows</value>
@@ -252,8 +435,26 @@
   <data name="UIModel_ErrorReporting_Description" xml:space="preserve">
     <value>Отчеты об ошибках позволяют сообщать в Microsoft о сбоях приложений и ядра, зависших приложениях и других проблемах приложений. Microsoft может использовать отчеты, чтобы предоставлять сведения для устранения неполадок, решения или обновления для конкретных проблем.</value>
   </data>
+  <data name="UIModel_Exception_ErrorReportingServiceNotFound" xml:space="preserve">
+    <value>Обнаружено нарушение стабильности работы компонента "Служба регистрации ошибок Windows". Переустановите Windows, используя только подлинный ISO-образ.</value>
+  </data>
+  <data name="UIModel_RecommendedTroubleshooting_Title" xml:space="preserve">
+    <value>Рекомендуемое устранение неполадок</value>
+  </data>
+  <data name="UIModel_RecommendedTroubleshooting_Description" xml:space="preserve">
+    <value>Microsoft может рекомендовать и запускать средства устранения неполадок. Насколько Microsoft должна помогать, когда на устройстве есть неполадки, которые могут исправить такие средства? Для работы этой функции уровень сбора диагностических данных будет изменен на "Необязательные диагностические данные", а запись отчетов об ошибках Windows будет включена.</value>
+  </data>
+  <data name="UIModel_RecommendedTroubleshooting_Title_1" xml:space="preserve">
+    <value>Автоматически запускать средства устранения неполадок, затем уведомлять</value>
+  </data>
+  <data name="UIModel_RecommendedTroubleshooting_Title_2" xml:space="preserve">
+    <value>Спрашивать перед запуском средств устранения неполадок</value>
+  </data>
   <data name="UIModel_FeedbackFrequency_Title" xml:space="preserve">
     <value>Настроить частоту формирования отзывов</value>
+  </data>
+  <data name="UIModel_FeedbackFrequency_Description" xml:space="preserve">
+    <value>Выберите, как часто Windows запрашивает ваши отзывы.</value>
   </data>
   <data name="UIModel_FeedbackFrequency_Title_1" xml:space="preserve">
     <value>Автоматически</value>
@@ -261,50 +462,23 @@
   <data name="UIModel_FeedbackFrequency_Title_2" xml:space="preserve">
     <value>Никогда</value>
   </data>
-  <data name="UIModel_FeedbackFrequency_Description" xml:space="preserve">
-    <value>Выберите, как часто Windows запрашивает ваши отзывы.</value>
-  </data>
   <data name="UIModel_ScheduledTasks_Title" xml:space="preserve">
     <value>Задания диагностического отслеживания</value>
   </data>
   <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
     <value>Связанные с телеметрией задания Планировщика заданий. Отмеченное задание включено.</value>
   </data>
-  <data name="UIModel_SigninInfo_Title" xml:space="preserve">
-    <value>Использовать данные для входа для автоматического завершения настройки устройства после обновления</value>
+  <data name="UIModel_Exception_ScheduledTasks" xml:space="preserve">
+    <value>Запланированные задания не найдены.</value>
   </data>
-  <data name="UIModel_SigninInfo_Description" xml:space="preserve">
-    <value>Некоторым обновлениям для завершения установки нужны перезагрузка и вход в систему. С этим параметром Windows использует ваши данные для входа, чтобы автоматически войти после перезагрузки, завершить настройку компьютера и снова заблокировать его.</value>
-  </data>
-  <data name="UIModel_LanguageListAccess_Title" xml:space="preserve">
-    <value>Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков</value>
+  <data name="SettingsGroup_Recommendations" xml:space="preserve">
+    <value>Реклама и рекомендации</value>
   </data>
   <data name="UIModel_AdvertisingID_Title" xml:space="preserve">
     <value>Разрешать приложениям показывать персонализированную рекламу с помощью моего идентификатора рекламы</value>
   </data>
-  <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
-    <value>Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях</value>
-  </data>
-  <data name="UIModel_WindowsWelcomeExperience_Description" xml:space="preserve">
-    <value>Windows может открывать всплывающее окно с рассказом о новых возможностях системы.</value>
-  </data>
-  <data name="UIModel_WindowsTips_Title" xml:space="preserve">
-    <value>Получать советы и предложения при использовании Windows</value>
-  </data>
-  <data name="UIModel_SettingsSuggestedContent_Title" xml:space="preserve">
-    <value>Показывать рекомендуемое содержимое в приложении "Параметры"</value>
-  </data>
-  <data name="UIModel_AppsSilentInstalling_Title" xml:space="preserve">
-    <value>Включить автоматическую установку рекомендованных приложений</value>
-  </data>
-  <data name="UIModel_AppsSilentInstalling_Description" xml:space="preserve">
-    <value>Windows может без подтверждения пользователя скачивать и устанавливать некоторые рекомендованные приложения из Microsoft Store.</value>
-  </data>
-  <data name="UIModel_WhatsNewInWindows_Title" xml:space="preserve">
-    <value>Предлагать способы завершения настройки этого устройства для наиболее эффективного использования Windows</value>
-  </data>
-  <data name="UIModel_WhatsNewInWindows_Description" xml:space="preserve">
-    <value>Windows может иногда показывать окно "Давайте завершим настройку вашего устройства" с предложением настроить дополнительные службы.</value>
+  <data name="UIModel_LanguageListAccess_Title" xml:space="preserve">
+    <value>Позволять веб-сайтам предоставлять местную информацию за счет доступа к списку языков</value>
   </data>
   <data name="UIModel_TailoredExperiences_Title" xml:space="preserve">
     <value>Включить персонализированные возможности</value>
@@ -312,11 +486,44 @@
   <data name="UIModel_TailoredExperiences_Description" xml:space="preserve">
     <value>Разрешить корпорации Майкрософт предлагать персонализированные советы, рекламу и рекомендации на основе выбранного уровня диагностических данных.</value>
   </data>
+  <data name="UIModel_SettingsSuggestedContent_Title" xml:space="preserve">
+    <value>Показывать рекомендуемое содержимое в приложении "Параметры"</value>
+  </data>
+  <data name="UIModel_WindowsTips_Title" xml:space="preserve">
+    <value>Получать советы и предложения при использовании Windows</value>
+  </data>
+  <data name="UIModel_AppsSilentInstalling_Title" xml:space="preserve">
+    <value>Включить автоматическую установку рекомендованных приложений</value>
+  </data>
+  <data name="UIModel_AppsSilentInstalling_Description" xml:space="preserve">
+    <value>Windows может без подтверждения пользователя скачивать и устанавливать некоторые рекомендованные приложения из Microsoft Store.</value>
+  </data>
   <data name="UIModel_BingSearch_Title" xml:space="preserve">
     <value>Включить поиск через Bing в меню "Пуск"</value>
   </data>
   <data name="UIModel_BingSearch_Description" xml:space="preserve">
     <value>По умолчанию поиск в меню "Пуск" показывает также результаты из интернета, найденные через Bing.</value>
+  </data>
+  <data name="UIModel_WindowsWelcomeExperience_Title" xml:space="preserve">
+    <value>Показывать экран приветствия Windows после обновлений и иногда при входе, чтобы сообщить о новых функциях и предложениях</value>
+  </data>
+  <data name="UIModel_WindowsWelcomeExperience_Description" xml:space="preserve">
+    <value>Windows может открывать всплывающее окно с рассказом о новых возможностях системы.</value>
+  </data>
+  <data name="UIModel_WhatsNewInWindows_Title" xml:space="preserve">
+    <value>Предлагать способы завершения настройки этого устройства для наиболее эффективного использования Windows</value>
+  </data>
+  <data name="UIModel_WhatsNewInWindows_Description" xml:space="preserve">
+    <value>Windows может иногда показывать окно "Давайте завершим настройку вашего устройства" с предложением настроить дополнительные службы.</value>
+  </data>
+  <data name="UIModel_SigninInfo_Title" xml:space="preserve">
+    <value>Использовать данные для входа для автоматического завершения настройки устройства после обновления</value>
+  </data>
+  <data name="UIModel_SigninInfo_Description" xml:space="preserve">
+    <value>Некоторым обновлениям для завершения установки нужны перезагрузка и вход в систему. С этим параметром Windows использует ваши данные для входа, чтобы автоматически войти после перезагрузки, завершить настройку компьютера и снова заблокировать его.</value>
+  </data>
+  <data name="SettingsGroup_FileExplorer" xml:space="preserve">
+    <value>Проводник</value>
   </data>
   <data name="UIModel_ThisPC_Title" xml:space="preserve">
     <value>Отображать значок "Этот компьютер" на рабочем столе</value>
@@ -354,9 +561,6 @@
   <data name="UIModel_OneDriveFileExplorerAd_Description" xml:space="preserve">
     <value>Проводник может показывать уведомления поставщика синхронизации в верхней части окна, например рекламу OneDrive и Microsoft 365.</value>
   </data>
-  <data name="UIModel_SnapAssist_Title" xml:space="preserve">
-    <value>При прикреплении окна показывать, что можно прикрепить рядом с ним</value>
-  </data>
   <data name="UIModel_FileTransferDialog_Title" xml:space="preserve">
     <value>Вид диалогового окна передачи файлов</value>
   </data>
@@ -374,6 +578,24 @@
   </data>
   <data name="UIModel_QuickAccessFrequentFolders_Title" xml:space="preserve">
     <value>Показывать часто используемые папки на панели быстрого доступа</value>
+  </data>
+  <data name="UIModel_FolderGroupBy_Title" xml:space="preserve">
+    <value>Группировать файлы и папки в папке "Загрузки"</value>
+  </data>
+  <data name="UIModel_FolderGroupBy_Title_1" xml:space="preserve">
+    <value>Не группировать</value>
+  </data>
+  <data name="UIModel_FolderGroupBy_Title_2" xml:space="preserve">
+    <value>По дате изменения</value>
+  </data>
+  <data name="UIModel_NavigationPaneExpand_Title" xml:space="preserve">
+    <value>Автоматически разворачивать область навигации проводника до открытой папки</value>
+  </data>
+  <data name="UIModel_ShortcutsSuffix_Title" xml:space="preserve">
+    <value>Добавлять "- ярлык" к имени создаваемых ярлыков</value>
+  </data>
+  <data name="SettingsGroup_Taskbar" xml:space="preserve">
+    <value>Панель задач</value>
   </data>
   <data name="UIModel_TaskbarPosition_Title" xml:space="preserve">
     <value>Расположение панели задач</value>
@@ -405,8 +627,14 @@
   <data name="UIModel_TaskbarWidgets_Description" xml:space="preserve">
     <value>Изменения вносятся через Windows API без отключения драйвера UCPD.</value>
   </data>
+  <data name="UIModel_Exception_WidgetsNotInstalled" xml:space="preserve">
+    <value>Мини-приложения (виджеты) не установлены.</value>
+  </data>
   <data name="UIModel_TaskbarSearch_Title" xml:space="preserve">
     <value>Поиск на панели задач</value>
+  </data>
+  <data name="UIModel_TaskbarSearch_Description" xml:space="preserve">
+    <value>Изменения вносятся через Windows API без отключения драйвера UCPD.</value>
   </data>
   <data name="UIModel_TaskbarSearch_Title_1" xml:space="preserve">
     <value>Скрыть</value>
@@ -419,9 +647,6 @@
   </data>
   <data name="UIModel_TaskbarSearch_Title_4" xml:space="preserve">
     <value>Поле поиска</value>
-  </data>
-  <data name="UIModel_TaskbarSearch_Description" xml:space="preserve">
-    <value>Изменения вносятся через Windows API без отключения драйвера UCPD.</value>
   </data>
   <data name="UIModel_SearchHighlights_Title" xml:space="preserve">
     <value>Показывать главное в поиске</value>
@@ -453,17 +678,62 @@
   <data name="UIModel_TaskbarEndTask_Title" xml:space="preserve">
     <value>Включить завершение задачи на панели задач правой кнопкой мыши</value>
   </data>
-  <data name="UIModel_ControlPanelView_Title" xml:space="preserve">
-    <value>Вид Панели управления</value>
+  <data name="SettingsGroup_Start" xml:space="preserve">
+    <value>Пуск</value>
   </data>
-  <data name="UIModel_ControlPanelView_Title_1" xml:space="preserve">
+  <data name="UIModel_RecentlyAddedStartApps_Title" xml:space="preserve">
+    <value>Показывать недавно добавленные приложения на начальном экране</value>
+  </data>
+  <data name="UIModel_Exception_StartMenuInstalled" xml:space="preserve">
+    <value>Установлено стороннее меню "Пуск".</value>
+  </data>
+  <data name="UIModel_UnpinAllStartTiles_Title" xml:space="preserve">
+    <value>Открепить все приложения от начального экрана</value>
+  </data>
+  <data name="UIModel_UnpinAllStartTiles_Description" xml:space="preserve">
+    <value>Все ярлыки, закрепленные в меню "Пуск", открепляются разом. Действие выполняется один раз, и отменить его нельзя: нужные приложения придется закрепить заново вручную.</value>
+  </data>
+  <data name="UIModel_UnpinAllStartTiles_Button" xml:space="preserve">
+    <value>Открепить</value>
+  </data>
+  <data name="UIModel_StartLayout_Title" xml:space="preserve">
+    <value>Макет начального экрана</value>
+  </data>
+  <data name="UIModel_StartLayout_Title_1" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="UIModel_StartLayout_Title_2" xml:space="preserve">
+    <value>Больше закреплений</value>
+  </data>
+  <data name="UIModel_StartLayout_Title_3" xml:space="preserve">
+    <value>Больше рекомендаций</value>
+  </data>
+  <data name="UIModel_StartAppsView_Title" xml:space="preserve">
+    <value>Вид раздела "Все приложения" на начальном экране</value>
+  </data>
+  <data name="UIModel_StartAppsView_Title_1" xml:space="preserve">
     <value>Категория</value>
   </data>
-  <data name="UIModel_ControlPanelView_Title_2" xml:space="preserve">
-    <value>Крупные значки</value>
+  <data name="UIModel_StartAppsView_Title_2" xml:space="preserve">
+    <value>Сетка</value>
   </data>
-  <data name="UIModel_ControlPanelView_Title_3" xml:space="preserve">
-    <value>Мелкие значки</value>
+  <data name="UIModel_StartAppsView_Title_3" xml:space="preserve">
+    <value>Список</value>
+  </data>
+  <data name="UIModel_MostUsedStartApps_Title" xml:space="preserve">
+    <value>Показывать наиболее часто используемые приложения на начальном экране</value>
+  </data>
+  <data name="UIModel_StartRecommendedSection_Title" xml:space="preserve">
+    <value>Показывать раздел "Рекомендуем" на начальном экране</value>
+  </data>
+  <data name="UIModel_StartRecommendationsTips_Title" xml:space="preserve">
+    <value>Показывать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. на начальном экране</value>
+  </data>
+  <data name="UIModel_StartAccountNotifications_Title" xml:space="preserve">
+    <value>Отображать на начальном экране уведомления, касающиеся учетной записи Microsoft</value>
+  </data>
+  <data name="SettingsGroup_Appearance" xml:space="preserve">
+    <value>Оформление и окна</value>
   </data>
   <data name="UIModel_WindowsColorMode_Title" xml:space="preserve">
     <value>Режим Windows по умолчанию</value>
@@ -483,41 +753,11 @@
   <data name="UIModel_AppColorMode_Title_2" xml:space="preserve">
     <value>Светлый</value>
   </data>
-  <data name="UIModel_FirstLogonAnimation_Title" xml:space="preserve">
-    <value>Показывать анимацию при первом входе в систему</value>
-  </data>
-  <data name="UIModel_FirstLogonAnimation_Description" xml:space="preserve">
-    <value>После чистой установки, обновления системы или первого входа в новую учетную запись Windows показывает анимацию первого входа: несколько сообщений на экране, пока готовится учетная запись.</value>
-  </data>
-  <data name="UIModel_JPEGWallpapersQuality_Title" xml:space="preserve">
-    <value>Качество обоев рабочего стола в формате JPEG</value>
-  </data>
-  <data name="UIModel_JPEGWallpapersQuality_Title_1" xml:space="preserve">
-    <value>Максимальное</value>
-  </data>
-  <data name="UIModel_JPEGWallpapersQuality_Title_2" xml:space="preserve">
-    <value>По умолчанию</value>
-  </data>
-  <data name="UIModel_JPEGWallpapersQuality_Description" xml:space="preserve">
-    <value>Когда вы выбираете изображение JPEG как обои рабочего стола или слайд-шоу, Windows снижает качество исходного изображения до 85%. На изображения PNG это не влияет.</value>
-  </data>
-  <data name="UIModel_ShortcutsSuffix_Title" xml:space="preserve">
-    <value>Добавлять "- ярлык" к имени создаваемых ярлыков</value>
-  </data>
-  <data name="UIModel_PrtScnSnippingTool_Title" xml:space="preserve">
-    <value>Использовать клавишу Print Screen, чтобы запустить создание фрагмента экрана</value>
-  </data>
-  <data name="UIModel_AppsLanguageSwitch_Title" xml:space="preserve">
-    <value>Позволить выбирать метод ввода для каждого окна приложения</value>
-  </data>
-  <data name="UIModel_AeroShaking_Title" xml:space="preserve">
-    <value>Встряхивание заголовка окна</value>
-  </data>
-  <data name="UIModel_AeroShaking_Description" xml:space="preserve">
-    <value>При захвате заголовка окна и встряхивании сворачиваются все остальные окна.</value>
-  </data>
   <data name="UIModel_Cursors_Title" xml:space="preserve">
     <value>Установить курсоры Windows 11 от Jepri Creations</value>
+  </data>
+  <data name="UIModel_Cursors_Description" xml:space="preserve">
+    <value>Скачать и установить курсоры "Windows 11 Cursors Concept v2" от Jepri Creations. Требуется соединение с интернетом. [Посмотреть курсоры на DeviantArt](https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356)</value>
   </data>
   <data name="UIModel_Cursors_Title_1" xml:space="preserve">
     <value>Темные</value>
@@ -528,47 +768,47 @@
   <data name="UIModel_Cursors_Title_3" xml:space="preserve">
     <value>По умолчанию</value>
   </data>
-  <data name="UIModel_Cursors_Description" xml:space="preserve">
-    <value>Скачать и установить курсоры "Windows 11 Cursors Concept v2" от Jepri Creations. Требуется соединение с интернетом. [Посмотреть курсоры на DeviantArt](https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356)</value>
+  <data name="UIModel_JPEGWallpapersQuality_Title" xml:space="preserve">
+    <value>Качество обоев рабочего стола в формате JPEG</value>
   </data>
-  <data name="UIModel_FolderGroupBy_Title" xml:space="preserve">
-    <value>Группировать файлы и папки в папке "Загрузки"</value>
+  <data name="UIModel_JPEGWallpapersQuality_Description" xml:space="preserve">
+    <value>Когда вы выбираете изображение JPEG как обои рабочего стола или слайд-шоу, Windows снижает качество исходного изображения до 85%. На изображения PNG это не влияет.</value>
   </data>
-  <data name="UIModel_FolderGroupBy_Title_1" xml:space="preserve">
-    <value>Не группировать</value>
+  <data name="UIModel_JPEGWallpapersQuality_Title_1" xml:space="preserve">
+    <value>Максимальное</value>
   </data>
-  <data name="UIModel_FolderGroupBy_Title_2" xml:space="preserve">
-    <value>По дате изменения</value>
-  </data>
-  <data name="UIModel_NavigationPaneExpand_Title" xml:space="preserve">
-    <value>Автоматически разворачивать область навигации проводника до открытой папки</value>
-  </data>
-  <data name="UIModel_RecentlyAddedStartApps_Title" xml:space="preserve">
-    <value>Показывать недавно добавленные приложения на начальном экране</value>
-  </data>
-  <data name="UIModel_MostUsedStartApps_Title" xml:space="preserve">
-    <value>Показывать наиболее часто используемые приложения на начальном экране</value>
-  </data>
-  <data name="UIModel_StartRecommendedSection_Title" xml:space="preserve">
-    <value>Показывать раздел "Рекомендуем" на начальном экране</value>
-  </data>
-  <data name="UIModel_StartRecommendationsTips_Title" xml:space="preserve">
-    <value>Показывать рекомендации с советами, сочетаниями клавиш, новыми приложениями и т. д. на начальном экране</value>
-  </data>
-  <data name="UIModel_StartAccountNotifications_Title" xml:space="preserve">
-    <value>Отображать на начальном экране уведомления, касающиеся учетной записи Microsoft</value>
-  </data>
-  <data name="UIModel_StartLayout_Title" xml:space="preserve">
-    <value>Макет начального экрана</value>
-  </data>
-  <data name="UIModel_StartLayout_Title_1" xml:space="preserve">
+  <data name="UIModel_JPEGWallpapersQuality_Title_2" xml:space="preserve">
     <value>По умолчанию</value>
   </data>
-  <data name="UIModel_StartLayout_Title_2" xml:space="preserve">
-    <value>Больше закреплений</value>
+  <data name="UIModel_FirstLogonAnimation_Title" xml:space="preserve">
+    <value>Показывать анимацию при первом входе в систему</value>
   </data>
-  <data name="UIModel_StartLayout_Title_3" xml:space="preserve">
-    <value>Больше рекомендаций</value>
+  <data name="UIModel_FirstLogonAnimation_Description" xml:space="preserve">
+    <value>После чистой установки, обновления системы или первого входа в новую учетную запись Windows показывает анимацию первого входа: несколько сообщений на экране, пока готовится учетная запись.</value>
+  </data>
+  <data name="UIModel_SnapAssist_Title" xml:space="preserve">
+    <value>При прикреплении окна показывать, что можно прикрепить рядом с ним</value>
+  </data>
+  <data name="UIModel_AeroShaking_Title" xml:space="preserve">
+    <value>Встряхивание заголовка окна</value>
+  </data>
+  <data name="UIModel_AeroShaking_Description" xml:space="preserve">
+    <value>При захвате заголовка окна и встряхивании сворачиваются все остальные окна.</value>
+  </data>
+  <data name="UIModel_ControlPanelView_Title" xml:space="preserve">
+    <value>Вид Панели управления</value>
+  </data>
+  <data name="UIModel_ControlPanelView_Title_1" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="UIModel_ControlPanelView_Title_2" xml:space="preserve">
+    <value>Крупные значки</value>
+  </data>
+  <data name="UIModel_ControlPanelView_Title_3" xml:space="preserve">
+    <value>Мелкие значки</value>
+  </data>
+  <data name="SettingsGroup_Components" xml:space="preserve">
+    <value>Установка компонентов</value>
   </data>
   <data name="UIModel_OneDrive_Title" xml:space="preserve">
     <value>OneDrive</value>
@@ -576,53 +816,92 @@
   <data name="UIModel_OneDrive_Description" xml:space="preserve">
     <value>Пользовательская папка OneDrive не будет удалена, если в ней есть файлы. Для скачивания установщика OneDrive с сервера Microsoft требуется соединение с интернетом.</value>
   </data>
-  <data name="UIModel_StorageSense_Title" xml:space="preserve">
-    <value>Включить Контроль памяти</value>
+  <data name="InstallCard_AllUsers.Content" xml:space="preserve">
+    <value>Для всех пользователей</value>
   </data>
-  <data name="UIModel_StorageSense_Description" xml:space="preserve">
-    <value>Автоматически освобождать место и удалять временные файлы встроенными средствами очистки Windows, когда на диске остается мало места.</value>
+  <data name="InstallState_NotInstalled.Text" xml:space="preserve">
+    <value>Не установлено</value>
   </data>
-  <data name="UIModel_Hibernation_Title" xml:space="preserve">
-    <value>Включить режим гибернации</value>
+  <data name="InstallState_Installed.Text" xml:space="preserve">
+    <value>Установлено</value>
   </data>
-  <data name="UIModel_Hibernation_Description" xml:space="preserve">
-    <value>Гибернация — это энергосберегающий режим, который используется в основном на ноутбуках. В отличие от сна, при гибернации открытые документы и программы сохраняются в файл `%SystemDrive%\hiberfil.sys` на системном диске, после чего компьютер выключается. По умолчанию размер скрытого защищенного системного файла `%SystemDrive%\hiberfil.sys` составляет 40% от объема установленной оперативной памяти. Отключение гибернации отключит также быстрый запуск, а пункт "Гибернация" пропадет из меню завершения работы. Не рекомендуется отключать гибернацию на ноутбуках.</value>
+  <data name="InstallState_UpdateAvailable.Text" xml:space="preserve">
+    <value>Доступно обновление</value>
   </data>
-  <data name="UIModel_Win32LongPathsSupport_Title" xml:space="preserve">
-    <value>Включить поддержку длинных путей Windows</value>
+  <data name="Button_Install.Content" xml:space="preserve">
+    <value>Установить</value>
   </data>
-  <data name="UIModel_Win32LongPathsSupport_Description" xml:space="preserve">
-    <value>По умолчанию путь в Windows ограничен 260 символами. С поддержкой длинных путей программы, которые на нее рассчитаны, могут создавать и открывать файлы с более длинными путями. Для программ без такой поддержки ограничение сохраняется.</value>
+  <data name="Button_Uninstall.Content" xml:space="preserve">
+    <value>Удалить</value>
   </data>
-  <data name="UIModel_BSoDStopError_Title" xml:space="preserve">
-    <value>Отображать параметры Stop-ошибки при появлении BSoD</value>
+  <data name="UIModel_Exception_InternetConnectionRequired" xml:space="preserve">
+    <value>Невозможно установить соединение с {0}.</value>
   </data>
-  <data name="UIModel_BSoDStopError_Description" xml:space="preserve">
-    <value>По умолчанию при появлении BSoD Windows показывает только название Stop-ошибки. С этим параметром на синем экране показываются также параметры ошибки, которые помогают определить причину BSoD.</value>
+  <data name="UIModel_Exception_OneDrive_LogOut" xml:space="preserve">
+    <value>Сначала выйдите из учетной записи Microsoft в OneDrive.</value>
   </data>
-  <data name="UIModel_AdminApprovalMode_Title" xml:space="preserve">
-    <value>Настроить поведение контроля учетных записей (UAC)</value>
+  <data name="UIModel_InstallWSL_Title" xml:space="preserve">
+    <value>Установить Linux в Windows с помощью WSL</value>
   </data>
-  <data name="UIModel_AdminApprovalMode_Title_1" xml:space="preserve">
-    <value>Уведомлять только при попытках приложений внести изменения в компьютер</value>
+  <data name="UIModel_InstallWSL_Description" xml:space="preserve">
+    <value>Включить подсистему Windows для Linux (WSL), установить последнюю версию ядра Linux для WSL и выбранный дистрибутив Linux. Чтобы получать обновления ядра, параметр "Получать обновления для других продуктов Майкрософт" будет включен автоматически. Требуется соединение с интернетом.</value>
   </data>
-  <data name="UIModel_AdminApprovalMode_Title_2" xml:space="preserve">
-    <value>Никогда не уведомлять</value>
+  <data name="UIModel_InstallWSL_NoChoice" xml:space="preserve">
+    <value>Выберите дистрибутив</value>
   </data>
-  <data name="UIModel_AdminApprovalMode_Description" xml:space="preserve">
-    <value>Когда контроль учетных записей (UAC) включен, Windows запрашивает согласие или учетные данные локального администратора перед запуском программы или задачи, которой нужен полный маркер доступа администратора. Этот запрос не дает вредоносным программам незаметно установиться или запуститься. С параметром "Никогда не уведомлять" приложения могут вносить изменения в компьютер, не спрашивая вас, поэтому такая защита отключается. Не рекомендуется.</value>
+  <data name="UIModel_InstallWSL_Installed" xml:space="preserve">
+    <value>{0} (установлен)</value>
+  </data>
+  <data name="UIModel_Exception_WslDistributionNotInstalled" xml:space="preserve">
+    <value>Дистрибутив пока не установлен. Если компоненты WSL были установлены только что, перезагрузите компьютер и выберите дистрибутив ещё раз.</value>
+  </data>
+  <data name="UIModel_InstallVisualC_x86_Title" xml:space="preserve">
+    <value>Распространяемые пакеты Microsoft Visual C++ 2017–2026 x86</value>
+  </data>
+  <data name="UIModel_InstallVisualC_x86_Description" xml:space="preserve">
+    <value>Установщик будет скачан с сервера Microsoft (требуется соединение с интернетом).</value>
+  </data>
+  <data name="UIModel_InstallVisualC_x64_Title" xml:space="preserve">
+    <value>Распространяемые пакеты Microsoft Visual C++ 2017–2026 x64</value>
+  </data>
+  <data name="UIModel_InstallVisualC_x64_Description" xml:space="preserve">
+    <value>Установщик будет скачан с сервера Microsoft (требуется соединение с интернетом).</value>
+  </data>
+  <data name="UIModel_InstallDotNetRuntime_10_Title" xml:space="preserve">
+    <value>.NET Desktop Runtime 10 x64</value>
+  </data>
+  <data name="UIModel_InstallDotNetRuntime_10_Description" xml:space="preserve">
+    <value>.NET — преемник .NET Framework. Установить .NET 10 нужно, если приложение создано для этой версии, даже если уже установлены другие версии .NET. .NET 10 — выпуск LTS (Long Term Support, долгосрочная поддержка). Установщик будет скачан с сервера Microsoft (требуется соединение с интернетом).</value>
+  </data>
+  <data name="UIModel_InstallDotNetRuntime_11_Title" xml:space="preserve">
+    <value>.NET Desktop Runtime 11 x64</value>
+  </data>
+  <data name="UIModel_InstallDotNetRuntime_11_Description" xml:space="preserve">
+    <value>.NET — преемник .NET Framework. Установить .NET 11 нужно, если приложение создано для этой версии, даже если уже установлены другие версии .NET. .NET 11 — выпуск STS (Standard Term Support, стандартный срок поддержки). Установщик будет скачан с сервера Microsoft (требуется соединение с интернетом).</value>
+  </data>
+  <data name="UIModel_WindowsSandbox_Title" xml:space="preserve">
+    <value>Включить Песочницу Windows</value>
+  </data>
+  <data name="UIModel_WindowsSandbox_Description" xml:space="preserve">
+    <value>Песочница Windows — это облегченная среда рабочего стола для безопасного запуска приложений в изоляции. Программы, установленные в Песочнице Windows, остаются в ней и работают отдельно от основной системы. Песочница временная: при ее закрытии все программы, файлы и состояние удаляются. При каждом запуске вы получаете новый чистый экземпляр. Доступна только в редакциях Pro, Enterprise и Education. В параметрах UEFI должна быть включена виртуализация. Необходима перезагрузка.</value>
+  </data>
+  <data name="UIModel_Exception_WindowsSandbox_UndefinedState" xml:space="preserve">
+    <value>Состояние Песочницы Windows не определено.</value>
+  </data>
+  <data name="UIModel_Exception_VirtualizationDisabled" xml:space="preserve">
+    <value>Включите виртуализацию в UEFI.</value>
+  </data>
+  <data name="UIModel_Exception_WindowsSandbox_UnsupportedEdition" xml:space="preserve">
+    <value>Домашняя редакция Windows не поддерживает функцию "{0}".</value>
+  </data>
+  <data name="SettingsGroup_Updates" xml:space="preserve">
+    <value>Обновления Windows</value>
   </data>
   <data name="UIModel_DeliveryOptimization_Title" xml:space="preserve">
     <value>Включить оптимизацию доставки обновлений Windows</value>
   </data>
   <data name="UIModel_DeliveryOptimization_Description" xml:space="preserve">
     <value>Оптимизация доставки позволяет компьютеру получать обновления Windows и приложения Microsoft Store с других компьютеров в локальной сети или в интернете, которые уже скачали их, и таким же образом отправлять их другим компьютерам. Это сокращает интернет-трафик при обновлении нескольких устройств и делает скачивание надежнее при медленном соединении.</value>
-  </data>
-  <data name="UIModel_WindowsManageDefaultPrinter_Title" xml:space="preserve">
-    <value>Разрешить Windows управлять принтером, используемым по умолчанию</value>
-  </data>
-  <data name="UIModel_WindowsManageDefaultPrinter_Description" xml:space="preserve">
-    <value>По умолчанию Windows назначает принтером по умолчанию тот, который использовался последним.</value>
   </data>
   <data name="UIModel_UpdateMicrosoftProducts_Title" xml:space="preserve">
     <value>Получать обновления для других продуктов Майкрософт</value>
@@ -645,20 +924,35 @@
   <data name="UIModel_ActiveHours_Title" xml:space="preserve">
     <value>Настроить период активности для Центра обновления Windows</value>
   </data>
+  <data name="UIModel_ActiveHours_Description" xml:space="preserve">
+    <value>Период активности сообщает Windows, когда вы обычно пользуетесь компьютером, чтобы он не перезагружался автоматически после обновления в это время. Период активности по умолчанию — с 8:00 до 17:00.</value>
+  </data>
   <data name="UIModel_ActiveHours_Title_1" xml:space="preserve">
     <value>Автоматически</value>
   </data>
   <data name="UIModel_ActiveHours_Title_2" xml:space="preserve">
     <value>Вручную</value>
   </data>
-  <data name="UIModel_ActiveHours_Description" xml:space="preserve">
-    <value>Период активности сообщает Windows, когда вы обычно пользуетесь компьютером, чтобы он не перезагружался автоматически после обновления в это время. Период активности по умолчанию — с 8:00 до 17:00.</value>
-  </data>
   <data name="UIModel_WindowsLatestUpdate_Title" xml:space="preserve">
     <value>Получать последние обновления Windows, как только они будут доступны</value>
   </data>
   <data name="UIModel_WindowsLatestUpdate_Description" xml:space="preserve">
     <value>Получать последние обновления Windows, не связанные с безопасностью, исправления и улучшения по мере их выпуска. Если такие обновления есть, Windows начнет скачивать их сразу после применения этого параметра.</value>
+  </data>
+  <data name="SettingsGroup_Power" xml:space="preserve">
+    <value>Питание</value>
+  </data>
+  <data name="UIModel_Hibernation_Title" xml:space="preserve">
+    <value>Включить режим гибернации</value>
+  </data>
+  <data name="UIModel_Hibernation_Description" xml:space="preserve">
+    <value>Гибернация — это энергосберегающий режим, который используется в основном на ноутбуках. В отличие от сна, при гибернации открытые документы и программы сохраняются в файл `%SystemDrive%\hiberfil.sys` на системном диске, после чего компьютер выключается. По умолчанию размер скрытого защищенного системного файла `%SystemDrive%\hiberfil.sys` составляет 40% от объема установленной оперативной памяти. Отключение гибернации отключит также быстрый запуск, а пункт "Гибернация" пропадет из меню завершения работы. Не рекомендуется отключать гибернацию на ноутбуках.</value>
+  </data>
+  <data name="UIModel_Exception_HibernationNotSupported" xml:space="preserve">
+    <value>Прошивка этого устройства не поддерживает гибернацию.</value>
+  </data>
+  <data name="UIModel_Exception_ApplyFailed" xml:space="preserve">
+    <value>Не удалось применить параметр. Подробности смотрите в файле журнала.</value>
   </data>
   <data name="UIModel_PowerPlan_Title" xml:space="preserve">
     <value>Выбрать схему управления питанием</value>
@@ -670,7 +964,16 @@
     <value>Разрешить отключение сетевых адаптеров для экономии энергии</value>
   </data>
   <data name="UIModel_NetworkAdaptersSavePower_Description" xml:space="preserve">
-    <value>В списке только подключенные сетевые адаптеры. **Адаптер, настройка которого изменена, будет перезапущен, поэтому соединение пропадет на несколько секунд.** Не рекомендуется отключать на ноутбуках.</value>
+    <value>**Подключенный адаптер, настройка которого изменена, будет перезапущен, поэтому соединение пропадет на несколько секунд.** Не рекомендуется отключать на ноутбуках.</value>
+  </data>
+  <data name="UIModel_NetworkAdaptersSavePower_NotConnected" xml:space="preserve">
+    <value>{0} (не подключен)</value>
+  </data>
+  <data name="UIModel_Exception_NetworkAdaptersSavePower" xml:space="preserve">
+    <value>Не найдены сетевые адаптеры, поддерживающие функцию "Разрешить отключение этого устройства для экономии энергии".</value>
+  </data>
+  <data name="SettingsGroup_Input" xml:space="preserve">
+    <value>Ввод и клавиатура</value>
   </data>
   <data name="UIModel_InputMethod_Title" xml:space="preserve">
     <value>Выбрать метод ввода по умолчанию (раскладку клавиатуры)</value>
@@ -678,23 +981,14 @@
   <data name="UIModel_InputMethod_Description" xml:space="preserve">
     <value>По умолчанию Windows запускается с первым методом ввода из списка языков. Выберите метод ввода, чтобы начинать работу с ним, какой бы язык ни стоял первым в списке.</value>
   </data>
-  <data name="UIModel_RecommendedTroubleshooting_Title" xml:space="preserve">
-    <value>Рекомендуемое устранение неполадок</value>
+  <data name="UIModel_InputMethod_LanguageList" xml:space="preserve">
+    <value>Использовать список языков</value>
   </data>
-  <data name="UIModel_RecommendedTroubleshooting_Title_1" xml:space="preserve">
-    <value>Автоматически запускать средства устранения неполадок, затем уведомлять</value>
+  <data name="UIModel_AppsLanguageSwitch_Title" xml:space="preserve">
+    <value>Позволить выбирать метод ввода для каждого окна приложения</value>
   </data>
-  <data name="UIModel_RecommendedTroubleshooting_Title_2" xml:space="preserve">
-    <value>Спрашивать перед запуском средств устранения неполадок</value>
-  </data>
-  <data name="UIModel_RecommendedTroubleshooting_Description" xml:space="preserve">
-    <value>Microsoft может рекомендовать и запускать средства устранения неполадок. Насколько Microsoft должна помогать, когда на устройстве есть неполадки, которые могут исправить такие средства? Для работы этой функции уровень сбора диагностических данных будет изменен на "Необязательные диагностические данные", а запись отчетов об ошибках Windows будет включена.</value>
-  </data>
-  <data name="UIModel_ReservedStorage_Title" xml:space="preserve">
-    <value>Включить зарезервированное хранилище</value>
-  </data>
-  <data name="UIModel_ReservedStorage_Description" xml:space="preserve">
-    <value>Windows резервирует часть места на диске (около 7 ГБ), чтобы обеспечить нормальную работу и успешное обновление устройства. После отключения зарезервированное хранилище будет освобождено после следующей установки обновлений.</value>
+  <data name="UIModel_PrtScnSnippingTool_Title" xml:space="preserve">
+    <value>Использовать клавишу Print Screen, чтобы запустить создание фрагмента экрана</value>
   </data>
   <data name="UIModel_F1HelpPage_Title" xml:space="preserve">
     <value>Включить открытие справки по нажатию F1</value>
@@ -717,17 +1011,95 @@
   <data name="UIModel_StickyShift_Description" xml:space="preserve">
     <value>Пять нажатий клавиши Shift подряд вызывают всплывающее окно, которое может прервать вашу работу.</value>
   </data>
-  <data name="UIModel_Autoplay_Title" xml:space="preserve">
-    <value>Использовать автозапуск для всех носителей и устройств</value>
+  <data name="SettingsGroup_Storage" xml:space="preserve">
+    <value>Папки и хранилище</value>
   </data>
-  <data name="UIModel_Autoplay_Description" xml:space="preserve">
-    <value>Когда вы подключаете к компьютеру съемное устройство, например USB-накопитель или карту памяти, Windows показывает всплывающее окно "Автозапуск".</value>
+  <data name="UIModel_StorageSense_Title" xml:space="preserve">
+    <value>Включить Контроль памяти</value>
+  </data>
+  <data name="UIModel_StorageSense_Description" xml:space="preserve">
+    <value>Автоматически освобождать место и удалять временные файлы встроенными средствами очистки Windows, когда на диске остается мало места.</value>
+  </data>
+  <data name="UIModel_ReservedStorage_Title" xml:space="preserve">
+    <value>Включить зарезервированное хранилище</value>
+  </data>
+  <data name="UIModel_ReservedStorage_Description" xml:space="preserve">
+    <value>Windows резервирует часть места на диске (около 7 ГБ), чтобы обеспечить нормальную работу и успешное обновление устройства. После отключения зарезервированное хранилище будет освобождено после следующей установки обновлений.</value>
+  </data>
+  <data name="UIModel_Exception_ReservedStorageInUse" xml:space="preserve">
+    <value>Используется зарезервированное хранилище.</value>
   </data>
   <data name="UIModel_ThumbnailCacheRemoval_Title" xml:space="preserve">
     <value>Включить удаление кэша миниатюр</value>
   </data>
   <data name="UIModel_ThumbnailCacheRemoval_Description" xml:space="preserve">
     <value>Windows автоматически удаляет кэш миниатюр после перезагрузки или завершения работы с помощью запланированного задания "SilentCleanup", и проводнику приходится создавать миниатюры заново. Удаление можно отключить, чтобы кэш не удалялся автоматически. Кэш миниатюр хранится в виде файлов .db в папке `%LOCALAPPDATA%\Microsoft\Windows\Explorer`.</value>
+  </data>
+  <data name="UIModel_Win32LongPathsSupport_Title" xml:space="preserve">
+    <value>Включить поддержку длинных путей Windows</value>
+  </data>
+  <data name="UIModel_Win32LongPathsSupport_Description" xml:space="preserve">
+    <value>По умолчанию путь в Windows ограничен 260 символами. С поддержкой длинных путей программы, которые на нее рассчитаны, могут создавать и открывать файлы с более длинными путями. Для программ без такой поддержки ограничение сохраняется.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_Title" xml:space="preserve">
+    <value>Изменить расположение пользовательских папок</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_Description" xml:space="preserve">
+    <value>Выберите папку на другом диске или введите путь к любой другой папке и нажмите Enter. Файлы не будут перенесены в новое расположение: переместите их вручную. В папку снимков экрана сохраняются скриншоты, сделанные по нажатию Win+PrtScn или Win+Shift+S.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_RootNotAllowed" xml:space="preserve">
+    <value>Пользовательская папка не может быть корнем диска. Выберите папку на диске.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_FolderIsTaken" xml:space="preserve">
+    <value>Эта папка уже выбрана для папки "{0}".</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_FilesLeft" xml:space="preserve">
+    <value>В папке "{0}" остались файлы. Переместите их вручную в новое расположение.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_FilesLeftInSeveral" xml:space="preserve">
+    <value>В этих папках остались файлы: {0}. Переместите их вручную в новые расположения.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_ScreenshotsOneDrive" xml:space="preserve">
+    <value>Папку снимков экрана нельзя изменить, пока выполнен вход в OneDrive.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_PathNotValid" xml:space="preserve">
+    <value>Введите полный путь к папке, например D:\Documents.</value>
+  </data>
+  <data name="UserFolder_Desktop" xml:space="preserve">
+    <value>Рабочий стол</value>
+  </data>
+  <data name="UserFolder_Documents" xml:space="preserve">
+    <value>Документы</value>
+  </data>
+  <data name="UserFolder_Downloads" xml:space="preserve">
+    <value>Загрузки</value>
+  </data>
+  <data name="UserFolder_Music" xml:space="preserve">
+    <value>Музыка</value>
+  </data>
+  <data name="UserFolder_Pictures" xml:space="preserve">
+    <value>Изображения</value>
+  </data>
+  <data name="UserFolder_Videos" xml:space="preserve">
+    <value>Видео</value>
+  </data>
+  <data name="UserFolder_Screenshots" xml:space="preserve">
+    <value>Снимки экрана</value>
+  </data>
+  <data name="UserFolder_Change.Content" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="UserFolder_Current" xml:space="preserve">
+    <value>{0} (текущее расположение)</value>
+  </data>
+  <data name="UserFolder_Browse.Text" xml:space="preserve">
+    <value>Обзор…</value>
+  </data>
+  <data name="UserFolder_Default.Content" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="SettingsGroup_Startup" xml:space="preserve">
+    <value>Запуск и вход</value>
   </data>
   <data name="UIModel_SaveRestartableApps_Title" xml:space="preserve">
     <value>Автоматически сохранять мои перезапускаемые приложения и перезапускать их при повторном входе</value>
@@ -741,8 +1113,14 @@
   <data name="UIModel_RestorePreviousFolders_Description" xml:space="preserve">
     <value>Восстанавливать все дополнительные вкладки, которые были открыты в каждом окне проводника.</value>
   </data>
+  <data name="SettingsGroup_Other" xml:space="preserve">
+    <value>Прочее</value>
+  </data>
   <data name="UIModel_DefaultTerminalApp_Title" xml:space="preserve">
     <value>Приложение терминала по умолчанию</value>
+  </data>
+  <data name="UIModel_DefaultTerminalApp_Description" xml:space="preserve">
+    <value>Приложение терминала, которое открывается, когда приложение командной строки запускается без существующего сеанса, например из меню "Пуск" или из диалогового окна "Выполнить".</value>
   </data>
   <data name="UIModel_DefaultTerminalApp_Title_1" xml:space="preserve">
     <value>Windows Терминал</value>
@@ -750,32 +1128,32 @@
   <data name="UIModel_DefaultTerminalApp_Title_2" xml:space="preserve">
     <value>Узел консоли Windows</value>
   </data>
-  <data name="UIModel_DefaultTerminalApp_Description" xml:space="preserve">
-    <value>Приложение терминала, которое открывается, когда приложение командной строки запускается без существующего сеанса, например из меню "Пуск" или из диалогового окна "Выполнить".</value>
+  <data name="UIModel_Exception_PackageNotInstalled" xml:space="preserve">
+    <value>Приложение "{0}" не установлено.</value>
   </data>
-  <data name="UIModel_InstallVisualC_x64_Title" xml:space="preserve">
-    <value>Распространяемые пакеты Microsoft Visual C++ 2017–2026 x64</value>
+  <data name="UIModel_Autoplay_Title" xml:space="preserve">
+    <value>Использовать автозапуск для всех носителей и устройств</value>
   </data>
-  <data name="UIModel_InstallVisualC_x64_Description" xml:space="preserve">
-    <value>Установщик будет скачан с сервера Microsoft (требуется соединение с интернетом).</value>
+  <data name="UIModel_Autoplay_Description" xml:space="preserve">
+    <value>Когда вы подключаете к компьютеру съемное устройство, например USB-накопитель или карту памяти, Windows показывает всплывающее окно "Автозапуск".</value>
   </data>
-  <data name="UIModel_InstallVisualC_x86_Title" xml:space="preserve">
-    <value>Распространяемые пакеты Microsoft Visual C++ 2017–2026 x86</value>
+  <data name="UIModel_WindowsManageDefaultPrinter_Title" xml:space="preserve">
+    <value>Разрешить Windows управлять принтером, используемым по умолчанию</value>
   </data>
-  <data name="UIModel_InstallVisualC_x86_Description" xml:space="preserve">
-    <value>Установщик будет скачан с сервера Microsoft (требуется соединение с интернетом).</value>
+  <data name="UIModel_WindowsManageDefaultPrinter_Description" xml:space="preserve">
+    <value>По умолчанию Windows назначает принтером по умолчанию тот, который использовался последним.</value>
   </data>
-  <data name="UIModel_InstallDotNetRuntime_11_Title" xml:space="preserve">
-    <value>.NET Desktop Runtime 11 x64</value>
+  <data name="UIModel_PreventEdgeShortcutCreation_Title" xml:space="preserve">
+    <value>Не создавать ярлык на рабочем столе при обновлении Microsoft Edge</value>
   </data>
-  <data name="UIModel_InstallDotNetRuntime_11_Description" xml:space="preserve">
-    <value>.NET — преемник .NET Framework. Установить .NET 11 нужно, если приложение создано для этой версии, даже если уже установлены другие версии .NET. .NET 11 — выпуск STS (Standard Term Support, стандартный срок поддержки). Установщик будет скачан с сервера Microsoft (требуется соединение с интернетом).</value>
+  <data name="UIModel_PreventEdgeShortcutCreation_Description" xml:space="preserve">
+    <value>После некоторых обновлений Microsoft Edge возвращает свой ярлык на рабочий стол. Параметр действует для всех установленных каналов Microsoft Edge: Stable, Beta, Dev и Canary.</value>
   </data>
-  <data name="UIModel_RemoveWindowsAI_Title" xml:space="preserve">
-    <value>Удалить Microsoft Copilot и Recall</value>
+  <data name="UIModel_BSoDStopError_Title" xml:space="preserve">
+    <value>Отображать параметры Stop-ошибки при появлении BSoD</value>
   </data>
-  <data name="UIModel_RemoveWindowsAI_Description" xml:space="preserve">
-    <value>Удалить приложение Microsoft Copilot и отключить компонент Windows Recall. Если снять флажок, Recall будет включен снова, а в Microsoft Store откроется страница Microsoft Copilot.</value>
+  <data name="UIModel_BSoDStopError_Description" xml:space="preserve">
+    <value>По умолчанию при появлении BSoD Windows показывает только название Stop-ошибки. С этим параметром на синем экране показываются также параметры ошибки, которые помогают определить причину BSoD.</value>
   </data>
   <data name="UIModel_RegistryBackup_Title" xml:space="preserve">
     <value>Включить автоматическое резервное копирование реестра Windows</value>
@@ -783,14 +1161,44 @@
   <data name="UIModel_RegistryBackup_Description" xml:space="preserve">
     <value>Начиная с Windows 10 версии 1803, Windows больше не создает автоматически резервные копии реестра в папке `%SystemRoot%\System32\config\RegBack`. Резервные копии реестра могут помочь восстановить Windows в крайнем случае.</value>
   </data>
-  <data name="UwpPage_AboutAppIcon.Message" xml:space="preserve">
-    <value>Выберите UWP-приложения для удаления. Список не подготовлен заранее: он строится в реальном времени с собственными значками приложений и локализованными названиями, взятыми из Windows.</value>
+  <data name="UIModel_RemoveWindowsAI_Title" xml:space="preserve">
+    <value>Удалить Microsoft Copilot и Recall</value>
+  </data>
+  <data name="UIModel_RemoveWindowsAI_Description" xml:space="preserve">
+    <value>Удалить приложение Microsoft Copilot и отключить компонент Windows Recall. Если снять флажок, Recall будет включен снова, а в Microsoft Store откроется страница Microsoft Copilot.</value>
+  </data>
+  <data name="UIModel_Notice_NoAIAccelerator" xml:space="preserve">
+    <value>Ваш ПК не имеет встроенного ИИ-ускорителя (NPU), поэтому отсутствует поддержка каких-либо функций, связанных с ИИ Windows. Никакие политики не будут применены, кроме отключения функции "Recall" и удаления приложения Copilot.</value>
+  </data>
+  <data name="UIModel_ScanRegistryPolicies_Title" xml:space="preserve">
+    <value>Отобразить примененные политики реестра в Редакторе локальной групповой политики</value>
+  </data>
+  <data name="UIModel_ScanRegistryPolicies_Description" xml:space="preserve">
+    <value>Просканировать реестр Windows и отобразить все примененные политики, даже созданные вручную, в оснастке Редактора локальной групповой политики (`gpedit.msc`).</value>
+  </data>
+  <data name="UIModel_ScanRegistryPolicies_Button" xml:space="preserve">
+    <value>Сканировать</value>
+  </data>
+  <data name="UIModel_Exception_GpeditNotSupported" xml:space="preserve">
+    <value>Домашняя редакция Windows не поддерживает оснастку Редактора локальной групповой политики (gpedit.msc).</value>
   </data>
   <data name="UwpPage_UwpAppsNotFound.Message" xml:space="preserve">
     <value>Нет UWP-приложений, которые можно удалить.</value>
   </data>
+  <data name="UwpPage_AboutAppIcon.Message" xml:space="preserve">
+    <value>Выберите UWP-приложения для удаления. Список не подготовлен заранее: он строится в реальном времени с собственными значками приложений и локализованными названиями, взятыми из Windows.</value>
+  </data>
   <data name="UwpPage_ForAllUsers.Header" xml:space="preserve">
     <value>Показывать пакеты для всех пользователей</value>
+  </data>
+  <data name="UwpPage_ChosenApps" xml:space="preserve">
+    <value>Выбрано приложений для удаления: {0}</value>
+  </data>
+  <data name="UIModel_ContextMenu_CopyPackageName.Text" xml:space="preserve">
+    <value>Копировать имя пакета</value>
+  </data>
+  <data name="NavigationItem_Gaming" xml:space="preserve">
+    <value>Игры</value>
   </data>
   <data name="UIModel_XBOXGameBar_Title" xml:space="preserve">
     <value>Включить XBOX Game Bar</value>
@@ -807,14 +1215,20 @@
   <data name="UIModel_GPUScheduling_Description" xml:space="preserve">
     <value>При планировании графического процессора с аппаратным ускорением видеокарта сама управляет своей видеопамятью и очередностью получаемых задач, что снимает часть нагрузки с процессора и может уменьшить задержки. Не стоит ожидать заметного влияния на производительность. Работает только с дискретной видеокартой и WDDM версии 2.7 и выше. Необходима перезагрузка.</value>
   </data>
+  <data name="UIModel_Exception_GPUScheduling_VirtualMachine" xml:space="preserve">
+    <value>Windows запущена на виртуальной машине.</value>
+  </data>
+  <data name="UIModel_Exception_GPUScheduling_DedicatedGPUNotFound" xml:space="preserve">
+    <value>Не найдена дискретная видеокарта.</value>
+  </data>
+  <data name="UIModel_Exception_GPUScheduling_WDDMVersion" xml:space="preserve">
+    <value>Требуется WDDM версии 2.7 и выше. Текущая версия WDDM — {0}.</value>
+  </data>
   <data name="TaskSchedulerPage_AboutTasks.Message" xml:space="preserve">
     <value>Запланированных заданий, приведенных ниже, вполне достаточно для поддержания чистоты Windows. Нет необходимости постоянно очищать другие системные папки, как часто советуют в интернете. Задания учитывают режим **Не беспокоить**: их уведомления не появятся, пока вы играете, смотрите видео во весь экран или когда этот режим включен.</value>
   </data>
-  <data name="Page_AboutCurrentState.Message" xml:space="preserve">
-    <value>Флажки и списки показывают текущее состояние Windows. Изменения вступают в силу после нажатия кнопки **Применить**.</value>
-  </data>
-  <data name="Page_AboutPolicies.Message" xml:space="preserve">
-    <value>SophiApp for Windows сводит использование политик к минимуму. Параметры, которые все же создают политики, отображают их также в оснастке Редактора локальной групповой политики (`gpedit.msc`), если она доступна в вашей редакции Windows.</value>
+  <data name="TaskSchedulerPage_OpenTaskScheduler.Content" xml:space="preserve">
+    <value>Открыть Планировщик заданий</value>
   </data>
   <data name="UIModel_CleanupTask_Title" xml:space="preserve">
     <value>Создать запланированное задание "Windows Cleanup"</value>
@@ -828,11 +1242,14 @@
   <data name="TaskScheduler_WindowsCleanupNotification_Description" xml:space="preserve">
     <value>Всплывающее уведомление с напоминанием об очистке неиспользуемых файлов и обновлений Windows. Задание может быть запущено, только если пользователь "{0}" вошел в систему.</value>
   </data>
+  <data name="TaskScheduler_WindowsCleanupToast_Title" xml:space="preserve">
+    <value>Очистка Windows</value>
+  </data>
   <data name="TaskScheduler_WindowsCleanupToast_Description" xml:space="preserve">
     <value>Запустить задание по очистке неиспользуемых файлов и обновлений Windows?</value>
   </data>
-  <data name="TaskScheduler_WindowsCleanupToast_Title" xml:space="preserve">
-    <value>Очистка Windows</value>
+  <data name="TaskScheduler_WindowsCleanupToast_Run" xml:space="preserve">
+    <value>Запустить</value>
   </data>
   <data name="UIModel_SoftwareDistributionTask_Title" xml:space="preserve">
     <value>Создать запланированное задание "SoftwareDistribution"</value>
@@ -852,26 +1269,20 @@
   <data name="UIModel_TempTask_Description" xml:space="preserve">
     <value>Создать в папке Sophia Планировщика заданий задание "Temp" для очистки папки `%TEMP%`. Удаляются только файлы старше одного дня. Задание выполняется каждые 60 дней и по завершении показывает стандартное уведомление Windows.</value>
   </data>
-  <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
-    <value>Временная папка успешно очищена.</value>
-  </data>
   <data name="TaskScheduler_TempTask_Description" xml:space="preserve">
     <value>Очистка временной папки "{1}" (%TEMP%). Задание может быть запущено, только если пользователь "{0}" вошел в систему.</value>
   </data>
-  <data name="SecurityPage_OpenEventViewer.Content" xml:space="preserve">
-    <value>Открыть Просмотр событий</value>
-  </data>
-  <data name="Panel_RestartReminder.Message" xml:space="preserve">
-    <value>Обязательно перезагрузите ваш ПК.</value>
-  </data>
-  <data name="TaskSchedulerPage_OpenTaskScheduler.Content" xml:space="preserve">
-    <value>Открыть Планировщик заданий</value>
+  <data name="TaskScheduler_TempTaskToast_Title" xml:space="preserve">
+    <value>Временная папка успешно очищена.</value>
   </data>
   <data name="UIModel_NetworkProtection_Title" xml:space="preserve">
     <value>Включить защиту сети в Microsoft Defender Exploit Guard</value>
   </data>
   <data name="UIModel_NetworkProtection_Description" xml:space="preserve">
     <value>Защита сети не дает приложениям обращаться к опасным доменам, на которых могут размещаться фишинговые страницы, эксплойты и другое вредоносное содержимое.</value>
+  </data>
+  <data name="UIModel_Exception_AntispywareProtectionDisabled" xml:space="preserve">
+    <value>Установлен сторонний антивирус.</value>
   </data>
   <data name="UIModel_PUAppsDetection_Title" xml:space="preserve">
     <value>Включить обнаружение потенциально нежелательных приложений и блокировать их с помощью Microsoft Defender</value>
@@ -897,6 +1308,9 @@
   <data name="UIModel_EventViewerCustomView_QueryName" xml:space="preserve">
     <value>Создание процесса</value>
   </data>
+  <data name="SecurityPage_OpenEventViewer.Content" xml:space="preserve">
+    <value>Открыть Просмотр событий</value>
+  </data>
   <data name="UIModel_AppsSmartScreen_Title" xml:space="preserve">
     <value>Проверять приложения и файлы фильтром SmartScreen в Microsoft Defender</value>
   </data>
@@ -905,414 +1319,6 @@
   </data>
   <data name="UIModel_SaveZoneInformation_Description" xml:space="preserve">
     <value>Диспетчер вложений входит в состав Windows и защищает компьютер от небезопасных файлов, скачанных из интернета. Если Диспетчер вложений считает вложение небезопасным, он не дает открыть файл (блокирует его) или предупреждает перед открытием. Метаданные сохраняются в альтернативном потоке данных (ADS). Чтобы разблокировать скачанный файл вручную, щелкните его правой кнопкой мыши, выберите "Свойства" и нажмите "Разблокировать".</value>
-  </data>
-  <data name="UIModel_WindowsSandbox_Title" xml:space="preserve">
-    <value>Включить Песочницу Windows</value>
-  </data>
-  <data name="UIModel_WindowsSandbox_Description" xml:space="preserve">
-    <value>Песочница Windows — это облегченная среда рабочего стола для безопасного запуска приложений в изоляции. Программы, установленные в Песочнице Windows, остаются в ней и работают отдельно от основной системы. Песочница временная: при ее закрытии все программы, файлы и состояние удаляются. При каждом запуске вы получаете новый чистый экземпляр. Доступна только в редакциях Pro, Enterprise и Education. В параметрах UEFI должна быть включена виртуализация. Необходима перезагрузка.</value>
-  </data>
-  <data name="UIModel_LocalSecurityAuthority_Title" xml:space="preserve">
-    <value>Включить защиту процесса локальной системы безопасности (LSA) без блокировки UEFI, чтобы предотвратить внедрение кода</value>
-  </data>
-  <data name="UIModel_LocalSecurityAuthority_Description" xml:space="preserve">
-    <value>Защита локальной системы безопасности (LSA) не дает незащищенным процессам читать ее память и внедрять код. Это дополнительно защищает учетные данные, которые хранит и которыми управляет LSA. Необходима перезагрузка.</value>
-  </data>
-  <data name="UIModel_MSIExtractContext_Title" xml:space="preserve">
-    <value>Отображать пункт "Извлечь все" в контекстном меню Windows Installer (.msi)</value>
-  </data>
-  <data name="UIModel_MSIExtractContext_Description" xml:space="preserve">
-    <value>Пункт "Извлечь все" извлекает все содержимое файла .msi в папку "Extracted" рядом с файлом.</value>
-  </data>
-  <data name="UIModel_CABInstallContext_Title" xml:space="preserve">
-    <value>Отображать пункт "Установить" в контекстном меню .cab архивов</value>
-  </data>
-  <data name="UIModel_CABInstallContext_Description" xml:space="preserve">
-    <value>Пункт "Установить" устанавливает пакет обновления из файла .cab с помощью DISM.</value>
-  </data>
-  <data name="UIModel_UseStoreOpenWith_Title" xml:space="preserve">
-    <value>Отображать пункт "Поиск приложения в Microsoft Store" в диалоге "Открыть с помощью"</value>
-  </data>
-  <data name="UIModel_UseStoreOpenWith_Description" xml:space="preserve">
-    <value>Когда вы открываете файл с неизвестным расширением, Windows предлагает найти приложение в Microsoft Store.</value>
-  </data>
-  <data name="UIModel_OpenWindowsTerminalAdminContext_Title" xml:space="preserve">
-    <value>Открывать Windows Терминал из контекстного меню от имени администратора по умолчанию</value>
-  </data>
-  <data name="Panel_ApplyCustomizations_Apply.Text" xml:space="preserve">
-    <value>Применить изменения?</value>
-  </data>
-  <data name="Button_Cancel.Content" xml:space="preserve">
-    <value>Отменить</value>
-  </data>
-  <data name="OsRequirements_UWPComponentsMissing" xml:space="preserve">
-    <value>Отсутствует UWP-компонент "{0}".</value>
-  </data>
-  <data name="OsRequirements_GetUWPComponents" xml:space="preserve">
-    <value>Проверка состояния UWP-компонентов…</value>
-  </data>
-  <data name="OsRequirements_GeneratingUserInterface" xml:space="preserve">
-    <value>Создание интерфейса…</value>
-  </data>
-  <data name="TaskScheduler_WindowsCleanupToast_Run" xml:space="preserve">
-    <value>Запустить</value>
-  </data>
-  <data name="AutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Поиск</value>
-  </data>
-  <data name="SearchPage_NothingFound.Text" xml:space="preserve">
-    <value>По вашему запросу ничего не найдено.</value>
-  </data>
-  <data name="OsRequirements_Malware_PCNP" xml:space="preserve">
-    <value>PCNP</value>
-  </data>
-  <data name="OsRequirements_Malware_Tron" xml:space="preserve">
-    <value>Tron</value>
-  </data>
-  <data name="UIModel_ContextMenu_CopyDescription.Text" xml:space="preserve">
-    <value>Копировать описание</value>
-  </data>
-  <data name="UIModel_ContextMenu_CopyTitle.Text" xml:space="preserve">
-    <value>Копировать заголовок</value>
-  </data>
-  <data name="OsRequirements_Malware_Defendnot" xml:space="preserve">
-    <value>Defendnot</value>
-  </data>
-  <data name="AppFatalError_2.Text" xml:space="preserve">
-    <value>Возможно, исключение вызвано утилитой, вмешивающейся в работу Defender, например "Defender Killer".</value>
-  </data>
-  <data name="App_GitHub.Text" xml:space="preserve">
-    <value>GitHub</value>
-  </data>
-  <data name="App_Telegram.Text" xml:space="preserve">
-    <value>Telegram</value>
-  </data>
-  <data name="App_Discord.Text" xml:space="preserve">
-    <value>Discord</value>
-  </data>
-  <data name="AppTeam_Tester.Text" xml:space="preserve">
-    <value>QC: Yevhenii "lowlif3" Zabronskyi</value>
-  </data>
-  <data name="AppTeam_Developer.Text" xml:space="preserve">
-    <value>Lead Developer: Dmitry "Inestic" Demin</value>
-  </data>
-  <data name="AppTeam_Supporter.Text" xml:space="preserve">
-    <value>Financial &amp; Moral Support: David "BenchTweakGaming" Nguyen</value>
-  </data>
-  <data name="AppTeam_ProjectLead.Text" xml:space="preserve">
-    <value>Project Lead, Development &amp; QA: Dmitry Nefedov</value>
-  </data>
-  <data name="AppTeam_UxDeveloper.Text" xml:space="preserve">
-    <value>UI/UX Design: Vladimir Nameless</value>
-  </data>
-  <data name="Page_ContextMenu_OpenLogFile.Text" xml:space="preserve">
-    <value>Открыть файл журнала</value>
-  </data>
-  <data name="Page_ContextMenu_OpenLogFolder.Text" xml:space="preserve">
-    <value>Открыть папку журнала</value>
-  </data>
-  <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
-    <value>Получение данных из интернета…</value>
-  </data>
-  <data name="OsRequirements_Malware_CrystalCry" xml:space="preserve">
-    <value>CrystalCry</value>
-  </data>
-  <data name="OsRequirements_Malware_RemoveWindowsAI" xml:space="preserve">
-    <value>RemoveWindowsAI</value>
-  </data>
-  <data name="UIModel_InstallDotNetRuntime_10_Description" xml:space="preserve">
-    <value>.NET — преемник .NET Framework. Установить .NET 10 нужно, если приложение создано для этой версии, даже если уже установлены другие версии .NET. .NET 10 — выпуск LTS (Long Term Support, долгосрочная поддержка). Установщик будет скачан с сервера Microsoft (требуется соединение с интернетом).</value>
-  </data>
-  <data name="UIModel_InstallDotNetRuntime_10_Title" xml:space="preserve">
-    <value>.NET Desktop Runtime 10 x64</value>
-  </data>
-  <data name="OsRequirements_RunWinUpdate.Text" xml:space="preserve">
-    <value>Запустите обновление Windows и повторите попытку.</value>
-  </data>
-  <data name="OsRequirements_GetHostFileEntries" xml:space="preserve">
-    <value>Проверка файла hosts на сторонние записи…</value>
-  </data>
-  <data name="OsRequirements_HostsEntriesFound_1.Text" xml:space="preserve">
-    <value>В файле `%SystemRoot%\System32\drivers\etc\hosts` обнаружены сторонние записи.</value>
-  </data>
-  <data name="OsRequirements_HostsEntriesFound_2.Text" xml:space="preserve">
-    <value>Они могут блокировать соединение с ресурсами, используемыми в работе SophiApp for Windows.</value>
-  </data>
-  <data name="Button_Continue.Content" xml:space="preserve">
-    <value>Продолжить</value>
-  </data>
-  <data name="Button_OpenHostFileFolder.Content" xml:space="preserve">
-    <value>Открыть папку файла hosts</value>
-  </data>
-  <data name="Button_OpenBitLockerSettings.Content" xml:space="preserve">
-    <value>Открыть параметры BitLocker</value>
-  </data>
-  <data name="Button_Yes.Content" xml:space="preserve">
-    <value>Да</value>
-  </data>
-  <data name="Button_No.Content" xml:space="preserve">
-    <value>Нет</value>
-  </data>
-  <data name="Button_OpenControlledFolderSettings.Content" xml:space="preserve">
-    <value>Открыть параметры контролируемого доступа к папкам</value>
-  </data>
-  <data name="OsRequirements_DoYouWantToContinue.Text" xml:space="preserve">
-    <value>Хотите продолжить?</value>
-  </data>
-  <data name="OsRequirements_NewAppVersionFound_2.Text" xml:space="preserve">
-    <value>Пожалуйста, обновите программу.</value>
-  </data>
-  <data name="Button_Update.Content" xml:space="preserve">
-    <value>Обновить</value>
-  </data>
-  <data name="OsRequirements_LoggedUserNotAdmin_2" xml:space="preserve">
-    <value>SophiApp for Windows запущена от имени "{0}".</value>
-  </data>
-  <data name="OsRequirements_LoggedUserNotAdmin_3.Text" xml:space="preserve">
-    <value>Пожалуйста, войдите в учетную запись с правами администратора и запустите SophiApp for Windows заново.</value>
-  </data>
-  <data name="OsRequirements_ReinstallWindows.Text" xml:space="preserve">
-    <value>Переустановите Windows, используя только подлинный ISO-образ.</value>
-  </data>
-  <data name="OsRequirements_WindowsComponentStabilityDisrupted" xml:space="preserve">
-    <value>Обнаружено нарушение стабильности работы компонента "{0}".</value>
-  </data>
-  <data name="OsRequirements_GetControlledFolderAccess" xml:space="preserve">
-    <value>Проверка состояния контролируемого доступа к папкам…</value>
-  </data>
-  <data name="OsRequirements_DisableControlledFolderAccessPanel_1.Text" xml:space="preserve">
-    <value>Вы включили контролируемый доступ к папкам.</value>
-  </data>
-  <data name="OsRequirements_DisableControlledFolderAccessPanel_2.Text" xml:space="preserve">
-    <value>Пожалуйста, отключите его и запустите SophiApp for Windows заново.</value>
-  </data>
-  <data name="OsRequirements_RebootPending.Text" xml:space="preserve">
-    <value>Ваш компьютер ожидает перезагрузки.</value>
-  </data>
-  <data name="OsRequirements_GetSystemDriveEncryptedBitLocker" xml:space="preserve">
-    <value>Проверка шифрования системного диска BitLocker…</value>
-  </data>
-  <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_1.Text" xml:space="preserve">
-    <value>Системный диск зашифрован, хотя BitLocker отключен.</value>
-  </data>
-  <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_2.Text" xml:space="preserve">
-    <value>Хотите расшифровать диск?</value>
-  </data>
-  <data name="OsRequirements_GetUEFICertificates" xml:space="preserve">
-    <value>Проверка срока действия сертификатов UEFI…</value>
-  </data>
-  <data name="OsRequirements_UpdateUEFICertificates_1.Text" xml:space="preserve">
-    <value>Срок действия сертификата "Microsoft Windows Production PCA 2011" для Secure Boot истек в октябре 2026 года.</value>
-  </data>
-  <data name="OsRequirements_UpdateUEFICertificates_2.Text" xml:space="preserve">
-    <value>На вашем устройстве еще не установлены обновленные сертификаты "Windows UEFI CA 2023".</value>
-  </data>
-  <data name="OsRequirements_UpdateUEFICertificates_3.Text" xml:space="preserve">
-    <value>Хотите установить сертификаты "Windows UEFI CA 2023" вручную?</value>
-  </data>
-  <data name="Button_UpdateUEFICertificates.Content" xml:space="preserve">
-    <value>Открыть руководство</value>
-  </data>
-  <data name="OsRequirements_EnableSecureBoot.Text" xml:space="preserve">
-    <value>Включите Secure Boot.</value>
-  </data>
-  <data name="Button_EnableSecureBoot.Content" xml:space="preserve">
-    <value>Открыть руководство</value>
-  </data>
-  <data name="OsRequirements_GetCpuArchitecture" xml:space="preserve">
-    <value>Проверка архитектуры процессора…</value>
-  </data>
-  <data name="OsRequirements_UnsupportedArchitecture_1" xml:space="preserve">
-    <value>Вы используете процессор с архитектурой "{0}". SophiApp for Windows поддерживает только процессоры с архитектурой x64.</value>
-  </data>
-  <data name="OsRequirements_GetWindowsVersion" xml:space="preserve">
-    <value>Проверка версии Windows…</value>
-  </data>
-  <data name="OsRequirements_WrongWindowsVersion_1" xml:space="preserve">
-    <value>SophiApp for Windows поддерживает Windows 11 26H2 и выше.</value>
-  </data>
-  <data name="OsRequirements_WrongWindowsVersion_2" xml:space="preserve">
-    <value>Вы используете {0} {1}.</value>
-  </data>
-  <data name="OsRequirements_WrongWindowsVersion_LTSC" xml:space="preserve">
-    <value>SophiApp for Windows поддерживает только Windows 11 Enterprise LTSC 2024.</value>
-  </data>
-  <data name="OsRequirements_GetWindowsBuild" xml:space="preserve">
-    <value>Проверка сборки Windows…</value>
-  </data>
-  <data name="OsRequirements_UpdateWindowsBuild_2" xml:space="preserve">
-    <value>Вы используете Windows 11 {0} {1}.{2}.</value>
-  </data>
-  <data name="OsRequirements_UpdateWindowsBuild_LTSC" xml:space="preserve">
-    <value>SophiApp for Windows поддерживает Windows 11 Enterprise LTSC 2024 сборки {0}.{1} и выше.</value>
-  </data>
-  <data name="OsRequirements_UpdateWindowsBuild_1" xml:space="preserve">
-    <value>SophiApp for Windows поддерживает Windows 11 26H2 сборки {0}.{1} и выше.</value>
-  </data>
-  <data name="AppFatalError_1.Text" xml:space="preserve">
-    <value>Критическая ошибка:</value>
-  </data>
-  <data name="UIModel_StartAppsView_Title" xml:space="preserve">
-    <value>Вид раздела "Все приложения" на начальном экране</value>
-  </data>
-  <data name="UIModel_StartAppsView_Title_1" xml:space="preserve">
-    <value>Категория</value>
-  </data>
-  <data name="UIModel_StartAppsView_Title_2" xml:space="preserve">
-    <value>Сетка</value>
-  </data>
-  <data name="UIModel_StartAppsView_Title_3" xml:space="preserve">
-    <value>Список</value>
-  </data>
-  <data name="OsRequirements_GetWindowsComponentStability" xml:space="preserve">
-    <value>Проверка стабильности компонентов Windows…</value>
-  </data>
-  <data name="OsRequirements_NewAppVersionFound_1" xml:space="preserve">
-    <value>Доступна новая версия: SophiApp for Windows {0}.</value>
-  </data>
-  <data name="UIModel_Exception_InternetConnectionRequired" xml:space="preserve">
-    <value>Невозможно установить соединение с {0}.</value>
-  </data>
-  <data name="UIModel_Exception_DiagTrackServiceNotFound" xml:space="preserve">
-    <value>Отсутствует служба "DiagTrack".</value>
-  </data>
-  <data name="UIModel_Exception_ErrorReportingServiceNotFound" xml:space="preserve">
-    <value>Обнаружено нарушение стабильности работы компонента "Служба регистрации ошибок Windows". Переустановите Windows, используя только подлинный ISO-образ.</value>
-  </data>
-  <data name="UIModel_Exception_ScheduledTasks" xml:space="preserve">
-    <value>Запланированные задания не найдены.</value>
-  </data>
-  <data name="UIModel_Exception_StartMenuInstalled" xml:space="preserve">
-    <value>Установлено стороннее меню "Пуск".</value>
-  </data>
-  <data name="UIModel_Exception_PackageNotInstalled" xml:space="preserve">
-    <value>Приложение "{0}" не установлено.</value>
-  </data>
-  <data name="UIModel_Exception_OneDrive_LogOut" xml:space="preserve">
-    <value>Сначала выйдите из учетной записи Microsoft в OneDrive.</value>
-  </data>
-  <data name="UIModel_Exception_NetworkAdaptersSavePower" xml:space="preserve">
-    <value>Не найдены сетевые адаптеры, поддерживающие функцию "Разрешить отключение этого устройства для экономии энергии".</value>
-  </data>
-  <data name="UIModel_Exception_GPUScheduling_VirtualMachine" xml:space="preserve">
-    <value>Windows запущена на виртуальной машине.</value>
-  </data>
-  <data name="UIModel_Exception_GPUScheduling_DedicatedGPUNotFound" xml:space="preserve">
-    <value>Не найдена дискретная видеокарта.</value>
-  </data>
-  <data name="UIModel_Exception_GPUScheduling_WDDMVersion" xml:space="preserve">
-    <value>Требуется WDDM версии 2.7 и выше. Текущая версия WDDM — {0}.</value>
-  </data>
-  <data name="UIModel_Exception_AntispywareProtectionDisabled" xml:space="preserve">
-    <value>Установлен сторонний антивирус.</value>
-  </data>
-  <data name="UIModel_Exception_WindowsSandbox_UndefinedState" xml:space="preserve">
-    <value>Состояние Песочницы Windows не определено.</value>
-  </data>
-  <data name="UIModel_Exception_VirtualizationDisabled" xml:space="preserve">
-    <value>Включите виртуализацию в UEFI.</value>
-  </data>
-  <data name="UIModel_Exception_WindowsSandbox_UnsupportedEdition" xml:space="preserve">
-    <value>Домашняя редакция Windows не поддерживает функцию "{0}".</value>
-  </data>
-  <data name="UIModel_Exception_CABInstallContext_DefaultArchiver" xml:space="preserve">
-    <value>Установлен сторонний архиватор.</value>
-  </data>
-  <data name="UIModel_Exception_OpenWindowsTerminalAdminContext_ConfigurationNotValid" xml:space="preserve">
-    <value>Файл JSON "{0}" некорректен.</value>
-  </data>
-  <data name="Button_Install.Content" xml:space="preserve">
-    <value>Установить</value>
-  </data>
-  <data name="Button_Uninstall.Content" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="InstallState_NotInstalled.Text" xml:space="preserve">
-    <value>Не установлено</value>
-  </data>
-  <data name="InstallState_Installed.Text" xml:space="preserve">
-    <value>Установлено</value>
-  </data>
-  <data name="InstallState_UpdateAvailable.Text" xml:space="preserve">
-    <value>Доступно обновление</value>
-  </data>
-  <data name="Panel_Install_Installing" xml:space="preserve">
-    <value>Установка {0}</value>
-  </data>
-  <data name="Panel_Install_Updating" xml:space="preserve">
-    <value>Обновление {0}</value>
-  </data>
-  <data name="Panel_Install_Uninstalling" xml:space="preserve">
-    <value>Удаление {0}</value>
-  </data>
-  <data name="UIModel_Exception_InstallFailed" xml:space="preserve">
-    <value>Не удалось выполнить операцию. Проверьте соединение с интернетом и повторите попытку.</value>
-  </data>
-  <data name="Panel_Status_Applying" xml:space="preserve">
-    <value>Применение {0} из {1}: {2}</value>
-  </data>
-  <data name="Panel_Status_ApplyingOne" xml:space="preserve">
-    <value>Применение: {0}</value>
-  </data>
-  <data name="Panel_Status_UpdatingPolicies" xml:space="preserve">
-    <value>Обновление политик</value>
-  </data>
-  <data name="Panel_Status_RestartingExplorer" xml:space="preserve">
-    <value>Перезапуск проводника</value>
-  </data>
-  <data name="Panel_Step_GettingDownloadLink" xml:space="preserve">
-    <value>получение ссылки для скачивания</value>
-  </data>
-  <data name="Panel_Step_Downloading" xml:space="preserve">
-    <value>скачивание</value>
-  </data>
-  <data name="Panel_Step_DownloadingPercent" xml:space="preserve">
-    <value>скачивание, {0}%</value>
-  </data>
-  <data name="Panel_Step_Installing" xml:space="preserve">
-    <value>запуск установщика</value>
-  </data>
-  <data name="Panel_Step_Uninstalling" xml:space="preserve">
-    <value>запуск программы удаления</value>
-  </data>
-  <data name="Panel_Step_Extracting" xml:space="preserve">
-    <value>распаковка архива</value>
-  </data>
-  <data name="Panel_Step_RestartingExplorer" xml:space="preserve">
-    <value>перезапуск проводника</value>
-  </data>
-  <data name="Panel_Step_RemovingFiles" xml:space="preserve">
-    <value>удаление оставшихся файлов</value>
-  </data>
-  <data name="Panel_Step_WindowsFeature" xml:space="preserve">
-    <value>изменение компонента Windows, это может занять несколько минут</value>
-  </data>
-  <data name="InstallCard_AllUsers.Content" xml:space="preserve">
-    <value>Для всех пользователей</value>
-  </data>
-  <data name="AutoSuggestBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
-    <value>Поиск параметров</value>
-  </data>
-  <data name="SearchButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
-    <value>Поиск параметров</value>
-  </data>
-  <data name="SearchButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Поиск</value>
-  </data>
-  <data name="UIModel_Exception_WidgetsNotInstalled" xml:space="preserve">
-    <value>Мини-приложения (виджеты) не установлены.</value>
-  </data>
-  <data name="UIModel_Exception_LocationServicesDisabled" xml:space="preserve">
-    <value>Командам сетевой оболочки требуется разрешение на определение местоположения для доступа к сведениям о беспроводной сети. Включите службы определения местоположения на странице "Расположение" в параметрах конфиденциальности и защиты.</value>
-  </data>
-  <data name="UIModel_Exception_ReservedStorageInUse" xml:space="preserve">
-    <value>Используется зарезервированное хранилище.</value>
-  </data>
-  <data name="UIModel_Exception_ApplyFailed" xml:space="preserve">
-    <value>Не удалось применить параметр. Подробности смотрите в файле журнала.</value>
-  </data>
-  <data name="UIModel_Notice_NoAIAccelerator" xml:space="preserve">
-    <value>Ваш ПК не имеет встроенного ИИ-ускорителя (NPU), поэтому отсутствует поддержка каких-либо функций, связанных с ИИ Windows. Никакие политики не будут применены, кроме отключения функции "Recall" и удаления приложения Copilot.</value>
   </data>
   <data name="UIModel_DNSoverHTTPS_Title" xml:space="preserve">
     <value>Настроить DNS с использованием DNS-over-HTTPS</value>
@@ -1350,110 +1356,68 @@
   <data name="UIModel_DNSoverHTTPS_Link_5" xml:space="preserve">
     <value>https://www.cisco.com/c/en/us/support/docs/security/umbrella/224705-configure-dns-over-https-doh-with.html</value>
   </data>
-  <data name="SettingOption_OpenWebPage" xml:space="preserve">
-    <value>Открыть веб-страницу</value>
+  <data name="UIModel_LocalSecurityAuthority_Title" xml:space="preserve">
+    <value>Включить защиту процесса локальной системы безопасности (LSA) без блокировки UEFI, чтобы предотвратить внедрение кода</value>
   </data>
-  <data name="Button_ResetToDefault.Content" xml:space="preserve">
-    <value>По умолчанию</value>
+  <data name="UIModel_LocalSecurityAuthority_Description" xml:space="preserve">
+    <value>Защита локальной системы безопасности (LSA) не дает незащищенным процессам читать ее память и внедрять код. Это дополнительно защищает учетные данные, которые хранит и которыми управляет LSA. Необходима перезагрузка.</value>
   </data>
-  <data name="ComboBox_NoOption.PlaceholderText" xml:space="preserve">
-    <value>Не задано</value>
+  <data name="UIModel_AdminApprovalMode_Title" xml:space="preserve">
+    <value>Настроить поведение контроля учетных записей (UAC)</value>
   </data>
-  <data name="UIModel_Exception_ActiveNetworkAdapterNotFound" xml:space="preserve">
-    <value>Не удалось определить используемый сетевой адаптер: активное сетевое подключение не найдено. Подключитесь к сети.</value>
+  <data name="UIModel_AdminApprovalMode_Description" xml:space="preserve">
+    <value>Когда контроль учетных записей (UAC) включен, Windows запрашивает согласие или учетные данные локального администратора перед запуском программы или задачи, которой нужен полный маркер доступа администратора. Этот запрос не дает вредоносным программам незаметно установиться или запуститься. С параметром "Никогда не уведомлять" приложения могут вносить изменения в компьютер, не спрашивая вас, поэтому такая защита отключается. Не рекомендуется.</value>
   </data>
-  <data name="UIModel_Exception_DnsServerNotResponding" xml:space="preserve">
-    <value>Сервер DNS-over-HTTPS "{0}" не отвечает. Восстановлены DNS-серверы по умолчанию.</value>
+  <data name="UIModel_AdminApprovalMode_Title_1" xml:space="preserve">
+    <value>Уведомлять только при попытках приложений внести изменения в компьютер</value>
   </data>
-  <data name="UwpPage_ChosenApps" xml:space="preserve">
-    <value>Выбрано приложений для удаления: {0}</value>
+  <data name="UIModel_AdminApprovalMode_Title_2" xml:space="preserve">
+    <value>Никогда не уведомлять</value>
   </data>
-  <data name="Panel_Status_Uninstalling" xml:space="preserve">
-    <value>Удаление {0} из {1}: {2}</value>
+  <data name="UIModel_MSIExtractContext_Title" xml:space="preserve">
+    <value>Отображать пункт "Извлечь все" в контекстном меню Windows Installer (.msi)</value>
   </data>
-  <data name="UIModel_UnpinAllStartTiles_Title" xml:space="preserve">
-    <value>Открепить все приложения от начального экрана</value>
+  <data name="UIModel_MSIExtractContext_Description" xml:space="preserve">
+    <value>Пункт "Извлечь все" извлекает все содержимое файла .msi в папку "Extracted" рядом с файлом.</value>
   </data>
-  <data name="UIModel_UnpinAllStartTiles_Description" xml:space="preserve">
-    <value>Все ярлыки, закрепленные в меню "Пуск", открепляются разом. Действие выполняется один раз, и отменить его нельзя: нужные приложения придется закрепить заново вручную.</value>
+  <data name="UIModel_CABInstallContext_Title" xml:space="preserve">
+    <value>Отображать пункт "Установить" в контекстном меню .cab архивов</value>
   </data>
-  <data name="UIModel_PreventEdgeShortcutCreation_Title" xml:space="preserve">
-    <value>Не создавать ярлык на рабочем столе при обновлении Microsoft Edge</value>
+  <data name="UIModel_CABInstallContext_Description" xml:space="preserve">
+    <value>Пункт "Установить" устанавливает пакет обновления из файла .cab с помощью DISM.</value>
   </data>
-  <data name="UIModel_PreventEdgeShortcutCreation_Description" xml:space="preserve">
-    <value>После некоторых обновлений Microsoft Edge возвращает свой ярлык на рабочий стол. Параметр действует для всех установленных каналов Microsoft Edge: Stable, Beta, Dev и Canary.</value>
+  <data name="UIModel_Exception_CABInstallContext_DefaultArchiver" xml:space="preserve">
+    <value>Установлен сторонний архиватор.</value>
   </data>
-  <data name="UIModel_UnpinAllStartTiles_Button" xml:space="preserve">
-    <value>Открепить</value>
+  <data name="UIModel_UseStoreOpenWith_Title" xml:space="preserve">
+    <value>Отображать пункт "Поиск приложения в Microsoft Store" в диалоге "Открыть с помощью"</value>
   </data>
-  <data name="UIModel_ScanRegistryPolicies_Title" xml:space="preserve">
-    <value>Отобразить примененные политики реестра в Редакторе локальной групповой политики</value>
+  <data name="UIModel_UseStoreOpenWith_Description" xml:space="preserve">
+    <value>Когда вы открываете файл с неизвестным расширением, Windows предлагает найти приложение в Microsoft Store.</value>
   </data>
-  <data name="UIModel_ScanRegistryPolicies_Description" xml:space="preserve">
-    <value>Просканировать реестр Windows и отобразить все примененные политики, даже созданные вручную, в оснастке Редактора локальной групповой политики (`gpedit.msc`).</value>
+  <data name="UIModel_OpenWindowsTerminalAdminContext_Title" xml:space="preserve">
+    <value>Открывать Windows Терминал из контекстного меню от имени администратора по умолчанию</value>
   </data>
-  <data name="UIModel_ScanRegistryPolicies_Button" xml:space="preserve">
-    <value>Сканировать</value>
+  <data name="UIModel_Exception_OpenWindowsTerminalAdminContext_ConfigurationNotValid" xml:space="preserve">
+    <value>Файл JSON "{0}" некорректен.</value>
   </data>
-  <data name="UIModel_Exception_GpeditNotSupported" xml:space="preserve">
-    <value>Домашняя редакция Windows не поддерживает оснастку Редактора локальной групповой политики (gpedit.msc).</value>
+  <data name="Control_Slogan.Text" xml:space="preserve">
+    <value>With a passion for tweaking</value>
   </data>
-  <data name="UIModel_InstallWSL_Title" xml:space="preserve">
-    <value>Установить Linux в Windows с помощью WSL</value>
+  <data name="Control_SloganEnd.Text" xml:space="preserve">
+    <value>Wisely.</value>
   </data>
-  <data name="UIModel_InstallWSL_Description" xml:space="preserve">
-    <value>Включить подсистему Windows для Linux (WSL), установить последнюю версию ядра Linux для WSL и выбранный дистрибутив Linux. Чтобы получать обновления ядра, параметр "Получать обновления для других продуктов Майкрософт" будет включен автоматически. Требуется соединение с интернетом.</value>
+  <data name="SettingsPage_SelectedTheme.Header" xml:space="preserve">
+    <value>Цвет темы</value>
   </data>
-  <data name="UIModel_InstallWSL_NoChoice" xml:space="preserve">
-    <value>Выберите дистрибутив</value>
+  <data name="Settings_Themes_Default" xml:space="preserve">
+    <value>Как в Windows</value>
   </data>
-  <data name="UIModel_InstallWSL_Installed" xml:space="preserve">
-    <value>{0} (установлен)</value>
+  <data name="Settings_Themes_Light" xml:space="preserve">
+    <value>Светлая</value>
   </data>
-  <data name="UIModel_ContextMenu_CopyPackageName.Text" xml:space="preserve">
-    <value>Копировать имя пакета</value>
-  </data>
-  <data name="UIModel_UserShellFolderLocation_Title" xml:space="preserve">
-    <value>Изменить расположение пользовательских папок</value>
-  </data>
-  <data name="UIModel_UserShellFolderLocation_Description" xml:space="preserve">
-    <value>Выберите папку на другом диске или введите путь к любой другой папке и нажмите Enter. Файлы не будут перенесены в новое расположение: переместите их вручную. В папку снимков экрана сохраняются скриншоты, сделанные по нажатию Win+PrtScn или Win+Shift+S.</value>
-  </data>
-  <data name="UIModel_UserShellFolderLocation_RootNotAllowed" xml:space="preserve">
-    <value>Пользовательская папка не может быть корнем диска. Выберите папку на диске.</value>
-  </data>
-  <data name="UIModel_UserShellFolderLocation_FolderIsTaken" xml:space="preserve">
-    <value>Эта папка уже выбрана для папки "{0}".</value>
-  </data>
-  <data name="UIModel_UserShellFolderLocation_FilesLeft" xml:space="preserve">
-    <value>В папке "{0}" остались файлы. Переместите их вручную в новое расположение.</value>
-  </data>
-  <data name="UserFolder_Desktop" xml:space="preserve">
-    <value>Рабочий стол</value>
-  </data>
-  <data name="UserFolder_Documents" xml:space="preserve">
-    <value>Документы</value>
-  </data>
-  <data name="UserFolder_Downloads" xml:space="preserve">
-    <value>Загрузки</value>
-  </data>
-  <data name="UserFolder_Music" xml:space="preserve">
-    <value>Музыка</value>
-  </data>
-  <data name="UserFolder_Pictures" xml:space="preserve">
-    <value>Изображения</value>
-  </data>
-  <data name="UserFolder_Videos" xml:space="preserve">
-    <value>Видео</value>
-  </data>
-  <data name="UserFolder_Change.Content" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="UserFolder_Browse.Text" xml:space="preserve">
-    <value>Обзор…</value>
-  </data>
-  <data name="UserFolder_Default.Content" xml:space="preserve">
-    <value>По умолчанию</value>
+  <data name="Settings_Themes_Dark" xml:space="preserve">
+    <value>Темная</value>
   </data>
   <data name="SettingsPage_Language.Header" xml:space="preserve">
     <value>Язык интерфейса</value>
@@ -1464,58 +1428,118 @@
   <data name="SettingsPage_LanguageRestart.Message" xml:space="preserve">
     <value>Перезапустите SophiApp for Windows, чтобы сменить язык.</value>
   </data>
-  <data name="SettingsGroup_Diagnostics" xml:space="preserve">
-    <value>Диагностика и отзывы</value>
+  <data name="SettingsPage_AboutApp.Header" xml:space="preserve">
+    <value>О программе</value>
   </data>
-  <data name="SettingsGroup_Recommendations" xml:space="preserve">
-    <value>Реклама и рекомендации</value>
+  <data name="App_GitHub.Text" xml:space="preserve">
+    <value>GitHub</value>
   </data>
-  <data name="SettingsGroup_FileExplorer" xml:space="preserve">
-    <value>Проводник</value>
+  <data name="App_Telegram.Text" xml:space="preserve">
+    <value>Telegram</value>
   </data>
-  <data name="SettingsGroup_Taskbar" xml:space="preserve">
-    <value>Панель задач</value>
+  <data name="App_Discord.Text" xml:space="preserve">
+    <value>Discord</value>
   </data>
-  <data name="SettingsGroup_Start" xml:space="preserve">
-    <value>Пуск</value>
+  <data name="SettingsPage_Team.Header" xml:space="preserve">
+    <value>Участники проекта</value>
   </data>
-  <data name="SettingsGroup_Appearance" xml:space="preserve">
-    <value>Оформление и окна</value>
+  <data name="AppTeam_ProjectLead.Text" xml:space="preserve">
+    <value>Project Lead, Development &amp; QA: Dmitry Nefedov</value>
   </data>
-  <data name="SettingsGroup_Components" xml:space="preserve">
-    <value>Установка компонентов</value>
+  <data name="AppTeam_Developer.Text" xml:space="preserve">
+    <value>Lead Developer: Dmitry "Inestic" Demin</value>
   </data>
-  <data name="SettingsGroup_Updates" xml:space="preserve">
-    <value>Обновления Windows</value>
+  <data name="AppTeam_UxDeveloper.Text" xml:space="preserve">
+    <value>UI/UX Design: Vladimir Nameless</value>
   </data>
-  <data name="SettingsGroup_Power" xml:space="preserve">
-    <value>Питание</value>
+  <data name="AppTeam_Tester.Text" xml:space="preserve">
+    <value>QC: Yevhenii "lowlif3" Zabronskyi</value>
   </data>
-  <data name="SettingsGroup_Input" xml:space="preserve">
-    <value>Ввод и клавиатура</value>
+  <data name="AppTeam_Supporter.Text" xml:space="preserve">
+    <value>Financial &amp; Moral Support: David "BenchTweakGaming" Nguyen</value>
   </data>
-  <data name="SettingsGroup_Storage" xml:space="preserve">
-    <value>Папки и хранилище</value>
+  <data name="Panel_ApplyCustomizations_Apply.Text" xml:space="preserve">
+    <value>Применить изменения?</value>
   </data>
-  <data name="SettingsGroup_Startup" xml:space="preserve">
-    <value>Запуск и вход</value>
+  <data name="Button_Cancel.Content" xml:space="preserve">
+    <value>Отменить</value>
   </data>
-  <data name="SettingsGroup_Other" xml:space="preserve">
-    <value>Прочее</value>
+  <data name="Button_Apply.Content" xml:space="preserve">
+    <value>Применить</value>
   </data>
-  <data name="UserFolder_Current" xml:space="preserve">
-    <value>{0} (текущее расположение)</value>
+  <data name="Panel_Status_ApplyingOne" xml:space="preserve">
+    <value>Применение: {0}</value>
   </data>
-  <data name="UIModel_InputMethod_LanguageList" xml:space="preserve">
-    <value>Использовать список языков</value>
+  <data name="Panel_Status_Applying" xml:space="preserve">
+    <value>Применение {0} из {1}: {2}</value>
   </data>
-  <data name="UserFolder_Screenshots" xml:space="preserve">
-    <value>Снимки экрана</value>
+  <data name="Panel_Install_Installing" xml:space="preserve">
+    <value>Установка {0}</value>
   </data>
-  <data name="UIModel_UserShellFolderLocation_ScreenshotsOneDrive" xml:space="preserve">
-    <value>Папку снимков экрана нельзя изменить, пока выполнен вход в OneDrive.</value>
+  <data name="Panel_Install_Updating" xml:space="preserve">
+    <value>Обновление {0}</value>
   </data>
-  <data name="UIModel_UserShellFolderLocation_PathNotValid" xml:space="preserve">
-    <value>Введите полный путь к папке, например D:\Documents.</value>
+  <data name="Panel_Install_Uninstalling" xml:space="preserve">
+    <value>Удаление {0}</value>
+  </data>
+  <data name="Panel_Status_Uninstalling" xml:space="preserve">
+    <value>Удаление {0} из {1}: {2}</value>
+  </data>
+  <data name="Panel_Step_GettingDownloadLink" xml:space="preserve">
+    <value>получение ссылки для скачивания</value>
+  </data>
+  <data name="Panel_Step_Downloading" xml:space="preserve">
+    <value>скачивание</value>
+  </data>
+  <data name="Panel_Step_DownloadingPercent" xml:space="preserve">
+    <value>скачивание, {0}%</value>
+  </data>
+  <data name="Panel_Step_Installing" xml:space="preserve">
+    <value>запуск установщика</value>
+  </data>
+  <data name="Panel_Step_Uninstalling" xml:space="preserve">
+    <value>запуск программы удаления</value>
+  </data>
+  <data name="Panel_Step_Extracting" xml:space="preserve">
+    <value>распаковка архива</value>
+  </data>
+  <data name="Panel_Step_RestartingExplorer" xml:space="preserve">
+    <value>перезапуск проводника</value>
+  </data>
+  <data name="Panel_Step_RemovingFiles" xml:space="preserve">
+    <value>удаление оставшихся файлов</value>
+  </data>
+  <data name="Panel_Step_WindowsFeature" xml:space="preserve">
+    <value>изменение компонента Windows, это может занять несколько минут</value>
+  </data>
+  <data name="Button_CancelDownload.Content" xml:space="preserve">
+    <value>Отменить скачивание</value>
+  </data>
+  <data name="Panel_Status_UpdatingPolicies" xml:space="preserve">
+    <value>Обновление политик</value>
+  </data>
+  <data name="Panel_Status_RestartingExplorer" xml:space="preserve">
+    <value>Перезапуск проводника</value>
+  </data>
+  <data name="Panel_RestartReminder.Message" xml:space="preserve">
+    <value>Обязательно перезагрузите ваш ПК.</value>
+  </data>
+  <data name="UIModel_Exception_InstallFailed" xml:space="preserve">
+    <value>Не удалось выполнить операцию. Проверьте соединение с интернетом и повторите попытку.</value>
+  </data>
+  <data name="UIModel_Exception_LocationServicesDisabled" xml:space="preserve">
+    <value>Командам сетевой оболочки требуется разрешение на определение местоположения для доступа к сведениям о беспроводной сети. Включите службы определения местоположения на странице "Расположение" в параметрах конфиденциальности и защиты.</value>
+  </data>
+  <data name="UIModel_Exception_DownloadCanceled" xml:space="preserve">
+    <value>Скачивание отменено.</value>
+  </data>
+  <data name="UIModel_Notice_SetByAnotherSetting" xml:space="preserve">
+    <value>Значение задаёт выбранный вами параметр "{0}". Отмените его выбор, чтобы изменить этот параметр.</value>
+  </data>
+  <data name="UIModel_Exception_ActiveNetworkAdapterNotFound" xml:space="preserve">
+    <value>Не удалось определить используемый сетевой адаптер: активное сетевое подключение не найдено. Подключитесь к сети.</value>
+  </data>
+  <data name="UIModel_Exception_DnsServerNotResponding" xml:space="preserve">
+    <value>Сервер DNS-over-HTTPS "{0}" не отвечает. Восстановлены DNS-серверы по умолчанию.</value>
   </data>
 </root>

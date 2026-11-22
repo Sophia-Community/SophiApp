@@ -16,9 +16,16 @@ namespace SophiApp.Services
         private static PowerShellProcessInstance? sharedProcess;
         private static Runspace? sharedRunspace;
         private static bool processExitSubscribed;
+        private static Task<Exception?>? check;
 
         /// <inheritdoc/>
         public List<PSObject> Invoke(string script) => Invoke(script, out _);
+
+        /// <inheritdoc/>
+        public void BeginCheck() => _ = StartCheck();
+
+        /// <inheritdoc/>
+        public Exception? GetCheckError() => StartCheck().GetAwaiter().GetResult();
 
         /// <inheritdoc/>
         public bool TryInvoke(string script, out List<PSObject> result)
@@ -34,6 +41,30 @@ namespace SophiApp.Services
                 App.Logger.LogSkippedException($"The cmdlet \"{script}\"", ex);
                 result = [];
                 return false;
+            }
+        }
+
+        // The check is run once, however many times it is asked for
+        private static Task<Exception?> StartCheck()
+        {
+            lock (SessionLock)
+            {
+                return check ??= Task.Run(Check);
+            }
+        }
+
+        // The cmdlets of the network modules are not asked for: those modules take the longest to load,
+        // and they only wrap WMI classes, which are checked by themselves
+        private static Exception? Check()
+        {
+            try
+            {
+                _ = Invoke("Get-Command -Name Get-AppxPackage, Get-WinLanguageBarOption, Enable-WindowsOptionalFeature -ErrorAction Stop", out var hadErrors);
+                return hadErrors ? new InvalidOperationException("Windows PowerShell cannot find the cmdlets") : null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
             }
         }
 

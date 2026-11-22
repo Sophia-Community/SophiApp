@@ -244,6 +244,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <FontIcon Grid.Column="0"
                                   Glyph="&#xE946;"
@@ -261,6 +262,13 @@
                                      Grid.Column="2"
                                      IsIndeterminate="True"
                                      VerticalAlignment="Center"/>
+                        <!-- A download can crawl on a slow connection, so it can be given up. The margin keeps the height of the line -->
+                        <Button x:Uid="Button_CancelDownload"
+                                Grid.Column="3"
+                                Margin="0, -6, 0, -6"
+                                VerticalAlignment="Center"
+                                Command="{x:Bind ViewModel.CancelDownload_Command}"
+                                Visibility="{x:Bind ViewModel.DownloadCanBeCanceled, Mode=OneWay}"/>
                         <i:Interaction.Behaviors>
                             <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.SetUpCustomizationsPanelIsVisible, Mode=OneWay}" ComparisonCondition="Equal" Value="False">
                                 <interaction:ChangePropertyAction PropertyName="Visibility" Value="Collapsed"/>

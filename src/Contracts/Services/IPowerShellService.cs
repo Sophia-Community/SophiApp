@@ -24,5 +24,17 @@ namespace SophiApp.Contracts.Services
         /// <param name="result">The objects that the script returned.</param>
         /// <returns>False if the script wrote an error or was stopped by it.</returns>
         bool TryInvoke(string script, out List<PSObject> result);
+
+        /// <summary>
+        /// Starts Windows PowerShell in the background and makes it find cmdlets of the modules the app uses.
+        /// It is called when the window is shown, so the check goes on while the other checks run. The next calls do nothing.
+        /// </summary>
+        void BeginCheck();
+
+        /// <summary>
+        /// Waits for the check started by <see cref="BeginCheck"/>.
+        /// </summary>
+        /// <returns>The error, or null if Windows PowerShell started and found the cmdlets.</returns>
+        Exception? GetCheckError();
     }
 }

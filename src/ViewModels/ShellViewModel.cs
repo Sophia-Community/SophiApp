@@ -104,6 +104,7 @@ public partial class ShellViewModel : ObservableRecipient
         UIUwpAppModelClicked_Command = new RelayCommand<UIUwpAppModel>(model => UIUwpAppModelClicked(model!));
         UwpForAllUsersClicked_Command = new RelayCommand(UwpForAllUsersClicked);
         UwpAppsUninstall_Command = new AsyncRelayCommand(UwpAppsUninstallAsync);
+        CancelDownload_Command = new RelayCommand(httpService.CancelDownload);
     }
 
     /// <summary>
@@ -177,6 +178,16 @@ public partial class ShellViewModel : ObservableRecipient
     public IAsyncRelayCommand UwpAppsUninstall_Command { get; private set; }
 
     /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to cancel the download that is in progress. The setting it belongs to is not applied.
+    /// </summary>
+    public IRelayCommand CancelDownload_Command { get; private set; }
+
+    /// <summary>
+    /// Gets a value indicating whether a download is in progress, so it can be canceled.
+    /// </summary>
+    public bool DownloadCanBeCanceled => activity.DownloadIsRunning;
+
+    /// <summary>
     /// Gets a value indicating whether the user can use the menu and the settings: the app is not starting, reading or applying anything.
     /// </summary>
     public bool NavigationViewHitTestVisible => activity.IsIdle;
@@ -238,6 +249,7 @@ public partial class ShellViewModel : ObservableRecipient
             nameof(AppActivity.IsIdle) => nameof(NavigationViewHitTestVisible),
             nameof(AppActivity.ProgressIsVisible) => nameof(SetUpCustomizationsPanelIsVisible),
             nameof(AppActivity.ProgressText) => nameof(SetUpCustomizationsPanelText),
+            nameof(AppActivity.DownloadIsRunning) => nameof(DownloadCanBeCanceled),
             _ => null,
         };
 
@@ -251,6 +263,7 @@ public partial class ShellViewModel : ObservableRecipient
     {
         _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => startup.StatusText = "OsRequirements_ReadWindowsSettings".GetLocalized());
         SettingModels = await modelService.BuildSettingModelsAsync();
+        chosenSettings.Settings = SettingModels;
         await modelService.GetModelsState(SettingModels);
         _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => startup.StatusText = "OsRequirements_GeneratingUserInterface".GetLocalized());
         await ReadUwpAppsAsync();
@@ -351,10 +364,11 @@ public partial class ShellViewModel : ObservableRecipient
         {
             for (var i = 0; i < apps.Count; i++)
             {
-                // The user sees which app is being uninstalled and how many are left
+                // The user sees which app is being uninstalled and how many are left.
+                // The name of an app is what its tile shows, the title is the package name
                 App.Status.SetOperation(apps.Count == 1
-                    ? string.Format("Panel_Install_Uninstalling".GetLocalized(), apps[i].Title)
-                    : string.Format("Panel_Status_Uninstalling".GetLocalized(), i + 1, apps.Count, apps[i].Title));
+                    ? string.Format("Panel_Install_Uninstalling".GetLocalized(), apps[i].Name)
+                    : string.Format("Panel_Status_Uninstalling".GetLocalized(), i + 1, apps.Count, apps[i].Name));
                 apps[i].IsSelected = false;
                 var timer = Stopwatch.StartNew();
                 apps[i].SetState();

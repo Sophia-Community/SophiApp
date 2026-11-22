@@ -41,7 +41,7 @@ namespace SophiApp.Customizations
         /// </summary>
         public static bool XBOXGameTips()
         {
-            if (AppxPackagesService.PackageExist("Microsoft.XBOXGamingOverlay"))
+            if (AppxPackagesService.PackageExist("Microsoft.XboxGamingOverlay"))
             {
                 var startupPanelIsEnabled = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\GameBar", "ShowStartupPanel") as int? ?? -1;
                 return startupPanelIsEnabled != 0;

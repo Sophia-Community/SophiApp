@@ -31,6 +31,8 @@ namespace SophiApp.ViewModels
 
         [ObservableProperty]
         private RequirementsResult requirementsResult;
+        [ObservableProperty]
+        private bool decryptionFailed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StartupViewModel"/> class.
@@ -185,8 +187,17 @@ namespace SophiApp.ViewModels
 
         private async Task DecryptSystemDriveAsync()
         {
-            // Start decrypting the system drive and continue. The decryption goes on in the background
-            await Task.Run(instrumentationService.TryDecryptSystemDrive);
+            DecryptionFailed = false;
+
+            // Windows can refuse to decrypt the drive. The user is told, and decides what to do next
+            if (!await Task.Run(instrumentationService.TryDecryptSystemDrive))
+            {
+                DecryptionFailed = true;
+                App.Logger.LogUserNotice("OsRequirements_SystemDriveDecryptionFailed/Message".GetLocalized());
+                return;
+            }
+
+            // The decryption goes on in the background
             ContinueRequirementActionsExecute();
         }
 

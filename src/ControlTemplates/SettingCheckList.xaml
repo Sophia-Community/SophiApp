@@ -44,7 +44,8 @@
                                 Click="CopyDescription_Click"/>
             </MenuFlyout>
         </StackPanel.ContextFlyout>
-        <Grid>
+        <!-- A disabled card takes no clicks, and this background takes the right click for the menu -->
+        <Grid Background="Transparent">
             <!-- The check box of the card turns all items on or off at once; opened, the card has a check box for each item -->
             <toolkit:SettingsExpander x:Name="Expander"
                                       AutomationProperties.Name="{Binding Title}"

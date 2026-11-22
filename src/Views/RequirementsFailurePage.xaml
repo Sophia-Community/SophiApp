@@ -153,6 +153,13 @@
                                 Margin="20, 0, 0, 0"
                                 Command="{x:Bind ViewModel.OpenBitLockerSettings_Command, Mode=OneWay}"/>
                     </StackPanel>
+                    <!-- Windows refused to decrypt the drive -->
+                    <InfoBar x:Uid="OsRequirements_SystemDriveDecryptionFailed"
+                             Severity="Error"
+                             IsClosable="False"
+                             Margin="0, 16, 0, 0"
+                             HorizontalAlignment="Center"
+                             IsOpen="{x:Bind ViewModel.DecryptionFailed, Mode=OneWay}"/>
                 </StackPanel>
                 <StackPanel x:Name="UpdateUEFICertificatesPanel"
                             Style="{StaticResource RequirementsResultPanelStyle}">
@@ -165,12 +172,12 @@
                     <StackPanel Orientation="Horizontal"
                                 Margin="0, 10, 0, 0"
                                 HorizontalAlignment="Center">
-                        <Button x:Uid="Button_UpdateUEFICertificates"
-                                Style="{ThemeResource AccentButtonStyle}"
-                                Command="{x:Bind ViewModel.UpdateUEFICertificates_Command, Mode=OneWay}"/>
                         <Button x:Uid="Button_Continue"
-                                Margin="20, 0, 0, 0"
+                                Style="{ThemeResource AccentButtonStyle}"
                                 Command="{x:Bind ViewModel.ContinueRequirementActionsExecute_Command, Mode=OneWay}"/>
+                        <Button x:Uid="Button_UpdateUEFICertificates"
+                                Margin="20, 0, 0, 0"
+                                Command="{x:Bind ViewModel.UpdateUEFICertificates_Command, Mode=OneWay}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel x:Name="EnableSecureBootPanel"
@@ -180,12 +187,12 @@
                     <StackPanel Orientation="Horizontal"
                                 Margin="0, 10, 0, 0"
                                 HorizontalAlignment="Center">
-                        <Button x:Uid="Button_EnableSecureBoot"
-                                Style="{ThemeResource AccentButtonStyle}"
-                                Command="{x:Bind ViewModel.EnableSecureBoot_Command, Mode=OneWay}"/>
                         <Button x:Uid="Button_Continue"
-                                Margin="20, 0, 0, 0"
+                                Style="{ThemeResource AccentButtonStyle}"
                                 Command="{x:Bind ViewModel.ContinueRequirementActionsExecute_Command, Mode=OneWay}"/>
+                        <Button x:Uid="Button_EnableSecureBoot"
+                                Margin="20, 0, 0, 0"
+                                Command="{x:Bind ViewModel.EnableSecureBoot_Command, Mode=OneWay}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel x:Name="UnsupportedArchitecturePanel"

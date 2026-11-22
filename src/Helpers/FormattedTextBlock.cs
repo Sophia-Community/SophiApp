@@ -6,6 +6,7 @@ namespace SophiApp.Helpers;
 
 using System.Text;
 using Microsoft.UI.Text;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
@@ -23,6 +24,9 @@ internal static class FormattedTextBlock
     // Both fonts come with Windows, the second one is used if the first is removed
     private static readonly FontFamily CodeFont = new("Cascadia Mono, Consolas");
 
+    // The text blocks whose emphasized words already follow the theme
+    private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<TextBlock, object> Followed = [];
+
     /// <summary>
     /// Replaces the content of a text block with a formatted text.
     /// </summary>
@@ -36,12 +40,20 @@ internal static class FormattedTextBlock
         {
             block.Inlines.Add(part.Kind switch
             {
-                FormattedTextPartKind.Bold => new Run { Text = KeepShortcutsOnOneLine(part.Text), FontWeight = FontWeights.SemiBold },
+                FormattedTextPartKind.Bold => new Run { Text = KeepShortcutsOnOneLine(part.Text), FontWeight = FontWeights.SemiBold, Foreground = GetEmphasisBrush(block) },
                 FormattedTextPartKind.Code => new Run { Text = KeepOnOneLine(part.Text), FontFamily = CodeFont },
                 FormattedTextPartKind.Link => CreateLink(part),
                 FormattedTextPartKind.LineBreak => new LineBreak(),
                 _ => new Run { Text = KeepShortcutsOnOneLine(part.Text) },
             });
+        }
+
+        // A run made in code does not follow the theme by itself
+        if (!Followed.TryGetValue(block, out _))
+        {
+            Followed.Add(block, block);
+            block.Loaded += (_, _) => ColorEmphasis(block);
+            block.ActualThemeChanged += (_, _) => ColorEmphasis(block);
         }
     }
 
@@ -103,6 +115,27 @@ internal static class FormattedTextBlock
         }
 
         return result.ToString();
+    }
+
+    // Emphasized words have the color of the accent text of Windows: darker than the accent in the light theme, lighter in the dark one.
+    // In a high contrast theme they keep the color of the text
+    private static Brush? GetEmphasisBrush(TextBlock block)
+    {
+        if (new Windows.UI.ViewManagement.AccessibilitySettings().HighContrast)
+        {
+            return block.Foreground;
+        }
+
+        var key = block.ActualTheme == ElementTheme.Light ? "SystemAccentColorDark2" : "SystemAccentColorLight3";
+        return Application.Current.Resources.TryGetValue(key, out var color) && color is Windows.UI.Color accent ? new SolidColorBrush(accent) : block.Foreground;
+    }
+
+    private static void ColorEmphasis(TextBlock block)
+    {
+        foreach (var run in block.Inlines.OfType<Run>().Where(run => run.FontWeight.Weight == FontWeights.SemiBold.Weight))
+        {
+            run.Foreground = GetEmphasisBrush(block);
+        }
     }
 
     private static Hyperlink CreateLink(FormattedTextPart part)

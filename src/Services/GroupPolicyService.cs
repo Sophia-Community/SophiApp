@@ -47,6 +47,12 @@ namespace SophiApp.Services
             // Windows default
             (LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkConnectivityStatusIndicator", "UseGlobalDNS", "1"),
 
+            // Windows default
+            (LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\EnhancedStorageDevices", "TCGSecurityActivationDisabled", "0"),
+
+            // Windows default
+            (LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections", "NC_PersonalFirewallConfig", "0"),
+
             // Written by Windows during TPM provisioning
             (LGPOScope.Computer, "SOFTWARE\\Policies\\Microsoft\\TPM", "OSManagedAuthLevel", "5"),
 

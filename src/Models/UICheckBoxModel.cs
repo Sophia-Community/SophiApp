@@ -68,6 +68,13 @@ namespace SophiApp.Models
         public override string ChosenValue => IsChecked.ToString();
 
         /// <inheritdoc/>
+        public override object? Choice
+        {
+            get => IsChecked;
+            set => IsChecked = value is bool state ? state : IsChecked;
+        }
+
+        /// <inheritdoc/>
         public override void GetState()
         {
             try

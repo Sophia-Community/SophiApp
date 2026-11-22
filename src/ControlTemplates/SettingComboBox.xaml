@@ -81,6 +81,17 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+            <!-- A value set by another setting is an explanation, not a problem -->
+            <VisualStateGroup x:Name="LockStates">
+                <VisualState x:Name="Locked">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding IsLocked}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Notice.Severity" Value="Informational"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel.ContextFlyout>
             <MenuFlyout helpers:PopupCursor.ResetOnOpen="True">
@@ -93,7 +104,8 @@
                                 Click="CopyDescription_Click"/>
             </MenuFlyout>
         </StackPanel.ContextFlyout>
-        <Grid>
+        <!-- A disabled card takes no clicks, and this background takes the right click for the menu -->
+        <Grid Background="Transparent">
             <toolkit:SettingsCard x:Name="Card"
                                   AutomationProperties.Name="{Binding Title}"
                                   IsEnabled="{Binding IsEnabled}">

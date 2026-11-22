@@ -69,6 +69,13 @@ namespace SophiApp.Contracts.Services
         bool TryDecryptSystemDrive();
 
         /// <summary>
+        /// Asks Windows whether an optional feature, such as Windows Sandbox, is enabled.
+        /// </summary>
+        /// <param name="name">The name of the feature.</param>
+        /// <returns>Null if Windows has no such feature or does not tell its state.</returns>
+        bool? GetOptionalFeatureEnabled(string name);
+
+        /// <summary>
         /// Get data from the PowerPlan class.
         /// </summary>
         List<ManagementObject> GetPowerPlans();

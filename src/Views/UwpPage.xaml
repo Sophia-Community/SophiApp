@@ -67,8 +67,8 @@
                                         Command="{x:Bind ViewModel.UwpAppsUninstall_Command}"/>
                             </toolkit:SettingsCard>
                         </Grid>
+                        <!-- Only the tiles on the screen and next to it are built: building all of them at once holds the page for seconds -->
                         <ItemsRepeater ItemsSource="{x:Bind ViewModel.UwpAppsModels, Mode=OneWay}"
-                                       VerticalCacheLength="{x:Bind ViewModel.UwpAppsModels.Count, Mode=OneWay}"
                                        HorizontalAlignment="Left"
                                        Margin="0, 0, 0, 10">
                             <ItemsRepeater.ItemTemplate>

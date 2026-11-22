@@ -30,6 +30,10 @@ namespace SophiApp.Models
         private string title;
         private string applyFailure = string.Empty;
 
+        // What the setting showed before another setting locked it
+        private object? choiceBeforeLock;
+        private string textBeforeLock = string.Empty;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UIModel"/> class.
         /// </summary>
@@ -114,7 +118,7 @@ namespace SophiApp.Models
         {
             get
             {
-                return isEnabled;
+                return isEnabled && !IsLocked;
             }
 
             protected set
@@ -152,6 +156,26 @@ namespace SophiApp.Models
         public bool ExceptionTextIsVisible { get; private set; }
 
         /// <summary>
+        /// Gets a value indicating whether the choice is made by another chosen setting, so the user cannot change it here.
+        /// </summary>
+        public bool IsLocked { get; private set; }
+
+        /// <summary>
+        /// Gets the name of the setting that locked this one, or an empty string.
+        /// </summary>
+        public string LockedBy { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets what is chosen: true or false for a check box, the number of the option for a list.
+        /// Null for the settings whose choice another setting cannot decide.
+        /// </summary>
+        public virtual object? Choice
+        {
+            get => null;
+            set => _ = value;
+        }
+
+        /// <summary>
         /// Gets a value indicating whether the user chose something that differs from the state of Windows.
         /// A setting with such a choice is applied with the others; a choice that is taken back makes it false again.
         /// </summary>
@@ -176,6 +200,53 @@ namespace SophiApp.Models
         /// Sets the model state.
         /// </summary>
         public abstract void SetState();
+
+        /// <summary>
+        /// Makes the choice for the user and keeps it until the lock is taken off.
+        /// </summary>
+        /// <param name="value">The value to choose.</param>
+        /// <param name="owner">The name of the setting that decides.</param>
+        /// <param name="reason">A localized text that says why the setting cannot be changed.</param>
+        public void LockChoice(object value, string owner, string reason)
+        {
+            if (!IsLocked)
+            {
+                choiceBeforeLock = Choice;
+                textBeforeLock = ExceptionText;
+            }
+
+            // The value goes first: a check box that changes while it is disabled can keep the old check mark
+            Choice = value;
+            IsLocked = true;
+            LockedBy = owner;
+            OnPropertyChanged(nameof(IsLocked));
+            OnPropertyChanged(nameof(IsEnabled));
+            SetExceptionText(reason);
+        }
+
+        /// <summary>
+        /// Takes the lock off.
+        /// </summary>
+        /// <param name="restoreChoice">True to bring back what was chosen before the lock.</param>
+        public void UnlockChoice(bool restoreChoice)
+        {
+            if (!IsLocked)
+            {
+                return;
+            }
+
+            IsLocked = false;
+            LockedBy = string.Empty;
+            OnPropertyChanged(nameof(IsLocked));
+            OnPropertyChanged(nameof(IsEnabled));
+
+            if (restoreChoice && choiceBeforeLock is not null)
+            {
+                Choice = choiceBeforeLock;
+            }
+
+            SetExceptionText(textBeforeLock);
+        }
 
         /// <summary>
         /// Returns a value indicating whether a specified text occurs within this model.

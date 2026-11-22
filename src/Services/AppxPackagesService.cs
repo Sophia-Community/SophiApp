@@ -75,7 +75,7 @@ namespace SophiApp.Services
             "SynapticsIncorporated.241916F58D6E7",
             "ELANMicroelectronicsCorpo.TrackPoint",
             // XBOX Game UI
-            "Microsoft.XBOXGameCallableUI",
+            "Microsoft.XboxGameCallableUI",
         };
 
         // These apps have no bundle, so they are added to the list by name
@@ -88,7 +88,7 @@ namespace SophiApp.Services
             "MSTeams",
 
             // XBOX Game Bar
-            "Microsoft.XBOXGamingOverlay",
+            "Microsoft.XboxGamingOverlay",
         ];
 
         private readonly PackageManager packageManager = new();
@@ -104,7 +104,7 @@ namespace SophiApp.Services
         public bool PackageExist(string packageId, bool allUsers = false)
         {
             var packages = allUsers ? packageManager.FindPackages() : packageManager.FindPackagesForUser(string.Empty);
-            return packages.Any(package => package.Id.Name.Equals(packageId));
+            return packages.Any(package => package.Id.Name.Equals(packageId, StringComparison.OrdinalIgnoreCase));
         }
 
         /// <inheritdoc/>

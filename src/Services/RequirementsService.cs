@@ -16,6 +16,9 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class RequirementsService : IRequirementsService
     {
+        // A part of the stability check that takes longer gets a line in the log
+        private const int SlowCheckMilliseconds = 100;
+
         private readonly IAppxPackagesService packagesService;
         private readonly ICommonDataService dataService;
         private readonly IInstrumentationService instrumentationService;
@@ -69,9 +72,9 @@ namespace SophiApp.Services
 
         private RequirementsResult GetExternalServicesData()
         {
-            // Start the shared PowerShell session and the downloads in the background.
-            // The checks wait for the data only where they need it
-            _ = Task.Run(() => powerShellService.Invoke("$null"));
+            // Windows PowerShell and the downloads are started in the background as soon as the window is shown.
+            // The checks wait for them only where they need the result
+            powerShellService.BeginCheck();
             dataService.BeginGetExternalServicesData();
             return RequirementsResult.AllCorrect;
         }
@@ -84,6 +87,7 @@ namespace SophiApp.Services
                 ("root/CIMV2", "Win32_Volume"),
                 ("root/CIMV2", "Win32_ShadowStorage"),
                 ("root/StandardCimv2", "MSFT_NetAdapter"),
+                ("root/StandardCimv2", "MSFT_DNSClientServerAddress"),
                 ("root/CIMV2/Security/MicrosoftVolumeEncryption", "Win32_EncryptableVolume"),
                 ("root/Microsoft/Windows/Defender", "MSFT_MpComputerStatus"),
                 ("root/SecurityCenter2", "AntiVirusProduct"),
@@ -128,10 +132,11 @@ namespace SophiApp.Services
 
             checks.Add(("Windows PowerShell", () =>
             {
-                // Some settings are applied with cmdlets: Windows PowerShell must start and find them
-                if (!powerShellService.TryInvoke("Get-Command -Name Get-AppxPackage, Get-NetAdapter, Set-DnsClientServerAddress, Get-WinLanguageBarOption, Enable-WindowsOptionalFeature -ErrorAction Stop", out _))
+                // Some settings are applied with cmdlets: Windows PowerShell must start and find them.
+                // The check was started by the first action, here its result is taken
+                if (powerShellService.GetCheckError() is { } error)
                 {
-                    throw new InvalidOperationException("Windows PowerShell cannot run the cmdlets");
+                    throw new InvalidOperationException($"Windows PowerShell cannot run the cmdlets: {error.Message}", error);
                 }
             }));
 
@@ -139,6 +144,8 @@ namespace SophiApp.Services
             var errors = checks.Select(check => Task.Factory.StartNew(
                 () =>
                 {
+                    var timer = Stopwatch.StartNew();
+
                     try
                     {
                         check.Check();
@@ -147,6 +154,14 @@ namespace SophiApp.Services
                     catch (Exception ex)
                     {
                         return ex;
+                    }
+                    finally
+                    {
+                        // The log tells which component makes the check long
+                        if (timer.ElapsedMilliseconds >= SlowCheckMilliseconds)
+                        {
+                            App.Logger.LogRequirementsActionExecute($"{nameof(GetWindowsComponentStability)}, {check.Component}", timer);
+                        }
                     }
                 },
                 TaskCreationOptions.LongRunning)).ToArray();
