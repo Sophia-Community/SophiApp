@@ -7,6 +7,7 @@ namespace SophiApp.Services
     using Microsoft.Win32;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
+    using SophiApp.Helpers;
     using System.Diagnostics;
     using static System.Environment;
 
@@ -14,7 +15,6 @@ namespace SophiApp.Services
     public class OneDriveService : IOneDriveService
     {
         private readonly IHttpService httpService;
-        private readonly IPowerShellService powerShellService;
         private readonly IProcessService processService;
         private readonly IScheduledTaskService scheduledTaskService;
 
@@ -22,17 +22,14 @@ namespace SophiApp.Services
         /// Initializes a new instance of the <see cref="OneDriveService"/> class.
         /// </summary>
         /// <param name="httpService">A service for working with HTTP API.</param>
-        /// <param name="powerShellService">A service for working with Windows PowerShell API.</param>
         /// <param name="processService">A service for working with Windows <see cref="Process"/> API.</param>
         /// <param name="scheduledTaskService">A service for working with Scheduled Task API.</param>
         public OneDriveService(
             IHttpService httpService,
-            IPowerShellService powerShellService,
             IProcessService processService,
             IScheduledTaskService scheduledTaskService)
         {
             this.httpService = httpService;
-            this.powerShellService = powerShellService;
             this.processService = processService;
             this.scheduledTaskService = scheduledTaskService;
         }
@@ -112,7 +109,7 @@ namespace SophiApp.Services
 
             if (Directory.Exists(userDataFolder) && userFilesCount.Equals(0))
             {
-                RemoveFolder(userDataFolder);
+                FolderRemover.Remove(userDataFolder);
             }
 
             App.Status.SetStep("Panel_Step_RestartingExplorer");
@@ -136,7 +133,7 @@ namespace SophiApp.Services
             if (Path.GetFileName(oneDriveFolder).EndsWith("OneDrive", StringComparison.OrdinalIgnoreCase))
             {
                 UnregisterFileSyncShell(oneDriveFolder);
-                RemoveFolder(oneDriveFolder);
+                FolderRemover.Remove(oneDriveFolder);
             }
 
             using var explorer = processService.StartProcessByName("explorer.exe");
@@ -214,7 +211,7 @@ namespace SophiApp.Services
             {
                 if (Directory.Exists(resource))
                 {
-                    RemoveFolder(resource);
+                    FolderRemover.Remove(resource);
                 }
                 else
                 {
@@ -223,12 +220,6 @@ namespace SophiApp.Services
             });
 
             Registry.CurrentUser.DeleteSubKeyTree("Software\\Microsoft\\OneDrive", false);
-        }
-
-        private void RemoveFolder(string folder)
-        {
-            // The cmdlet removes read-only and hidden files and skips files in use
-            _ = powerShellService.Invoke($"Remove-Item -LiteralPath '{folder.Replace("'", "''")}' -Recurse -Force -ErrorAction Ignore");
         }
 
         private void UnregisterFileSyncShell(string setupFolder)

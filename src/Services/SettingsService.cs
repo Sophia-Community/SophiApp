@@ -21,6 +21,7 @@ public class SettingsService : ISettingsService
     private const string AppWindowPositionY = "AppWindowPositionY";
     private const string AppWindowState = "AppWindowState";
     private const string AppWindowWidth = "AppWindowWidth";
+    private const string ClosedNote = "ClosedNote";
     private const string SettingsFile = "Settings.json";
 
     private readonly IFileService fileService;
@@ -92,6 +93,21 @@ public class SettingsService : ISettingsService
     public async Task<ElementTheme> ReadThemeAsync() => await ReadSettingAsync<ElementTheme>(AppTheme);
 
     /// <inheritdoc/>
+    public bool ReadNoteIsClosed(string note)
+    {
+        // A closed note has a record, an open one has none
+        if (RuntimeHelper.IsMSIX)
+        {
+            return ApplicationData.Current.LocalSettings.Values.ContainsKey(ClosedNote + note);
+        }
+
+        return settings != null && settings.ContainsKey(ClosedNote + note);
+    }
+
+    /// <inheritdoc/>
+    public async Task SaveNoteIsClosedAsync(string note) => await SaveSettingAsync(ClosedNote + note, true);
+
+    /// <inheritdoc/>
     public async Task SaveAppWindowPositionAsync(PointInt32 point)
     {
         await SaveSettingAsync(AppWindowPositionX, point.X);
@@ -110,6 +126,9 @@ public class SettingsService : ISettingsService
 
     /// <inheritdoc/>
     public async Task SaveThemeAsync(ElementTheme theme) => await SaveSettingAsync(AppTheme, theme);
+
+    /// <inheritdoc/>
+    public async Task SaveLanguageAsync(string language) => await SaveSettingAsync(AppLanguage.SettingsKey, language);
 
     private async Task<T?> ReadSettingAsync<T>(string key)
     {

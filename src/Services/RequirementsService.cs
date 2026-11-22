@@ -19,24 +19,28 @@ namespace SophiApp.Services
         private readonly IAppxPackagesService packagesService;
         private readonly ICommonDataService dataService;
         private readonly IInstrumentationService instrumentationService;
+        private readonly IOsService osService;
         private readonly IPowerShellService powerShellService;
-        private System.Management.Automation.PSObject? defenderPreference;
+        private System.Management.ManagementObject? defenderPreference;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RequirementsService"/> class.
         /// </summary>
         /// <param name="dataService">A service for transferring app data between DI layers.</param>
         /// <param name="instrumentationService">A service for working with WMI API.</param>
+        /// <param name="osService">A service for working with Windows services API.</param>
         /// <param name="packagesService">A service for working with appx packages API.</param>
         /// <param name="powerShellService">A service for working with Windows PowerShell API.</param>
         public RequirementsService(
             ICommonDataService dataService,
             IInstrumentationService instrumentationService,
+            IOsService osService,
             IAppxPackagesService packagesService,
             IPowerShellService powerShellService)
         {
             this.dataService = dataService;
             this.instrumentationService = instrumentationService;
+            this.osService = osService;
             this.packagesService = packagesService;
             this.powerShellService = powerShellService;
         }
@@ -103,6 +107,13 @@ namespace SophiApp.Services
                 }));
             }
 
+            // These two services must be able to run. On a Windows with Microsoft Defender cut out the first one cannot be started
+            checks.Add(("SecurityHealthService", () => osService.Start("SecurityHealthService")));
+            checks.Add(("SysMain", () => osService.Start("SysMain", System.ServiceProcess.ServiceStartMode.Automatic)));
+
+            // Windows manages the size of the page file itself
+            checks.Add(("Get-CimInstance -Namespace root/CIMV2 -ClassName CIM_ComputerSystem", instrumentationService.SetPageFileAutoSize));
+
             foreach (var (nameSpace, className) in wmiClasses)
             {
                 // A WMI query is executed only when its result is enumerated, so Count() is required to detect a missing class
@@ -112,11 +123,15 @@ namespace SophiApp.Services
             checks.Add(("Get-MpPreference", () =>
             {
                 // The result is kept for the Controlled folder access check
-                defenderPreference = powerShellService.TryInvoke("Get-MpPreference", out var preferences) ? preferences.FirstOrDefault() : null;
+                defenderPreference = GetDefenderPreference() ?? throw new InvalidOperationException("Microsoft Defender settings are not available");
+            }));
 
-                if (defenderPreference is null)
+            checks.Add(("Windows PowerShell", () =>
+            {
+                // Some settings are applied with cmdlets: Windows PowerShell must start and find them
+                if (!powerShellService.TryInvoke("Get-Command -Name Get-AppxPackage, Get-NetAdapter, Set-DnsClientServerAddress, Get-WinLanguageBarOption, Enable-WindowsOptionalFeature -ErrorAction Stop", out _))
                 {
-                    throw new InvalidOperationException("Get-MpPreference returned an error");
+                    throw new InvalidOperationException("Windows PowerShell cannot run the cmdlets");
                 }
             }));
 
@@ -306,19 +321,33 @@ namespace SophiApp.Services
             return componentsExist ? RequirementsResult.AllCorrect : RequirementsResult.DefenderComponentsMissing;
         }
 
+        // The settings that Get-MpPreference shows, read from the same WMI class without starting PowerShell
+        private System.Management.ManagementObject? GetDefenderPreference()
+        {
+            try
+            {
+                return instrumentationService.GetCimInstance(nameSpace: "root/Microsoft/Windows/Defender", className: "MSFT_MpPreference").FirstOrDefault();
+            }
+            catch (Exception ex) when (ex is System.Management.ManagementException or System.Runtime.InteropServices.COMException or UnauthorizedAccessException)
+            {
+                // A missing or broken WMI class means that Microsoft Defender is broken
+                return null;
+            }
+        }
+
         private RequirementsResult GetControlledFolderAccess()
         {
             // Microsoft Defender settings have usually been read by the Windows components check
-            var preference = defenderPreference ?? (powerShellService.TryInvoke("Get-MpPreference", out var preferences) ? preferences.FirstOrDefault() : null);
+            var preference = defenderPreference ?? GetDefenderPreference();
 
             if (preference is not null)
             {
-                var folderState = preference.GetPropertyValue<byte>("EnableControlledFolderAccess");
+                var folderState = Convert.ToByte(preference.GetPropertyValue("EnableControlledFolderAccess"));
                 App.Logger.LogDefenderControlledFolderState(folderState);
                 return folderState == 1 ? RequirementsResult.DisableControlledFolderAccess : RequirementsResult.AllCorrect;
             }
 
-            App.Logger.LogControlledFolderException(new InvalidOperationException("Get-MpPreference returned an error"));
+            App.Logger.LogControlledFolderException(new InvalidOperationException("Microsoft Defender settings are not available"));
 
             // Get-MpPreference failure means that Microsoft Defender is broken
             SetWindowsComponentStabilityMessage("Get-MpPreference");
@@ -349,7 +378,7 @@ namespace SophiApp.Services
         {
             try
             {
-                // WMI answers in milliseconds, the cmdlet below needs a quarter of a second
+                // The same WMI class that the cmdlet Get-BitLockerVolume reads
                 var systemDrive = Path.GetPathRoot(Environment.SystemDirectory)!.TrimEnd('\\');
                 using var volume = instrumentationService.GetCimInstance(nameSpace: "root/CIMV2/Security/MicrosoftVolumeEncryption", className: "Win32_EncryptableVolume")
                     .FirstOrDefault(encryptableVolume => systemDrive.Equals(encryptableVolume.GetPropertyValue("DriveLetter") as string, StringComparison.OrdinalIgnoreCase));
@@ -362,22 +391,17 @@ namespace SophiApp.Services
             }
             catch (Exception ex)
             {
-                // The WMI class is not available: ask the cmdlet
+                // The WMI class is not available: there is nothing to check
                 App.Logger.LogSkippedException("Reading the BitLocker state of the system drive from WMI", ex);
             }
 
-            // If the cmdlet fails, there are no volumes to check
-            _ = powerShellService.TryInvoke("Get-BitLockerVolume -MountPoint $env:SystemDrive", out var volumes);
-
-            return volumes.Exists(volume => volume is not null
-                && string.Equals(volume.GetPropertyValue<string>("ProtectionStatus"), "Off", StringComparison.OrdinalIgnoreCase)
-                && string.Equals(volume.GetPropertyValue<string>("VolumeStatus"), "FullyEncrypted", StringComparison.OrdinalIgnoreCase));
+            return false;
         }
 
         private RequirementsResult GetUEFICertificates()
         {
-            // The cmdlet returns an error if the computer does not support Secure Boot
-            var secureBootEnabled = powerShellService.TryInvoke("Confirm-SecureBootUEFI", out var secureBoot) && secureBoot.FirstOrDefault()?.BaseObject is true;
+            // The firmware variable that the cmdlet Confirm-SecureBootUEFI reads. It is missing if the computer does not support Secure Boot
+            var secureBootEnabled = FirmwareVariable.Read("SecureBoot", FirmwareVariable.GlobalNamespace) is { Length: > 0 } secureBoot && secureBoot[0] == 1;
 
             // The certificates can be checked only if Secure Boot is enabled
             if (!secureBootEnabled)
@@ -386,8 +410,7 @@ namespace SophiApp.Services
             }
 
             // Look for the certificate name in the Secure Boot signature database
-            var ca2023Exist = powerShellService.TryInvoke("Get-SecureBootUEFI -Name db", out var signatureDatabase)
-                && signatureDatabase.FirstOrDefault()?.GetPropertyValue<byte[]>("Bytes") is { } bytes
+            var ca2023Exist = FirmwareVariable.Read("db", FirmwareVariable.ImageSecurityNamespace) is { } bytes
                 && System.Text.Encoding.ASCII.GetString(bytes).Contains("Windows UEFI CA 2023", StringComparison.OrdinalIgnoreCase);
 
             return ca2023Exist ? RequirementsResult.AllCorrect : RequirementsResult.UpdateUEFICertificates;

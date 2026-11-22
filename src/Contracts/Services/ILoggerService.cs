@@ -51,6 +51,12 @@ namespace SophiApp.Contracts.Services
         void LogChangeTheme(ElementTheme theme);
 
         /// <summary>
+        /// Write the app language change in the log.
+        /// </summary>
+        /// <param name="language">A language tag, such as "en-US". An empty tag stands for the language of Windows.</param>
+        void LogChangeLanguage(string language);
+
+        /// <summary>
         /// Handles occur during the Microsoft Defender files is missing exception.
         /// </summary>
         /// <param name="file">A missing file.</param>
@@ -322,6 +328,12 @@ namespace SophiApp.Contracts.Services
         /// <param name="name">Model name.</param>
         /// <param name="text">The text as the user sees it.</param>
         void LogModelNotice(string name, string text);
+
+        /// <summary>
+        /// Write that a setting has no title: its name or the names of its strings have a mistake.
+        /// </summary>
+        /// <param name="name">Model name.</param>
+        void LogSettingWithoutTitle(string name);
 
         /// <summary>
         /// Write a message shown to the user outside the settings: a status, a reminder, a startup check result.

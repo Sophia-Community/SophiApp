@@ -42,11 +42,25 @@ namespace SophiApp.Models
         /// </summary>
         public string ButtonText { get; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the action is chosen to be done.
+        /// </summary>
+        public bool IsRequested { get; set; }
+
+        /// <inheritdoc/>
+        public override bool IsChanged => IsRequested;
+
+        /// <inheritdoc/>
+        public override string ChosenValue => ButtonText;
+
         /// <inheritdoc/>
         public override void GetState()
         {
             try
             {
+                // The choice is either applied or canceled by now
+                IsRequested = false;
+
                 // There is no state, only the reason why the action is unavailable
                 _ = accessor.Invoke();
                 IsEnabled = true;

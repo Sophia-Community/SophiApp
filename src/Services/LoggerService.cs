@@ -75,6 +75,12 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void LogChangeLanguage(string language)
+        {
+            Log.Information("Change language to: {Language:l}. It is used after the app is restarted", language.Length > 0 ? language : "the language of Windows");
+        }
+
+        /// <inheritdoc/>
         public void LogDefenderFileMissing(string file)
         {
             Log.Error("[WRN] Microsoft Defender file missing: {File}", file);
@@ -325,6 +331,12 @@ namespace SophiApp.Services
         public void LogModelNotice(string name, string text)
         {
             Log.Information("{Model:l} shows to the user: {Text}", name, text);
+        }
+
+        /// <inheritdoc/>
+        public void LogSettingWithoutTitle(string name)
+        {
+            Log.Error("[ERR] {Model:l} has no title: the string \"UIModel_{Name:l}_Title\" is not found", name, name);
         }
 
         /// <inheritdoc/>

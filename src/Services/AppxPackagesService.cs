@@ -147,9 +147,11 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void RemovePackage(string packageId, bool allUsers = false)
         {
-            var allUsersScript = $"Get-AppxPackage -Name *{packageId}* -PackageTypeFilter Bundle -AllUsers | Remove-AppxPackage -AllUsers";
-            var currentUserScript = $"Get-AppxPackage -Name *{packageId}* -PackageTypeFilter Bundle | Remove-AppxPackage";
-            _ = powerShellService.Invoke(allUsers ? allUsersScript : currentUserScript);
+            var bundles = allUsers
+                ? packageManager.FindPackagesWithPackageTypes(PackageTypes.Bundle)
+                : packageManager.FindPackagesForUserWithPackageTypes(string.Empty, PackageTypes.Bundle);
+
+            RemovePackages(bundles.Where(bundle => bundle.Id.Name.Contains(packageId, StringComparison.OrdinalIgnoreCase)).Select(bundle => bundle.Id.FullName).ToList(), allUsers);
         }
 
         /// <inheritdoc/>
@@ -157,7 +159,21 @@ namespace SophiApp.Services
         {
             foreach (var packageFullName in packageFullNames)
             {
-                _ = powerShellService.Invoke(allUsers ? $"Remove-AppxPackage -Package '{packageFullName}' -AllUsers" : $"Remove-AppxPackage -Package '{packageFullName}'");
+                try
+                {
+                    // What the cmdlet Remove-AppxPackage calls
+                    var removal = packageManager.RemovePackageAsync(packageFullName, allUsers ? RemovalOptions.RemoveForAllUsers : RemovalOptions.None).AsTask().GetAwaiter().GetResult();
+
+                    if (removal.ExtendedErrorCode is { } error)
+                    {
+                        App.Logger.LogSkippedException($"Removing the UWP package {packageFullName}", error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // A package that cannot be removed does not stop the others
+                    App.Logger.LogSkippedException($"Removing the UWP package {packageFullName}", ex);
+                }
             }
         }
 

@@ -8,7 +8,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 /// <summary>
-/// Helper class to set the navigation target for a NavigationViewItem.
+/// Tells which page a menu item opens. In XAML the page is written as its type: "views:PrivacyPage".
 /// </summary>
 public static class NavigationHelper
 {
@@ -16,18 +16,18 @@ public static class NavigationHelper
     /// Registered "NavigateTo" dependency property.
     /// </summary>
     public static readonly DependencyProperty NavigateToProperty =
-        DependencyProperty.RegisterAttached("NavigateTo", typeof(string), typeof(NavigationHelper), new PropertyMetadata(null));
+        DependencyProperty.RegisterAttached("NavigateTo", typeof(Type), typeof(NavigationHelper), new PropertyMetadata(null));
 
     /// <summary>
-    /// Get navigation target.
+    /// Gets the type of the page that a menu item opens.
     /// </summary>
     /// <param name="item">Represents the item in a NavigationView control.</param>
-    public static string GetNavigateTo(NavigationViewItem item) => (string)item.GetValue(NavigateToProperty);
+    public static Type? GetNavigateTo(NavigationViewItem item) => item.GetValue(NavigateToProperty) as Type;
 
     /// <summary>
-    /// Set navigation target.
+    /// Sets the type of the page that a menu item opens.
     /// </summary>
     /// <param name="item">Represents the item in a NavigationView control.</param>
-    /// <param name="value">Navigation target.</param>
-    public static void SetNavigateTo(NavigationViewItem item, string value) => item.SetValue(NavigateToProperty, value);
+    /// <param name="value">The type of the page.</param>
+    public static void SetNavigateTo(NavigationViewItem item, Type value) => item.SetValue(NavigateToProperty, value);
 }

@@ -11,6 +11,12 @@ namespace SophiApp.Models
     /// </summary>
     public class UIRadioButtonsGroupModel : UIModel
     {
+        // The options whose icon is a symbol of the icon font. It takes the color of the text, like the icons of Windows Terminal settings
+        private static readonly Dictionary<string, string> OptionGlyphs = new()
+        {
+            ["DefaultTerminalApp_2"] = "\uE756",
+        };
+
         private readonly Func<int> accessor;
         private readonly Action<int> mutator;
         private string selectedId = string.Empty;
@@ -44,6 +50,11 @@ namespace SophiApp.Models
         public IReadOnlyList<string> Options { get; }
 
         /// <summary>
+        /// Gets a value indicating whether the options have icons.
+        /// </summary>
+        public bool HasOptionIcons { get; init; }
+
+        /// <summary>
         /// Gets <see cref="accessor"/> returned value.
         /// </summary>
         public int DefaultId { get; private set; }
@@ -67,6 +78,27 @@ namespace SophiApp.Models
                 }
             }
         }
+
+        /// <inheritdoc/>
+        public override bool IsChanged => SelectedId != DefaultId.ToString();
+
+        /// <inheritdoc/>
+        public override string ChosenValue => SelectedId;
+
+        /// <summary>
+        /// Gets the address of the icon of an option, if the options have icons. The icons are the files "Name_1.svg", "Name_2.svg" and so on in the Assets folder.
+        /// An option that has a symbol instead has no file.
+        /// </summary>
+        /// <param name="number">The number of the option, starting from 1.</param>
+        public Uri? GetOptionIcon(int number)
+            => HasOptionIcons && GetOptionGlyph(number).Length == 0 ? new($"ms-appx:///Assets/{Name}_{number}.svg") : null;
+
+        /// <summary>
+        /// Gets the symbol of the icon font that is the icon of an option, or an empty string.
+        /// </summary>
+        /// <param name="number">The number of the option, starting from 1.</param>
+        public string GetOptionGlyph(int number)
+            => HasOptionIcons && OptionGlyphs.TryGetValue($"{Name}_{number}", out var glyph) ? glyph : string.Empty;
 
         /// <inheritdoc/>
         public override void GetState()

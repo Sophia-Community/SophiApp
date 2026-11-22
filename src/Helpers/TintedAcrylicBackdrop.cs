@@ -11,8 +11,9 @@ using Microsoft.UI.Xaml.Media;
 using Windows.UI;
 
 /// <summary>
-/// An acrylic window background in the colors of the app. It lets more of the desktop through than the standard one,
-/// so the menu on it is lighter than the page with settings.
+/// An acrylic background in the colors of the app. It lets more of what is behind it through than the standard one,
+/// so the menu on it is lighter than the page with settings. Only the app window lies on it: under a list it crashed the app,
+/// so lists and menus take the same colors from a brush in Themes.xaml.
 /// </summary>
 public sealed partial class TintedAcrylicBackdrop : SystemBackdrop
 {
@@ -31,7 +32,9 @@ public sealed partial class TintedAcrylicBackdrop : SystemBackdrop
     // The dark one is the mockup style "01 bg [d]": a little darker than the page with settings, so the menu still stands out
     private static readonly Color DarkFallback = Color.FromArgb(0xFF, 0x1A, 0x20, 0x33);
     private static readonly Color LightFallback = Color.FromArgb(0xFF, 0xEE, 0xEF, 0xF2);
-    private DesktopAcrylicController? controller;
+
+    // Every target has a controller of its own, as the standard backdrops have
+    private readonly List<(ICompositionSupportsSystemBackdrop Target, DesktopAcrylicController Controller)> controllers = [];
     private bool isDark = Application.Current.RequestedTheme == ApplicationTheme.Dark;
 
     /// <summary>
@@ -41,7 +44,11 @@ public sealed partial class TintedAcrylicBackdrop : SystemBackdrop
     public void SetTheme(bool dark)
     {
         isDark = dark;
-        ApplyColors();
+
+        foreach (var (_, controller) in controllers)
+        {
+            ApplyColors(controller);
+        }
     }
 
     /// <inheritdoc/>
@@ -49,12 +56,14 @@ public sealed partial class TintedAcrylicBackdrop : SystemBackdrop
     {
         base.OnTargetConnected(connectedTarget, xamlRoot);
 
-        controller = new DesktopAcrylicController();
-        ApplyColors();
-
         // The configuration tells the controller when the window is inactive or high contrast is on
-        controller.SetSystemBackdropConfiguration(GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot));
+        var configuration = GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot);
+
+        var controller = new DesktopAcrylicController();
+        ApplyColors(controller);
+        controller.SetSystemBackdropConfiguration(configuration);
         controller.AddSystemBackdropTarget(connectedTarget);
+        controllers.Add((connectedTarget, controller));
     }
 
     /// <inheritdoc/>
@@ -62,9 +71,23 @@ public sealed partial class TintedAcrylicBackdrop : SystemBackdrop
     {
         base.OnTargetDisconnected(disconnectedTarget);
 
-        controller?.RemoveSystemBackdropTarget(disconnectedTarget);
-        controller?.Dispose();
-        controller = null;
+        // The same target can come in another wrapper, so the only controller is taken if the target is not found
+        var index = controllers.FindIndex(entry => ReferenceEquals(entry.Target, disconnectedTarget) || entry.Target.Equals(disconnectedTarget));
+
+        if (index < 0 && controllers.Count == 1)
+        {
+            index = 0;
+        }
+
+        if (index < 0)
+        {
+            return;
+        }
+
+        var controller = controllers[index].Controller;
+        controllers.RemoveAt(index);
+        controller.RemoveSystemBackdropTarget(disconnectedTarget);
+        controller.Dispose();
     }
 
     /// <inheritdoc/>
@@ -74,13 +97,8 @@ public sealed partial class TintedAcrylicBackdrop : SystemBackdrop
         // Nothing has to be done here, the colors are switched by SetTheme.
     }
 
-    private void ApplyColors()
+    private void ApplyColors(DesktopAcrylicController controller)
     {
-        if (controller is null)
-        {
-            return;
-        }
-
         controller.TintColor = isDark ? DarkTint : LightTint;
         controller.TintOpacity = isDark ? DarkTintOpacity : LightTintOpacity;
         controller.LuminosityOpacity = isDark ? DarkLuminosityOpacity : LightLuminosityOpacity;

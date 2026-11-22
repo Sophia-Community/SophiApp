@@ -54,6 +54,16 @@ namespace SophiApp.Helpers
         InstallUninstall,
 
         /// <summary>
+        /// The locations of the user folders: a new one can be chosen for each folder.
+        /// </summary>
+        UserFolders,
+
+        /// <summary>
+        /// A list of things that are turned on or off one by one. The list is known only when the app runs.
+        /// </summary>
+        CheckList,
+
+        /// <summary>
         /// A UWP app that can be uninstalled.
         /// </summary>
         UwpApp,

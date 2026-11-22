@@ -36,13 +36,49 @@ internal static class FormattedTextBlock
         {
             block.Inlines.Add(part.Kind switch
             {
-                FormattedTextPartKind.Bold => new Run { Text = part.Text, FontWeight = FontWeights.SemiBold },
+                FormattedTextPartKind.Bold => new Run { Text = KeepShortcutsOnOneLine(part.Text), FontWeight = FontWeights.SemiBold },
                 FormattedTextPartKind.Code => new Run { Text = KeepOnOneLine(part.Text), FontFamily = CodeFont },
                 FormattedTextPartKind.Link => CreateLink(part),
                 FormattedTextPartKind.LineBreak => new LineBreak(),
-                _ => new Run { Text = part.Text },
+                _ => new Run { Text = KeepShortcutsOnOneLine(part.Text) },
             });
         }
+    }
+
+    /// <summary>
+    /// Makes key combinations such as "Win+Shift+S" stay on one line: a line can be broken before a plus sign.
+    /// The text itself is not changed for the search and the clipboard: only what is shown gets the invisible joiners.
+    /// </summary>
+    /// <param name="text">A text as it is.</param>
+    /// <returns>The text to show.</returns>
+    internal static string KeepShortcutsOnOneLine(string text)
+    {
+        if (!text.Contains('+'))
+        {
+            return text;
+        }
+
+        var result = new StringBuilder(text.Length + 8);
+
+        for (var i = 0; i < text.Length; i++)
+        {
+            // A plus sign right after a letter, a digit or another plus sign is a part of a key combination or of a name like "C++"
+            var joins = text[i] == '+' && i > 0 && (char.IsLetterOrDigit(text[i - 1]) || text[i - 1] == '+');
+
+            if (joins)
+            {
+                result.Append(WordJoiner);
+            }
+
+            result.Append(text[i]);
+
+            if (joins)
+            {
+                result.Append(WordJoiner);
+            }
+        }
+
+        return result.ToString();
     }
 
     /// <summary>

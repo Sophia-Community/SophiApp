@@ -6,127 +6,132 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:SophiApp.ControlTemplates"
       xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+      xmlns:helpers="using:SophiApp.Helpers"
       mc:Ignorable="d">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Dark">
-                    <!-- The header of an expanded card is a toggle button: it gets the color of the other cards -->
-                    <SolidColorBrush x:Key="ToggleButtonBackground" Color="#1AFFFFFF"/>
-                </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
 
     <ScrollView>
-        <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
-                    Margin="{StaticResource SettingsListMargin}"
-                    Spacing="8">
-            <controls:Slogan Margin="2, 0, 0, 10"/>
+        <Grid Margin="{StaticResource SettingsListMargin}">
+            <!-- On a wide window the cards do not stretch over all of it -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MaxWidth="{StaticResource SettingsContentMaxWidth}"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
+                        Spacing="4">
+                <controls:Slogan Margin="2, 0, 0, 10"/>
 
-            <toolkit:SettingsCard x:Uid="SettingsPage_SelectedTheme"
-                                  MinHeight="{StaticResource SettingsCardMinHeight}"
-                                  Padding="{StaticResource SettingsCardPadding}">
-                <toolkit:SettingsCard.HeaderIcon>
-                    <FontIcon Glyph="&#xE790;"/>
-                </toolkit:SettingsCard.HeaderIcon>
-                <ComboBox MinWidth="200"
-                          ItemsSource="{x:Bind ViewModel.Themes, Mode=OneWay}"
-                          SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}"
-                          DisplayMemberPath="Description"
-                          DropDownOpened="ThemeSelector_DropDownOpened"/>
-            </toolkit:SettingsCard>
+                <toolkit:SettingsCard x:Uid="SettingsPage_SelectedTheme">
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <FontIcon Glyph="&#xE790;"/>
+                    </toolkit:SettingsCard.HeaderIcon>
+                    <helpers:NoWheelComboBox Style="{StaticResource DefaultComboBoxStyle}"
+                                             MinWidth="200"
+                                             ItemsSource="{x:Bind ViewModel.Themes, Mode=OneWay}"
+                                             SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}"
+                                             DisplayMemberPath="Description"
+                                             DropDownOpened="ThemeSelector_DropDownOpened"/>
+                </toolkit:SettingsCard>
 
-            <toolkit:SettingsExpander x:Uid="SettingsPage_AboutApp"
-                                      MinHeight="{StaticResource SettingsCardMinHeight}"
-                                      Loaded="SettingsExpander_Loaded"
-                                      IsExpanded="True">
-                <toolkit:SettingsExpander.HeaderIcon>
-                    <FontIcon Glyph="&#xE946;"/>
-                </toolkit:SettingsExpander.HeaderIcon>
-                <toolkit:SettingsExpander.Items>
-                    <toolkit:SettingsCard ContentAlignment="Left">
-                        <StackPanel>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenLatestAppRelease_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/AppLogo.svg" Width="16" Height="16"/>
-                                    <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppGitHubPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="App_GitHub"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppTelegramPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/Telegram.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="App_Telegram"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppDiscordPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/Discord.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="App_Discord"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                        </StackPanel>
+                <StackPanel>
+                    <toolkit:SettingsCard x:Uid="SettingsPage_Language">
+                        <toolkit:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xF2B7;"/>
+                        </toolkit:SettingsCard.HeaderIcon>
+                        <helpers:NoWheelComboBox Style="{StaticResource DefaultComboBoxStyle}"
+                                                 MinWidth="200"
+                                                 ItemsSource="{x:Bind ViewModel.Languages, Mode=OneWay}"
+                                                 SelectedItem="{x:Bind ViewModel.SelectedLanguage, Mode=TwoWay}"
+                                                 DisplayMemberPath="Name"
+                                                 DropDownOpened="ThemeSelector_DropDownOpened"/>
                     </toolkit:SettingsCard>
-                </toolkit:SettingsExpander.Items>
-            </toolkit:SettingsExpander>
+                    <!-- The texts are loaded when the app starts, so a new language needs a restart -->
+                    <InfoBar x:Uid="SettingsPage_LanguageRestart"
+                             Margin="0, 2, 0, 0"
+                             Severity="Informational"
+                             IsClosable="False"
+                             IsOpen="{x:Bind ViewModel.LanguageRestartIsNeeded, Mode=OneWay}"/>
+                </StackPanel>
 
-            <toolkit:SettingsExpander x:Uid="SettingsPage_Team"
-                                      MinHeight="{StaticResource SettingsCardMinHeight}"
-                                      Loaded="SettingsExpander_Loaded"
-                                      IsExpanded="True">
-                <toolkit:SettingsExpander.HeaderIcon>
-                    <FontIcon Glyph="&#xE716;"/>
-                </toolkit:SettingsExpander.HeaderIcon>
-                <toolkit:SettingsExpander.Items>
-                    <toolkit:SettingsCard ContentAlignment="Left">
-                        <StackPanel>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppProjectManagerPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="AppTeam_ProjectLead"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppDeveloperPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="AppTeam_Developer"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppUxDeveloperPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/LinkedIn.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="AppTeam_UxDeveloper"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppUiDeveloperPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/LinkedIn.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="AppTeam_UiDeveloper"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppAnimationDeveloperPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/LinkedIn.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="AppTeam_AnimationDeveloper"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                            <HyperlinkButton Command="{x:Bind ViewModel.OpenAppTesterPage_Command}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
-                                    <TextBlock x:Uid="AppTeam_Tester"/>
-                                </StackPanel>
-                            </HyperlinkButton>
-                        </StackPanel>
-                    </toolkit:SettingsCard>
-                </toolkit:SettingsExpander.Items>
-            </toolkit:SettingsExpander>
-        </StackPanel>
+                <toolkit:SettingsExpander x:Uid="SettingsPage_AboutApp"
+                                          IsExpanded="True">
+                    <toolkit:SettingsExpander.HeaderIcon>
+                        <FontIcon Glyph="&#xE946;"/>
+                    </toolkit:SettingsExpander.HeaderIcon>
+                    <toolkit:SettingsExpander.Items>
+                        <toolkit:SettingsCard ContentAlignment="Left">
+                            <StackPanel>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenLatestAppRelease_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/AppLogo.svg" Width="16" Height="16"/>
+                                        <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppGitHubPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="App_GitHub"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppTelegramPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/Telegram.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="App_Telegram"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppDiscordPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/Discord.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="App_Discord"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                            </StackPanel>
+                        </toolkit:SettingsCard>
+                    </toolkit:SettingsExpander.Items>
+                </toolkit:SettingsExpander>
+
+                <toolkit:SettingsExpander x:Uid="SettingsPage_Team"
+                                          IsExpanded="True">
+                    <toolkit:SettingsExpander.HeaderIcon>
+                        <FontIcon Glyph="&#xE716;"/>
+                    </toolkit:SettingsExpander.HeaderIcon>
+                    <toolkit:SettingsExpander.Items>
+                        <toolkit:SettingsCard ContentAlignment="Left">
+                            <StackPanel>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppProjectManagerPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="AppTeam_ProjectLead"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppDeveloperPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="AppTeam_Developer"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppUxDeveloperPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/LinkedIn.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="AppTeam_UxDeveloper"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppTesterPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="AppTeam_Tester"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppSupporterPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="AppTeam_Supporter"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
+                            </StackPanel>
+                        </toolkit:SettingsCard>
+                    </toolkit:SettingsExpander.Items>
+                </toolkit:SettingsExpander>
+            </StackPanel>
+        </Grid>
     </ScrollView>
 </Page>

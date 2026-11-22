@@ -7,8 +7,8 @@ namespace SophiApp.Models
     using SophiApp.Helpers;
 
     /// <summary>
-    /// A choice of one item from a list that is known only when the app runs. Nothing is chosen until the user chooses:
-    /// the first item of the list stands for that.
+    /// A choice of one item from a list that is known only when the app runs. If the list tells which item is set in Windows,
+    /// that item is selected; otherwise nothing is chosen until the user chooses, and the first item of the list stands for that.
     /// </summary>
     public class UIChoiceModel : UIModel
     {
@@ -22,6 +22,9 @@ namespace SophiApp.Models
         private readonly SettingChoice noChoice;
         private IReadOnlyList<SettingChoice> choices;
         private string selectedId = NoChoiceId;
+
+        // The id of the item that is set in Windows, if the list has such an item
+        private string currentId = NoChoiceId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UIChoiceModel"/> class.
@@ -93,18 +96,26 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets a value indicating whether the user chose an item to apply.
         /// </summary>
-        public bool IsChanged => SelectedId != NoChoiceId;
+        public override bool IsChanged => SelectedId != currentId;
+
+        /// <inheritdoc/>
+        public override string ChosenValue => SelectedId;
 
         /// <inheritdoc/>
         public override void GetState()
         {
-            // The choice is either applied or canceled by now
-            SelectedId = NoChoiceId;
-
             try
             {
-                Choices = accessor.Invoke().Prepend(noChoice).ToArray();
-                App.Logger.LogModelState(Name, Choices.Count - 1);
+                var items = accessor.Invoke();
+
+                // A list that tells what is set in Windows has no item for "nothing is chosen"
+                var current = items.FirstOrDefault(item => item.IsCurrent);
+                Choices = current is null ? items.Prepend(noChoice).ToArray() : items.ToArray();
+
+                // The choice is either applied or canceled by now
+                currentId = current?.Id ?? NoChoiceId;
+                SelectedId = currentId;
+                App.Logger.LogModelState(Name, items.Count);
                 IsEnabled = true;
                 ShowNotice(string.Empty);
             }

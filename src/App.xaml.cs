@@ -5,9 +5,7 @@
 namespace SophiApp;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
-using Microsoft.Windows.AppLifecycle;
 using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
 using SophiApp.Services;
@@ -24,79 +22,61 @@ public partial class App : Application
     /// </summary>
     public App()
     {
+        // The language is chosen before the first text is loaded
+        AppLanguage.ApplySaved();
         InitializeComponent();
-        Host = Microsoft.Extensions.Hosting.Host
-            .CreateDefaultBuilder()
-            .UseContentRoot(AppContext.BaseDirectory)
-            .ConfigureServices((context, services) =>
-            {
-                // Services
-                _ = services.AddSingleton<ICommonDataService, CommonDataService>();
-                _ = services.AddSingleton<IFileService, FileService>();
-                _ = services.AddSingleton<IFirewallService, FirewallService>();
-                _ = services.AddSingleton<IInitializeService, InitializeService>();
-                _ = services.AddSingleton<IInstrumentationService, InstrumentationService>();
-                _ = services.AddSingleton<ILoggerService, LoggerService>();
-                _ = services.AddSingleton<IModelService, ModelService>();
-                _ = services.AddSingleton<INavigationService, NavigationService>();
-                _ = services.AddSingleton<IPageService, PageService>();
-                _ = services.AddSingleton<IRequirementsService, RequirementsService>();
-                _ = services.AddSingleton<ISettingsService, SettingsService>();
-                _ = services.AddSingleton<IStatusService, StatusService>();
-                _ = services.AddSingleton<IThemesService, ThemesService>();
-                _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
-                _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
-                _ = services.AddTransient<ICursorsService, CursorsService>();
-                _ = services.AddTransient<IDisplayService, DisplayService>();
-                _ = services.AddTransient<IGroupPolicyService, GroupPolicyService>();
-                _ = services.AddTransient<IHttpService, HttpService>();
-                _ = services.AddTransient<INavigationViewService, NavigationViewService>();
-                _ = services.AddTransient<IDnsService, DnsService>();
-                _ = services.AddTransient<IWslService, WslService>();
-                _ = services.AddTransient<INetworkAdapterService, NetworkAdapterService>();
-                _ = services.AddTransient<IOneDriveService, OneDriveService>();
-                _ = services.AddTransient<IOsService, OsService>();
-                _ = services.AddTransient<IPowerShellService, PowerShellService>();
-                _ = services.AddTransient<IProcessService, ProcessService>();
-                _ = services.AddTransient<IRedistributablePackageService, RedistributablePackageService>();
-                _ = services.AddTransient<IRegistryService, RegistryService>();
-                _ = services.AddTransient<IScheduledTaskService, ScheduledTaskService>();
-                _ = services.AddTransient<IUpdateService, UpdateService>();
-                _ = services.AddTransient<IXmlService, XmlService>();
+        var services = new ServiceCollection();
 
-                // ViewModels
-                _ = services.AddSingleton<ShellViewModel>();
-                _ = services.AddScoped<StartupViewModel>();
-                _ = services.AddTransient<ContextMenuViewModel>();
-                _ = services.AddTransient<FatalErrorViewModel>();
-                _ = services.AddTransient<PersonalizationViewModel>();
-                _ = services.AddTransient<PrivacyViewModel>();
-                _ = services.AddTransient<ProVersionViewModel>();
-                _ = services.AddTransient<RequirementsFailureModel>();
-                _ = services.AddTransient<SearchViewModel>();
-                _ = services.AddTransient<SecurityViewModel>();
-                _ = services.AddTransient<SettingsViewModel>();
-                _ = services.AddTransient<SystemViewModel>();
-                _ = services.AddTransient<TaskSchedulerViewModel>();
-                _ = services.AddTransient<UwpViewModel>();
+        // Services
+        _ = services.AddSingleton<ICommonDataService, CommonDataService>();
+        _ = services.AddSingleton<IFileService, FileService>();
+        _ = services.AddSingleton<IFirewallService, FirewallService>();
+        _ = services.AddSingleton<IInitializeService, InitializeService>();
+        _ = services.AddSingleton<IInstrumentationService, InstrumentationService>();
+        _ = services.AddSingleton<ILoggerService, LoggerService>();
+        _ = services.AddSingleton<IModelService, ModelService>();
+        _ = services.AddSingleton<INavigationService, NavigationService>();
+        _ = services.AddSingleton<IRequirementsService, RequirementsService>();
+        _ = services.AddSingleton<ISettingsService, SettingsService>();
+        _ = services.AddSingleton<IStatusService, StatusService>();
+        _ = services.AddSingleton<IThemesService, ThemesService>();
 
-                // Views
-                _ = services.AddTransient<ContextMenuPage>();
-                _ = services.AddTransient<FatalErrorPage>();
-                _ = services.AddTransient<PersonalizationPage>();
-                _ = services.AddTransient<PrivacyPage>();
-                _ = services.AddTransient<ProVersionPage>();
-                _ = services.AddTransient<RequirementsFailurePage>();
-                _ = services.AddTransient<SearchPage>();
-                _ = services.AddTransient<SecurityPage>();
-                _ = services.AddTransient<SettingsPage>();
-                _ = services.AddTransient<ShellPage>();
-                _ = services.AddTransient<StartupPage>();
-                _ = services.AddTransient<SystemPage>();
-                _ = services.AddTransient<TaskSchedulerPage>();
-                _ = services.AddTransient<UwpPage>();
-            })
-            .Build();
+        // One for the whole app: it keeps the download that is started at startup
+        _ = services.AddSingleton<IWslService, WslService>();
+        _ = services.AddTransient<IAppNotificationService, AppNotificationService>();
+        _ = services.AddTransient<IAppxPackagesService, AppxPackagesService>();
+        _ = services.AddTransient<ICursorsService, CursorsService>();
+        _ = services.AddTransient<IDisplayService, DisplayService>();
+        _ = services.AddTransient<IGroupPolicyService, GroupPolicyService>();
+        _ = services.AddTransient<IHttpService, HttpService>();
+        _ = services.AddTransient<INavigationViewService, NavigationViewService>();
+        _ = services.AddTransient<IDnsService, DnsService>();
+        _ = services.AddTransient<INetworkAdapterService, NetworkAdapterService>();
+        _ = services.AddTransient<IOneDriveService, OneDriveService>();
+        _ = services.AddTransient<IOsService, OsService>();
+        _ = services.AddTransient<IPowerShellService, PowerShellService>();
+        _ = services.AddTransient<IProcessService, ProcessService>();
+        _ = services.AddTransient<IRedistributablePackageService, RedistributablePackageService>();
+        _ = services.AddTransient<IRegistryService, RegistryService>();
+        _ = services.AddTransient<IScheduledTaskService, ScheduledTaskService>();
+        _ = services.AddTransient<IUpdateService, UpdateService>();
+        _ = services.AddTransient<IXmlService, XmlService>();
+
+        // ViewModels
+        _ = services.AddSingleton<AppActivity>();
+        _ = services.AddSingleton<ChosenSettingsViewModel>();
+        _ = services.AddSingleton<PageNotesViewModel>();
+        _ = services.AddSingleton<SearchViewModel>();
+        _ = services.AddSingleton<ShellViewModel>();
+        _ = services.AddSingleton<StartupViewModel>();
+        _ = services.AddTransient<FatalErrorViewModel>();
+        _ = services.AddTransient<RequirementsFailureModel>();
+
+        _ = services.AddTransient<SettingsViewModel>();
+
+        // Views
+        _ = services.AddTransient<ShellPage>();
+        Services = services.BuildServiceProvider();
 
         UnhandledException += App_UnhandledException;
     }
@@ -122,9 +102,9 @@ public partial class App : Application
     public static IStatusService Status { get; } = GetService<IStatusService>();
 
     /// <summary>
-    /// Gets <see cref="IHost"/>.
+    /// Gets the services of the app.
     /// </summary>
-    public IHost Host { get; init; }
+    public IServiceProvider Services { get; }
 
     /// <summary>
     /// Gets app service.
@@ -133,29 +113,12 @@ public partial class App : Application
     public static T GetService<T>()
         where T : class
     {
-        if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+        if ((Current as App)!.Services.GetService(typeof(T)) is not T service)
         {
-            throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
+            throw new ArgumentException($"{typeof(T)} needs to be registered in App.xaml.cs.");
         }
 
         return service;
-    }
-
-    /// <summary>
-    /// Allows only one copy of the app to run.
-    /// </summary>
-    public static void SetSingleInstance()
-    {
-        var keyInstance = AppInstance.FindOrRegisterForKey("2e340960-5e58-4e2d-b0c1-0a1b54145345");
-
-        if (!keyInstance.IsCurrent)
-        {
-            Current.Exit();
-            return;
-        }
-
-        // Only the main copy of the app cleans up after itself
-        SelfExtractHelper.RemoveOnExit();
     }
 
     /// <inheritdoc/>

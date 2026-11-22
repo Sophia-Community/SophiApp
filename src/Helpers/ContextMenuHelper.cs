@@ -39,11 +39,13 @@ namespace SophiApp.Helpers
         /// <param name="sender">UIElement is a base class for most of the Windows Runtime UI objects.</param>
         /// <param name="flyout">Flyout displayed on UI element.</param>
         /// <param name="args">Provides event data for the ContextRequested event.</param>
-        public static void ShowContextMenu(UIElement sender, CommandBarFlyout flyout, Microsoft.UI.Xaml.Input.ContextRequestedEventArgs args)
+        public static void ShowContextMenu(UIElement sender, FlyoutBase flyout, Microsoft.UI.Xaml.Input.ContextRequestedEventArgs args)
         {
             args.Handled = true;
             Point point;
             _ = args.TryGetPosition(sender, out point);
+
+            // The menu opens to the right of the pointer and below it, like the menus of Windows
             var options = new FlyoutShowOptions()
             {
                 Position = point,

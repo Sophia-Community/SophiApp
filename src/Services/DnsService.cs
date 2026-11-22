@@ -55,14 +55,17 @@ namespace SophiApp.Services
 
         #pragma warning restore S1313
 
+        private readonly IInstrumentationService instrumentationService;
         private readonly IPowerShellService powerShellService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DnsService"/> class.
         /// </summary>
+        /// <param name="instrumentationService">A service for working with WMI API.</param>
         /// <param name="powerShellService">A service for working with Windows PowerShell API.</param>
-        public DnsService(IPowerShellService powerShellService)
+        public DnsService(IInstrumentationService instrumentationService, IPowerShellService powerShellService)
         {
+            this.instrumentationService = instrumentationService;
             this.powerShellService = powerShellService;
         }
 
@@ -223,8 +226,9 @@ namespace SophiApp.Services
 
         private void Refresh()
         {
-            _ = powerShellService.Invoke("Clear-DnsClientCache");
-            _ = powerShellService.Invoke("Register-DnsClient");
+            // What the cmdlets Clear-DnsClientCache and Register-DnsClient call
+            _ = instrumentationService.TryInvokeStaticMethod("root\\StandardCimv2", "MSFT_DNSClientCache", "Clear");
+            _ = instrumentationService.TryInvokeStaticMethod("root\\StandardCimv2", "MSFT_DNSClient", "Register");
         }
     }
 }

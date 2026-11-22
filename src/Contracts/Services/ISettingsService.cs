@@ -63,6 +63,18 @@ public interface ISettingsService
     Task<ElementTheme> ReadThemeAsync();
 
     /// <summary>
+    /// Reads from a settings file whether the user has closed a note at the top of the pages.
+    /// </summary>
+    /// <param name="note">The name of the note.</param>
+    bool ReadNoteIsClosed(string note);
+
+    /// <summary>
+    /// Writes to a settings file that the user has closed a note at the top of the pages.
+    /// </summary>
+    /// <param name="note">The name of the note.</param>
+    Task SaveNoteIsClosedAsync(string note);
+
+    /// <summary>
     /// Write app <see cref="MainWindow"/> position to a settings file.
     /// </summary>
     /// <param name="point">Defines a point in a two-dimensional plane.</param>
@@ -86,4 +98,10 @@ public interface ISettingsService
     /// </summary>
     /// <param name="theme">Specifies a UI theme that should be used for UI elements.</param>
     Task SaveThemeAsync(ElementTheme theme);
+
+    /// <summary>
+    /// Write the tag of the app language to a settings file.
+    /// </summary>
+    /// <param name="language">A language tag, such as "en-US". An empty tag stands for the language of Windows.</param>
+    Task SaveLanguageAsync(string language);
 }

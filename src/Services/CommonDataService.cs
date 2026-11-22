@@ -17,6 +17,7 @@ namespace SophiApp.Services
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
         private readonly IHttpService httpService;
         private readonly IInstrumentationService instrumentationService;
+        private readonly IWslService wslService;
         private Task appReleaseTask = Task.CompletedTask;
         private Task externalDataTask = Task.CompletedTask;
 
@@ -25,10 +26,12 @@ namespace SophiApp.Services
         /// </summary>
         /// <param name="instrumentationService">Service for working with WMI.</param>
         /// <param name="httpService">Service for working with HTTP API.</param>
-        public CommonDataService(IInstrumentationService instrumentationService, IHttpService httpService)
+        /// <param name="wslService">Service for working with Windows Subsystem for Linux.</param>
+        public CommonDataService(IInstrumentationService instrumentationService, IHttpService httpService, IWslService wslService)
         {
             this.instrumentationService = instrumentationService;
             this.httpService = httpService;
+            this.wslService = wslService;
             OsProperties = new();
             SupportedOs = new();
         }
@@ -85,6 +88,9 @@ namespace SophiApp.Services
                 SetNet11ReleaseAsync(),
                 SetVCReleaseAsync(),
                 SetSupportedBuildsAsync()));
+
+            // The list of Linux distributions is read with the settings, so by then it is already here
+            wslService.BeginGetDistributions();
         }
 
         /// <inheritdoc/>

@@ -42,9 +42,19 @@ public interface INavigationService
     /// <summary>
     /// Causes the <see cref="Frame"/> to load content represented by the specified <see cref="Page"/> derived data type.
     /// </summary>
-    /// <param name="page">Page to navigate.</param>
+    /// <param name="pageType">The type of the page to navigate to.</param>
     /// <param name="parameter">Parameter passed to the navigation page.</param>
     /// <param name="clearHistory">Clear navigation history.</param>
     /// <param name="disablePageAnimation">Disable page transition animation.</param>
-    bool NavigateTo(string page, object? parameter = null, bool clearHistory = false, bool disablePageAnimation = false);
+    bool NavigateTo(Type pageType, object? parameter = null, bool clearHistory = false, bool disablePageAnimation = false);
+
+    /// <summary>
+    /// Causes the <see cref="Frame"/> to load the page of the given type.
+    /// </summary>
+    /// <typeparam name="TPage">The type of the page to navigate to.</typeparam>
+    /// <param name="parameter">Parameter passed to the navigation page.</param>
+    /// <param name="clearHistory">Clear navigation history.</param>
+    /// <param name="disablePageAnimation">Disable page transition animation.</param>
+    bool NavigateTo<TPage>(object? parameter = null, bool clearHistory = false, bool disablePageAnimation = false)
+        where TPage : Page;
 }

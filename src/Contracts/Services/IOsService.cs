@@ -31,16 +31,10 @@ namespace SophiApp.Contracts.Services
         bool Exist(string name);
 
         /// <summary>
-        /// Try set, without any exceptions, service startup mode.
+        /// Starts a service, if it is not running, and waits until it runs. Fails if the service cannot be started.
         /// </summary>
         /// <param name="name">Service name.</param>
-        /// <param name="mode">Indicates the start mode of the service.</param>
-        void TrySetStartMode(string name, ServiceStartMode mode);
-
-        /// <summary>
-        /// Try start, without any exceptions, service.
-        /// </summary>
-        /// <param name="name">Service name.</param>
-        void TryStart(string name);
+        /// <param name="startMode">The start mode the service gets before it is started, if it has another one.</param>
+        void Start(string name, ServiceStartMode? startMode = null);
     }
 }

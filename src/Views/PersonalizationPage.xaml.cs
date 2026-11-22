@@ -7,9 +7,7 @@ namespace SophiApp.Views;
 using Microsoft.UI.Xaml.Controls;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
-using SophiApp.Models;
 using SophiApp.ViewModels;
-using System.Collections.ObjectModel;
 
 /// <summary>
 /// Implements the <see cref="PersonalizationPage"/> class.
@@ -23,7 +21,7 @@ public sealed partial class PersonalizationPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.Personalization));
+        Items = ViewModel.SettingModels.FilterByTag(UICategoryTag.Personalization).WithGroupHeaders();
     }
 
     /// <summary>
@@ -32,7 +30,12 @@ public sealed partial class PersonalizationPage : Page
     public ShellViewModel ViewModel { get; }
 
     /// <summary>
-    /// Gets <see cref="UIModel"/> collection.
+    /// Gets the notes at the top of the page.
     /// </summary>
-    public ObservableCollection<UIModel> Models { get; }
+    public PageNotesViewModel Notes { get; } = App.GetService<PageNotesViewModel>();
+
+    /// <summary>
+    /// Gets the settings of the page and the subtitles of their groups.
+    /// </summary>
+    public List<object> Items { get; }
 }

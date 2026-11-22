@@ -16,16 +16,22 @@
     <ScrollView x:Name="SearchScrollView">
         <Grid IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
             <StackPanel>
-                <Grid x:Name="ItemsContainerGrid">
-                    <ItemsRepeater x:Name="SearchItemsRepeater"
-                                   ItemsSource="{x:Bind FoundModels, Mode=OneWay}"
-                                   ItemTemplate="{StaticResource SettingTemplateSelector}"
-                                   VerticalCacheLength="{x:Bind FoundModels.Count, Mode=OneWay}"
-                                   Margin="{StaticResource SettingsListMargin}">
-                        <ItemsRepeater.Layout>
-                            <StackLayout Spacing="8"/>
-                        </ItemsRepeater.Layout>
-                    </ItemsRepeater>
+                <Grid x:Name="ItemsContainerGrid"
+                      Margin="{StaticResource SettingsListMargin}">
+                    <!-- On a wide window the cards do not stretch over all of it -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" MaxWidth="{StaticResource SettingsContentMaxWidth}"/>
+                    </Grid.ColumnDefinitions>
+                    <ItemsControl x:Name="SearchItemsRepeater"
+                                  ItemsSource="{x:Bind FoundModels, Mode=OneWay}"
+                                  ItemTemplateSelector="{StaticResource SettingTemplateSelector}"
+                                  IsTabStop="False">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Spacing="4"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
                 </Grid>
             </StackPanel>
             <Grid x:Name="NothingFoundGrid"
@@ -45,11 +51,11 @@
             </Grid>
         </Grid>
         <i:Interaction.Behaviors>
-            <i:DataTriggerBehavior Binding="{x:Bind ViewModel.FoundModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="0">
+            <i:DataTriggerBehavior Binding="{x:Bind FoundModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="0">
                 <i:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundGrid}" PropertyName="Visibility" Value="Visible"/>
                 <i:ChangePropertyAction TargetObject="{Binding ElementName=SearchItemsRepeater}" PropertyName="Visibility" Value="Collapsed"/>
             </i:DataTriggerBehavior>
-            <i:DataTriggerBehavior Binding="{x:Bind ViewModel.FoundModels.Count, Mode=OneWay}" ComparisonCondition="GreaterThan" Value="0">
+            <i:DataTriggerBehavior Binding="{x:Bind FoundModels.Count, Mode=OneWay}" ComparisonCondition="GreaterThan" Value="0">
                 <i:ChangePropertyAction TargetObject="{Binding ElementName=NothingFoundGrid}" PropertyName="Visibility" Value="Collapsed"/>
                 <i:ChangePropertyAction TargetObject="{Binding ElementName=SearchItemsRepeater}" PropertyName="Visibility" Value="Visible"/>
             </i:DataTriggerBehavior>

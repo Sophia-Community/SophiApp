@@ -43,6 +43,11 @@ namespace SophiApp.ControlTemplates
         /// </summary>
         public ShellViewModel ViewModel { get; }
 
+        /// <summary>
+        /// Gets the view model of the chosen settings.
+        /// </summary>
+        public ChosenSettingsViewModel ChosenSettings { get; } = App.GetService<ChosenSettingsViewModel>();
+
         private static string GetDescription(object? model) => (model as UIInstallModel)?.Description ?? string.Empty;
 
         private void Follow(UIInstallModel? package)
@@ -81,10 +86,11 @@ namespace SophiApp.ControlTemplates
 
         private void Choose(bool install)
         {
-            if (DataContext is UIInstallModel package)
+            // Nothing is chosen while settings are being applied or read
+            if (DataContext is UIInstallModel package && ViewModel.NavigationViewHitTestVisible)
             {
-                var command = install ? ViewModel.InstallModelInstall_Command : ViewModel.InstallModelUninstall_Command;
-                command.Execute(package);
+                package.Request(install);
+                ChosenSettings.ChoiceChanged_Command.Execute(package);
             }
 
             // A toggle button switches by itself when it is pressed; what it shows comes from the choice only

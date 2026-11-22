@@ -19,15 +19,22 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="{x:Bind Icon}"
-                       Width="{x:Bind IconWidth}"
-                       Height="26"
-                       Margin="0, 0, 12, 0"
-                       Visibility="{x:Bind IconVisibility}"/>
+                <!-- The icon is a picture or a symbol of the icon font -->
+                <Grid Width="{x:Bind IconWidth}"
+                      Height="26"
+                      Margin="0, 0, 12, 0"
+                      Visibility="{x:Bind IconVisibility}">
+                    <Image Source="{x:Bind Icon}"/>
+                    <FontIcon Glyph="{x:Bind Glyph}"
+                              FontSize="20"/>
+                </Grid>
                 <StackPanel Grid.Column="1"
                             VerticalAlignment="Center">
-                    <TextBlock Text="{x:Bind Title}"/>
+                    <!-- A long title goes to the next line in the closed list, so the list does not squeeze the description of the setting -->
+                    <TextBlock Text="{x:Bind Title}"
+                               TextWrapping="Wrap"/>
                     <TextBlock Text="{x:Bind Subtitle}"
+                               TextWrapping="Wrap"
                                Style="{StaticResource CaptionTextBlockStyle}"
                                Opacity="0.7"
                                Visibility="{x:Bind SubtitleVisibility}"/>
@@ -63,28 +70,35 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+            <!-- A closed notice takes no room, so the cards stand at the same distance from each other -->
+            <VisualStateGroup x:Name="NoticeStates">
+                <VisualState x:Name="NoticeShown">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding ExceptionTextIsVisible}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Notice.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel.ContextFlyout>
-            <CommandBarFlyout helpers:PopupCursor.ResetOnOpen="True">
-                <CommandBarFlyout.SecondaryCommands>
-                    <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
-                                  Icon="Copy"
-                                  Click="CopyTitle_Click"/>
-                    <AppBarButton x:Name="CopyDescriptionButton"
-                                  x:Uid="UIModel_ContextMenu_CopyDescription"
-                                  Icon="Copy"
-                                  Click="CopyDescription_Click"/>
-                </CommandBarFlyout.SecondaryCommands>
-            </CommandBarFlyout>
+            <MenuFlyout helpers:PopupCursor.ResetOnOpen="True">
+                <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyTitle"
+                                Icon="Copy"
+                                Click="CopyTitle_Click"/>
+                <MenuFlyoutItem x:Name="CopyDescriptionButton"
+                                x:Uid="UIModel_ContextMenu_CopyDescription"
+                                Icon="Copy"
+                                Click="CopyDescription_Click"/>
+            </MenuFlyout>
         </StackPanel.ContextFlyout>
         <Grid>
             <toolkit:SettingsCard x:Name="Card"
                                   AutomationProperties.Name="{Binding Title}"
-                                  MinHeight="{StaticResource SettingsCardMinHeight}"
-                                  Padding="{StaticResource SettingsCardPadding}"
                                   IsEnabled="{Binding IsEnabled}">
                 <toolkit:SettingsCard.Header>
-                    <TextBlock Text="{Binding Title}"
+                    <TextBlock Text="{Binding Title, Converter={StaticResource UnbrokenShortcutsConverter}}"
                                TextWrapping="Wrap"/>
                 </toolkit:SettingsCard.Header>
                 <toolkit:SettingsCard.Description>
@@ -99,11 +113,16 @@
                                   x:Uid="Button_ResetToDefault"
                                   Click="ResetButton_Click"
                                   Visibility="Collapsed"/>
-                    <!-- The lists have the same least width, so they stand in a column on a page -->
+                    <!-- A closed list is narrow, so it leaves the room to the description: a longer option takes several lines.
+                         An open list is as wide as its options need and goes to the right of the closed one -->
+                    <!-- The style is named: a control derived from the combo box does not get the standard style by itself
+                         and looks old, with square corners and a flat list -->
                     <helpers:NoWheelComboBox x:Name="OptionsBox"
                                              x:Uid="ComboBox_NoOption"
+                                             Style="{StaticResource DefaultComboBoxStyle}"
                                              AutomationProperties.Name="{Binding Title}"
-                                             MinWidth="248"
+                                             MinWidth="160"
+                                             MaxWidth="344"
                                              HorizontalContentAlignment="Stretch"
                                              SelectionChanged="OptionsBox_SelectionChanged"
                                              DropDownOpened="OptionsBox_DropDownOpened"/>
@@ -118,7 +137,9 @@
                     Visibility="Collapsed"/>
         </Grid>
         <!-- The reason why the setting is unavailable or could not be applied -->
-        <InfoBar Margin="0, 2, 0, 0"
+        <InfoBar x:Name="Notice"
+                 Visibility="Collapsed"
+                 Margin="0, 2, 0, 0"
                  Severity="Warning"
                  IsClosable="False"
                  IsOpen="{Binding ExceptionTextIsVisible}"

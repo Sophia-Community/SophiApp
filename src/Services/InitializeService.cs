@@ -85,7 +85,7 @@ public class InitializeService : IInitializeService
         await themesService.SetRequestedThemeAsync();
         TitleBarHelper.ApplySystemThemeToCaptionButtons();
         App.MainWindow.Activate();
-        viewModel.NavigationService.NavigateTo(typeof(StartupViewModel).FullName!);
+        viewModel.NavigationService.NavigateTo<StartupPage>();
         await viewModel.ExecuteAsync();
     }
 }

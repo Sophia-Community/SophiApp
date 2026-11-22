@@ -97,6 +97,61 @@ namespace SophiApp.Services
             .Cast<ManagementObject>();
 
         /// <inheritdoc/>
+        public bool TryInvokeStaticMethod(string nameSpace, string className, string method, IReadOnlyDictionary<string, object>? arguments = null)
+        {
+            try
+            {
+                using var managementClass = new ManagementClass($"{nameSpace}:{className}");
+                using var parameters = arguments is null ? null : managementClass.GetMethodParameters(method);
+
+                foreach (var argument in arguments ?? new Dictionary<string, object>())
+                {
+                    parameters![argument.Key] = argument.Value;
+                }
+
+                using var result = managementClass.InvokeMethod(method, parameters, null);
+                return true;
+            }
+            catch (Exception ex) when (ex is ManagementException || ex is System.Runtime.InteropServices.COMException || ex is UnauthorizedAccessException)
+            {
+                App.Logger.LogSkippedException($"Calling the method {method} of the WMI class {className}", ex);
+                return false;
+            }
+        }
+
+        /// <inheritdoc/>
+        public bool TryDecryptSystemDrive()
+        {
+            try
+            {
+                var systemDrive = Path.GetPathRoot(Environment.SystemDirectory)!.TrimEnd('\\');
+                using var volume = GetCimInstance(nameSpace: "root/CIMV2/Security/MicrosoftVolumeEncryption", className: "Win32_EncryptableVolume")
+                    .FirstOrDefault(encryptableVolume => systemDrive.Equals(encryptableVolume.GetPropertyValue("DriveLetter") as string, StringComparison.OrdinalIgnoreCase));
+
+                if (volume is null)
+                {
+                    return false;
+                }
+
+                // A system drive that keeps the keys of the other drives is not decrypted: they would stay locked
+                using var keys = volume.InvokeMethod("IsAutoUnlockKeyStored", null, null);
+
+                if (Convert.ToUInt32(keys["ReturnValue"]) != 0 || keys["IsAutoUnlockKeyStored"] is true)
+                {
+                    return false;
+                }
+
+                using var decryption = volume.InvokeMethod("Decrypt", null, null);
+                return Convert.ToUInt32(decryption["ReturnValue"]) == 0;
+            }
+            catch (Exception ex) when (ex is ManagementException || ex is System.Runtime.InteropServices.COMException || ex is UnauthorizedAccessException)
+            {
+                App.Logger.LogSkippedException("Decrypting the system drive", ex);
+                return false;
+            }
+        }
+
+        /// <inheritdoc/>
         public string GetUserSid(string name)
         {
             try
@@ -141,11 +196,17 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void SetPageFileAutoSize()
         {
-            new ManagementObjectSearcher("Select * from CIM_ComputerSystem")
+            using var computer = new ManagementObjectSearcher("Select * from CIM_ComputerSystem")
                 .Get()
                 .Cast<ManagementObject>()
-                .FirstOrDefault()
-                ?.SetPropertyValue("AutomaticManagedPageFile", true);
+                .First();
+
+            // The value is saved only if it has to be changed
+            if (computer["AutomaticManagedPageFile"] is false)
+            {
+                computer["AutomaticManagedPageFile"] = true;
+                _ = computer.Put();
+            }
         }
 
         /// <inheritdoc/>

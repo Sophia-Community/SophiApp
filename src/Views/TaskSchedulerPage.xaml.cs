@@ -27,7 +27,7 @@ public sealed partial class TaskSchedulerPage : Page, INotifyPropertyChanged
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.TaskScheduler));
+        Models = new(ViewModel.SettingModels.FilterByTag(UICategoryTag.TaskScheduler));
     }
 
     /// <summary>
@@ -39,6 +39,11 @@ public sealed partial class TaskSchedulerPage : Page, INotifyPropertyChanged
     /// Gets view model for task scheduler page.
     /// </summary>
     public ShellViewModel ViewModel { get; }
+
+    /// <summary>
+    /// Gets the notes at the top of the page.
+    /// </summary>
+    public PageNotesViewModel Notes { get; } = App.GetService<PageNotesViewModel>();
 
     /// <summary>
     /// Gets a value indicating current width.

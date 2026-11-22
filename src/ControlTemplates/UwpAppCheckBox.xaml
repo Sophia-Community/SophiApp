@@ -29,16 +29,14 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Grid.ContextFlyout>
-            <CommandBarFlyout helpers:PopupCursor.ResetOnOpen="True">
-                <CommandBarFlyout.SecondaryCommands>
-                    <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
-                                  Icon="Copy"
-                                  Click="CopyTitle_Click"/>
-                    <AppBarButton x:Uid="UIModel_ContextMenu_CopyPackageName"
-                                  Icon="Copy"
-                                  Click="CopyPackageName_Click"/>
-                </CommandBarFlyout.SecondaryCommands>
-            </CommandBarFlyout>
+            <MenuFlyout helpers:PopupCursor.ResetOnOpen="True">
+                <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyTitle"
+                                Icon="Copy"
+                                Click="CopyTitle_Click"/>
+                <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyPackageName"
+                                Icon="Copy"
+                                Click="CopyPackageName_Click"/>
+            </MenuFlyout>
         </Grid.ContextFlyout>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -54,13 +52,16 @@
         <StackPanel x:Name="AppNames"
                     Grid.Column="1"
                     VerticalAlignment="Center">
+            <!-- A name that does not fit is shown whole in a tooltip -->
             <TextBlock Text="{Binding Name}"
-                       TextTrimming="CharacterEllipsis"/>
-            <TextBlock Text="{Binding Title}"
+                       TextTrimming="CharacterEllipsis"
+                       IsTextTrimmedChanged="Name_IsTextTrimmedChanged"/>
+            <TextBlock Text="{Binding Title, Converter={StaticResource UnbrokenShortcutsConverter}}"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                        TextWrapping="NoWrap"
-                       TextTrimming="CharacterEllipsis"/>
+                       TextTrimming="CharacterEllipsis"
+                       IsTextTrimmedChanged="Name_IsTextTrimmedChanged"/>
         </StackPanel>
         <CheckBox Grid.Column="2"
                   AutomationProperties.Name="{Binding Name}"

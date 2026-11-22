@@ -21,7 +21,7 @@ namespace SophiApp.Views
         {
             InitializeComponent();
             ViewModel = App.GetService<ShellViewModel>();
-            FoundModels = ViewModel.FoundModels;
+            FoundModels = App.GetService<SearchViewModel>().FoundModels;
         }
 
         /// <summary>

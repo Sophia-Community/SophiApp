@@ -8,24 +8,21 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.UI.Xaml.Controls;
 using SophiApp.Contracts.Services;
 using SophiApp.Helpers;
-using SophiApp.ViewModels;
+using SophiApp.Views;
 
 /// <inheritdoc/>
 public class NavigationViewService : INavigationViewService
 {
     private readonly INavigationService navigationService;
-    private readonly IPageService pageService;
     private NavigationView? navigationView;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="NavigationViewService"/> class.
     /// </summary>
     /// <param name="navigationService"><inheritdoc/></param>
-    /// <param name="pageService"><inheritdoc/></param>
-    public NavigationViewService(INavigationService navigationService, IPageService pageService)
+    public NavigationViewService(INavigationService navigationService)
     {
         this.navigationService = navigationService;
-        this.pageService = pageService;
     }
 
     /// <summary>
@@ -76,16 +73,11 @@ public class NavigationViewService : INavigationViewService
 
         if (args.IsSettingsInvoked)
         {
-            navigationService.NavigateTo(typeof(SettingsViewModel).FullName!);
+            navigationService.NavigateTo<SettingsPage>();
         }
-        else
+        else if (args.InvokedItemContainer is NavigationViewItem item && NavigationHelper.GetNavigateTo(item) is Type pageType)
         {
-            var selectedItem = args.InvokedItemContainer as NavigationViewItem;
-
-            if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
-            {
-                navigationService.NavigateTo(pageKey);
-            }
+            navigationService.NavigateTo(pageType);
         }
     }
 
@@ -93,7 +85,7 @@ public class NavigationViewService : INavigationViewService
     {
         foreach (var item in menuItems.OfType<NavigationViewItem>())
         {
-            if (IsMenuItemForPageType(item, pageType))
+            if (NavigationHelper.GetNavigateTo(item) == pageType)
             {
                 return item;
             }
@@ -106,15 +98,5 @@ public class NavigationViewService : INavigationViewService
         }
 
         return null;
-    }
-
-    private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType)
-    {
-        if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
-        {
-            return pageService.GetPageType(pageKey) == sourcePageType;
-        }
-
-        return false;
     }
 }

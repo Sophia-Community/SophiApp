@@ -7,9 +7,7 @@ namespace SophiApp.Views;
 using Microsoft.UI.Xaml.Controls;
 using SophiApp.Extensions;
 using SophiApp.Helpers;
-using SophiApp.Models;
 using SophiApp.ViewModels;
-using System.Collections.ObjectModel;
 
 /// <summary>
 /// Implements the <see cref="PrivacyPage"/> class.
@@ -23,7 +21,7 @@ public sealed partial class PrivacyPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.Privacy));
+        Items = ViewModel.SettingModels.FilterByTag(UICategoryTag.Privacy).WithGroupHeaders();
     }
 
     /// <summary>
@@ -32,7 +30,12 @@ public sealed partial class PrivacyPage : Page
     public ShellViewModel ViewModel { get; }
 
     /// <summary>
-    /// Gets <see cref="UIModel"/> collection.
+    /// Gets the notes at the top of the page.
     /// </summary>
-    public ObservableCollection<UIModel> Models { get; }
+    public PageNotesViewModel Notes { get; } = App.GetService<PageNotesViewModel>();
+
+    /// <summary>
+    /// Gets the settings of the page and the subtitles of their groups.
+    /// </summary>
+    public List<object> Items { get; }
 }

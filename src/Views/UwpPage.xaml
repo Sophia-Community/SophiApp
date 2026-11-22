@@ -29,13 +29,15 @@
                 </Grid>
                 <Grid x:Name="UwpAppsFoundGrid">
                     <StackPanel>
+                        <!-- The note can be closed -->
                         <InfoBar x:Uid="UwpPage_AboutAppIcon"
-                                 IsOpen="True"
-                                 IsClosable="False"
+                                 helpers:InfoBarHelper.FormattedMessage="True"
                                  Severity="Informational"
+                                 IsOpen="{x:Bind Notes.UwpAppsIsOpen, Mode=TwoWay}"
+                                 Visibility="{x:Bind Notes.UwpAppsIsOpen, Mode=OneWay}"
                                  Margin="0, 0, 0, 10"/>
                         <!-- The apps are uninstalled right from this page: they have a queue of their own, apart from the settings -->
-                        <Grid ColumnSpacing="8"
+                        <Grid ColumnSpacing="4"
                               Margin="0, 0, 0, 10">
                             <Grid.Resources>
                                 <!-- Two cards stand in one row, so each is half as wide as usual. They keep the control on the header line until they are really narrow -->
@@ -47,9 +49,7 @@
                             </Grid.ColumnDefinitions>
                             <toolkit:SettingsCard x:Uid="UwpPage_ForAllUsers"
                                                   Grid.Column="0"
-                                                  VerticalAlignment="Stretch"
-                                                  MinHeight="{StaticResource SettingsCardMinHeight}"
-                                                  Padding="{StaticResource SettingsCardPadding}">
+                                                  VerticalAlignment="Stretch">
                                 <ToggleSwitch IsOn="{x:Bind ViewModel.UwpForAllUsersState, Mode=OneWay}">
                                     <interaction:Interaction.Behaviors>
                                         <interaction:EventTriggerBehavior EventName="Toggled">
@@ -60,9 +60,7 @@
                             </toolkit:SettingsCard>
                             <toolkit:SettingsCard Grid.Column="1"
                                                   VerticalAlignment="Stretch"
-                                                  Header="{x:Bind views:UwpPage.GetChosenAppsText(ViewModel.UwpAppsToUninstall.Count), Mode=OneWay}"
-                                                  MinHeight="{StaticResource SettingsCardMinHeight}"
-                                                  Padding="{StaticResource SettingsCardPadding}">
+                                                  Header="{x:Bind views:UwpPage.GetChosenAppsText(ViewModel.UwpAppsToUninstall.Count), Mode=OneWay}">
                                 <Button x:Uid="Button_Uninstall"
                                         Style="{StaticResource AccentButtonStyle}"
                                         IsEnabled="{x:Bind views:UwpPage.HasChosenApps(ViewModel.UwpAppsToUninstall.Count), Mode=OneWay}"
@@ -81,8 +79,8 @@
                             <ItemsRepeater.Layout>
                                 <UniformGridLayout x:Name="UwpItemsContainerLayoutGrid"
                                                    ItemsStretch="Fill"
-                                                   MinRowSpacing="8"
-                                                   MinColumnSpacing="8"
+                                                   MinRowSpacing="4"
+                                                   MinColumnSpacing="4"
                                                    MaximumRowsOrColumns="5"
                                                    MinItemHeight="68"
                                                    MinItemWidth="300"/>
@@ -91,14 +89,16 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <ItemsRepeater ItemsSource="{Binding ElementName=PageUwp, Path=GamingModels}"
-                           ItemTemplate="{StaticResource SettingTemplateSelector}"
-                           VerticalCacheLength="{Binding ElementName=PageUwp, Path=GamingModels.Count}"
-                           Margin="{StaticResource PageBottomMargin}">
-                <ItemsRepeater.Layout>
-                    <StackLayout Spacing="8"/>
-                </ItemsRepeater.Layout>
-            </ItemsRepeater>
+            <ItemsControl ItemsSource="{Binding ElementName=PageUwp, Path=GamingModels}"
+                          ItemTemplateSelector="{StaticResource SettingTemplateSelector}"
+                          Margin="{StaticResource PageBottomMargin}"
+                          IsTabStop="False">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Spacing="4"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
         </StackPanel>
         <interactivity:Interaction.Behaviors>
             <interaction:DataTriggerBehavior Binding="{x:Bind ViewModel.UwpAppsModels.Count, Mode=OneWay}" ComparisonCondition="Equal" Value="0">

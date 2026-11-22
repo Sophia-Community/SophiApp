@@ -51,6 +51,11 @@ namespace SophiApp.Helpers
         public ImageSource? Icon { get; }
 
         /// <summary>
+        /// Gets the symbol of the icon font that is shown as the icon, or an empty string. It takes the color of the text.
+        /// </summary>
+        public string Glyph { get; init; } = string.Empty;
+
+        /// <summary>
         /// Gets the width of the room for the icon.
         /// </summary>
         public double IconWidth { get; init; }
@@ -64,7 +69,7 @@ namespace SophiApp.Helpers
         /// <summary>
         /// Gets a value indicating whether the option has an icon to show or keeps the room for it.
         /// </summary>
-        public Visibility IconVisibility => Icon is null && !KeepsIconRoom ? Visibility.Collapsed : Visibility.Visible;
+        public Visibility IconVisibility => Icon is null && Glyph.Length == 0 && !KeepsIconRoom ? Visibility.Collapsed : Visibility.Visible;
 
         /// <summary>
         /// Gets the address of a web page about the option, if it has one.

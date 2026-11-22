@@ -21,6 +21,9 @@ namespace SophiApp.Services
 
         private readonly IHttpService httpService;
 
+        // The download started at startup. The first read of the list takes its result, the next ones download the list anew
+        private Task<JsonObject>? startedDownload;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WslService"/> class.
         /// </summary>
@@ -34,10 +37,11 @@ namespace SophiApp.Services
         public IReadOnlyList<(string Family, string Name, string FriendlyName)> GetDistributions()
         {
             JsonObject info;
+            var started = Interlocked.Exchange(ref startedDownload, null);
 
             try
             {
-                info = httpService.GetFromJson<JsonObject>(DistributionsUrl, TimeoutSeconds);
+                info = started is null ? httpService.GetFromJson<JsonObject>(DistributionsUrl, TimeoutSeconds) : started.GetAwaiter().GetResult();
             }
             catch (Exception ex) when (ex is HttpRequestException or OperationCanceledException or IOException or JsonException)
             {
@@ -62,6 +66,10 @@ namespace SophiApp.Services
 
             return distributions;
         }
+
+        /// <inheritdoc/>
+        public void BeginGetDistributions()
+            => startedDownload = Task.Run(() => httpService.GetFromJsonAsync<JsonObject>(DistributionsUrl, TimeoutSeconds));
 
         /// <inheritdoc/>
         public IReadOnlyList<string> GetInstalledDistributions()

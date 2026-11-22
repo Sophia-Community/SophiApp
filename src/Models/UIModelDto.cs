@@ -21,12 +21,16 @@ namespace SophiApp.Models
         /// <param name="windows11LTSC">Model supported Windows 11 LTSC.</param>
         /// <param name="windows11">Model supported Windows 11.</param>
         /// <param name="iconIndex">Icon index for <see cref="UIIconCheckBoxModel"/>.</param>
-        public UIModelDto(string name, UIModelType type, UICategoryTag tag, int viewId, bool windows11LTSC, bool windows11, int iconIndex = 0)
+        /// <param name="optionIcons">The options of <see cref="UIRadioButtonsGroupModel"/> have icons.</param>
+        /// <param name="group">The group of settings on the page, or an empty string.</param>
+        public UIModelDto(string name, UIModelType type, UICategoryTag tag, int viewId, bool windows11LTSC, bool windows11, int iconIndex = 0, bool optionIcons = false, string group = "")
         {
             Name = name;
             Type = type;
             Tag = tag;
+            Group = group;
             IconIndex = iconIndex;
+            OptionIcons = optionIcons;
             ViewId = viewId;
             Windows11LTSC = windows11LTSC;
             Windows11 = windows11;
@@ -48,9 +52,19 @@ namespace SophiApp.Models
         public UICategoryTag Tag { get; init; }
 
         /// <summary>
+        /// Gets the group of settings the model belongs to on its page, or an empty string.
+        /// </summary>
+        public string Group { get; init; }
+
+        /// <summary>
         /// Gets icon index for <see cref="UIIconCheckBoxModel"/>.
         /// </summary>
         public int IconIndex { get; init; }
+
+        /// <summary>
+        /// Gets a value indicating whether the options of <see cref="UIRadioButtonsGroupModel"/> have icons.
+        /// </summary>
+        public bool OptionIcons { get; init; }
 
         /// <summary>
         /// Gets a model view id.

@@ -13,9 +13,9 @@ namespace SophiApp.Contracts.Services
     public interface IModelService
     {
         /// <summary>
-        /// Using the file "UIMarkup.json" creates a collection of <see cref="UIModel"/> types.
+        /// Creates a collection of <see cref="UIModel"/> from the table of settings, for the settings that the running Windows supports.
         /// </summary>
-        Task<ObservableCollection<UIModel>> BuildJsonModelsAsync();
+        Task<ObservableCollection<UIModel>> BuildSettingModelsAsync();
 
         /// <summary>
         /// Using the <see cref="IAppxPackagesService"/> creates a UWP <see cref="UIModel"/> collection.

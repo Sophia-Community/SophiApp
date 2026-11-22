@@ -10,24 +10,15 @@ using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
 using SophiApp.Contracts.ViewModels;
 using SophiApp.Extensions;
+using SophiApp.Helpers;
 using SophiApp.Views;
 using System.Diagnostics.CodeAnalysis;
 
 /// <inheritdoc/>
 public class NavigationService : INavigationService
 {
-    private readonly IPageService pageService;
     private object? lastParameterUsed;
     private Frame? frame;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="NavigationService"/> class.
-    /// </summary>
-    /// <param name="pageService">A service for working with app page.</param>
-    public NavigationService(IPageService pageService)
-    {
-        this.pageService = pageService;
-    }
 
     /// <summary>
     /// Occurs when the frame has navigated to a page.
@@ -79,15 +70,19 @@ public class NavigationService : INavigationService
     }
 
     /// <inheritdoc/>
-    public bool NavigateTo(string page, object? parameter = null, bool clearHistory = false, bool disablePageAnimation = false)
-    {
-        var pageType = pageService.GetPageType(page);
+    public bool NavigateTo<TPage>(object? parameter = null, bool clearHistory = false, bool disablePageAnimation = false)
+        where TPage : Page
+        => NavigateTo(typeof(TPage), parameter, clearHistory, disablePageAnimation);
 
+    /// <inheritdoc/>
+    public bool NavigateTo(Type pageType, object? parameter = null, bool clearHistory = false, bool disablePageAnimation = false)
+    {
         if (frame != null && (disablePageAnimation || frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(lastParameterUsed))))
         {
             frame.Tag = clearHistory;
             var vmBeforeNavigation = frame.GetPageViewModel();
-            var navigateAnimation = disablePageAnimation ? new SuppressNavigationTransitionInfo() : null;
+            // With the animations of Windows turned off the pages change at once
+            var navigateAnimation = disablePageAnimation || !SystemAnimations.AreEnabled ? new SuppressNavigationTransitionInfo() : null;
             var navigated = frame.Navigate(pageType, parameter, navigateAnimation);
             if (navigated)
             {

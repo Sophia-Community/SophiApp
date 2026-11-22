@@ -8,30 +8,33 @@
 
     <!-- The text and the heart are centered on one line -->
     <StackPanel Orientation="Horizontal">
+        <StackPanel.Resources>
+            <!-- The heart beats only if Windows lets the apps play animations -->
+            <Storyboard x:Name="Heartbeat"
+                        Storyboard.TargetName="ScaleTransform"
+                        RepeatBehavior="Forever">
+                <DoubleAnimation Duration="00:00:0.8" Storyboard.TargetProperty="ScaleY" To="0.8"/>
+                <DoubleAnimation Duration="00:00:0.8" Storyboard.TargetProperty="ScaleX" To="0.8"/>
+            </Storyboard>
+        </StackPanel.Resources>
         <TextBlock x:Uid="Control_Slogan"
                    Style="{StaticResource BodyTextBlockStyle}"
                    VerticalAlignment="Center"/>
-        <Viewbox Width="24"
-                 Height="24"
-                 Margin="6, 0, 0, 0"
+        <!-- The heart stands for the pause between the two parts and is as high as the letters -->
+        <Viewbox Width="14"
+                 Height="14"
+                 Margin="6, 2, 6, 0"
                  VerticalAlignment="Center"
                  RenderTransformOrigin="0.5, 0.5">
             <Viewbox.RenderTransform>
                 <ScaleTransform x:Name="ScaleTransform" ScaleX="1.0" ScaleY="1.0" />
             </Viewbox.RenderTransform>
-            <Viewbox.Triggers>
-                <EventTrigger>
-                    <BeginStoryboard>
-                        <Storyboard Storyboard.TargetName="ScaleTransform" RepeatBehavior="Forever">
-                            <DoubleAnimation Duration="00:00:0.8" Storyboard.TargetProperty="ScaleY" To="0.8"/>
-                            <DoubleAnimation Duration="00:00:0.8" Storyboard.TargetProperty="ScaleX" To="0.8"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Viewbox.Triggers>
             <!-- The heart takes the whole 80 x 76 box, so nothing shifts it inside the viewbox -->
             <Path Fill="#E20036"
                   Data="M80,20.2c0-11-9-20.1-20-20.1s-20,9.1-20,20.2c0,0.2,0-0.3,0,0.7H40c0-1,0-0.6,0-0.8c0-11-9-20.1-20-20.1s-20,9.1-20,20.2 c0,0.2,0-0.3,0,0.7h0c0.3,20,30,39.5,40,55c10-15.5,39.7-35,40-55h0C80,20,80,20.4,80,20.2z"/>
         </Viewbox>
+        <TextBlock x:Uid="Control_SloganEnd"
+                   Style="{StaticResource BodyTextBlockStyle}"
+                   VerticalAlignment="Center"/>
     </StackPanel>
 </UserControl>

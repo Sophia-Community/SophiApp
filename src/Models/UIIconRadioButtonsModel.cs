@@ -1,4 +1,4 @@
-// <copyright file="UIIconRadioButtonsModel.cs" company="Team Sophia">
+﻿// <copyright file="UIIconRadioButtonsModel.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -106,7 +106,10 @@ namespace SophiApp.Models
         /// <summary>
         /// Gets a value indicating whether the user chose something that differs from the current state of Windows.
         /// </summary>
-        public bool IsChanged => ResetRequested || SelectedId != DefaultId.ToString();
+        public override bool IsChanged => ResetRequested || SelectedId != DefaultId.ToString();
+
+        /// <inheritdoc/>
+        public override string ChosenValue => SelectedId;
 
         /// <summary>
         /// Gets the address of the icon of an option. The icons are the files "Name_1.svg", "Name_2.svg" and so on in the Assets folder.

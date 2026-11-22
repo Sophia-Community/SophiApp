@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using SophiApp.Contracts.Services;
+using SophiApp.Extensions;
 using SophiApp.Helpers;
 
 /// <summary>
@@ -17,6 +18,7 @@ using SophiApp.Helpers;
 public partial class SettingsViewModel : ObservableRecipient
 {
     private readonly IThemesService themesService;
+    private readonly ISettingsService settingsService;
 
     [ObservableProperty]
     private ElementTheme elementTheme;
@@ -30,34 +32,48 @@ public partial class SettingsViewModel : ObservableRecipient
         new(ElementTheme.Default, "Settings_Themes_Default"), new(ElementTheme.Light, "Settings_Themes_Light"), new(ElementTheme.Dark, "Settings_Themes_Dark"),
     ];
 
+    // The names of the languages are not translated: everyone finds their own language
+    [ObservableProperty]
+    private ObservableCollection<AppLanguage> languages =
+    [
+        new(AppLanguage.WindowsLanguageTag, "Settings_Languages_Default".GetLocalized()), new("en-US", "English"), new("ru-RU", "Русский"),
+    ];
+
+    [ObservableProperty]
+    private bool languageRestartIsNeeded = AppLanguage.Chosen != AppLanguage.Applied;
+
     [ObservableProperty]
     private string version;
     private AppTheme selectedTheme;
+    private AppLanguage selectedLanguage;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
     /// </summary>
     /// <param name="themesService">A service for working with app themes.</param>
+    /// <param name="settingsService">A service for working with app settings.</param>
     /// <param name="dataService">A service for transferring app data between layers of DI.</param>
     /// <param name="shellViewModel">Implements the <see cref="ShellViewModel"/> class.</param>
     public SettingsViewModel(
         IThemesService themesService,
+        ISettingsService settingsService,
         ICommonDataService dataService,
         ShellViewModel shellViewModel)
     {
         NavigationViewHitTestVisible = shellViewModel.NavigationViewHitTestVisible;
-        OpenAppAnimationDeveloperPage_Command = shellViewModel.OpenAppAnimationDeveloperPage_Command;
         OpenAppDeveloperPage_Command = shellViewModel.OpenAppDeveloperPage_Command;
+        OpenAppSupporterPage_Command = shellViewModel.OpenAppSupporterPage_Command;
         OpenAppDiscordPage_Command = shellViewModel.OpenAppDiscordPage_Command;
         OpenAppGitHubPage_Command = shellViewModel.OpenAppGitHubPage_Command;
         OpenAppProjectManagerPage_Command = shellViewModel.OpenAppProjectManagerPage_Command;
         OpenAppTelegramPage_Command = shellViewModel.OpenAppTelegramPage_Command;
         OpenAppTesterPage_Command = shellViewModel.OpenAppTesterPage_Command;
-        OpenAppUiDeveloperPage_Command = shellViewModel.OpenAppUiDeveloperPage_Command;
         OpenAppUxDeveloperPage_Command = shellViewModel.OpenAppUxDeveloperPage_Command;
         OpenLatestAppRelease_Command = shellViewModel.OpenLatestAppRelease_Command;
         selectedTheme = themes.First(wrapper => wrapper.ElementTheme.Equals(themesService.Theme));
+        selectedLanguage = languages.First(language => language.Tag.Equals(AppLanguage.Chosen, StringComparison.OrdinalIgnoreCase));
         this.themesService = themesService;
+        this.settingsService = settingsService;
         version = dataService.GetFullName();
     }
 
@@ -82,14 +98,37 @@ public partial class SettingsViewModel : ObservableRecipient
     }
 
     /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to open app animation developer contacts page.
+    /// Gets or sets the app language. A new one is used after the app is restarted.
     /// </summary>
-    public IRelayCommand OpenAppAnimationDeveloperPage_Command { get; }
+    public AppLanguage SelectedLanguage
+    {
+        get
+        {
+            return selectedLanguage;
+        }
+
+        set
+        {
+            if (value is not null && value != selectedLanguage)
+            {
+                selectedLanguage = value;
+                AppLanguage.Chosen = value.Tag;
+                LanguageRestartIsNeeded = AppLanguage.Chosen != AppLanguage.Applied;
+                _ = settingsService.SaveLanguageAsync(value.Tag);
+                App.Logger.LogChangeLanguage(value.Tag);
+            }
+        }
+    }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to open app developer contacts page.
     /// </summary>
     public IRelayCommand OpenAppDeveloperPage_Command { get; }
+
+    /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to open the page of the person who supports the app.
+    /// </summary>
+    public IRelayCommand OpenAppSupporterPage_Command { get; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to open app Discord page.
@@ -115,11 +154,6 @@ public partial class SettingsViewModel : ObservableRecipient
     /// Gets <see cref="IRelayCommand"/> to open app tester contacts page.
     /// </summary>
     public IRelayCommand OpenAppTesterPage_Command { get; }
-
-    /// <summary>
-    /// Gets <see cref="IRelayCommand"/> to open app UI developer contacts page.
-    /// </summary>
-    public IRelayCommand OpenAppUiDeveloperPage_Command { get; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to open app UX developer contacts page.

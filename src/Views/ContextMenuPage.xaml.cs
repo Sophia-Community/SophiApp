@@ -23,13 +23,18 @@ public sealed partial class ContextMenuPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.ContextMenu));
+        Models = new(ViewModel.SettingModels.FilterByTag(UICategoryTag.ContextMenu));
     }
 
     /// <summary>
     /// Gets view model for context menu page.
     /// </summary>
     public ShellViewModel ViewModel { get; }
+
+    /// <summary>
+    /// Gets the notes at the top of the page.
+    /// </summary>
+    public PageNotesViewModel Notes { get; } = App.GetService<PageNotesViewModel>();
 
     /// <summary>
     /// Gets <see cref="UIModel"/> collection.

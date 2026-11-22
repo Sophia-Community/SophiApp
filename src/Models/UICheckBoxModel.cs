@@ -14,6 +14,9 @@ namespace SophiApp.Models
         private readonly Action<bool> mutator;
         private bool isChecked;
 
+        // The state read from Windows
+        private bool readState;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UICheckBoxModel"/> class.
         /// </summary>
@@ -59,11 +62,18 @@ namespace SophiApp.Models
         }
 
         /// <inheritdoc/>
+        public override bool IsChanged => IsChecked != readState;
+
+        /// <inheritdoc/>
+        public override string ChosenValue => IsChecked.ToString();
+
+        /// <inheritdoc/>
         public override void GetState()
         {
             try
             {
-                IsChecked = accessor.Invoke();
+                readState = accessor.Invoke();
+                IsChecked = readState;
                 ShowNotice(NoticeAccessor?.Invoke()?.GetLocalized() ?? string.Empty);
             }
             catch (CustomizationException ex)

@@ -15,16 +15,14 @@
 
     <Page.Resources>
         <converters:EnumToBool x:Key="EnumToBoolConverter"/>
-        <CommandBarFlyout x:Name="RequirementsFailurePageCommandsFlyout">
-            <CommandBarFlyout.SecondaryCommands>
-                <AppBarButton x:Uid="Page_ContextMenu_OpenLogFile"
-                              Icon="OpenFile"
-                              Click="ContextMenuOpenLogFile_Clicked"/>
-                <AppBarButton x:Uid="Page_ContextMenu_OpenLogFolder"
-                              Icon="Folder"
-                              Click="ContextMenuOpenLogFolder_Clicked"/>
-            </CommandBarFlyout.SecondaryCommands>
-        </CommandBarFlyout>
+        <MenuFlyout x:Name="RequirementsFailurePageCommandsFlyout">
+            <MenuFlyoutItem x:Uid="Page_ContextMenu_OpenLogFile"
+                            Icon="OpenFile"
+                            Click="ContextMenuOpenLogFile_Clicked"/>
+            <MenuFlyoutItem x:Uid="Page_ContextMenu_OpenLogFolder"
+                            Icon="Folder"
+                            Click="ContextMenuOpenLogFolder_Clicked"/>
+        </MenuFlyout>
         <Style x:Key="RequirementsResultPanelStyle" TargetType="StackPanel">
             <Setter Property="Visibility" Value="Collapsed"/>
             <Setter Property="Margin" Value="20"/>

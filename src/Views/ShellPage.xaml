@@ -11,8 +11,7 @@
     xmlns:sys="using:System"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:interaction="using:Microsoft.Xaml.Interactivity"
-    Loaded="OnLoaded"
-    SizeChanged="PageShell_SizeChanged">
+    Loaded="OnLoaded">
 
     <Page.Resources>
         <converter:GreaterThanZeroToVisibility x:Key="GreaterThanZeroToVisibilityConverter"/>
@@ -31,7 +30,7 @@
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
                        Style="{StaticResource CaptionTextBlockStyle}"
-                       Margin="25, 0, 0, 0"/>
+                       Margin="24, 0, 0, 0"/>
         </Grid>
         <NavigationView x:Name="NavigationViewControl"
                         Canvas.ZIndex="0"
@@ -44,109 +43,152 @@
                         DisplayModeChanged="NavigationViewControl_DisplayModeChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Uid="NavigationItem_Privacy"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.PrivacyViewModel"
+                                    helpers:NavigationHelper.NavigateTo="views:PrivacyPage"
                                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                                     IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.Privacy, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.Privacy, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                        <InfoBadge Value="{x:Bind Choices.InfoBadgeCounters.Privacy, Mode=OneWay}"
+                                   Visibility="{x:Bind Choices.InfoBadgeCounters.Privacy, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE705;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                        <FontIcon Glyph="&#xE705;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_Personalization"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.PersonalizationViewModel"
+                                    helpers:NavigationHelper.NavigateTo="views:PersonalizationPage"
                                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                                     IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.Personalization, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.Personalization, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                        <InfoBadge Value="{x:Bind Choices.InfoBadgeCounters.Personalization, Mode=OneWay}"
+                                   Visibility="{x:Bind Choices.InfoBadgeCounters.Personalization, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE771;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                        <FontIcon Glyph="&#xE771;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_System"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.SystemViewModel"
+                                    helpers:NavigationHelper.NavigateTo="views:SystemPage"
                                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                                     IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.System, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.System, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                        <InfoBadge Value="{x:Bind Choices.InfoBadgeCounters.System, Mode=OneWay}"
+                                   Visibility="{x:Bind Choices.InfoBadgeCounters.System, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE770;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                        <FontIcon Glyph="&#xE770;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
                 <NavigationViewItem x:Uid="NavigationItem_UWP_Gaming"
                                     x:Name="UwpGamingItem"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.UwpViewModel"
+                                    helpers:NavigationHelper.NavigateTo="views:UwpPage"
                                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                                     IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.UwpAndGaming, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.UwpAndGaming, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                        <InfoBadge Value="{x:Bind Choices.InfoBadgeCounters.UwpAndGaming, Mode=OneWay}"
+                                   Visibility="{x:Bind Choices.InfoBadgeCounters.UwpAndGaming, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE7FC;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                        <FontIcon Glyph="&#xE7FC;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_TaskScheduler"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.TaskSchedulerViewModel"
+                                    helpers:NavigationHelper.NavigateTo="views:TaskSchedulerPage"
                                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                                     IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.TaskScheduler, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.TaskScheduler, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                        <InfoBadge Value="{x:Bind Choices.InfoBadgeCounters.TaskScheduler, Mode=OneWay}"
+                                   Visibility="{x:Bind Choices.InfoBadgeCounters.TaskScheduler, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEFFF;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                        <FontIcon Glyph="&#xEFFF;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_Security"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.SecurityViewModel"
+                                    helpers:NavigationHelper.NavigateTo="views:SecurityPage"
                                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                                     IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.Security, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.Security, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                        <InfoBadge Value="{x:Bind Choices.InfoBadgeCounters.Security, Mode=OneWay}"
+                                   Visibility="{x:Bind Choices.InfoBadgeCounters.Security, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE730;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                        <FontIcon Glyph="&#xE730;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_ContextMenu"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.ContextMenuViewModel"
+                                    helpers:NavigationHelper.NavigateTo="views:ContextMenuPage"
                                     IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                                     IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge Value="{x:Bind ViewModel.InfoBadgeCounters.ContextMenu, Mode=OneWay}"
-                                   Visibility="{x:Bind ViewModel.InfoBadgeCounters.ContextMenu, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
+                        <InfoBadge Value="{x:Bind Choices.InfoBadgeCounters.ContextMenu, Mode=OneWay}"
+                                   Visibility="{x:Bind Choices.InfoBadgeCounters.ContextMenu, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE8A9;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem x:Uid="NavigationItem_ProVersion"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.ProVersionViewModel"
-                                    IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
-                                    IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
-                                    Visibility="Collapsed">
-                    <NavigationViewItem.Icon>
-                        <PathIcon Foreground="{ThemeResource AccentFillColorDefaultBrush}" Data="M14.984 2.046c.514.13.936.576 1.044 1.1.024.119.034 1.37.035 4.191v4.022l.469 1.276.468 1.277v.585c0 .672-.026.84-.18 1.142a1.426 1.426 0 0 1-.939.723c-.234.05-13.528.05-13.765 0a1.454 1.454 0 0 1-.963-.764c-.134-.271-.162-.488-.15-1.152l.01-.592.46-1.25.461-1.25v-4.02c0-2.82.01-4.07.035-4.188a1.454 1.454 0 0 1 1.084-1.11c.251-.054 11.717-.045 11.931.01Zm-11.863.979a.436.436 0 0 0-.186.19c-.062.125-.063.181-.063 3.935v3.809h12.253V7.15c0-3.752-.001-3.81-.063-3.934a.46.46 0 0 0-.18-.19c-.115-.062-.204-.063-5.877-.064-5.713-.002-5.761-.001-5.884.063Zm-.67 9.653a90.29 90.29 0 0 0-.29.8c-.012.032 1.37.04 6.837.04 5.468 0 6.85-.008 6.838-.04l-.29-.8-.276-.76H2.726l-.276.76Zm-.517 2.09c0 .356.063.508.25.605.122.064.17.065 6.817.065h6.693l.125-.072c.186-.107.243-.248.243-.599v-.289H1.934v.29Z"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem x:Uid="NavigationItem_Settings"
-                                    helpers:NavigationHelper.NavigateTo="SophiApp.ViewModels.SettingsViewModel"
-                                    IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
-                                    IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE713;" Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                        <FontIcon Glyph="&#xE8A9;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem x:Uid="NavigationItem_Settings"
+                                    helpers:NavigationHelper.NavigateTo="views:SettingsPage"
+                                    IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
+                                    IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE713;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+            <!-- The search stands at the bottom of the menu, above "Settings". While only the icons of the menu are shown,
+                 a button stands for the search box: it opens a search box next to itself -->
+            <NavigationView.PaneFooter>
+                <Grid Height="40"
+                      Margin="0, 0, 0, 4">
+                    <AutoSuggestBox x:Name="AutoSuggestBox"
+                                    x:Uid="AutoSuggestBox"
+                                    QueryIcon="Find"
+                                    VerticalAlignment="Center"
+                                    Margin="16, 0, 16, 0"
+                                    IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
+                                    Loaded="AutoSuggestBox_Loaded"
+                                    TextChanged="AutoSuggestBox_TextChanged"
+                                    QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
+                    <Button x:Name="SearchButton"
+                            x:Uid="SearchButton"
+                            Style="{StaticResource NavigationViewPaneSearchButtonStyle}"
+                            Width="40"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="4, 0, 0, 0"
+                            Visibility="Collapsed"
+                            IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
+                            IsTabStop="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
+                        <Button.Flyout>
+                            <Flyout x:Name="SearchFlyout"
+                                    Placement="RightEdgeAlignedBottom"
+                                    helpers:PopupCursor.ResetOnOpen="True">
+                                <Flyout.FlyoutPresenterStyle>
+                                    <Style TargetType="FlyoutPresenter"
+                                           BasedOn="{StaticResource DefaultFlyoutPresenterStyle}">
+                                        <Setter Property="Padding" Value="0"/>
+                                    </Style>
+                                </Flyout.FlyoutPresenterStyle>
+                                <!-- The acrylic of the menus and the lists is put under the color layer when the page is created -->
+                                <Grid x:Name="SearchFlyoutLayers">
+                                    <Border Style="{StaticResource PopupTintLayerStyle}"/>
+                                    <AutoSuggestBox x:Name="FlyoutSearchBox"
+                                                    x:Uid="AutoSuggestBox"
+                                                    QueryIcon="Find"
+                                                    Width="280"
+                                                    Margin="8"
+                                                    TextChanged="AutoSuggestBox_TextChanged"
+                                                    QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
+                                </Grid>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                </Grid>
+            </NavigationView.PaneFooter>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -154,21 +196,21 @@
                 </Grid.RowDefinitions>
                 <Frame x:Name="NavigationFrame"
                        Grid.Row="0"
-                       Margin="30, 10, 0, 10"/>
+                       Margin="32, 10, 0, 10"/>
                 <StackPanel Grid.Row="1">
                     <!-- While the app is busy only the progress line is shown: the reminder and the question come back when it is done -->
                     <InfoBar x:Name="Panel_RestartReminder"
                              x:Uid="Panel_RestartReminder"
                              Severity="Informational"
-                             IsOpen="{x:Bind ViewModel.RestartReminderIsVisible, Mode=TwoWay}"
+                             IsOpen="{x:Bind Choices.RestartReminderIsVisible, Mode=TwoWay}"
                              Visibility="{x:Bind views:ShellPage.GetReminderVisibility(ViewModel.SetUpCustomizationsPanelIsVisible), Mode=OneWay}"/>
                     <Grid x:Name="Panel_ApplyCustomizations"
                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                           BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                           BorderThickness="0, 1, 0, 0"
-                          Padding="16, 8, 26, 8"
+                          Padding="16, 8, 24, 8"
                           ColumnSpacing="8"
-                          Visibility="{x:Bind views:ShellPage.GetApplyPanelVisibility(ViewModel.ApplicableModels.Count, ViewModel.SetUpCustomizationsPanelIsVisible), Mode=OneWay}">
+                          Visibility="{x:Bind views:ShellPage.GetApplyPanelVisibility(Choices.ApplicableModels.Count, ViewModel.SetUpCustomizationsPanelIsVisible), Mode=OneWay}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -185,17 +227,17 @@
                                    TextWrapping="NoWrap"/>
                         <Button x:Uid="Button_Cancel"
                                 Grid.Column="2"
-                                Command="{x:Bind ViewModel.ApplicableModelsClear_Command, Mode=OneWay}"/>
+                                Command="{x:Bind Choices.Clear_Command, Mode=OneWay}"/>
                         <Button x:Uid="Button_Apply"
                                 Grid.Column="3"
                                 Style="{StaticResource AccentButtonStyle}"
-                                Command="{x:Bind ViewModel.ApplicableModelsApply_Command, Mode=OneWay}"/>
+                                Command="{x:Bind Choices.Apply_Command, Mode=OneWay}"/>
                     </Grid>
                     <Grid x:Name="Panel_SetUpCustomizations"
                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                           BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                           BorderThickness="0, 1, 0, 0"
-                          Padding="16, 12, 26, 12"
+                          Padding="16, 12, 24, 12"
                           ColumnSpacing="12">
                         <!-- The status can be long: it takes the free width and is cut with an ellipsis, the progress bar keeps its place on the right -->
                         <Grid.ColumnDefinitions>
@@ -231,25 +273,5 @@
                 </StackPanel>
             </Grid>
         </NavigationView>
-        <AutoSuggestBox x:Name="AutoSuggestBox"
-                        x:Uid="AutoSuggestBox"
-                        QueryIcon="Find"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Left"
-                        Margin="10, 0, 0, 10"
-                        Canvas.ZIndex="2"
-                        IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
-                        Loaded="AutoSuggestBox_Loaded"
-                        TextChanged="AutoSuggestBox_TextChanged"
-                        QuerySubmitted="AutoSuggestBox_QuerySubmitted">
-            <i:Interaction.Behaviors>
-                <interaction:DataTriggerBehavior Binding="{Binding ElementName=PageShell, Path=CurrentWidth}" ComparisonCondition="LessThanOrEqual" Value="1008">
-                    <interaction:ChangePropertyAction TargetObject="{Binding ElementName=AutoSuggestBox}" PropertyName="Visibility" Value="Collapsed"/>
-                </interaction:DataTriggerBehavior>
-                <interaction:DataTriggerBehavior Binding="{Binding ElementName=PageShell, Path=CurrentWidth}" ComparisonCondition="GreaterThan" Value="1008">
-                    <interaction:ChangePropertyAction TargetObject="{Binding ElementName=AutoSuggestBox}" PropertyName="Visibility" Value="Visible"/>
-                </interaction:DataTriggerBehavior>
-            </i:Interaction.Behaviors>
-        </AutoSuggestBox>
     </Grid>
 </Page>

@@ -9,16 +9,14 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <CommandBarFlyout x:Name="FatalErrorPageCommandsFlyout">
-            <CommandBarFlyout.SecondaryCommands>
-                <AppBarButton x:Uid="Page_ContextMenu_OpenLogFile"
-                          Icon="OpenFile"
-                          Click="FatalErrorPageOpenLogFile_Clicked"/>
-                <AppBarButton x:Uid="Page_ContextMenu_OpenLogFolder"
-                          Icon="Folder"
-                          Click="FatalErrorPageOpenLogFolder_Clicked"/>
-            </CommandBarFlyout.SecondaryCommands>
-        </CommandBarFlyout>
+        <MenuFlyout x:Name="FatalErrorPageCommandsFlyout">
+            <MenuFlyoutItem x:Uid="Page_ContextMenu_OpenLogFile"
+                            Icon="OpenFile"
+                            Click="FatalErrorPageOpenLogFile_Clicked"/>
+            <MenuFlyoutItem x:Uid="Page_ContextMenu_OpenLogFolder"
+                            Icon="Folder"
+                            Click="FatalErrorPageOpenLogFolder_Clicked"/>
+        </MenuFlyout>
     </Page.Resources>
 
     <Grid ContextRequested="FatalErrorPage_ContextRequested">

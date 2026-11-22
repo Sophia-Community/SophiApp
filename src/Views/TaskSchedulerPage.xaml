@@ -16,25 +16,51 @@
     <ScrollView x:Name="TaskSchedulerScrollView">
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                     Margin="{StaticResource PageBottomMargin}">
-            <InfoBar x:Uid="TaskSchedulerPage_AboutTasks"
-                     helpers:InfoBarHelper.FormattedMessage="True"
-                     IsOpen="True"
-                     IsClosable="False"
-                     Severity="Informational"
-                     Margin="0, 0, 26, 10"/>
-            <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
-                           ItemTemplate="{StaticResource SettingTemplateSelector}"
-                           Margin="{StaticResource UIControlsPageRightMargin}"
-                           VerticalCacheLength="{x:Bind Models.Count, Mode=OneWay}">
-                <ItemsRepeater.Layout>
-                    <StackLayout Spacing="8"/>
-                </ItemsRepeater.Layout>
-            </ItemsRepeater>
-            <Button x:Uid="TaskSchedulerPage_OpenTaskScheduler"
-                    Style="{StaticResource AccentButtonStyle}"
-                    Margin="0, 20, 0, 20"
-                    HorizontalAlignment="Center"
-                    Command="{x:Bind ViewModel.OpenTaskScheduler_Command, Mode=OneWay}"/>
+            <!-- The notes can be closed. They are as wide as the cards -->
+            <Grid Margin="0, 0, 24, 6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="{StaticResource SettingsContentMaxWidth}"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <InfoBar x:Uid="Page_AboutCurrentState"
+                             helpers:InfoBarHelper.FormattedMessage="True"
+                             Severity="Informational"
+                             IsOpen="{x:Bind Notes.CurrentStateIsOpen, Mode=TwoWay}"
+                             Visibility="{x:Bind Notes.CurrentStateIsOpen, Mode=OneWay}"
+                             Margin="0, 0, 0, 4"/>
+                    <InfoBar x:Uid="TaskSchedulerPage_AboutTasks"
+                             helpers:InfoBarHelper.FormattedMessage="True"
+                             Severity="Informational"
+                             IsOpen="{x:Bind Notes.TasksIsOpen, Mode=TwoWay}"
+                             Visibility="{x:Bind Notes.TasksIsOpen, Mode=OneWay}"
+                             Margin="0, 0, 0, 4"/>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="{StaticResource UIControlsPageRightMargin}">
+                <!-- On a wide window the cards do not stretch over all of it -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="{StaticResource SettingsContentMaxWidth}"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ItemsControl ItemsSource="{x:Bind Models, Mode=OneWay}"
+                              ItemTemplateSelector="{StaticResource SettingTemplateSelector}"
+                              IsTabStop="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="4"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <Button x:Uid="TaskSchedulerPage_OpenTaskScheduler"
+                        Grid.Row="1"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Margin="0, 20, 0, 20"
+                        HorizontalAlignment="Center"
+                        Command="{x:Bind ViewModel.OpenTaskScheduler_Command, Mode=OneWay}"/>
+            </Grid>
         </StackPanel>
     </ScrollView>
 </Page>

@@ -27,5 +27,32 @@
                 <controls:SettingComboBox/>
             </DataTemplate>
         </helpers:UIDataTemplateSelector.ComboBoxTemplate>
+        <helpers:UIDataTemplateSelector.UserFoldersTemplate>
+            <DataTemplate>
+                <controls:SettingUserFolders/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.UserFoldersTemplate>
+        <helpers:UIDataTemplateSelector.CheckListTemplate>
+            <DataTemplate>
+                <controls:SettingCheckList/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.CheckListTemplate>
+        <!-- The subtitle of a group. Together with the gap between the items it stands 32 px below the previous card and 6 px above the next one -->
+        <helpers:UIDataTemplateSelector.GroupHeaderTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Title}"
+                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                           AutomationProperties.HeadingLevel="Level2"
+                           Margin="1, 28, 0, 2"/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.GroupHeaderTemplate>
+        <helpers:UIDataTemplateSelector.FirstGroupHeaderTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Title}"
+                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                           AutomationProperties.HeadingLevel="Level2"
+                           Margin="1, 6, 0, 2"/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.FirstGroupHeaderTemplate>
     </helpers:UIDataTemplateSelector>
 </ResourceDictionary>

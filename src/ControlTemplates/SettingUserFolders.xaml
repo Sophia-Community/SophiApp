@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SophiApp.ControlTemplates.SettingUserFolders"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:helpers="using:SophiApp.Helpers"
+    xmlns:models="using:SophiApp.Models"
+    mc:Ignorable="d">
+
+
+    <StackPanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ChangeStates">
+                <VisualState x:Name="Changed">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding IsSelected}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ChangedOutline.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <!-- A closed notice takes no room, so the cards stand at the same distance from each other -->
+            <VisualStateGroup x:Name="NoticeStates">
+                <VisualState x:Name="NoticeShown">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding ExceptionTextIsVisible}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Notice.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel.ContextFlyout>
+            <MenuFlyout helpers:PopupCursor.ResetOnOpen="True">
+                <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyTitle"
+                                Icon="Copy"
+                                Click="CopyTitle_Click"/>
+                <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyDescription"
+                                Icon="Copy"
+                                Click="CopyDescription_Click"/>
+            </MenuFlyout>
+        </StackPanel.ContextFlyout>
+        <Grid>
+            <!-- A row for each folder: its location, a menu to choose a new one, and a button that chooses the default one -->
+            <toolkit:SettingsExpander x:Name="Expander"
+                                      AutomationProperties.Name="{Binding Title}"
+                                      IsExpanded="True"
+                                      IsEnabled="{Binding IsEnabled}">
+                <toolkit:SettingsExpander.Header>
+                    <TextBlock Text="{Binding Title, Converter={StaticResource UnbrokenShortcutsConverter}}"
+                               TextWrapping="Wrap"/>
+                </toolkit:SettingsExpander.Header>
+                <toolkit:SettingsExpander.Description>
+                    <TextBlock x:Name="DescriptionText"
+                               TextWrapping="Wrap"/>
+                </toolkit:SettingsExpander.Description>
+                <!-- The rows are not built by the list of the expander: that list builds its rows anew while the page is scrolled,
+                     and they flicker. The rows start at the left edge of the card, like its title -->
+                <toolkit:SettingsExpander.ItemsHeader>
+                    <ItemsControl x:Name="FoldersList"
+                                  IsTabStop="False">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="models:UserFolderItem">
+                                <!-- A row looks like a card of the expander. The names stand in a column as wide as the longest of them,
+                                     whatever the language is, and the location takes all the room that is left -->
+                                <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                      BorderThickness="0, 1, 0, 0"
+                                      MinHeight="52"
+                                      Padding="16, 8, 16, 8"
+                                      Loaded="FolderRow_Loaded">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <FontIcon Glyph="{x:Bind Glyph}"
+                                              FontSize="20"
+                                              Margin="2, 0, 20, 0"
+                                              Foreground="{ThemeResource AccentFillColorDefaultBrush}"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="{x:Bind Title}"
+                                               VerticalAlignment="Center"/>
+                                    <!-- The location can be typed or pasted: it is taken when Enter is pressed or the box is left.
+                                         A long one is shown whole in the tooltip -->
+                                    <Grid Grid.Column="2"
+                                          Margin="20, 0, 8, 0"
+                                          VerticalAlignment="Center">
+                                        <TextBox Text="{x:Bind Path, Mode=OneWay}"
+                                                 ToolTipService.ToolTip="{x:Bind Path, Mode=OneWay}"
+                                                 AutomationProperties.Name="{x:Bind Title}"
+                                                 IsEnabled="{x:Bind IsEnabled, Mode=OneWay}"
+                                                 IsSpellCheckEnabled="False"
+                                                 Tag="{x:Bind}"
+                                                 KeyDown="PathBox_KeyDown"
+                                                 LostFocus="PathBox_LostFocus"
+                                                 MinWidth="120"/>
+                                        <!-- Marks a location that was typed -->
+                                        <Border BorderThickness="1"
+                                                BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                                                CornerRadius="{ThemeResource ControlCornerRadius}"
+                                                IsHitTestVisible="False"
+                                                Visibility="{x:Bind TypedMarkVisibility, Mode=OneWay}"/>
+                                    </Grid>
+                                    <Grid Grid.Column="3"
+                                          Margin="0, 0, 8, 0"
+                                          VerticalAlignment="Center">
+                                        <DropDownButton x:Uid="UserFolder_Change"
+                                                        IsEnabled="{x:Bind IsEnabled, Mode=OneWay}"
+                                                        Tag="{x:Bind}">
+                                            <DropDownButton.Flyout>
+                                                <MenuFlyout Placement="BottomEdgeAlignedRight"
+                                                            helpers:PopupCursor.ResetOnOpen="True"
+                                                            Opening="ChangeMenu_Opening">
+                                                    <MenuFlyoutItem x:Uid="UserFolder_Browse"
+                                                                    Click="Browse_Click">
+                                                        <MenuFlyoutItem.Icon>
+                                                            <FontIcon Glyph="&#xE8DA;"/>
+                                                        </MenuFlyoutItem.Icon>
+                                                    </MenuFlyoutItem>
+                                                </MenuFlyout>
+                                            </DropDownButton.Flyout>
+                                        </DropDownButton>
+                                        <!-- Marks a location that was chosen with this button -->
+                                        <Border BorderThickness="1"
+                                                BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                                                CornerRadius="{ThemeResource ControlCornerRadius}"
+                                                IsHitTestVisible="False"
+                                                Visibility="{x:Bind MenuMarkVisibility, Mode=OneWay}"/>
+                                    </Grid>
+                                    <!-- Pressed, the button shows that the default location is chosen. Pressed again, it takes the choice back -->
+                                    <ToggleButton x:Uid="UserFolder_Default"
+                                                  Grid.Column="4"
+                                                  Tag="{x:Bind}"
+                                                  IsChecked="{x:Bind DefaultIsChosen, Mode=OneWay}"
+                                                  IsEnabled="{x:Bind DefaultIsAvailable, Mode=OneWay}"
+                                                  Click="Default_Click"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </toolkit:SettingsExpander.ItemsHeader>
+            </toolkit:SettingsExpander>
+            <!-- Marks a setting that is going to be changed -->
+            <Border x:Name="ChangedOutline"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                    CornerRadius="{ThemeResource ControlCornerRadius}"
+                    IsHitTestVisible="False"
+                    Visibility="Collapsed"/>
+        </Grid>
+        <!-- The reason why a location cannot be chosen, or what is left to do after the folders are moved -->
+        <InfoBar x:Name="Notice"
+                 Visibility="Collapsed"
+                 Margin="0, 2, 0, 0"
+                 Severity="Warning"
+                 IsClosable="False"
+                 IsOpen="{Binding ExceptionTextIsVisible}"
+                 Message="{Binding ExceptionText}"/>
+    </StackPanel>
+</UserControl>

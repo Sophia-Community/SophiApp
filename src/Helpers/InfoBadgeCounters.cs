@@ -8,7 +8,7 @@ namespace SophiApp.Helpers
     using System.Runtime.CompilerServices;
 
     /// <summary>
-    /// Сontains the info badges counters state by <see cref="UICategoryTag"/>.
+    /// Contains the info badges counters state by <see cref="UICategoryTag"/>.
     /// </summary>
     public class InfoBadgeCounters : INotifyPropertyChanged
     {
@@ -80,8 +80,9 @@ namespace SophiApp.Helpers
 
         /// <summary>
         /// Gets the info badge counter of the menu item that has both the UWP apps and the gaming settings.
+        /// Uninstalling apps is one thing to do, however many of them are chosen.
         /// </summary>
-        public int UwpAndGaming => Uwp + Gaming;
+        public int UwpAndGaming => (Uwp > 0 ? 1 : 0) + Gaming;
 
         /// <summary>
         /// Gets personalization category info badge counter.

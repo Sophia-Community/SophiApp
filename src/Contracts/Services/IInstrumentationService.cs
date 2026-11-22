@@ -53,6 +53,22 @@ namespace SophiApp.Contracts.Services
         IEnumerable<ManagementObject> GetCimInstance(string nameSpace, string className);
 
         /// <summary>
+        /// Calls a static method of a WMI class, as the cmdlets that are built on WMI do.
+        /// </summary>
+        /// <param name="nameSpace">The namespace of the class.</param>
+        /// <param name="className">The name of the class.</param>
+        /// <param name="method">The name of the method.</param>
+        /// <param name="arguments">The arguments of the method, if it has any.</param>
+        /// <returns>False if the method could not be called.</returns>
+        bool TryInvokeStaticMethod(string nameSpace, string className, string method, IReadOnlyDictionary<string, object>? arguments = null);
+
+        /// <summary>
+        /// Starts decrypting the system drive that is encrypted with BitLocker, as the cmdlet Disable-BitLocker does.
+        /// </summary>
+        /// <returns>False if the decryption was not started.</returns>
+        bool TryDecryptSystemDrive();
+
+        /// <summary>
         /// Get data from the PowerPlan class.
         /// </summary>
         List<ManagementObject> GetPowerPlans();

@@ -21,7 +21,7 @@ namespace SophiApp.Views
         {
             InitializeComponent();
             var dataService = App.GetService<ICommonDataService>();
-            ViewModel = App.GetService<ShellViewModel>();
+            ViewModel = App.GetService<StartupViewModel>();
             RequirementsResult_1 = dataService.RequirementsResult_1;
             RequirementsResult_2 = dataService.RequirementsResult_2;
 
@@ -30,9 +30,9 @@ namespace SophiApp.Views
         }
 
         /// <summary>
-        /// Gets <see cref="ShellViewModel"/>.
+        /// Gets <see cref="StartupViewModel"/>.
         /// </summary>
-        public ShellViewModel ViewModel { get; }
+        public StartupViewModel ViewModel { get; }
 
         /// <summary>
         /// Gets first localized description string of <see cref="ICommonDataService.RequirementsResult_1"/>.

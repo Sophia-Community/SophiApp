@@ -60,6 +60,12 @@ namespace SophiApp.Models
         }
 
         /// <inheritdoc/>
+        public override bool IsChanged => IsChecked;
+
+        /// <inheritdoc/>
+        public override string ChosenValue => Title;
+
+        /// <inheritdoc/>
         public override void GetState()
         {
             IsChecked = false;

@@ -92,6 +92,11 @@ namespace SophiApp.ControlTemplates
         public ShellViewModel ViewModel { get; }
 
         /// <summary>
+        /// Gets the view model of the chosen settings.
+        /// </summary>
+        public ChosenSettingsViewModel ChosenSettings { get; } = App.GetService<ChosenSettingsViewModel>();
+
+        /// <summary>
         /// Gets or sets the id of the option selected in the model: its number starting from 1, or the id of a list item.
         /// </summary>
         public string SelectedId
@@ -155,11 +160,16 @@ namespace SophiApp.ControlTemplates
 
             // The id is the number of the option, starting from 1
             var iconGroup = model as UIIconRadioButtonsModel;
+            var pictureGroup = model as UIRadioButtonsGroupModel;
             var linkHint = "SettingOption_OpenWebPage".GetLocalized();
 
-            return GetOptionTitles(model).Select((title, index) => new SettingOption((index + 1).ToString(), title, GetOptionIcon(iconGroup?.GetOptionIcon(index + 1), OptionIconWidth))
+            // The pictures of a plain choice are signs and get a square room, the logos of an icon choice can be wordmarks and get a wide one
+            var iconWidth = iconGroup is null ? OptionIconHeight : OptionIconWidth;
+
+            return GetOptionTitles(model).Select((title, index) => new SettingOption((index + 1).ToString(), title, GetOptionIcon(iconGroup?.GetOptionIcon(index + 1) ?? pictureGroup?.GetOptionIcon(index + 1), iconWidth))
             {
-                IconWidth = OptionIconWidth,
+                IconWidth = iconWidth,
+                Glyph = pictureGroup?.GetOptionGlyph(index + 1) ?? string.Empty,
                 Link = iconGroup?.Links.ElementAtOrDefault(index) ?? string.Empty,
                 LinkHint = linkHint,
             });
@@ -187,7 +197,7 @@ namespace SophiApp.ControlTemplates
                 Card.ClearValue(SettingsCard.DescriptionProperty);
             }
 
-            if (args.NewValue is UIChoiceModel choice)
+            if (args.NewValue is UIChoiceModel { IconIndex: >= 0 } choice)
             {
                 Card.HeaderIcon = SettingIcon.Create(choice.IconIndex);
             }
@@ -252,7 +262,7 @@ namespace SophiApp.ControlTemplates
                 // The button pressed again takes the reset back, and the option that is set in Windows is shown again
                 group.ResetRequested = !group.ResetRequested;
                 group.SelectedId = group.ResetRequested ? NoOptionId : group.DefaultId.ToString();
-                ViewModel.IconRadioButtonsClicked_Command.Execute(group);
+                ChosenSettings.ChoiceChanged_Command.Execute(group);
             }
 
             // A toggle button switches by itself when it is pressed; what it shows comes from the choice only
@@ -271,17 +281,17 @@ namespace SophiApp.ControlTemplates
             {
                 case UIRadioButtonsGroupModel group:
                     group.SelectedId = option.Id;
-                    ViewModel.RadioButtonsGroupClicked_Command.Execute(group);
+                    ChosenSettings.ChoiceChanged_Command.Execute(group);
                     break;
                 case UIChoiceModel choice:
                     choice.SelectedId = option.Id;
-                    ViewModel.ChoiceClicked_Command.Execute(choice);
+                    ChosenSettings.ChoiceChanged_Command.Execute(choice);
                     break;
                 case UIIconRadioButtonsModel group:
                     // An option replaces the reset
                     group.ResetRequested = false;
                     group.SelectedId = option.Id;
-                    ViewModel.IconRadioButtonsClicked_Command.Execute(group);
+                    ChosenSettings.ChoiceChanged_Command.Execute(group);
                     break;
             }
         }

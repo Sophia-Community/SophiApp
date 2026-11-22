@@ -14,41 +14,36 @@ using SophiApp.Extensions;
 using SophiApp.Helpers;
 using SophiApp.ViewModels;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Windows.Foundation;
 using Windows.System;
 
 /// <summary>
 /// Implements the <see cref="ShellPage"/> class.
 /// </summary>
-public sealed partial class ShellPage : Page, INotifyPropertyChanged
+public sealed partial class ShellPage : Page
 {
     // The room a menu item needs besides its name: the icon on the left, the counter of chosen settings and the margins on the right
     private const double PaneItemChromeWidth = 100;
     private const double PaneMinLength = 180;
     private const double PaneMaxLength = 320;
 
-    // The search box is as wide as the menu without its margins
-    private const double SearchBoxMargins = 15;
-
-    // The fill of the selected menu item in the light theme when only the icons are left
-    private static readonly Windows.UI.Color LightIconsOnlyFill = Windows.UI.Color.FromArgb(0x80, 0x8A, 0xC5, 0xFC);
-    private static readonly Dictionary<GradientStop, Windows.UI.Color> BandColors = [];
-
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer searchTimer;
-    private double currentWidth = default;
     private string announcedStatus = string.Empty;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ShellPage"/> class.
     /// </summary>
     /// <param name="viewModel"><see cref="ShellViewModel"/>.</param>
+    /// <param name="choices"><see cref="ChosenSettingsViewModel"/>.</param>
+    /// <param name="search"><see cref="SearchViewModel"/>.</param>
     /// <param name="commonDataService"><see cref="ICommonDataService"/>.</param>
-    public ShellPage(ShellViewModel viewModel, ICommonDataService commonDataService)
+    public ShellPage(ShellViewModel viewModel, ChosenSettingsViewModel choices, SearchViewModel search, ICommonDataService commonDataService)
     {
         InitializeComponent();
-        CurrentWidth = ActualWidth;
+        SetSearchFlyoutBackdrop();
         ViewModel = viewModel;
+        Choices = choices;
+        Search = search;
         ViewModel.NavigationService.Frame = NavigationFrame;
         ViewModel.NavigationViewService.Initialize(NavigationViewControl);
         App.MainWindow.ExtendsContentIntoTitleBar = true;
@@ -66,14 +61,9 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
         searchTimer = DispatcherQueue.CreateTimer();
         searchTimer.Interval = TimeSpan.FromMilliseconds(300);
         searchTimer.IsRepeating = false;
-        searchTimer.Tick += (_, _) => ViewModel.Search_Command.Execute(AutoSuggestBox.Text);
+        searchTimer.Tick += (_, _) => Search.Search_Command.Execute(AutoSuggestBox.Text);
         ViewModel.PropertyChanged += OnViewModelPropertyChanged;
     }
-
-    /// <summary>
-    /// Property change event.
-    /// </summary>
-    public event PropertyChangedEventHandler? PropertyChanged;
 
     /// <summary>
     /// Gets <see cref="ShellViewModel"/>.
@@ -81,21 +71,14 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
     public ShellViewModel ViewModel { get; }
 
     /// <summary>
-    /// Gets a value indicating current width.
+    /// Gets <see cref="ChosenSettingsViewModel"/>.
     /// </summary>
-    public double CurrentWidth
-    {
-        get
-        {
-            return currentWidth;
-        }
+    public ChosenSettingsViewModel Choices { get; }
 
-        private set
-        {
-            currentWidth = value;
-            OnPropertyChanged(nameof(CurrentWidth));
-        }
-    }
+    /// <summary>
+    /// Gets <see cref="SearchViewModel"/>.
+    /// </summary>
+    public SearchViewModel Search { get; }
 
     private static KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)
     {
@@ -144,47 +127,56 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
         return null;
     }
 
-    // In the light theme the selected menu item is a band that fades along the item. When only the icons are left,
-    // the band is squeezed into a small square and looks like a spot, so the item gets an even fill there
-    private static void SetSelectedItemFill(bool iconsOnly)
-    {
-        string[] keys = ["NavigationViewItemBackgroundSelected", "NavigationViewItemBackgroundSelectedPointerOver", "NavigationViewItemBackgroundSelectedPressed"];
-
-        foreach (var dictionary in Application.Current.Resources.MergedDictionaries)
-        {
-            if (!dictionary.ThemeDictionaries.TryGetValue("Light", out var themeResources) || themeResources is not ResourceDictionary resources)
-            {
-                continue;
-            }
-
-            foreach (var key in keys)
-            {
-                if (!resources.TryGetValue(key, out var resource) || resource is not LinearGradientBrush band)
-                {
-                    continue;
-                }
-
-                foreach (var stop in band.GradientStops)
-                {
-                    // The colors of the band are remembered when they are replaced for the first time
-                    _ = BandColors.TryAdd(stop, stop.Color);
-                    stop.Color = iconsOnly ? LightIconsOnlyFill : BandColors[stop];
-                }
-            }
-        }
-    }
-
-    private void PageShell_SizeChanged(object sender, SizeChangedEventArgs e) => CurrentWidth = ActualWidth;
-
-    private void OnPropertyChanged([CallerMemberName] string? name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
         TitleBarHelper.UpdateTitleBar(RequestedTheme);
         FitPaneToMenuItems();
-        SetSelectedItemFill(iconsOnly: NavigationViewControl.DisplayMode != NavigationViewDisplayMode.Expanded);
+        ShowSearchBoxOrButton();
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
+
+        var searchAccelerator = new KeyboardAccelerator { Key = VirtualKey.F, Modifiers = VirtualKeyModifiers.Control };
+        searchAccelerator.Invoked += OnSearchAcceleratorInvoked;
+        KeyboardAccelerators.Add(searchAccelerator);
+    }
+
+    // Ctrl+F goes to the search box, or opens the one of the search button
+    private void OnSearchAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    {
+        args.Handled = true;
+
+        if (!ViewModel.NavigationViewHitTestVisible)
+        {
+            return;
+        }
+
+        if (AutoSuggestBox.Visibility == Visibility.Visible)
+        {
+            _ = AutoSuggestBox.Focus(FocusState.Keyboard);
+            return;
+        }
+
+        SearchFlyout.ShowAt(SearchButton);
+    }
+
+    // The search box of the search button lies on the same acrylic as the menus and the lists.
+    // In high contrast it keeps the system colors
+    private void SetSearchFlyoutBackdrop()
+    {
+        if (new Windows.UI.ViewManagement.AccessibilitySettings().HighContrast)
+        {
+            return;
+        }
+
+        var presenterStyle = new Style(typeof(FlyoutPresenter)) { BasedOn = SearchFlyout.FlyoutPresenterStyle };
+        presenterStyle.Setters.Add(new Setter(BackgroundProperty, new SolidColorBrush(Microsoft.UI.Colors.Transparent)));
+        SearchFlyout.FlyoutPresenterStyle = presenterStyle;
+        SearchFlyout.ShouldConstrainToRootBounds = false;
+        SearchFlyoutLayers.Children.Insert(0, new SystemBackdropElement
+        {
+            SystemBackdrop = new DesktopAcrylicBackdrop(),
+            CornerRadius = (CornerRadius)Application.Current.Resources["OverlayCornerRadius"],
+        });
     }
 
     // The menu is as wide as its longest name needs, whatever the language is
@@ -192,7 +184,7 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
     {
         var widestName = 0d;
 
-        foreach (var item in NavigationViewControl.MenuItems.OfType<NavigationViewItem>())
+        foreach (var item in NavigationViewControl.MenuItems.Concat(NavigationViewControl.FooterMenuItems).OfType<NavigationViewItem>())
         {
             if (item.Visibility == Visibility.Visible && item.Content is string name)
             {
@@ -204,7 +196,6 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
 
         var paneLength = Math.Clamp(Math.Ceiling(widestName) + PaneItemChromeWidth, PaneMinLength, PaneMaxLength);
         NavigationViewControl.OpenPaneLength = paneLength;
-        AutoSuggestBox.Width = paneLength - SearchBoxMargins;
     }
 
     private void AutoSuggestBox_Loaded(object sender, RoutedEventArgs e) => SetSearchBoxTabStop();
@@ -243,6 +234,14 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
 
     private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
+        // The search box of the menu and the one of the search button show the same text
+        var other = ReferenceEquals(sender, AutoSuggestBox) ? FlyoutSearchBox : AutoSuggestBox;
+
+        if (other.Text != sender.Text)
+        {
+            other.Text = sender.Text;
+        }
+
         searchTimer.Stop();
         searchTimer.Start();
     }
@@ -250,7 +249,23 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
     private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
     {
         searchTimer.Stop();
-        ViewModel.Search_Command.Execute(args.QueryText);
+        Search.Search_Command.Execute(args.QueryText);
+
+        // The search box of the search button gives the room back to what is found
+        SearchFlyout.Hide();
+    }
+
+    // The menu with the names has the search box. When only the icons are left, a button that opens a search box stands for it
+    private void ShowSearchBoxOrButton()
+    {
+        var menuHasNames = NavigationViewControl.DisplayMode == NavigationViewDisplayMode.Expanded;
+        AutoSuggestBox.Visibility = menuHasNames ? Visibility.Visible : Visibility.Collapsed;
+        SearchButton.Visibility = menuHasNames ? Visibility.Collapsed : Visibility.Visible;
+
+        if (menuHasNames)
+        {
+            SearchFlyout.Hide();
+        }
     }
 
     private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
@@ -262,7 +277,7 @@ public sealed partial class ShellPage : Page, INotifyPropertyChanged
 
     private void NavigationViewControl_DisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
-        SetSelectedItemFill(iconsOnly: sender.DisplayMode != NavigationViewDisplayMode.Expanded);
+        ShowSearchBoxOrButton();
 
         AppTitleBar.Margin = new Thickness()
         {

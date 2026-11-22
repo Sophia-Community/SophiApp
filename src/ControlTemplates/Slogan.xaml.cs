@@ -5,6 +5,7 @@
 namespace SophiApp.ControlTemplates
 {
     using Microsoft.UI.Xaml.Controls;
+    using SophiApp.Helpers;
 
     /// <summary>
     /// The app slogan with a beating heart.
@@ -14,6 +15,16 @@ namespace SophiApp.ControlTemplates
         /// <summary>
         /// Initializes a new instance of the <see cref="Slogan"/> class.
         /// </summary>
-        public Slogan() => InitializeComponent();
+        public Slogan()
+        {
+            InitializeComponent();
+            Loaded += (_, _) =>
+            {
+                if (SystemAnimations.AreEnabled)
+                {
+                    Heartbeat.Begin();
+                }
+            };
+        }
     }
 }

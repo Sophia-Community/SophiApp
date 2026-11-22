@@ -12,6 +12,8 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class OsService : IOsService
     {
+        private static readonly TimeSpan StartTimeout = TimeSpan.FromSeconds(30);
+
         /// <inheritdoc/>
         public ServiceControllerStatus GetStatus(string name)
         {
@@ -64,37 +66,27 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public void TrySetStartMode(string name, ServiceStartMode mode)
+        public void Start(string name, ServiceStartMode? startMode = null)
         {
-            try
+            using var service = new ServiceController(name);
+
+            if (startMode is { } mode && service.StartType != mode)
             {
-                using var service = new ServiceController(name);
                 SetStartMode(service, mode);
             }
-            catch (Exception ex)
-            {
-                // The service is missing or cannot be changed: the app goes on
-                App.Logger.LogSkippedException($"Setting the {mode} start mode of the {name} service", ex);
-            }
-        }
 
-        /// <inheritdoc/>
-        public void TryStart(string name)
-        {
-            try
+            if (service.Status == ServiceControllerStatus.Running)
             {
-                using var service = new ServiceController(name);
+                return;
+            }
 
-                if (service.Status != ServiceControllerStatus.Running)
-                {
-                    service.Start();
-                }
-            }
-            catch (Exception ex)
+            // A service that is already starting is only waited for
+            if (service.Status != ServiceControllerStatus.StartPending)
             {
-                // The service is missing or cannot be started: the app goes on
-                App.Logger.LogSkippedException($"Starting the {name} service", ex);
+                service.Start();
             }
+
+            service.WaitForStatus(ServiceControllerStatus.Running, StartTimeout);
         }
 
         [DllImport("advapi32.dll", EntryPoint = "CloseServiceHandle")]

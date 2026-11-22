@@ -6,34 +6,57 @@
     xmlns:helpers="using:SophiApp.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="using:SophiApp.ViewModels"
-    d:DataContext="{d:DesignInstance Type=vm:SecurityViewModel}"
     mc:Ignorable="d">
 
     <ScrollView x:Name="SecurityScrollView">
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
-            <InfoBar x:Uid="Page_AboutPolicies"
-                     helpers:InfoBarHelper.FormattedMessage="True"
-                     IsOpen="True"
-                     IsClosable="False"
-                     Severity="Informational"
-                     Margin="0, 0, 26, 10"/>
-            <Grid x:Name="ItemsContainerGrid">
-                <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
-                               ItemTemplate="{StaticResource SettingTemplateSelector}"
-                               VerticalCacheLength="{x:Bind Models.Count, Mode=OneWay}"
-                               Margin="{StaticResource SettingsListMargin}">
-                    <ItemsRepeater.Layout>
-                        <StackLayout Spacing="8"/>
-                    </ItemsRepeater.Layout>
-                </ItemsRepeater>
+            <!-- The notes can be closed. They are as wide as the cards -->
+            <Grid Margin="0, 0, 24, 6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="{StaticResource SettingsContentMaxWidth}"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <InfoBar x:Uid="Page_AboutCurrentState"
+                             helpers:InfoBarHelper.FormattedMessage="True"
+                             Severity="Informational"
+                             IsOpen="{x:Bind Notes.CurrentStateIsOpen, Mode=TwoWay}"
+                             Visibility="{x:Bind Notes.CurrentStateIsOpen, Mode=OneWay}"
+                             Margin="0, 0, 0, 4"/>
+                    <InfoBar x:Uid="Page_AboutPolicies"
+                             helpers:InfoBarHelper.FormattedMessage="True"
+                             Severity="Informational"
+                             IsOpen="{x:Bind Notes.PoliciesIsOpen, Mode=TwoWay}"
+                             Visibility="{x:Bind Notes.PoliciesIsOpen, Mode=OneWay}"
+                             Margin="0, 0, 0, 4"/>
+                </StackPanel>
             </Grid>
-            <Button x:Uid="SecurityPage_OpenEventViewer"
-                    Style="{StaticResource AccentButtonStyle}"
-                    Margin="0, 10, 0, 20"
-                    HorizontalAlignment="Center"
-                    Visibility="{x:Bind ViewModel.EventViewerButtonIsVisible, Mode=OneWay}"
-                    Command="{x:Bind ViewModel.OpenEventViewer_Command, Mode=OneWay}"/>
+            <Grid x:Name="ItemsContainerGrid"
+                  Margin="{StaticResource SettingsListMargin}">
+                <!-- On a wide window the cards do not stretch over all of it -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="{StaticResource SettingsContentMaxWidth}"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ItemsControl ItemsSource="{x:Bind Models, Mode=OneWay}"
+                              ItemTemplateSelector="{StaticResource SettingTemplateSelector}"
+                              IsTabStop="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="4"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <Button x:Uid="SecurityPage_OpenEventViewer"
+                        Grid.Row="1"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Margin="0, 10, 0, 10"
+                        HorizontalAlignment="Center"
+                        Visibility="{x:Bind Choices.EventViewerButtonIsVisible, Mode=OneWay}"
+                        Command="{x:Bind ViewModel.OpenEventViewer_Command, Mode=OneWay}"/>
+            </Grid>
         </StackPanel>
     </ScrollView>
 </Page>

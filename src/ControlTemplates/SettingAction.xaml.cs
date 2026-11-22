@@ -43,6 +43,11 @@ namespace SophiApp.ControlTemplates
         /// </summary>
         public ShellViewModel ViewModel { get; }
 
+        /// <summary>
+        /// Gets the view model of the chosen settings.
+        /// </summary>
+        public ChosenSettingsViewModel ChosenSettings { get; } = App.GetService<ChosenSettingsViewModel>();
+
         private static string GetDescription(object? model) => (model as UIActionModel)?.Description ?? string.Empty;
 
         private void Follow(UIActionModel? action)
@@ -75,9 +80,11 @@ namespace SophiApp.ControlTemplates
 
         private void ActionButton_Click(object sender, RoutedEventArgs e)
         {
+            // The button pressed again takes the choice back
             if (DataContext is UIActionModel action)
             {
-                ViewModel.UIModelClicked_Command.Execute(action);
+                action.IsRequested = !action.IsRequested;
+                ChosenSettings.ChoiceChanged_Command.Execute(action);
             }
 
             // A toggle button switches by itself when it is pressed; what it shows comes from the choice only

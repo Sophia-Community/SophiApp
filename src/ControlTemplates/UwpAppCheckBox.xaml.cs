@@ -63,6 +63,9 @@ namespace SophiApp.ControlTemplates
             AppNames.Opacity = isEnabled ? 1 : 0.4;
         }
 
+        private void Name_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
+            => ToolTipService.SetToolTip(sender, sender.IsTextTrimmed ? sender.Text : null);
+
         private void CopyTitle_Click(object sender, RoutedEventArgs e)
             => ContextMenuHelper.CopyToClipboard((DataContext as UIModel)?.Name);
 

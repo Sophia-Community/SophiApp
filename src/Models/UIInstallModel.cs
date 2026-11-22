@@ -114,9 +114,39 @@ namespace SophiApp.Models
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the installation or the uninstallation is chosen to be done.
+        /// </summary>
+        public bool IsRequested { get; private set; }
+
+        /// <inheritdoc/>
+        public override bool IsChanged => IsRequested;
+
+        /// <inheritdoc/>
+        public override string ChosenValue => InstallRequested ? "Install" : "Uninstall";
+
+        /// <summary>
+        /// Chooses the installation or the uninstallation of the package. The same action chosen again is taken back.
+        /// </summary>
+        /// <param name="install">True to install or update, false to uninstall.</param>
+        public void Request(bool install)
+        {
+            if (IsRequested && InstallRequested == install)
+            {
+                IsRequested = false;
+                return;
+            }
+
+            InstallRequested = install;
+            IsRequested = true;
+        }
+
         /// <inheritdoc/>
         public override void GetState()
         {
+            // The choice is either applied or canceled by now
+            IsRequested = false;
+
             try
             {
                 State = accessor.Invoke();

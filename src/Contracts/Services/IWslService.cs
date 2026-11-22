@@ -16,6 +16,11 @@ namespace SophiApp.Contracts.Services
         IReadOnlyList<(string Family, string Name, string FriendlyName)> GetDistributions();
 
         /// <summary>
+        /// Starts downloading the list of the Linux distributions in the background, so the first <see cref="GetDistributions"/> does not wait for the network.
+        /// </summary>
+        void BeginGetDistributions();
+
+        /// <summary>
         /// Gets the names of the distributions that are already installed for the current user.
         /// </summary>
         IReadOnlyList<string> GetInstalledDistributions();

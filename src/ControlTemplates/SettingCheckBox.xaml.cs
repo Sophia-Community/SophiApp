@@ -37,6 +37,11 @@ namespace SophiApp.ControlTemplates
         /// </summary>
         public ShellViewModel ViewModel { get; }
 
+        /// <summary>
+        /// Gets the view model of the chosen settings.
+        /// </summary>
+        public ChosenSettingsViewModel ChosenSettings { get; } = App.GetService<ChosenSettingsViewModel>();
+
         private static string GetDescription(object? model) => model switch
         {
             UICheckBoxModel checkBox => checkBox.Description,

@@ -30,7 +30,7 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        GamingModels = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.Gaming));
+        GamingModels = new(ViewModel.SettingModels.FilterByTag(UICategoryTag.Gaming));
 
         // Windows 11 LTSC 2024 has no UWP apps to uninstall
         UwpAppsPanel.Visibility = App.GetService<ICommonDataService>().OsProperties.IsLTSC ? Visibility.Collapsed : Visibility.Visible;
@@ -45,6 +45,11 @@ public sealed partial class UwpPage : Page, INotifyPropertyChanged
     /// Gets view model for UWP page.
     /// </summary>
     public ShellViewModel ViewModel { get; }
+
+    /// <summary>
+    /// Gets the notes at the top of the page.
+    /// </summary>
+    public PageNotesViewModel Notes { get; } = App.GetService<PageNotesViewModel>();
 
     /// <summary>
     /// Gets a value indicating current width.

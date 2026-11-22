@@ -139,10 +139,7 @@
     <value>Security</value>
   </data>
   <data name="NavigationItem_ContextMenu.Content" xml:space="preserve">
-    <value>Context Menu</value>
-  </data>
-  <data name="NavigationItem_ProVersion.Content" xml:space="preserve">
-    <value>PRO version</value>
+    <value>Context menu</value>
   </data>
   <data name="NavigationItem_Settings.Content" xml:space="preserve">
     <value>Settings</value>
@@ -155,6 +152,9 @@
   </data>
   <data name="Control_Slogan.Text" xml:space="preserve">
     <value>With a passion for tweaking</value>
+  </data>
+  <data name="Control_SloganEnd.Text" xml:space="preserve">
+    <value>Wisely.</value>
   </data>
   <data name="SettingsPage_SelectedTheme.Header" xml:space="preserve">
     <value>Theme</value>
@@ -181,10 +181,10 @@
     <value>The logged-in user "{0}" doesn't have admin rights.</value>
   </data>
   <data name="OsRequirements_RunFromLoggedUser" xml:space="preserve">
-    <value>Checking current user's rights...</value>
+    <value>Checking current user's rights…</value>
   </data>
   <data name="OsRequirements_GetHarmfulTweaker" xml:space="preserve">
-    <value>Checking for harmful tweakers...</value>
+    <value>Checking for harmful tweakers…</value>
   </data>
   <data name="OsRequirements_HarmfulTweakerFound" xml:space="preserve">
     <value>Windows stability may have been compromised by using {0}.</value>
@@ -217,16 +217,16 @@
     <value>The "{0}" component of Microsoft Defender is missing.</value>
   </data>
   <data name="OsRequirements_GetRebootPending" xml:space="preserve">
-    <value>Checking pending reboot status...</value>
+    <value>Checking pending reboot status…</value>
   </data>
   <data name="OsRequirements_GetAppNewVersion" xml:space="preserve">
-    <value>Checking the latest SophiApp for Windows version...</value>
+    <value>Checking the latest SophiApp for Windows version…</value>
   </data>
   <data name="OsRequirements_GetDefenderComponents" xml:space="preserve">
-    <value>Checking Microsoft Defender components status...</value>
+    <value>Checking Microsoft Defender components status…</value>
   </data>
   <data name="OsRequirements_ReadWindowsSettings" xml:space="preserve">
-    <value>Reading Windows settings...</value>
+    <value>Reading Windows settings…</value>
   </data>
   <data name="UIModel_DiagTrackService_Title" xml:space="preserve">
     <value>Enable the telemetry-related service (DiagTrack)</value>
@@ -265,10 +265,10 @@
     <value>Choose how often Windows asks for your feedback.</value>
   </data>
   <data name="UIModel_ScheduledTasks_Title" xml:space="preserve">
-    <value>Enable diagnostic tracking scheduled tasks</value>
+    <value>Diagnostic tracking scheduled tasks</value>
   </data>
   <data name="UIModel_ScheduledTasks_Description" xml:space="preserve">
-    <value>Enable the following telemetry-related scheduled tasks in Task Scheduler: MareBackup, Microsoft Compatibility Appraiser, Microsoft Compatibility Appraiser Exp, StartupAppTask, Proxy, Consolidator, UsbCeip, Microsoft-Windows-DiskDiagnosticDataCollector, MapsToastTask, MapsUpdateTask.</value>
+    <value>The telemetry-related scheduled tasks of Task Scheduler. A checked task is enabled.</value>
   </data>
   <data name="UIModel_SigninInfo_Title" xml:space="preserve">
     <value>Use sign-in info to automatically finish setting up device after an update</value>
@@ -526,7 +526,7 @@
     <value>Light</value>
   </data>
   <data name="UIModel_Cursors_Title_3" xml:space="preserve">
-    <value>System</value>
+    <value>Default</value>
   </data>
   <data name="UIModel_Cursors_Description" xml:space="preserve">
     <value>Download and install the "Windows 11 Cursors Concept v2" cursors from Jepri Creations. An Internet connection is required. [View the cursors on DeviantArt](https://www.deviantart.com/jepricreations/art/Windows-11-Cursors-Concept-886489356)</value>
@@ -663,41 +663,20 @@
   <data name="UIModel_PowerPlan_Title" xml:space="preserve">
     <value>Choose a power plan</value>
   </data>
-  <data name="UIModel_PowerPlan_Title_1" xml:space="preserve">
-    <value>High performance</value>
-  </data>
-  <data name="UIModel_PowerPlan_Title_2" xml:space="preserve">
-    <value>Balanced</value>
-  </data>
   <data name="UIModel_PowerPlan_Description" xml:space="preserve">
     <value>The "High performance" power plan is not recommended for laptops. Also, enabling it doesn't affect your FPS: it only manages how your PC uses power.</value>
   </data>
   <data name="UIModel_NetworkAdaptersSavePower_Title" xml:space="preserve">
-    <value>Allow the computer to turn off the active network adapters to save power</value>
+    <value>Allow the computer to turn off network adapters to save power</value>
   </data>
   <data name="UIModel_NetworkAdaptersSavePower_Description" xml:space="preserve">
-    <value>Only the currently used network adapter will be configured, even if your motherboard has an additional Wi-Fi adapter alongside an Ethernet one. **The network adapter will be restarted, so the connection will be lost for a few seconds.** It is not recommended to turn this off on laptops.</value>
+    <value>Only the connected network adapters are listed. **An adapter whose setting is changed will be restarted, so the connection will be lost for a few seconds.** It is not recommended to turn this off on laptops.</value>
   </data>
   <data name="UIModel_InputMethod_Title" xml:space="preserve">
     <value>Choose the default input method (keyboard layout)</value>
   </data>
-  <data name="UIModel_InputMethod_Title_1" xml:space="preserve">
-    <value>English (United States)</value>
-  </data>
-  <data name="UIModel_InputMethod_Title_2" xml:space="preserve">
-    <value>Use language list</value>
-  </data>
   <data name="UIModel_InputMethod_Description" xml:space="preserve">
-    <value>By default, Windows starts with the first input method of your language list. Choose English to start with the English (United States) keyboard layout instead, whatever language is first in the list.</value>
-  </data>
-  <data name="UIModel_WinPrtScrFolder_Title" xml:space="preserve">
-    <value>Choose the default folder for screenshots taken with Win+PrtScn or Win+Shift+S</value>
-  </data>
-  <data name="UIModel_WinPrtScrFolder_Title_1" xml:space="preserve">
-    <value>Desktop</value>
-  </data>
-  <data name="UIModel_WinPrtScrFolder_Title_2" xml:space="preserve">
-    <value>Pictures</value>
+    <value>By default, Windows starts with the first input method of your language list. Choose an input method to start with it instead, whatever language is first in the list.</value>
   </data>
   <data name="UIModel_RecommendedTroubleshooting_Title" xml:space="preserve">
     <value>Recommended troubleshooting</value>
@@ -830,6 +809,9 @@
   </data>
   <data name="TaskSchedulerPage_AboutTasks.Message" xml:space="preserve">
     <value>The scheduled tasks below are sufficient to keep Windows clean. There is no need to constantly clean other system folders, as is often advised on the Internet. The tasks respect the **Do not disturb** mode: their notifications won't pop up while you are playing a game, watching a video in full screen, or when the mode is turned on.</value>
+  </data>
+  <data name="Page_AboutCurrentState.Message" xml:space="preserve">
+    <value>Check boxes and lists show the current state of Windows. Changes take effect after you select **Apply**.</value>
   </data>
   <data name="Page_AboutPolicies.Message" xml:space="preserve">
     <value>SophiApp for Windows keeps the use of policies to a minimum. The settings that do create policies also show them in the Local Group Policy Editor snap-in (`gpedit.msc`), if it is available in your Windows edition.</value>
@@ -967,10 +949,10 @@
     <value>The "{0}" UWP component is missing.</value>
   </data>
   <data name="OsRequirements_GetUWPComponents" xml:space="preserve">
-    <value>Checking UWP components status...</value>
+    <value>Checking UWP components status…</value>
   </data>
   <data name="OsRequirements_GeneratingUserInterface" xml:space="preserve">
-    <value>Generating UI...</value>
+    <value>Generating UI…</value>
   </data>
   <data name="TaskScheduler_WindowsCleanupToast_Run" xml:space="preserve">
     <value>Run</value>
@@ -987,10 +969,10 @@
   <data name="OsRequirements_Malware_Tron" xml:space="preserve">
     <value>Tron</value>
   </data>
-  <data name="UIModel_ContextMenu_CopyDescription.Label" xml:space="preserve">
+  <data name="UIModel_ContextMenu_CopyDescription.Text" xml:space="preserve">
     <value>Copy description</value>
   </data>
-  <data name="UIModel_ContextMenu_CopyTitle.Label" xml:space="preserve">
+  <data name="UIModel_ContextMenu_CopyTitle.Text" xml:space="preserve">
     <value>Copy title</value>
   </data>
   <data name="OsRequirements_Malware_Defendnot" xml:space="preserve">
@@ -1008,32 +990,29 @@
   <data name="App_Discord.Text" xml:space="preserve">
     <value>Discord</value>
   </data>
-  <data name="AppTeam_AnimationDeveloper.Text" xml:space="preserve">
-    <value>Motion Design: Maxim Nechiporenko</value>
-  </data>
   <data name="AppTeam_Tester.Text" xml:space="preserve">
     <value>QC: Yevhenii "lowlif3" Zabronskyi</value>
   </data>
   <data name="AppTeam_Developer.Text" xml:space="preserve">
-    <value>Lead Developer: Dmitry "Inestic" Demin</value>
+    <value>Lead Developer: Dmitry "Inestic" Dyomin</value>
+  </data>
+  <data name="AppTeam_Supporter.Text" xml:space="preserve">
+    <value>Financial &amp; Moral Support: David "BenchTweakGaming" Nguyen</value>
   </data>
   <data name="AppTeam_ProjectLead.Text" xml:space="preserve">
-    <value>Project Lead &amp; QA: Dmitry Nefedov</value>
-  </data>
-  <data name="AppTeam_UiDeveloper.Text" xml:space="preserve">
-    <value>UI Design: Yaroslav Posmitiukh</value>
+    <value>Project Lead, Development &amp; QA: Dmitry Nefedov</value>
   </data>
   <data name="AppTeam_UxDeveloper.Text" xml:space="preserve">
     <value>UI/UX Design: Vladimir Nameless</value>
   </data>
-  <data name="Page_ContextMenu_OpenLogFile.Label" xml:space="preserve">
+  <data name="Page_ContextMenu_OpenLogFile.Text" xml:space="preserve">
     <value>Open log file</value>
   </data>
-  <data name="Page_ContextMenu_OpenLogFolder.Label" xml:space="preserve">
+  <data name="Page_ContextMenu_OpenLogFolder.Text" xml:space="preserve">
     <value>Open log folder</value>
   </data>
   <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
-    <value>Getting data from the Internet...</value>
+    <value>Getting data from the Internet…</value>
   </data>
   <data name="OsRequirements_Malware_CrystalCry" xml:space="preserve">
     <value>CrystalCry</value>
@@ -1051,7 +1030,7 @@
     <value>Run Windows Update and try again.</value>
   </data>
   <data name="OsRequirements_GetHostFileEntries" xml:space="preserve">
-    <value>Checking the hosts file for third-party entries...</value>
+    <value>Checking the hosts file for third-party entries…</value>
   </data>
   <data name="OsRequirements_HostsEntriesFound_1.Text" xml:space="preserve">
     <value>Third-party entries found in the `%SystemRoot%\System32\drivers\etc\hosts` file.</value>
@@ -1099,7 +1078,7 @@
     <value>An instability issue has been detected in the "{0}" component.</value>
   </data>
   <data name="OsRequirements_GetControlledFolderAccess" xml:space="preserve">
-    <value>Checking Controlled Folder access status...</value>
+    <value>Checking Controlled Folder access status…</value>
   </data>
   <data name="OsRequirements_DisableControlledFolderAccessPanel_1.Text" xml:space="preserve">
     <value>You have Controlled folder access enabled.</value>
@@ -1111,7 +1090,7 @@
     <value>Your PC is waiting to be restarted.</value>
   </data>
   <data name="OsRequirements_GetSystemDriveEncryptedBitLocker" xml:space="preserve">
-    <value>Checking BitLocker system drive encryption status...</value>
+    <value>Checking BitLocker system drive encryption status…</value>
   </data>
   <data name="OsRequirements_SystemDriveEncryptedBitLockerDisabled_1.Text" xml:space="preserve">
     <value>The system drive is encrypted, although BitLocker is turned off.</value>
@@ -1120,7 +1099,7 @@
     <value>Do you want to decrypt your drive?</value>
   </data>
   <data name="OsRequirements_GetUEFICertificates" xml:space="preserve">
-    <value>Checking UEFI certificate expiration status...</value>
+    <value>Checking UEFI certificate expiration status…</value>
   </data>
   <data name="OsRequirements_UpdateUEFICertificates_1.Text" xml:space="preserve">
     <value>The "Microsoft Windows Production PCA 2011" Secure Boot certificate expired in October 2026.</value>
@@ -1141,13 +1120,13 @@
     <value>Open manual</value>
   </data>
   <data name="OsRequirements_GetCpuArchitecture" xml:space="preserve">
-    <value>Checking CPU architecture...</value>
+    <value>Checking CPU architecture…</value>
   </data>
   <data name="OsRequirements_UnsupportedArchitecture_1" xml:space="preserve">
     <value>Your CPU architecture is "{0}". SophiApp for Windows supports only x64-based CPUs.</value>
   </data>
   <data name="OsRequirements_GetWindowsVersion" xml:space="preserve">
-    <value>Checking Windows version...</value>
+    <value>Checking Windows version…</value>
   </data>
   <data name="OsRequirements_WrongWindowsVersion_1" xml:space="preserve">
     <value>SophiApp for Windows supports Windows 11 26H2 and higher.</value>
@@ -1159,7 +1138,7 @@
     <value>SophiApp for Windows supports only Windows 11 Enterprise LTSC 2024.</value>
   </data>
   <data name="OsRequirements_GetWindowsBuild" xml:space="preserve">
-    <value>Checking Windows build...</value>
+    <value>Checking Windows build…</value>
   </data>
   <data name="OsRequirements_UpdateWindowsBuild_2" xml:space="preserve">
     <value>You're using Windows 11 {0} {1}.{2}.</value>
@@ -1186,7 +1165,7 @@
     <value>List</value>
   </data>
   <data name="OsRequirements_GetWindowsComponentStability" xml:space="preserve">
-    <value>Checking Windows component stability...</value>
+    <value>Checking Windows component stability…</value>
   </data>
   <data name="OsRequirements_NewAppVersionFound_1" xml:space="preserve">
     <value>A new version is available: SophiApp for Windows {0}.</value>
@@ -1314,6 +1293,12 @@
   <data name="AutoSuggestBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Search settings</value>
   </data>
+  <data name="SearchButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Search settings</value>
+  </data>
+  <data name="SearchButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="UIModel_Exception_WidgetsNotInstalled" xml:space="preserve">
     <value>Widgets are not installed.</value>
   </data>
@@ -1425,7 +1410,112 @@
   <data name="UIModel_InstallWSL_Installed" xml:space="preserve">
     <value>{0} (installed)</value>
   </data>
-  <data name="UIModel_ContextMenu_CopyPackageName.Label" xml:space="preserve">
+  <data name="UIModel_ContextMenu_CopyPackageName.Text" xml:space="preserve">
     <value>Copy package name</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_Title" xml:space="preserve">
+    <value>Change the location of user folders</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_Description" xml:space="preserve">
+    <value>Choose a folder on another drive, or type the path to any other folder and press Enter. `Files are not moved to the new location: move them manually`. Screenshots taken with Win+PrtScn or Win+Shift+S are saved to the screenshots folder.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_RootNotAllowed" xml:space="preserve">
+    <value>A user folder cannot be the root of a drive. Choose a folder on the drive.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_FolderIsTaken" xml:space="preserve">
+    <value>This folder is already the location of the "{0}" folder.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_FilesLeft" xml:space="preserve">
+    <value>Some files are left in the "{0}" folder. Move them to the new location manually.</value>
+  </data>
+  <data name="UserFolder_Desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="UserFolder_Documents" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="UserFolder_Downloads" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
+  <data name="UserFolder_Music" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="UserFolder_Pictures" xml:space="preserve">
+    <value>Pictures</value>
+  </data>
+  <data name="UserFolder_Videos" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="UserFolder_Change.Content" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="UserFolder_Browse.Text" xml:space="preserve">
+    <value>Browse…</value>
+  </data>
+  <data name="UserFolder_Default.Content" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="SettingsPage_Language.Header" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Settings_Languages_Default" xml:space="preserve">
+    <value>Follow Windows language</value>
+  </data>
+  <data name="SettingsPage_LanguageRestart.Message" xml:space="preserve">
+    <value>Restart SophiApp for Windows to change the language.</value>
+  </data>
+  <data name="SettingsGroup_Diagnostics" xml:space="preserve">
+    <value>Diagnostics and feedback</value>
+  </data>
+  <data name="SettingsGroup_Recommendations" xml:space="preserve">
+    <value>Ads and recommendations</value>
+  </data>
+  <data name="SettingsGroup_FileExplorer" xml:space="preserve">
+    <value>File Explorer</value>
+  </data>
+  <data name="SettingsGroup_Taskbar" xml:space="preserve">
+    <value>Taskbar</value>
+  </data>
+  <data name="SettingsGroup_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="SettingsGroup_Appearance" xml:space="preserve">
+    <value>Appearance and windows</value>
+  </data>
+  <data name="SettingsGroup_Components" xml:space="preserve">
+    <value>Components</value>
+  </data>
+  <data name="SettingsGroup_Updates" xml:space="preserve">
+    <value>Windows Update</value>
+  </data>
+  <data name="SettingsGroup_Power" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="SettingsGroup_Input" xml:space="preserve">
+    <value>Input and keyboard</value>
+  </data>
+  <data name="SettingsGroup_Storage" xml:space="preserve">
+    <value>Folders and storage</value>
+  </data>
+  <data name="SettingsGroup_Startup" xml:space="preserve">
+    <value>Startup and sign-in</value>
+  </data>
+  <data name="SettingsGroup_Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="UserFolder_Current" xml:space="preserve">
+    <value>{0} (current location)</value>
+  </data>
+  <data name="UIModel_InputMethod_LanguageList" xml:space="preserve">
+    <value>Use language list</value>
+  </data>
+  <data name="UserFolder_Screenshots" xml:space="preserve">
+    <value>Screenshots</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_ScreenshotsOneDrive" xml:space="preserve">
+    <value>The screenshots folder cannot be changed while you are signed in to OneDrive.</value>
+  </data>
+  <data name="UIModel_UserShellFolderLocation_PathNotValid" xml:space="preserve">
+    <value>Enter the full path to a folder, such as D:\Documents.</value>
   </data>
 </root>

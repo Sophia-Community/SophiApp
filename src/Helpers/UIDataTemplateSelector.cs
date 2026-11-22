@@ -31,9 +31,36 @@ namespace SophiApp.Helpers
         /// </summary>
         public DataTemplate ActionTemplate { get; set; } = new();
 
+        /// <summary>
+        /// Gets or sets the template for <see cref="UIUserFoldersModel"/>.
+        /// </summary>
+        public DataTemplate UserFoldersTemplate { get; set; } = new();
+
+        /// <summary>
+        /// Gets or sets the template for <see cref="UICheckListModel"/>.
+        /// </summary>
+        public DataTemplate CheckListTemplate { get; set; } = new();
+
+        /// <summary>
+        /// Gets or sets the template for the subtitle of a group of settings.
+        /// </summary>
+        public DataTemplate GroupHeaderTemplate { get; set; } = new();
+
+        /// <summary>
+        /// Gets or sets the template for the subtitle that opens the page: it needs less room above.
+        /// </summary>
+        public DataTemplate FirstGroupHeaderTemplate { get; set; } = new();
+
+        /// <inheritdoc/>
+        protected override DataTemplate SelectTemplateCore(object item, DependencyObject container) => SelectTemplateCore(item);
+
         /// <inheritdoc/>
         protected override DataTemplate SelectTemplateCore(object item) => item switch
         {
+            SettingsGroupHeader { IsFirst: true } => FirstGroupHeaderTemplate,
+            SettingsGroupHeader => GroupHeaderTemplate,
+            UIUserFoldersModel => UserFoldersTemplate,
+            UICheckListModel => CheckListTemplate,
             UICheckBoxModel or UIIconCheckBoxModel => CheckBoxTemplate,
             UIActionModel => ActionTemplate,
             UIInstallModel => InstallTemplate,

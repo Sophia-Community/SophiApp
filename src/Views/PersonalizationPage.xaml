@@ -6,27 +6,45 @@
     xmlns:helpers="using:SophiApp.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodels="using:SophiApp.ViewModels"
-    d:DataContext="{d:DesignInstance Type=viewmodels:PersonalizationViewModel}"
     mc:Ignorable="d">
 
     <ScrollView>
         <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}">
-            <InfoBar x:Uid="Page_AboutPolicies"
-                     helpers:InfoBarHelper.FormattedMessage="True"
-                     IsOpen="True"
-                     IsClosable="False"
-                     Severity="Informational"
-                     Margin="0, 0, 26, 10"/>
+            <!-- The notes can be closed. They are as wide as the cards -->
+            <Grid Margin="0, 0, 24, 6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="{StaticResource SettingsContentMaxWidth}"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <InfoBar x:Uid="Page_AboutCurrentState"
+                             helpers:InfoBarHelper.FormattedMessage="True"
+                             Severity="Informational"
+                             IsOpen="{x:Bind Notes.CurrentStateIsOpen, Mode=TwoWay}"
+                             Visibility="{x:Bind Notes.CurrentStateIsOpen, Mode=OneWay}"
+                             Margin="0, 0, 0, 4"/>
+                    <InfoBar x:Uid="Page_AboutPolicies"
+                             helpers:InfoBarHelper.FormattedMessage="True"
+                             Severity="Informational"
+                             IsOpen="{x:Bind Notes.PoliciesIsOpen, Mode=TwoWay}"
+                             Visibility="{x:Bind Notes.PoliciesIsOpen, Mode=OneWay}"
+                             Margin="0, 0, 0, 4"/>
+                </StackPanel>
+            </Grid>
             <Grid x:Name="ItemsContainerGrid"
                   Margin="{StaticResource SettingsListMargin}">
-                <ItemsRepeater ItemsSource="{x:Bind Models, Mode=OneWay}"
-                               ItemTemplate="{StaticResource SettingTemplateSelector}"
-                               VerticalCacheLength="{x:Bind Models.Count, Mode=OneWay}">
-                    <ItemsRepeater.Layout>
-                        <StackLayout Spacing="8"/>
-                    </ItemsRepeater.Layout>
-                </ItemsRepeater>
+                <!-- On a wide window the cards do not stretch over all of it -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="{StaticResource SettingsContentMaxWidth}"/>
+                </Grid.ColumnDefinitions>
+                <ItemsControl ItemsSource="{x:Bind Items}"
+                              ItemTemplateSelector="{StaticResource SettingTemplateSelector}"
+                              IsTabStop="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="4"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </Grid>
         </StackPanel>
     </ScrollView>

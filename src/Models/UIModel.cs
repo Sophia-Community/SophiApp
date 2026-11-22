@@ -22,6 +22,7 @@ namespace SophiApp.Models
             ["InstallVisualC_x64"] = "InstallVCRedist",
             ["InstallDotNetRuntime_10"] = "InstallDotNetRuntimes",
             ["InstallDotNetRuntime_11"] = "InstallDotNetRuntimes",
+            ["UserShellFolderLocation"] = "SetUserShellFolderLocation WinPrtScrFolder",
         };
 
         private bool isEnabled = true;
@@ -40,6 +41,7 @@ namespace SophiApp.Models
             Name = dto.Name;
             Type = dto.Type;
             Tag = dto.Tag;
+            Group = dto.Group;
             ViewId = dto.ViewId;
             Windows11LTSC = dto.Windows11LTSC;
             Windows11 = dto.Windows11;
@@ -64,6 +66,11 @@ namespace SophiApp.Models
         /// Gets model category tag.
         /// </summary>
         public UICategoryTag Tag { get; private set; }
+
+        /// <summary>
+        /// Gets the group of settings the model belongs to on its page, or an empty string.
+        /// </summary>
+        public string Group { get; private set; }
 
         /// <summary>
         /// Gets a value that determines the order in which the model is displayed in the View.
@@ -143,6 +150,17 @@ namespace SophiApp.Models
         /// Gets a value indicating whether <see cref="ExceptionText"/> is not empty and can be visible.
         /// </summary>
         public bool ExceptionTextIsVisible { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether the user chose something that differs from the state of Windows.
+        /// A setting with such a choice is applied with the others; a choice that is taken back makes it false again.
+        /// </summary>
+        public abstract bool IsChanged { get; }
+
+        /// <summary>
+        /// Gets what the user chose, as a text for the log.
+        /// </summary>
+        public abstract string ChosenValue { get; }
 
         /// <summary>
         /// Gets the text for a setting that could not be applied for an unknown reason.

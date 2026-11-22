@@ -1,4 +1,4 @@
-// <copyright file="ModelService.cs" company="Team Sophia">
+﻿// <copyright file="ModelService.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -6,6 +6,7 @@ namespace SophiApp.Services
 {
     using Microsoft.Windows.ApplicationModel.Resources;
     using SophiApp.Contracts.Services;
+    using SophiApp.Customizations;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
     using SophiApp.Models;
@@ -13,8 +14,6 @@ namespace SophiApp.Services
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Diagnostics;
-    using System.Reflection;
-    using System.Text;
     using System.Threading.Tasks;
 
     /// <inheritdoc/>
@@ -36,30 +35,16 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public async Task<ObservableCollection<UIModel>> BuildJsonModelsAsync()
+        public async Task<ObservableCollection<UIModel>> BuildSettingModelsAsync()
         {
             return new ObservableCollection<UIModel>(await Task.Run(() =>
             {
-                var json = Encoding.UTF8.GetString(Properties.Resources.UIMarkup);
-                var models = Json.ToObject<IEnumerable<UIModelDto>>(json)
-                    .Where(dto => dataService.OsProperties.IsLTSC ? dto.Windows11LTSC : dto.Windows11)
-                    .Select(dto =>
-                    {
-                        return dto.Type switch
-                        {
-                            UIModelType.CheckBox => BuildCheckBoxModel(dto),
-                            UIModelType.IconCheckBox => BuildIconCheckBoxModel(dto),
-                            UIModelType.Install => BuildInstallModel(dto, canUninstall: false),
-                            UIModelType.InstallUninstall => BuildInstallModel(dto, canUninstall: true),
-                            UIModelType.RadioButtonsGroup => BuildRadioButtonsGroup(dto),
-                            UIModelType.IconRadioButtons => BuildIconRadioButtons(dto),
-                            UIModelType.Action => BuildActionModel(dto),
-                            UIModelType.Choice => BuildChoiceModel(dto),
-                            _ => throw new TypeAccessException($"An invalid type is specified: {dto.Type}"),
-                        };
-                    })
-                    .OrderBy(model => model.ViewId);
-                return models;
+                // The settings are shown in the order of the table
+                return SettingsCatalog.All
+                    .Select((setting, index) => (Setting: setting, Index: index))
+                    .Where(item => dataService.OsProperties.IsLTSC ? item.Setting.Windows11LTSC : item.Setting.Windows11)
+                    .Select(item => BuildModel(item.Setting, item.Index))
+                    .ToList();
             }));
         }
 
@@ -150,80 +135,62 @@ namespace SophiApp.Services
             return foundModels;
         }
 
-        private UIModel BuildCheckBoxModel(UIModelDto dto)
+        // The kind of a definition tells the types of its methods
+        private UIModel BuildModel(SettingDefinition setting, int index)
         {
+            var dto = new UIModelDto(setting.Name, setting.Type, setting.Tag, viewId: index, setting.Windows11LTSC, setting.Windows11, setting.IconIndex, setting.OptionIcons, setting.Group);
             var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
             var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
-            var accessor = GetAccessor<bool>(dto.Name);
-            var mutator = GetMutator<bool>(dto.Name);
 
-            // A setting can have a method that returns a notice for the current state of the system
-            return new UICheckBoxModel(dto, title, description, accessor, mutator) { NoticeAccessor = GetNoticeAccessorOrDefault(dto.Name) };
+            // A setting without a title has a mistake in its name or in the names of its strings
+            if (title.Length == 0)
+            {
+                App.Logger.LogSettingWithoutTitle(dto.Name);
+            }
+
+            return setting.Type switch
+            {
+                UIModelType.CheckBox => new UICheckBoxModel(dto, title, description, (Func<bool>)setting.Accessor, (Action<bool>)setting.Mutator) { NoticeAccessor = setting.Notice },
+                UIModelType.IconCheckBox => new UIIconCheckBoxModel(dto, title, description, (Func<bool>)setting.Accessor, (Action<bool>)setting.Mutator),
+                UIModelType.Install or UIModelType.InstallUninstall => new UIInstallModel(dto, title, description, (Func<InstallState>)setting.Accessor, (Action<bool>)setting.Mutator)
+                {
+                    CanUninstall = setting.CanUninstall,
+                    AllUsersMutator = setting.AllUsersMutator,
+                },
+                UIModelType.RadioButtonsGroup => new UIRadioButtonsGroupModel(dto, title, description, GetOptionTitles(dto.Name), (Func<int>)setting.Accessor, (Action<int>)setting.Mutator) { HasOptionIcons = dto.OptionIcons },
+                UIModelType.IconRadioButtons => BuildIconRadioButtons(dto, title, description, setting),
+                UIModelType.Action => new UIActionModel(dto, title, description, GetResourceValueOrDefault($"UIModel_{dto.Name}_Button"), (Func<bool>)setting.Accessor, (Action<bool>)setting.Mutator),
+                UIModelType.Choice => new UIChoiceModel(dto, title, description, GetResourceValueOrDefault($"UIModel_{dto.Name}_NoChoice"), (Func<IReadOnlyList<SettingChoice>>)setting.Accessor, (Action<string>)setting.Mutator),
+                UIModelType.UserFolders => BuildUserFoldersModel(dto, title, description, setting),
+                UIModelType.CheckList => new UICheckListModel(dto, title, description, (Func<IReadOnlyList<SettingCheckItem>>)setting.Accessor, (Action<IReadOnlyDictionary<string, bool>>)setting.Mutator),
+                _ => throw new TypeAccessException($"An invalid type is specified: {setting.Type}"),
+            };
         }
 
-        private UIModel BuildIconCheckBoxModel(UIModelDto dto)
+        private UIModel BuildUserFoldersModel(UIModelDto dto, string title, string description, SettingDefinition setting)
         {
-            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
-            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
-            var accessor = GetAccessor<bool>(dto.Name);
-            var mutator = GetMutator<bool>(dto.Name);
-            return new UIIconCheckBoxModel(dto, title, description, accessor, mutator);
+            // The icons are symbols of the icon font
+            var folders = new (UserFolder Folder, string Glyph)[]
+            {
+                (UserFolder.Desktop, ""),
+                (UserFolder.Documents, ""),
+                (UserFolder.Downloads, ""),
+                (UserFolder.Music, ""),
+                (UserFolder.Pictures, ""),
+                (UserFolder.Videos, ""),
+                (UserFolder.Screenshots, ""),
+            };
+            var items = folders.Select(folder => new UserFolderItem(folder.Folder, GetResourceValueOrDefault($"UserFolder_{folder.Folder}"), folder.Glyph)).ToList();
+            return new UIUserFoldersModel(dto, title, description, items, (Func<UserFolder, string>)setting.Accessor, (Action<UserFolder, string>)setting.Mutator);
         }
 
-        private UIModel BuildInstallModel(UIModelDto dto, bool canUninstall)
+        private UIModel BuildIconRadioButtons(UIModelDto dto, string title, string description, SettingDefinition setting)
         {
-            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
-            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
-            var accessor = GetAccessor<InstallState>(dto.Name);
-            var mutator = GetMutator<bool>(dto.Name);
-
-            // A package that can be installed for all users has a second method for that
-            var allUsersMutator = GetMutatorOrDefault<bool>($"{dto.Name}_AllUsers");
-            return new UIInstallModel(dto, title, description, accessor, mutator) { CanUninstall = canUninstall, AllUsersMutator = allUsersMutator };
-        }
-
-        private UIModel BuildRadioButtonsGroup(UIModelDto dto)
-        {
-            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
-            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
-            var accessor = GetAccessor<int>(dto.Name);
-            var mutator = GetMutator<int>(dto.Name);
-            return new UIRadioButtonsGroupModel(dto, title, description, GetOptionTitles(dto.Name), accessor, mutator);
-        }
-
-        private UIModel BuildActionModel(UIModelDto dto)
-        {
-            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
-            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
-            var buttonText = GetResourceValueOrDefault($"UIModel_{dto.Name}_Button");
-            var accessor = GetAccessor<bool>(dto.Name);
-            var mutator = GetMutator<bool>(dto.Name);
-            return new UIActionModel(dto, title, description, buttonText, accessor, mutator);
-        }
-
-        private UIModel BuildChoiceModel(UIModelDto dto)
-        {
-            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
-            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
-            var noChoiceTitle = GetResourceValueOrDefault($"UIModel_{dto.Name}_NoChoice");
-            var accessorMethod = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true)!.GetMethod(dto.Name, BindingFlags.Static | BindingFlags.Public);
-            var mutatorMethod = Type.GetType(typeName: "SophiApp.Customizations.Mutators", throwOnError: true)!.GetMethod(dto.Name, BindingFlags.Static | BindingFlags.Public);
-            var accessor = (Func<IReadOnlyList<SettingChoice>>)Delegate.CreateDelegate(typeof(Func<IReadOnlyList<SettingChoice>>), accessorMethod!);
-            var mutator = (Action<string>)Delegate.CreateDelegate(typeof(Action<string>), mutatorMethod!);
-            return new UIChoiceModel(dto, title, description, noChoiceTitle, accessor, mutator);
-        }
-
-        private UIModel BuildIconRadioButtons(UIModelDto dto)
-        {
-            var title = GetResourceValueOrDefault($"UIModel_{dto.Name}_Title");
-            var description = GetResourceValueOrDefault($"UIModel_{dto.Name}_Description");
             var options = GetOptionTitles(dto.Name);
 
             // An option may have a web page about it
             var links = Enumerable.Range(1, options.Count).Select(number => GetResourceValueOrDefault($"UIModel_{dto.Name}_Link_{number}")).ToList();
-            var accessor = GetAccessor<int>(dto.Name);
-            var mutator = GetMutator<int>(dto.Name);
-            return new UIIconRadioButtonsModel(dto, title, description, options, links, accessor, mutator);
+            return new UIIconRadioButtonsModel(dto, title, description, options, links, (Func<int>)setting.Accessor, (Action<int>)setting.Mutator);
         }
 
         // The options are numbered from 1, and there are as many of them as there are titles
@@ -240,37 +207,6 @@ namespace SophiApp.Services
         }
 
         private string GetResourceValueOrDefault(string pattern) => resourceMap.TryGetValue(pattern)?.ValueAsString ?? string.Empty;
-
-        private Func<T> GetAccessor<T>(string name)
-            where T : struct
-        {
-            var type = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true)!;
-            var method = type.GetMethod(name, BindingFlags.Static | BindingFlags.Public);
-            return (Func<T>)Delegate.CreateDelegate(typeof(Func<T>), method!);
-        }
-
-        private Func<string?>? GetNoticeAccessorOrDefault(string name)
-        {
-            var type = Type.GetType(typeName: "SophiApp.Customizations.Accessors", throwOnError: true)!;
-            var method = type.GetMethod($"{name}_Notice", BindingFlags.Static | BindingFlags.Public);
-            return method is null ? null : (Func<string?>)Delegate.CreateDelegate(typeof(Func<string?>), method);
-        }
-
-        private Action<T>? GetMutatorOrDefault<T>(string name)
-            where T : struct
-        {
-            var type = Type.GetType(typeName: "SophiApp.Customizations.Mutators", throwOnError: true)!;
-            var method = type.GetMethod(name, BindingFlags.Static | BindingFlags.Public);
-            return method is null ? null : (Action<T>)Delegate.CreateDelegate(typeof(Action<T>), method);
-        }
-
-        private Action<T> GetMutator<T>(string name)
-            where T : struct
-        {
-            var type = Type.GetType(typeName: "SophiApp.Customizations.Mutators", throwOnError: true)!;
-            var method = type.GetMethod(name, BindingFlags.Static | BindingFlags.Public);
-            return (Action<T>)Delegate.CreateDelegate(typeof(Action<T>), method!);
-        }
 
         private Task GetStateByTagAsync(ObservableCollection<UIModel> models, UICategoryTag tag)
         {

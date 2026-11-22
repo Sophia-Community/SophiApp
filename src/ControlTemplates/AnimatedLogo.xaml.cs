@@ -27,6 +27,8 @@ namespace SophiApp.ControlTemplates
 
         private async void OnLoaded(object sender, RoutedEventArgs args)
         {
+            // The logo is played whatever the "Animation effects" setting of Windows is:
+            // Windows turns that setting off in virtual machines and remote sessions, and the logo stood still there
             var duration = Player.Duration.Ticks;
 
             if (duration > 0)

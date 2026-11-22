@@ -23,13 +23,23 @@ public sealed partial class SecurityPage : Page
     {
         InitializeComponent();
         ViewModel = App.GetService<ShellViewModel>();
-        Models = new(ViewModel.JsonModels.FilterByTag(UICategoryTag.Security));
+        Models = new(ViewModel.SettingModels.FilterByTag(UICategoryTag.Security));
     }
 
     /// <summary>
     /// Gets view model for security page.
     /// </summary>
     public ShellViewModel ViewModel { get; }
+
+    /// <summary>
+    /// Gets the notes at the top of the page.
+    /// </summary>
+    public PageNotesViewModel Notes { get; } = App.GetService<PageNotesViewModel>();
+
+    /// <summary>
+    /// Gets the view model of the chosen settings.
+    /// </summary>
+    public ChosenSettingsViewModel Choices { get; } = App.GetService<ChosenSettingsViewModel>();
 
     /// <summary>
     /// Gets <see cref="UIModel"/> collection.

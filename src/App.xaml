@@ -1,9 +1,12 @@
 ﻿<Application
     x:Class="SophiApp.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:SophiApp.Converters">
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Keeps key combinations in the titles of the settings on one line -->
+            <converters:UnbrokenShortcuts x:Key="UnbrokenShortcutsConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="/Styles/ScrollView.xaml" />

@@ -44,31 +44,28 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
-        public bool? GetTurnOffDevice()
+        public IReadOnlyList<(string Name, string Description, bool IsEnabled)> GetTurnOffDevice()
         {
             // WMI answers ten times faster than the cmdlets, which have to load their module first
-            if (GetTurnOffDeviceFromWmi() is { } stateFromWmi)
+            if (GetTurnOffDeviceFromWmi() is { } statesFromWmi)
             {
-                return stateFromWmi;
+                return statesFromWmi;
             }
 
-            // Check whether adapters have AllowComputerToTurnOffDevice property to manage
-            bool? allowTurnOff = null;
+            // Only the adapters that have AllowComputerToTurnOffDevice property to manage
+            var physicalAdapters = GetPhysicalUpAdapters();
 
-            foreach (var (_, state) in GetPowerManagement(GetPhysicalUpAdapters()))
-            {
-                allowTurnOff = state == TurnOffDeviceEnabled;
-            }
-
-            return allowTurnOff;
+            return GetPowerManagement(physicalAdapters)
+                .Select(settings => (settings.Name, physicalAdapters.First(adapter => adapter.Name == settings.Name).Description, settings.State == TurnOffDeviceEnabled))
+                .ToList();
         }
 
         /// <inheritdoc/>
-        public void SetTurnOffDevice(bool enable)
+        public void SetTurnOffDevice(IReadOnlyDictionary<string, bool> adapters)
         {
             // PowerShell is used only to call the cmdlets
             var physicalAdapters = GetPhysicalUpAdapters();
-            var adapterNames = GetPowerManagement(physicalAdapters).Select(settings => settings.Name).ToList();
+            var adapterNames = GetPowerManagement(physicalAdapters).Select(settings => settings.Name).Where(adapters.ContainsKey).ToList();
 
             // Check whether adapters have AllowComputerToTurnOffDevice property to manage
             if (adapterNames.Count == 0)
@@ -102,10 +99,11 @@ namespace SophiApp.Services
             // Check whether PC has Internet access before adapters restart
             // If not (no Internet or NCSI active probing is disabled), we will wait only until adapters are up
             var hadInternet = HasInternetAccess();
-            var state = enable ? "Enabled" : "Disabled";
 
             foreach (var adapterName in adapterNames)
             {
+                var state = adapters[adapterName] ? "Enabled" : "Disabled";
+
                 // Set-NetAdapterPowerManagement has no parameter for this property, so it is changed in the object that is passed to the cmdlet
                 _ = powerShellService.Invoke($"Get-NetAdapterPowerManagement -Name {ToArgument(adapterName)} | ForEach-Object -Process {{$_.AllowComputerToTurnOffDevice = '{state}'; $_ | Set-NetAdapterPowerManagement}}");
             }
@@ -123,13 +121,13 @@ namespace SophiApp.Services
         /// <summary>
         /// Reads the AllowComputerToTurnOffDevice state of the connected physical adapters from the WMI classes the cmdlets use.
         /// </summary>
-        /// <returns>The state, or null if it cannot be read this way.</returns>
-        private static bool? GetTurnOffDeviceFromWmi()
+        /// <returns>The adapters that have this property to manage, or null if they cannot be read this way.</returns>
+        private static List<(string Name, string Description, bool IsEnabled)>? GetTurnOffDeviceFromWmi()
         {
             try
             {
-                bool? allowTurnOff = null;
-                using var adapters = new ManagementObjectSearcher("root/StandardCimv2", "SELECT Name, InterfaceOperationalStatus FROM MSFT_NetAdapter WHERE ConnectorPresent = TRUE AND Hidden = FALSE");
+                var states = new List<(string Name, string Description, bool IsEnabled)>();
+                using var adapters = new ManagementObjectSearcher("root/StandardCimv2", "SELECT Name, InterfaceDescription, InterfaceOperationalStatus FROM MSFT_NetAdapter WHERE ConnectorPresent = TRUE AND Hidden = FALSE");
 
                 foreach (var adapter in adapters.Get().Cast<ManagementBaseObject>())
                 {
@@ -147,12 +145,12 @@ namespace SophiApp.Services
 
                         if (state != TurnOffDeviceUnsupported)
                         {
-                            allowTurnOff = state == TurnOffDeviceEnabled;
+                            states.Add((name, adapter["InterfaceDescription"] as string ?? string.Empty, state == TurnOffDeviceEnabled));
                         }
                     }
                 }
 
-                return allowTurnOff;
+                return states;
             }
             catch (Exception ex) when (ex is ManagementException || ex is System.Runtime.InteropServices.COMException || ex is UnauthorizedAccessException)
             {
@@ -232,11 +230,14 @@ namespace SophiApp.Services
         /// <summary>
         /// Gets physical network adapters whose status is "Up".
         /// </summary>
-        private List<(string Name, bool IsWiFi)> GetPhysicalUpAdapters()
+        private List<(string Name, string Description, bool IsWiFi)> GetPhysicalUpAdapters()
         {
             return powerShellService.Invoke("Get-NetAdapter -Physical -ErrorAction Ignore")
                 .Where(adapter => adapter is not null && adapter.GetPropertyValue<uint>("InterfaceOperationalStatus") == OperationalStatusUp)
-                .Select(adapter => (Name: adapter.GetPropertyValue<string>("Name") ?? string.Empty, IsWiFi: adapter.GetPropertyValue<uint>("NdisPhysicalMedium") == WiFiPhysicalMedium))
+                .Select(adapter => (
+                    Name: adapter.GetPropertyValue<string>("Name") ?? string.Empty,
+                    Description: adapter.GetPropertyValue<string>("InterfaceDescription") ?? string.Empty,
+                    IsWiFi: adapter.GetPropertyValue<uint>("NdisPhysicalMedium") == WiFiPhysicalMedium))
                 .Where(adapter => adapter.Name.Length > 0)
                 .ToList();
         }
@@ -245,7 +246,7 @@ namespace SophiApp.Services
         /// Gets names and the AllowComputerToTurnOffDevice property state of the adapters that have this property to manage.
         /// </summary>
         /// <param name="adapters">Network adapters.</param>
-        private List<(string Name, uint State)> GetPowerManagement(IEnumerable<(string Name, bool IsWiFi)> adapters)
+        private List<(string Name, uint State)> GetPowerManagement(IEnumerable<(string Name, string Description, bool IsWiFi)> adapters)
         {
             return adapters
                 .SelectMany(adapter => powerShellService.Invoke($"Get-NetAdapterPowerManagement -Name {ToArgument(adapter.Name)} -ErrorAction Ignore")

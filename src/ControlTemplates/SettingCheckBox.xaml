@@ -21,28 +21,35 @@
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+            <!-- A closed notice takes no room, so the cards stand at the same distance from each other -->
+            <VisualStateGroup x:Name="NoticeStates">
+                <VisualState x:Name="NoticeShown">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding ExceptionTextIsVisible}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Notice.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel.ContextFlyout>
-            <CommandBarFlyout helpers:PopupCursor.ResetOnOpen="True">
-                <CommandBarFlyout.SecondaryCommands>
-                    <AppBarButton x:Uid="UIModel_ContextMenu_CopyTitle"
-                                  Icon="Copy"
-                                  Click="CopyTitle_Click"/>
-                    <AppBarButton x:Name="CopyDescriptionButton"
-                                  x:Uid="UIModel_ContextMenu_CopyDescription"
-                                  Icon="Copy"
-                                  Click="CopyDescription_Click"/>
-                </CommandBarFlyout.SecondaryCommands>
-            </CommandBarFlyout>
+            <MenuFlyout helpers:PopupCursor.ResetOnOpen="True">
+                <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyTitle"
+                                Icon="Copy"
+                                Click="CopyTitle_Click"/>
+                <MenuFlyoutItem x:Name="CopyDescriptionButton"
+                                x:Uid="UIModel_ContextMenu_CopyDescription"
+                                Icon="Copy"
+                                Click="CopyDescription_Click"/>
+            </MenuFlyout>
         </StackPanel.ContextFlyout>
         <Grid>
             <toolkit:SettingsCard x:Name="Card"
                                   AutomationProperties.Name="{Binding Title}"
-                                  MinHeight="{StaticResource SettingsCardMinHeight}"
-                                  Padding="{StaticResource SettingsCardPadding}"
                                   IsEnabled="{Binding IsEnabled}">
                 <toolkit:SettingsCard.Header>
-                    <TextBlock Text="{Binding Title}"
+                    <TextBlock Text="{Binding Title, Converter={StaticResource UnbrokenShortcutsConverter}}"
                                TextWrapping="Wrap"/>
                 </toolkit:SettingsCard.Header>
                 <toolkit:SettingsCard.Description>
@@ -54,7 +61,7 @@
                           AutomationProperties.Name="{Binding Title}"
                           MinWidth="0"
                           helpers:CheckBoxHelper.IsChecked="{Binding IsChecked, Mode=TwoWay}"
-                          Command="{x:Bind ViewModel.UIModelClicked_Command}"
+                          Command="{x:Bind ChosenSettings.ChoiceChanged_Command}"
                           CommandParameter="{Binding}"/>
             </toolkit:SettingsCard>
             <!-- Marks a setting that is going to be changed -->
@@ -65,7 +72,9 @@
                     IsHitTestVisible="False"
                     Visibility="Collapsed"/>
         </Grid>
-        <InfoBar Margin="0, 2, 0, 0"
+        <InfoBar x:Name="Notice"
+                 Visibility="Collapsed"
+                 Margin="0, 2, 0, 0"
                  Severity="Warning"
                  IsClosable="False"
                  IsOpen="{Binding ExceptionTextIsVisible}"
