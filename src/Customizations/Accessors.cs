@@ -20,6 +20,7 @@ namespace SophiApp.Customizations
     /// </summary>
     public static partial class Accessors
     {
+        private static readonly IAssociationService AssociationService = App.GetService<IAssociationService>();
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
         private static readonly ICommonDataService DataService = App.GetService<ICommonDataService>();
         private static readonly IDnsService DnsService = App.GetService<IDnsService>();

@@ -59,6 +59,11 @@ namespace SophiApp.Helpers
         UserFolders,
 
         /// <summary>
+        /// The default apps of file extensions: the user adds a program for each extension.
+        /// </summary>
+        Associations,
+
+        /// <summary>
         /// A list of things that are turned on or off one by one. The list is known only when the app runs.
         /// </summary>
         CheckList,

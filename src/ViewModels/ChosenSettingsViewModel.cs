@@ -78,7 +78,7 @@ namespace SophiApp.ViewModels
 
         private static async Task CloseSearchWindowAsync()
         {
-            var closed = await ForegroundHelper.CloseSearchAsync(WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow));
+            var closed = await ForegroundHelper.CloseSearchAsync(WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow)).ConfigureAwait(false);
             App.Logger.LogSearchWindowWatch(closed, ForegroundHelper.LastWatch);
         }
 

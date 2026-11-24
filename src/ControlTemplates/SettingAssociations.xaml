@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SophiApp.ControlTemplates.SettingAssociations"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:helpers="using:SophiApp.Helpers"
+    xmlns:models="using:SophiApp.Models"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ChangeStates">
+                <VisualState x:Name="Changed">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding IsSelected}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ChangedOutline.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <!-- A closed notice takes no room, so the cards stand at the same distance from each other -->
+            <VisualStateGroup x:Name="NoticeStates">
+                <VisualState x:Name="NoticeShown">
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding ExceptionTextIsVisible}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Notice.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel.ContextFlyout>
+            <MenuFlyout helpers:PopupCursor.ResetOnOpen="True"
+                        helpers:ContextMenuHelper.CopiesNoticeLink="True">
+                <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyTitle"
+                                Icon="Copy"
+                                Click="CopyTitle_Click"/>
+                <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyDescription"
+                                Icon="Copy"
+                                Click="CopyDescription_Click"/>
+            </MenuFlyout>
+        </StackPanel.ContextFlyout>
+        <!-- A disabled card takes no clicks, and this background takes the right click for the menu -->
+        <Grid Background="Transparent">
+            <!-- A block for each program and extension, and a button that adds one more -->
+            <toolkit:SettingsExpander x:Name="Expander"
+                                      AutomationProperties.Name="{Binding Title}"
+                                      IsExpanded="True"
+                                      IsEnabled="{Binding IsEnabled}">
+                <toolkit:SettingsExpander.Header>
+                    <TextBlock Text="{Binding Title, Converter={StaticResource UnbrokenShortcutsConverter}}"
+                               TextWrapping="Wrap"/>
+                </toolkit:SettingsExpander.Header>
+                <toolkit:SettingsExpander.Description>
+                    <TextBlock x:Name="DescriptionText"
+                               TextWrapping="Wrap"/>
+                </toolkit:SettingsExpander.Description>
+                <!-- The blocks are not built by the list of the expander: that list builds its rows anew while the page is scrolled -->
+                <toolkit:SettingsExpander.ItemsHeader>
+                    <StackPanel>
+                        <ItemsControl x:Name="ItemsList"
+                                      IsTabStop="False">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="models:AssociationItem">
+                                    <!-- What is typed is taken when Enter is pressed or the box is left -->
+                                    <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                          BorderThickness="0, 1, 0, 0"
+                                          Padding="16, 12, 16, 12"
+                                          ColumnSpacing="8"
+                                          RowSpacing="8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" MaxWidth="560"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBox x:Name="ProgramBox"
+                                                 x:Uid="Association_Program"
+                                                 Text="{x:Bind Program, Mode=OneWay}"
+                                                 ToolTipService.ToolTip="{x:Bind Program, Mode=OneWay}"
+                                                 IsSpellCheckEnabled="False"
+                                                 KeyDown="Box_KeyDown"
+                                                 LostFocus="Box_LostFocus"/>
+                                        <Button x:Name="BrowseProgramButton"
+                                                x:Uid="Association_Browse"
+                                                Grid.Column="1"
+                                                VerticalAlignment="Bottom"
+                                                Click="BrowseProgram_Click"/>
+                                        <StackPanel Grid.Row="1"
+                                                    Grid.ColumnSpan="2"
+                                                    Orientation="Horizontal"
+                                                    Spacing="12">
+                                            <TextBox x:Name="ExtensionBox"
+                                                     x:Uid="Association_Extension"
+                                                     Text="{x:Bind Extension, Mode=OneWay}"
+                                                     Width="120"
+                                                     IsSpellCheckEnabled="False"
+                                                     KeyDown="Box_KeyDown"
+                                                     LostFocus="Box_LostFocus"/>
+                                            <!-- The app that opens the extension now: what the program is going to replace -->
+                                            <TextBlock Text="{x:Bind CurrentAppText, Mode=OneWay}"
+                                                       Visibility="{x:Bind CurrentAppVisibility, Mode=OneWay}"
+                                                       Style="{StaticResource CaptionTextBlockStyle}"
+                                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                                       VerticalAlignment="Bottom"
+                                                       Margin="0, 0, 0, 8"/>
+                                        </StackPanel>
+                                        <TextBox x:Name="IconBox"
+                                                 x:Uid="Association_Icon"
+                                                 Grid.Row="2"
+                                                 Text="{x:Bind Icon, Mode=OneWay}"
+                                                 ToolTipService.ToolTip="{x:Bind Icon, Mode=OneWay}"
+                                                 IsSpellCheckEnabled="False"
+                                                 KeyDown="Box_KeyDown"
+                                                 LostFocus="Box_LostFocus"/>
+                                        <Button x:Name="BrowseIconButton"
+                                                x:Uid="Association_Browse"
+                                                Grid.Row="2"
+                                                Grid.Column="1"
+                                                VerticalAlignment="Bottom"
+                                                Click="BrowseIcon_Click"/>
+                                        <Button x:Name="RemoveButton"
+                                                x:Uid="Association_Remove"
+                                                Grid.Row="3"
+                                                HorizontalAlignment="Left"
+                                                MinWidth="120"
+                                                Click="Remove_Click"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <!-- The export and the import that are chosen: each can be taken back -->
+                        <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                              BorderThickness="0, 1, 0, 0"
+                              Padding="16, 8, 16, 8"
+                              ColumnSpacing="12"
+                              Visibility="{Binding ExportVisibility}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="ExportChosenText"
+                                       Text="{Binding ExportText}"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Center"/>
+                            <Button x:Name="CancelExportButton"
+                                    x:Uid="Association_Remove"
+                                    Grid.Column="1"
+                                    Click="CancelExport_Click"/>
+                        </Grid>
+                        <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                              BorderThickness="0, 1, 0, 0"
+                              Padding="16, 8, 16, 8"
+                              ColumnSpacing="12"
+                              Visibility="{Binding ImportVisibility}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="ImportChosenText"
+                                       Text="{Binding ImportText}"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Center"/>
+                            <Button x:Name="CancelImportButton"
+                                    x:Uid="Association_Remove"
+                                    Grid.Column="1"
+                                    Click="CancelImport_Click"/>
+                        </Grid>
+                        <Border BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                BorderThickness="0, 1, 0, 0"
+                                Padding="16, 12, 16, 12">
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="8">
+                                <Button x:Name="AddButton"
+                                        MinWidth="120"
+                                        Click="Add_Click">
+                                    <StackPanel Orientation="Horizontal"
+                                                Spacing="8">
+                                        <FontIcon Glyph="&#xE710;"
+                                                  FontSize="14"/>
+                                        <TextBlock x:Uid="Association_Add"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="ImportButton"
+                                        x:Uid="Association_Import"
+                                        MinWidth="120"
+                                        Click="Import_Click"/>
+                                <Button x:Name="ExportButton"
+                                        x:Uid="Association_Export"
+                                        MinWidth="120"
+                                        Click="Export_Click"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </toolkit:SettingsExpander.ItemsHeader>
+            </toolkit:SettingsExpander>
+            <!-- Marks a setting that is going to be changed -->
+            <Border x:Name="ChangedOutline"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
+                    CornerRadius="{ThemeResource ControlCornerRadius}"
+                    IsHitTestVisible="False"
+                    Visibility="Collapsed"/>
+        </Grid>
+        <!-- The reason why a program cannot be made the default app -->
+        <InfoBar x:Name="Notice"
+                 Visibility="Collapsed"
+                 Margin="0, 2, 0, 0"
+                 Severity="Warning"
+                 IsClosable="False"
+                 IsOpen="{Binding ExceptionTextIsVisible}"
+                 Message="{Binding ExceptionText}"/>
+    </StackPanel>
+</UserControl>

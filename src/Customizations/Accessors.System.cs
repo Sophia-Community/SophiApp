@@ -352,6 +352,18 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Get the name of the app that opens an extension or a protocol.
+        /// </summary>
+        /// <param name="extension">The extension with the dot, or the name of the protocol.</param>
+        public static string SetAssociation(string extension) => AssociationService.GetDefaultApp(extension);
+
+        /// <summary>
+        /// Get the default apps saved to a file.
+        /// </summary>
+        /// <param name="file">The path of the JSON file.</param>
+        public static IReadOnlyList<AssociationRecord> ImportAssociations(string file) => AssociationService.ReadExported(file);
+
+        /// <summary>
         /// Get Windows Terminal default app state.
         /// </summary>
         public static int DefaultTerminalApp()

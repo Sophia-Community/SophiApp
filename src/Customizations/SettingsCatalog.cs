@@ -77,7 +77,7 @@ namespace SophiApp.Customizations
             // Personalization: Appearance
             RadioButtons(nameof(Accessors.WindowsColorMode), UICategoryTag.Personalization, Accessors.WindowsColorMode, Mutators.WindowsColorMode, group: "Appearance"),
             RadioButtons(nameof(Accessors.AppColorMode), UICategoryTag.Personalization, Accessors.AppColorMode, Mutators.AppColorMode, group: "Appearance"),
-            RadioButtons(nameof(Accessors.Cursors), UICategoryTag.Personalization, Accessors.Cursors, Mutators.Cursors, group: "Appearance", optionIcons: true),
+            RadioButtons(nameof(Accessors.Cursors), UICategoryTag.Personalization, Accessors.Cursors, Mutators.Cursors, group: "Appearance", optionIcons: true, thirdParty: Accessors.CursorsThirdParty),
             RadioButtons(nameof(Accessors.JPEGWallpapersQuality), UICategoryTag.Personalization, Accessors.JPEGWallpapersQuality, Mutators.JPEGWallpapersQuality, group: "Appearance"),
             CheckBox(nameof(Accessors.FirstLogonAnimation), UICategoryTag.Personalization, Accessors.FirstLogonAnimation, Mutators.FirstLogonAnimation, group: "Appearance"),
             CheckBox(nameof(Accessors.SnapAssist), UICategoryTag.Personalization, Accessors.SnapAssist, Mutators.SnapAssist, group: "Appearance"),
@@ -127,6 +127,7 @@ namespace SophiApp.Customizations
             CheckBox(nameof(Accessors.RestorePreviousFolders), UICategoryTag.System, Accessors.RestorePreviousFolders, Mutators.RestorePreviousFolders, group: "Startup"),
 
             // System: Other
+            Associations(nameof(Accessors.SetAssociation), UICategoryTag.System, Accessors.SetAssociation, Mutators.SetAssociation, Accessors.ImportAssociations, Mutators.ImportAssociations, Mutators.ExportAssociations, group: "Other"),
             RadioButtons(nameof(Accessors.DefaultTerminalApp), UICategoryTag.System, Accessors.DefaultTerminalApp, Mutators.DefaultTerminalApp, group: "Other", optionIcons: true, windows11Ltsc: false),
             CheckBox(nameof(Accessors.Autoplay), UICategoryTag.System, Accessors.Autoplay, Mutators.Autoplay, group: "Other"),
             CheckBox(nameof(Accessors.WindowsManageDefaultPrinter), UICategoryTag.System, Accessors.WindowsManageDefaultPrinter, Mutators.WindowsManageDefaultPrinter, group: "Other"),
@@ -153,7 +154,7 @@ namespace SophiApp.Customizations
             CheckBox(nameof(Accessors.EventViewerCustomView), UICategoryTag.Security, Accessors.EventViewerCustomView, Mutators.EventViewerCustomView),
             CheckBox(nameof(Accessors.AppsSmartScreen), UICategoryTag.Security, Accessors.AppsSmartScreen, Mutators.AppsSmartScreen),
             CheckBox(nameof(Accessors.SaveZoneInformation), UICategoryTag.Security, Accessors.SaveZoneInformation, Mutators.SaveZoneInformation),
-            IconRadioButtons(nameof(Accessors.DNSoverHTTPS), UICategoryTag.Security, Accessors.DNSoverHTTPS, Mutators.DNSoverHTTPS),
+            IconRadioButtons(nameof(Accessors.DNSoverHTTPS), UICategoryTag.Security, Accessors.DNSoverHTTPS, Mutators.DNSoverHTTPS, thirdParty: Accessors.DNSoverHTTPSThirdParty),
             CheckBox(nameof(Accessors.LocalSecurityAuthority), UICategoryTag.Security, Accessors.LocalSecurityAuthority, Mutators.LocalSecurityAuthority),
             RadioButtons(nameof(Accessors.AdminApprovalMode), UICategoryTag.Security, Accessors.AdminApprovalMode, Mutators.AdminApprovalMode),
 

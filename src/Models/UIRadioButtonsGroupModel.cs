@@ -55,6 +55,22 @@ namespace SophiApp.Models
         public bool HasOptionIcons { get; init; }
 
         /// <summary>
+        /// Gets the method that tells what Windows is set to when it is none of the options, or null.
+        /// </summary>
+        public Func<ThirdPartyState>? ThirdPartyAccessor { get; init; }
+
+        /// <summary>
+        /// Gets the title of the list item that stands for a state that is none of the options.
+        /// </summary>
+        public string ThirdPartyTitle { get; init; } = string.Empty;
+
+        /// <summary>
+        /// Gets what Windows is set to when it is none of the options. Null when it is one of them.
+        /// The list shows it as one more item, so a choice made instead of it can be taken back.
+        /// </summary>
+        public ThirdPartyState? ThirdParty { get; private set; }
+
+        /// <summary>
         /// Gets <see cref="accessor"/> returned value.
         /// </summary>
         public int DefaultId { get; private set; }
@@ -113,6 +129,10 @@ namespace SophiApp.Models
             try
             {
                 DefaultId = accessor.Invoke();
+
+                // The list gets the item before the item is selected
+                ThirdParty = DefaultId == ThirdPartyState.Id ? ThirdPartyAccessor?.Invoke() ?? new(string.Empty, string.Empty) : null;
+                OnPropertyChanged(nameof(ThirdParty));
                 SelectedId = DefaultId.ToString();
                 App.Logger.LogModelState(Name, DefaultId);
                 ShowNotice(string.Empty);
@@ -134,6 +154,12 @@ namespace SophiApp.Models
         public override void SetState()
         {
             var id = int.Parse(SelectedId);
+
+            // What is set by another app is only shown, it cannot be applied
+            if (id == ThirdPartyState.Id)
+            {
+                return;
+            }
 
             try
             {

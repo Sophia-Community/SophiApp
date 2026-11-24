@@ -21,6 +21,7 @@ namespace SophiApp.Customizations
     public static partial class Mutators
     {
         private static readonly IAppNotificationService AppNotificationService = App.GetService<IAppNotificationService>();
+        private static readonly IAssociationService AssociationService = App.GetService<IAssociationService>();
         private static readonly IAppxPackagesService AppxPackagesService = App.GetService<IAppxPackagesService>();
         private static readonly ICommonDataService DataService = App.GetService<ICommonDataService>();
         private static readonly ICursorsService CursorsService = App.GetService<ICursorsService>();

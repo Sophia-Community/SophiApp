@@ -396,8 +396,11 @@
   <data name="UIModel_ContextMenu_CopyDescription.Text" xml:space="preserve">
     <value>Copy description</value>
   </data>
+  <data name="UIModel_ContextMenu_CopyLink" xml:space="preserve">
+    <value>Copy link</value>
+  </data>
   <data name="ComboBox_NoOption.PlaceholderText" xml:space="preserve">
-    <value>Not set</value>
+    <value>Choose</value>
   </data>
   <data name="SettingOption_OpenWebPage" xml:space="preserve">
     <value>Open the web page</value>
@@ -768,6 +771,9 @@
   <data name="UIModel_Cursors_Title_3" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="UIModel_Cursors_ThirdParty" xml:space="preserve">
+    <value>Third-party cursor</value>
+  </data>
   <data name="UIModel_JPEGWallpapersQuality_Title" xml:space="preserve">
     <value>Desktop wallpaper JPEG quality</value>
   </data>
@@ -1116,6 +1122,78 @@
   <data name="SettingsGroup_Other" xml:space="preserve">
     <value>Other</value>
   </data>
+  <data name="UIModel_SetAssociation_Title" xml:space="preserve">
+    <value>Set default apps for file types</value>
+  </data>
+  <data name="UIModel_SetAssociation_Description" xml:space="preserve">
+    <value>Make a program the default app for a file extension or a protocol without the "How do you want to open this file?" pop-up. Select **Add**, then specify the program, the extension, and, if you want, an icon for the files. All default apps can be exported to a file and imported from it, for example after Windows is reinstalled: the apps listed in the file have to be installed first.</value>
+  </data>
+  <data name="Association_Program.Header" xml:space="preserve">
+    <value>Path to the program or its ProgId</value>
+  </data>
+  <data name="Association_Program.PlaceholderText" xml:space="preserve">
+    <value>C:\Program Files\App\app.exe</value>
+  </data>
+  <data name="Association_Browse.Content" xml:space="preserve">
+    <value>Browse…</value>
+  </data>
+  <data name="Association_Extension.Header" xml:space="preserve">
+    <value>Extension</value>
+  </data>
+  <data name="Association_Extension.PlaceholderText" xml:space="preserve">
+    <value>.pdf</value>
+  </data>
+  <data name="Association_Current" xml:space="preserve">
+    <value>Now opens with: {0}</value>
+  </data>
+  <data name="Association_Icon.Header" xml:space="preserve">
+    <value>Path to the icon (optional)</value>
+  </data>
+  <data name="Association_Icon.PlaceholderText" xml:space="preserve">
+    <value>%SystemRoot%\System32\shell32.dll,100</value>
+  </data>
+  <data name="Association_Remove.Content" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Association_Add.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Association_Import.Content" xml:space="preserve">
+    <value>Import…</value>
+  </data>
+  <data name="Association_Export.Content" xml:space="preserve">
+    <value>Export…</value>
+  </data>
+  <data name="Association_ExportChosen" xml:space="preserve">
+    <value>Export all default apps to "{0}"</value>
+  </data>
+  <data name="Association_ImportChosen" xml:space="preserve">
+    <value>Import from "{0}": {1} default apps</value>
+  </data>
+  <data name="UIModel_SetAssociation_ProgramNotFound" xml:space="preserve">
+    <value>The file "{0}" does not exist.</value>
+  </data>
+  <data name="UIModel_SetAssociation_ProgIdNotFound" xml:space="preserve">
+    <value>The ProgId "{0}" is not registered in Windows.</value>
+  </data>
+  <data name="UIModel_SetAssociation_ExtensionNotValid" xml:space="preserve">
+    <value>An extension starts with a dot, for example .pdf, and "{0}" is not a protocol registered in Windows.</value>
+  </data>
+  <data name="UIModel_SetAssociation_IconNotFound" xml:space="preserve">
+    <value>The icon file "{0}" does not exist.</value>
+  </data>
+  <data name="UIModel_SetAssociation_FileNotValid" xml:space="preserve">
+    <value>The file "{0}" has no default apps exported by SophiApp for Windows or Sophia Script for Windows. Choose the file made with the "Export…" button, or export the default apps again.</value>
+  </data>
+  <data name="UIModel_SetAssociation_FileNotJson" xml:space="preserve">
+    <value>The file "{0}" has a JSON error near line {1}, so it cannot be read. Correct the error, or export the default apps again.</value>
+  </data>
+  <data name="UIModel_SetAssociation_ExportFailed" xml:space="preserve">
+    <value>Windows could not export the default apps (DISM exit code: {0}).</value>
+  </data>
+  <data name="UIModel_SetAssociation_ImportIncomplete" xml:space="preserve">
+    <value>{0} of {1} default apps were not imported, because their apps are not installed: {2}. Install the apps and import the file again.</value>
+  </data>
   <data name="UIModel_DefaultTerminalApp_Title" xml:space="preserve">
     <value>Default terminal app</value>
   </data>
@@ -1341,6 +1419,9 @@
   <data name="UIModel_DNSoverHTTPS_Title_5" xml:space="preserve">
     <value>OpenDNS</value>
   </data>
+  <data name="UIModel_DNSoverHTTPS_ThirdParty" xml:space="preserve">
+    <value>Third-party DoH</value>
+  </data>
   <data name="UIModel_DNSoverHTTPS_Link_1" xml:space="preserve">
     <value>https://developers.cloudflare.com/1.1.1.1/setup/windows/</value>
   </data>
@@ -1511,6 +1592,12 @@
   </data>
   <data name="Panel_Step_WindowsFeature" xml:space="preserve">
     <value>changing a Windows feature, this may take a few minutes</value>
+  </data>
+  <data name="Panel_Step_ExportingAssociations" xml:space="preserve">
+    <value>exporting the default apps</value>
+  </data>
+  <data name="Panel_Step_ImportingAssociation" xml:space="preserve">
+    <value>default app {0} of {1}</value>
   </data>
   <data name="Button_CancelDownload.Content" xml:space="preserve">
     <value>Cancel download</value>

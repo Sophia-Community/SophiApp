@@ -23,6 +23,7 @@ namespace SophiApp.Services
 
         // DNS servers of an adapter that are queried over HTTPS. The subkey of a server is its address
         private const string EncryptedServersKey = "DohInterfaceSettings\\Doh";
+        private const string EncryptedServersKeyV6 = "DohInterfaceSettings\\Doh6";
 
         // DohFlags: the address of the DNS-over-HTTPS service is set manually
         private const long ManualTemplate = 2;
@@ -73,8 +74,18 @@ namespace SophiApp.Services
         {
             // Every adapter has to be set to the same provider
             var providers = GetAdaptersInUse().Select(GetProvider).Distinct().ToList();
-            return providers.Count == 1 ? providers[0] : 0;
+
+            if (providers.Count == 1)
+            {
+                return providers[0];
+            }
+
+            return providers.Contains(ThirdPartyState.Id) ? ThirdPartyState.Id : 0;
         }
+
+        /// <inheritdoc/>
+        public IReadOnlyList<string> GetEncryptedServers()
+            => GetAdaptersInUse().SelectMany(adapter => GetServers(adapter).Where(server => IsEncrypted(adapter.Id, server))).Select(server => server.ToString()).Distinct().ToList();
 
         /// <inheritdoc/>
         public void SetProvider(int provider)
@@ -162,29 +173,41 @@ namespace SophiApp.Services
 
         private static int GetIndex(NetworkInterface adapter) => adapter.GetIPProperties().GetIPv4Properties().Index;
 
+        // The DNS servers of an adapter, of both IP versions
+        private static List<IPAddress> GetServers(NetworkInterface adapter)
+            => [.. adapter.GetIPProperties().DnsAddresses.Where(address => address.AddressFamily is AddressFamily.InterNetwork or AddressFamily.InterNetworkV6)];
+
         /// <summary>
-        /// Gets the number of the provider an adapter is set to, or 0.
+        /// Gets the number of the provider an adapter is set to, 0 if it does not encrypt the queries,
+        /// or <see cref="ThirdPartyState.Id"/> if it encrypts them in a way the function does not set.
         /// </summary>
         private static int GetProvider(NetworkInterface adapter)
         {
-            var servers = adapter.GetIPProperties().DnsAddresses
-                .Where(address => address.AddressFamily == AddressFamily.InterNetwork)
-                .Select(address => address.ToString())
-                .ToList();
+            var allServers = GetServers(adapter);
 
-            // The servers were not set, or the queries to some of them are not encrypted
-            if (servers.Count == 0 || !servers.TrueForAll(server => IsEncrypted(adapter.Id, server)))
+            // The function sets IPv4 servers only
+            var servers = allServers.Where(server => server.AddressFamily == AddressFamily.InterNetwork).Select(server => server.ToString()).ToList();
+            var encrypted = servers.Where(server => IsEncrypted(adapter.Id, server)).ToList();
+
+            if (encrypted.Count == 0)
             {
-                return 0;
+                // The queries can be encrypted for IPv6 servers alone
+                return allServers.Exists(server => IsEncrypted(adapter.Id, server)) ? ThirdPartyState.Id : 0;
             }
 
-            // All servers of the adapter belong to one provider. One of its two servers is enough: the second one may not be set
-            return Array.FindIndex(Providers, provider => servers.TrueForAll(server => server == provider.Primary || server == provider.Secondary)) + 1;
+            // All servers of the adapter are encrypted and belong to one provider. One of its two servers is enough: the second one may not be set
+            var number = Array.FindIndex(Providers, provider => servers.TrueForAll(server => server == provider.Primary || server == provider.Secondary)) + 1;
+            return number > 0 && encrypted.Count == servers.Count ? number : ThirdPartyState.Id;
         }
 
         private static string GetServerKey(string adapterId, string server) => $"{AdaptersKey}\\{adapterId}\\{EncryptedServersKey}\\{server}";
 
         private static bool IsEncrypted(string adapterId, string server) => Registry.LocalMachine.SubKeyExists(GetServerKey(adapterId, server));
+
+        // The servers of IPv6 are kept in a key of their own
+        private static bool IsEncrypted(string adapterId, IPAddress server) => server.AddressFamily == AddressFamily.InterNetworkV6
+            ? Registry.LocalMachine.SubKeyExists($"{AdaptersKey}\\{adapterId}\\{EncryptedServersKeyV6}\\{server}")
+            : IsEncrypted(adapterId, server.ToString());
 
         private static void SetEncryption(string adapterId, string server, string template)
         {
@@ -199,9 +222,9 @@ namespace SophiApp.Services
         {
             using var adapters = Registry.LocalMachine.OpenSubKey(AdaptersKey);
 
-            foreach (var adapterId in adapters?.GetSubKeyNames() ?? [])
+            foreach (var serversKey in (adapters?.GetSubKeyNames() ?? []).SelectMany(adapterId => new[] { $"{adapterId}\\{EncryptedServersKey}", $"{adapterId}\\{EncryptedServersKeyV6}" }))
             {
-                using var servers = adapters!.OpenSubKey($"{adapterId}\\{EncryptedServersKey}", writable: true);
+                using var servers = adapters!.OpenSubKey(serversKey, writable: true);
 
                 foreach (var server in servers?.GetSubKeyNames() ?? [])
                 {

@@ -34,7 +34,8 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel.ContextFlyout>
-            <MenuFlyout helpers:PopupCursor.ResetOnOpen="True">
+            <MenuFlyout helpers:PopupCursor.ResetOnOpen="True"
+                        helpers:ContextMenuHelper.CopiesNoticeLink="True">
                 <MenuFlyoutItem x:Uid="UIModel_ContextMenu_CopyTitle"
                                 Icon="Copy"
                                 Click="CopyTitle_Click"/>

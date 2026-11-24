@@ -52,6 +52,7 @@ public partial class App : Application
         _ = services.AddSingleton<IHttpService, HttpService>();
         _ = services.AddTransient<INavigationViewService, NavigationViewService>();
         _ = services.AddTransient<IDnsService, DnsService>();
+        _ = services.AddTransient<IAssociationService, AssociationService>();
         _ = services.AddTransient<INetworkAdapterService, NetworkAdapterService>();
         _ = services.AddTransient<IOneDriveService, OneDriveService>();
         _ = services.AddTransient<IOsService, OsService>();

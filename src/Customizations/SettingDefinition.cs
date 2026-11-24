@@ -90,6 +90,26 @@ namespace SophiApp.Customizations
         public Func<string?>? Notice { get; private init; }
 
         /// <summary>
+        /// Gets the method that tells what Windows is set to when it is none of the options, or null.
+        /// </summary>
+        public Func<ThirdPartyState>? ThirdParty { get; private init; }
+
+        /// <summary>
+        /// Gets the method that reads the default apps saved to a file, or null.
+        /// </summary>
+        public Func<string, IReadOnlyList<AssociationRecord>>? ImportReader { get; private init; }
+
+        /// <summary>
+        /// Gets the method that sets the default apps read from a file and returns the extensions it could not set, or null.
+        /// </summary>
+        public Func<IReadOnlyList<AssociationRecord>, IReadOnlyList<string>>? Importer { get; private init; }
+
+        /// <summary>
+        /// Gets the method that saves the default apps to a file, or null.
+        /// </summary>
+        public Action<string>? Exporter { get; private init; }
+
+        /// <summary>
         /// A setting that is turned on or off.
         /// </summary>
         /// <param name="name">The name of the setting.</param>
@@ -126,10 +146,11 @@ namespace SophiApp.Customizations
         /// <param name="mutator">The method that sets the option with the given number.</param>
         /// <param name="group">The group of settings on the page.</param>
         /// <param name="optionIcons">The options have icons.</param>
+        /// <param name="thirdParty">The method that tells what Windows is set to when the accessor returns <see cref="ThirdPartyState.Id"/>.</param>
         /// <param name="windows11">The setting is available on Windows 11.</param>
         /// <param name="windows11Ltsc">The setting is available on Windows 11 LTSC.</param>
-        public static SettingDefinition RadioButtons(string name, UICategoryTag tag, Func<int> accessor, Action<int> mutator, string group = "", bool optionIcons = false, bool windows11 = true, bool windows11Ltsc = true)
-            => new(name, UIModelType.RadioButtonsGroup, tag, accessor, mutator, group, windows11, windows11Ltsc) { OptionIcons = optionIcons };
+        public static SettingDefinition RadioButtons(string name, UICategoryTag tag, Func<int> accessor, Action<int> mutator, string group = "", bool optionIcons = false, Func<ThirdPartyState>? thirdParty = null, bool windows11 = true, bool windows11Ltsc = true)
+            => new(name, UIModelType.RadioButtonsGroup, tag, accessor, mutator, group, windows11, windows11Ltsc) { OptionIcons = optionIcons, ThirdParty = thirdParty };
 
         /// <summary>
         /// A choice of any number of options with icons, none of which can be selected.
@@ -139,10 +160,11 @@ namespace SophiApp.Customizations
         /// <param name="accessor">The method that returns the number of the selected option, or 0.</param>
         /// <param name="mutator">The method that sets the option with the given number.</param>
         /// <param name="group">The group of settings on the page.</param>
+        /// <param name="thirdParty">The method that tells what Windows is set to when the accessor returns <see cref="ThirdPartyState.Id"/>.</param>
         /// <param name="windows11">The setting is available on Windows 11.</param>
         /// <param name="windows11Ltsc">The setting is available on Windows 11 LTSC.</param>
-        public static SettingDefinition IconRadioButtons(string name, UICategoryTag tag, Func<int> accessor, Action<int> mutator, string group = "", bool windows11 = true, bool windows11Ltsc = true)
-            => new(name, UIModelType.IconRadioButtons, tag, accessor, mutator, group, windows11, windows11Ltsc);
+        public static SettingDefinition IconRadioButtons(string name, UICategoryTag tag, Func<int> accessor, Action<int> mutator, string group = "", Func<ThirdPartyState>? thirdParty = null, bool windows11 = true, bool windows11Ltsc = true)
+            => new(name, UIModelType.IconRadioButtons, tag, accessor, mutator, group, windows11, windows11Ltsc) { ThirdParty = thirdParty };
 
         /// <summary>
         /// A package that is installed, updated or uninstalled with buttons.
@@ -217,5 +239,36 @@ namespace SophiApp.Customizations
         /// <param name="windows11Ltsc">The setting is available on Windows 11 LTSC.</param>
         public static SettingDefinition UserFolders(string name, UICategoryTag tag, Func<UserFolder, string> accessor, Action<UserFolder, string> mutator, string group = "", bool windows11 = true, bool windows11Ltsc = true)
             => new(name, UIModelType.UserFolders, tag, accessor, mutator, group, windows11, windows11Ltsc);
+
+        /// <summary>
+        /// The default apps of file extensions and protocols: the user adds a program for each of them.
+        /// </summary>
+        /// <param name="name">The name of the setting.</param>
+        /// <param name="tag">The page of the setting.</param>
+        /// <param name="accessor">The method that returns the name of the app that opens an extension.</param>
+        /// <param name="mutator">The method that makes programs the default apps of extensions and returns the reasons of the failures.</param>
+        /// <param name="importReader">The method that reads the default apps saved to a file.</param>
+        /// <param name="importer">The method that sets the default apps read from a file and returns the extensions it could not set.</param>
+        /// <param name="exporter">The method that saves the default apps to a file.</param>
+        /// <param name="group">The group of settings on the page.</param>
+        /// <param name="windows11">The setting is available on Windows 11.</param>
+        /// <param name="windows11Ltsc">The setting is available on Windows 11 LTSC.</param>
+        public static SettingDefinition Associations(
+            string name,
+            UICategoryTag tag,
+            Func<string, string> accessor,
+            Func<IReadOnlyList<AssociationRecord>, IReadOnlyList<string>> mutator,
+            Func<string, IReadOnlyList<AssociationRecord>> importReader,
+            Func<IReadOnlyList<AssociationRecord>, IReadOnlyList<string>> importer,
+            Action<string> exporter,
+            string group = "",
+            bool windows11 = true,
+            bool windows11Ltsc = true)
+            => new(name, UIModelType.Associations, tag, accessor, mutator, group, windows11, windows11Ltsc)
+            {
+                ImportReader = importReader,
+                Importer = importer,
+                Exporter = exporter,
+            };
     }
 }

@@ -157,11 +157,22 @@ namespace SophiApp.Services
                     CanUninstall = setting.CanUninstall,
                     AllUsersMutator = setting.AllUsersMutator,
                 },
-                UIModelType.RadioButtonsGroup => new UIRadioButtonsGroupModel(dto, title, description, GetOptionTitles(dto.Name), (Func<int>)setting.Accessor, (Action<int>)setting.Mutator) { HasOptionIcons = dto.OptionIcons },
+                UIModelType.RadioButtonsGroup => new UIRadioButtonsGroupModel(dto, title, description, GetOptionTitles(dto.Name), (Func<int>)setting.Accessor, (Action<int>)setting.Mutator)
+                {
+                    HasOptionIcons = dto.OptionIcons,
+                    ThirdPartyAccessor = setting.ThirdParty,
+                    ThirdPartyTitle = GetResourceValueOrDefault($"UIModel_{dto.Name}_ThirdParty"),
+                },
                 UIModelType.IconRadioButtons => BuildIconRadioButtons(dto, title, description, setting),
                 UIModelType.Action => new UIActionModel(dto, title, description, GetResourceValueOrDefault($"UIModel_{dto.Name}_Button"), (Func<bool>)setting.Accessor, (Action<bool>)setting.Mutator),
                 UIModelType.Choice => new UIChoiceModel(dto, title, description, GetResourceValueOrDefault($"UIModel_{dto.Name}_NoChoice"), (Func<IReadOnlyList<SettingChoice>>)setting.Accessor, (Action<string>)setting.Mutator),
                 UIModelType.UserFolders => BuildUserFoldersModel(dto, title, description, setting),
+                UIModelType.Associations => new UIAssociationsModel(dto, title, description, (Func<string, string>)setting.Accessor, (Func<IReadOnlyList<AssociationRecord>, IReadOnlyList<string>>)setting.Mutator)
+                {
+                    ImportReader = setting.ImportReader,
+                    Importer = setting.Importer,
+                    Exporter = setting.Exporter,
+                },
                 UIModelType.CheckList => new UICheckListModel(dto, title, description, (Func<IReadOnlyList<SettingCheckItem>>)setting.Accessor, (Action<IReadOnlyDictionary<string, bool>>)setting.Mutator),
                 _ => throw new TypeAccessException($"An invalid type is specified: {setting.Type}"),
             };
@@ -190,7 +201,11 @@ namespace SophiApp.Services
 
             // An option may have a web page about it
             var links = Enumerable.Range(1, options.Count).Select(number => GetResourceValueOrDefault($"UIModel_{dto.Name}_Link_{number}")).ToList();
-            return new UIIconRadioButtonsModel(dto, title, description, options, links, (Func<int>)setting.Accessor, (Action<int>)setting.Mutator);
+            return new UIIconRadioButtonsModel(dto, title, description, options, links, (Func<int>)setting.Accessor, (Action<int>)setting.Mutator)
+            {
+                ThirdPartyAccessor = setting.ThirdParty,
+                ThirdPartyTitle = GetResourceValueOrDefault($"UIModel_{dto.Name}_ThirdParty"),
+            };
         }
 
         // The options are numbered from 1, and there are as many of them as there are titles

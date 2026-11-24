@@ -456,6 +456,37 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Make programs the default apps of extensions or protocols.
+        /// </summary>
+        /// <param name="records">A path to a program, a whole command with it, or the ProgId of a registered app for each extension.</param>
+        /// <returns>The reasons why some of the apps could not be set.</returns>
+        public static IReadOnlyList<string> SetAssociation(IReadOnlyList<AssociationRecord> records)
+        {
+            var failures = AssociationService.SetDefaultApps(records, skipCurrent: false);
+            failures.ToList().ForEach(failure => App.Logger.LogSkippedException($"Setting the default app of {failure.Extension}", failure.Error));
+            return failures.Select(failure => failure.Error.GetText()).Distinct().ToList();
+        }
+
+        /// <summary>
+        /// Save the default apps of the current user to a file.
+        /// </summary>
+        /// <param name="file">The path of the JSON file to write.</param>
+        public static void ExportAssociations(string file) => AssociationService.Export(file);
+
+        /// <summary>
+        /// Set the default apps read from a file.
+        /// </summary>
+        /// <param name="records">The default apps read from a file.</param>
+        /// <returns>The extensions whose app could not be set.</returns>
+        public static IReadOnlyList<string> ImportAssociations(IReadOnlyList<AssociationRecord> records)
+        {
+            // An app that is already the default one is left as it is
+            var failures = AssociationService.SetDefaultApps(records, skipCurrent: true);
+            failures.ToList().ForEach(failure => App.Logger.LogSkippedException($"Importing the default app of {failure.Extension}", failure.Error));
+            return failures.Select(failure => failure.Extension).ToList();
+        }
+
+        /// <summary>
         /// Set Windows Terminal default app state.
         /// </summary>
         /// <param name="state">Windows Terminal state.</param>

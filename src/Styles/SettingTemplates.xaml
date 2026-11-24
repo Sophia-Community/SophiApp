@@ -32,6 +32,11 @@
                 <controls:SettingUserFolders/>
             </DataTemplate>
         </helpers:UIDataTemplateSelector.UserFoldersTemplate>
+        <helpers:UIDataTemplateSelector.AssociationsTemplate>
+            <DataTemplate>
+                <controls:SettingAssociations/>
+            </DataTemplate>
+        </helpers:UIDataTemplateSelector.AssociationsTemplate>
         <helpers:UIDataTemplateSelector.CheckListTemplate>
             <DataTemplate>
                 <controls:SettingCheckList/>

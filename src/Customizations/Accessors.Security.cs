@@ -122,8 +122,13 @@ namespace SophiApp.Customizations
         /// <summary>
         /// Get the DNS-over-HTTPS provider the network adapter in use is set to.
         /// </summary>
-        /// <returns>The number of the provider, starting from 1. 0 if none of the providers is used.</returns>
+        /// <returns>The number of the provider, starting from 1. 0 if the queries are not encrypted. <see cref="ThirdPartyState.Id"/> if they are encrypted by other servers.</returns>
         public static int DNSoverHTTPS() => DnsService.GetProvider();
+
+        /// <summary>
+        /// Get the DNS-over-HTTPS servers that are not the ones of the providers.
+        /// </summary>
+        public static ThirdPartyState DNSoverHTTPSThirdParty() => new(string.Join(", ", DnsService.GetEncryptedServers()), string.Empty);
 
         /// <summary>
         /// Get Local Security Authority state.

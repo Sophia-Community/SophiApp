@@ -1,4 +1,4 @@
-// <copyright file="ForegroundHelper.cs" company="Team Sophia">
+﻿// <copyright file="ForegroundHelper.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -41,12 +41,13 @@ namespace SophiApp.Helpers
         /// <returns>True if the search window was closed.</returns>
         public static async Task<bool> CloseSearchAsync(nint appWindow)
         {
+            // The watch does not return to the window thread: the app may be closed while it goes on
             var timer = Stopwatch.StartNew();
             var seen = new List<string>();
 
             while (timer.Elapsed < WatchTime)
             {
-                await Task.Delay(WatchStep);
+                await Task.Delay(WatchStep).ConfigureAwait(false);
                 var search = FindShownSearchWindow();
                 var state = $"{GetProcessName(GetForegroundWindow())}{(search != 0 ? "+search" : string.Empty)}";
 
@@ -64,7 +65,7 @@ namespace SophiApp.Helpers
                 if (GetForegroundWindow() != search)
                 {
                     _ = SetForegroundWindow(search);
-                    await Task.Delay(WatchStep);
+                    await Task.Delay(WatchStep).ConfigureAwait(false);
                 }
 
                 if (GetForegroundWindow() == search)
@@ -72,7 +73,7 @@ namespace SophiApp.Helpers
                     // Search closes itself the same way it does for the user
                     keybd_event(EscapeKey, 0, 0, 0);
                     keybd_event(EscapeKey, 0, KeyUp, 0);
-                    await Task.Delay(WatchStep);
+                    await Task.Delay(WatchStep).ConfigureAwait(false);
                     _ = SetForegroundWindow(appWindow);
                     LastWatch = $"{string.Join(" > ", seen)} > closed at {timer.Elapsed.TotalSeconds:F1} s";
                     return true;

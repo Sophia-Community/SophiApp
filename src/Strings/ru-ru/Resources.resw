@@ -396,8 +396,11 @@
   <data name="UIModel_ContextMenu_CopyDescription.Text" xml:space="preserve">
     <value>Копировать описание</value>
   </data>
+  <data name="UIModel_ContextMenu_CopyLink" xml:space="preserve">
+    <value>Копировать ссылку</value>
+  </data>
   <data name="ComboBox_NoOption.PlaceholderText" xml:space="preserve">
-    <value>Не задано</value>
+    <value>Выберите</value>
   </data>
   <data name="SettingOption_OpenWebPage" xml:space="preserve">
     <value>Открыть веб-страницу</value>
@@ -768,6 +771,9 @@
   <data name="UIModel_Cursors_Title_3" xml:space="preserve">
     <value>По умолчанию</value>
   </data>
+  <data name="UIModel_Cursors_ThirdParty" xml:space="preserve">
+    <value>Сторонний курсор</value>
+  </data>
   <data name="UIModel_JPEGWallpapersQuality_Title" xml:space="preserve">
     <value>Качество обоев рабочего стола в формате JPEG</value>
   </data>
@@ -1116,6 +1122,78 @@
   <data name="SettingsGroup_Other" xml:space="preserve">
     <value>Прочее</value>
   </data>
+  <data name="UIModel_SetAssociation_Title" xml:space="preserve">
+    <value>Назначить приложения по умолчанию для типов файлов</value>
+  </data>
+  <data name="UIModel_SetAssociation_Description" xml:space="preserve">
+    <value>Сделать программу приложением по умолчанию для расширения файла или протокола без всплывающего окна "Каким образом вы хотите открыть этот файл?". Нажмите **Добавить**, затем укажите программу, расширение и при желании значок для файлов. Все приложения по умолчанию можно экспортировать в файл и импортировать из него, например после переустановки Windows: сначала нужно установить приложения, перечисленные в файле.</value>
+  </data>
+  <data name="Association_Program.Header" xml:space="preserve">
+    <value>Путь к программе или её ProgId</value>
+  </data>
+  <data name="Association_Program.PlaceholderText" xml:space="preserve">
+    <value>C:\Program Files\App\app.exe</value>
+  </data>
+  <data name="Association_Browse.Content" xml:space="preserve">
+    <value>Обзор…</value>
+  </data>
+  <data name="Association_Extension.Header" xml:space="preserve">
+    <value>Расширение</value>
+  </data>
+  <data name="Association_Extension.PlaceholderText" xml:space="preserve">
+    <value>.pdf</value>
+  </data>
+  <data name="Association_Current" xml:space="preserve">
+    <value>Сейчас открывается в: {0}</value>
+  </data>
+  <data name="Association_Icon.Header" xml:space="preserve">
+    <value>Путь к значку (необязательно)</value>
+  </data>
+  <data name="Association_Icon.PlaceholderText" xml:space="preserve">
+    <value>%SystemRoot%\System32\shell32.dll,100</value>
+  </data>
+  <data name="Association_Remove.Content" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Association_Add.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="Association_Import.Content" xml:space="preserve">
+    <value>Импорт…</value>
+  </data>
+  <data name="Association_Export.Content" xml:space="preserve">
+    <value>Экспорт…</value>
+  </data>
+  <data name="Association_ExportChosen" xml:space="preserve">
+    <value>Экспорт всех приложений по умолчанию в "{0}"</value>
+  </data>
+  <data name="Association_ImportChosen" xml:space="preserve">
+    <value>Импорт из "{0}": приложений по умолчанию — {1}</value>
+  </data>
+  <data name="UIModel_SetAssociation_ProgramNotFound" xml:space="preserve">
+    <value>Файл "{0}" не существует.</value>
+  </data>
+  <data name="UIModel_SetAssociation_ProgIdNotFound" xml:space="preserve">
+    <value>ProgId "{0}" не зарегистрирован в Windows.</value>
+  </data>
+  <data name="UIModel_SetAssociation_ExtensionNotValid" xml:space="preserve">
+    <value>Расширение начинается с точки, например .pdf, а "{0}" не является зарегистрированным в Windows протоколом.</value>
+  </data>
+  <data name="UIModel_SetAssociation_IconNotFound" xml:space="preserve">
+    <value>Файл значка "{0}" не существует.</value>
+  </data>
+  <data name="UIModel_SetAssociation_FileNotValid" xml:space="preserve">
+    <value>В файле "{0}" нет приложений по умолчанию, экспортированных SophiApp for Windows или Sophia Script for Windows. Выберите файл, созданный кнопкой "Экспорт…", или экспортируйте приложения по умолчанию заново.</value>
+  </data>
+  <data name="UIModel_SetAssociation_FileNotJson" xml:space="preserve">
+    <value>В файле "{0}" ошибка JSON рядом со строкой {1}, поэтому его нельзя прочитать. Исправьте ошибку или экспортируйте приложения по умолчанию заново.</value>
+  </data>
+  <data name="UIModel_SetAssociation_ExportFailed" xml:space="preserve">
+    <value>Windows не удалось экспортировать приложения по умолчанию (код завершения DISM: {0}).</value>
+  </data>
+  <data name="UIModel_SetAssociation_ImportIncomplete" xml:space="preserve">
+    <value>Не импортировано приложений по умолчанию: {0} из {1}, так как их приложения не установлены: {2}. Установите приложения и импортируйте файл ещё раз.</value>
+  </data>
   <data name="UIModel_DefaultTerminalApp_Title" xml:space="preserve">
     <value>Приложение терминала по умолчанию</value>
   </data>
@@ -1341,6 +1419,9 @@
   <data name="UIModel_DNSoverHTTPS_Title_5" xml:space="preserve">
     <value>OpenDNS</value>
   </data>
+  <data name="UIModel_DNSoverHTTPS_ThirdParty" xml:space="preserve">
+    <value>Сторонний DoH</value>
+  </data>
   <data name="UIModel_DNSoverHTTPS_Link_1" xml:space="preserve">
     <value>https://developers.cloudflare.com/1.1.1.1/setup/windows/</value>
   </data>
@@ -1511,6 +1592,12 @@
   </data>
   <data name="Panel_Step_WindowsFeature" xml:space="preserve">
     <value>изменение компонента Windows, это может занять несколько минут</value>
+  </data>
+  <data name="Panel_Step_ExportingAssociations" xml:space="preserve">
+    <value>экспорт приложений по умолчанию</value>
+  </data>
+  <data name="Panel_Step_ImportingAssociation" xml:space="preserve">
+    <value>приложение по умолчанию {0} из {1}</value>
   </data>
   <data name="Button_CancelDownload.Content" xml:space="preserve">
     <value>Отменить скачивание</value>

@@ -48,6 +48,15 @@ namespace SophiApp.ControlTemplates
             typeof(SettingComboBox),
             new PropertyMetadata(null, (sender, args) => ((SettingComboBox)sender).OnChoicesChanged(args.NewValue)));
 
+        /// <summary>
+        /// Identifies the <see cref="ThirdParty"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ThirdPartyProperty = DependencyProperty.Register(
+            nameof(ThirdParty),
+            typeof(object),
+            typeof(SettingComboBox),
+            new PropertyMetadata(null, (sender, args) => ((SettingComboBox)sender).OnThirdPartyChanged(args.NewValue)));
+
         // The room for an option icon: wide for the logos that are wordmarks, and a square of the same height for the logos that are signs,
         // so they all look the same size. The icon is drawn larger than it is shown, so it stays sharp at any display scale
         private const double OptionIconWidth = 44;
@@ -61,6 +70,9 @@ namespace SophiApp.ControlTemplates
 
         // The items the list is built from, if they are known only when the app runs
         private object? shownChoices;
+
+        // The state that is none of the options, if the list has an item for it
+        private ThirdPartyState? shownThirdParty;
 
         // True while the list only repeats the model
         private bool isFollowingModel;
@@ -80,6 +92,9 @@ namespace SophiApp.ControlTemplates
 
             // A list that is known only when the app runs can change when the state is read again
             SetBinding(ChoicesProperty, new Binding { Path = new PropertyPath("Choices") });
+
+            // So can the item of a state that is none of the options: it is there only while Windows is in that state
+            SetBinding(ThirdPartyProperty, new Binding { Path = new PropertyPath("ThirdParty") });
 
             // While the app is busy the mouse is blocked by the page, and the keyboard is blocked here
             PreviewKeyDown += (_, args) => args.Handled = !ViewModel.NavigationViewHitTestVisible;
@@ -123,6 +138,15 @@ namespace SophiApp.ControlTemplates
             set => SetValue(ChoicesProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets what Windows is set to when it is none of the options of the model.
+        /// </summary>
+        public object? ThirdParty
+        {
+            get => GetValue(ThirdPartyProperty);
+            set => SetValue(ThirdPartyProperty, value);
+        }
+
         private static string GetDescription(object? model) => model switch
         {
             UIChoiceModel choice => choice.Description,
@@ -142,7 +166,14 @@ namespace SophiApp.ControlTemplates
             ? null
             : new SvgImageSource(icon) { RasterizePixelWidth = width * OptionIconSharpness, RasterizePixelHeight = OptionIconHeight * OptionIconSharpness };
 
-        private static IEnumerable<SettingOption> GetOptions(object? model)
+        private static (string Title, ThirdPartyState? State) GetThirdParty(object? model) => model switch
+        {
+            UIRadioButtonsGroupModel group => (group.ThirdPartyTitle, group.ThirdParty),
+            UIIconRadioButtonsModel group => (group.ThirdPartyTitle, group.ThirdParty),
+            _ => (string.Empty, null),
+        };
+
+        private static IEnumerable<SettingOption> GetOptions(object? model, double scale)
         {
             if (model is UIChoiceModel choice)
             {
@@ -166,12 +197,30 @@ namespace SophiApp.ControlTemplates
             // The pictures of a plain choice are signs and get a square room, the logos of an icon choice can be wordmarks and get a wide one
             var iconWidth = iconGroup is null ? OptionIconHeight : OptionIconWidth;
 
-            return GetOptionTitles(model).Select((title, index) => new SettingOption((index + 1).ToString(), title, GetOptionIcon(iconGroup?.GetOptionIcon(index + 1) ?? pictureGroup?.GetOptionIcon(index + 1), iconWidth))
+            var options = GetOptionTitles(model).Select((title, index) => new SettingOption((index + 1).ToString(), title, GetOptionIcon(iconGroup?.GetOptionIcon(index + 1) ?? pictureGroup?.GetOptionIcon(index + 1), iconWidth))
             {
                 IconWidth = iconWidth,
                 Glyph = pictureGroup?.GetOptionGlyph(index + 1) ?? string.Empty,
                 Link = iconGroup?.Links.ElementAtOrDefault(index) ?? string.Empty,
                 LinkHint = linkHint,
+            });
+
+            var (thirdPartyTitle, thirdParty) = GetThirdParty(model);
+
+            if (thirdParty is null)
+            {
+                return options;
+            }
+
+            // A cursor takes about a half of its square, and the margins are cut off, so it is drawn twice as large as it is shown
+            var cursor = thirdParty.IconFile.Length > 0 ? CursorImage.Load(thirdParty.IconFile, (int)Math.Ceiling(OptionIconHeight * scale * 2)) : null;
+
+            // What is set by another app is the last item: it is there only to be seen and to return to
+            return options.Append(new SettingOption(ThirdPartyState.Id.ToString(), thirdPartyTitle, cursor)
+            {
+                IconWidth = iconWidth,
+                Subtitle = thirdParty.Details,
+                KeepsIconRoom = iconGroup is not null || pictureGroup?.HasOptionIcons == true,
             });
         }
 
@@ -219,17 +268,30 @@ namespace SophiApp.ControlTemplates
             }
         }
 
+        private void OnThirdPartyChanged(object? state)
+        {
+            // A setting that has just been shown already has the item in its list
+            if (!Equals(state, shownThirdParty))
+            {
+                ShowOptions();
+            }
+        }
+
         private void ShowOptions()
         {
             var template = (DataTemplate)Resources["OptionTemplate"];
             shownChoices = (DataContext as UIChoiceModel)?.Choices;
+            shownThirdParty = GetThirdParty(DataContext).State;
+
+            // The window knows the display scale even when the card is not on the page yet
+            var scale = (XamlRoot ?? App.MainWindow.Content?.XamlRoot)?.RasterizationScale ?? 1;
 
             isFollowingModel = true;
             OptionsBox.Items.Clear();
             items.Clear();
 
             // The options are list items of their own, so one that cannot be chosen is shown disabled
-            foreach (var option in GetOptions(DataContext))
+            foreach (var option in GetOptions(DataContext, scale))
             {
                 // The option is kept in the tag too: the closed list takes the content of the selected item for itself
                 // The content takes the whole width of the item, so what stands at its right edge is in one column

@@ -11,6 +11,8 @@ namespace SophiApp.Customizations
     using SophiApp.Extensions;
     using SophiApp.Helpers;
     using System;
+    using System.Security.AccessControl;
+    using System.Security.Principal;
     using System.ServiceProcess;
     using System.Text;
     using Windows.ApplicationModel;
@@ -348,15 +350,28 @@ namespace SophiApp.Customizations
         /// <summary>
         /// Get "Windows 11 Cursors Concept" from Jepri Creations state.
         /// </summary>
-        public static int Cursors()
+        public static int Cursors() => GetCursorScheme() switch
         {
-            var cursors = Registry.CurrentUser.GetSubKeyValue("Control Panel\\Cursors", string.Empty) as string ?? string.Empty;
-            return cursors switch
+            "W11 Cursor Dark Free by Jepri Creations" => 1,
+            "W11 Cursor Light Free by Jepri Creations" => 2,
+            _ => GetThirdPartyCursors().Count > 0 ? ThirdPartyState.Id : 3,
+        };
+
+        /// <summary>
+        /// Get the cursors of another author: the name of their scheme and the file of the arrow.
+        /// </summary>
+        public static ThirdPartyState CursorsThirdParty()
+        {
+            var cursors = GetThirdPartyCursors();
+
+            if (cursors.Count == 0)
             {
-                "W11 Cursor Dark Free by Jepri Creations" => 1,
-                "W11 Cursor Light Free by Jepri Creations" => 2,
-                _ => 3,
-            };
+                return new ThirdPartyState(string.Empty, string.Empty);
+            }
+
+            // The arrow is the cursor everyone knows; a scheme that has no arrow of its own is shown by what it has
+            var shown = cursors.FirstOrDefault(cursor => cursor.Role.Equals("Arrow", StringComparison.OrdinalIgnoreCase), cursors[0]);
+            return new ThirdPartyState(GetCursorSetName(shown.File), shown.File);
         }
 
         /// <summary>
@@ -478,6 +493,80 @@ namespace SophiApp.Customizations
         {
             var showClock = Registry.CurrentUser.GetSubKeyValue("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "ShowClockInNotificationCenter") as int? ?? -1;
             return showClock.Equals(1);
+        }
+
+        // The name of the cursor scheme is the default value of the key
+        private static string GetCursorScheme() => Registry.CurrentUser.GetSubKeyValue("Control Panel\\Cursors", string.Empty) as string ?? string.Empty;
+
+        /// <summary>
+        /// Gets what to call the cursors a file belongs to. A cursor file has no name, a scheme has one:
+        /// it is the scheme of the user that lists the file, the current one first. Cursors set one by one
+        /// without saving a scheme are called by their folder: the name left in the registry is the one of the scheme they replaced.
+        /// </summary>
+        private static string GetCursorSetName(string file)
+        {
+            using var schemes = Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors\\Schemes");
+            var current = GetCursorScheme();
+            var scheme = (schemes?.GetValueNames() ?? [])
+                .OrderByDescending(name => name.Equals(current, StringComparison.OrdinalIgnoreCase))
+                .FirstOrDefault(name => (schemes!.GetValue(name) as string ?? string.Empty)
+                    .Split(',')
+                    .Any(path => Environment.ExpandEnvironmentVariables(path.Trim()).Equals(file, StringComparison.OrdinalIgnoreCase)));
+
+            return scheme ?? Path.GetDirectoryName(file) ?? string.Empty;
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether a cursor file is one of Windows itself.
+        /// </summary>
+        private static bool IsWindowsCursor(string file)
+        {
+            // The owner of the files Windows is installed with
+            const string WindowsInstaller = "S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464";
+            var folder = Path.GetDirectoryName(Path.GetFullPath(file)) ?? string.Empty;
+
+            // Windows makes cursors of the pointer size and color chosen in the accessibility settings and keeps them in the profile
+            if (folder.Equals(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft\\Windows\\Cursors"), StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            // The folder alone does not tell: cursors of other authors are often copied into the cursors folder of Windows
+            try
+            {
+                return folder.StartsWith(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Cursors"), StringComparison.OrdinalIgnoreCase)
+                    && new FileInfo(file).GetAccessControl(AccessControlSections.Owner).GetOwner(typeof(SecurityIdentifier))?.Value == WindowsInstaller;
+            }
+            catch (Exception ex) when (ex is UnauthorizedAccessException || ex is IOException || ex is InvalidOperationException)
+            {
+                // The owner is unknown, so the file is not called a third-party one
+                App.Logger.LogSkippedException($"Reading the owner of {file}", ex);
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Gets the cursors in use that are not the ones of Windows, with what each of them is for.
+        /// </summary>
+        private static List<(string Role, string File)> GetThirdPartyCursors()
+        {
+            var cursors = new List<(string Role, string File)>();
+            using var key = Registry.CurrentUser.OpenSubKey("Control Panel\\Cursors");
+
+            foreach (var role in key?.GetValueNames().Where(name => name.Length > 0) ?? [])
+            {
+                // A file that is gone is not used: Windows shows its own cursor instead
+                if (key!.GetValue(role) is string { Length: > 0 } value
+                    && Environment.ExpandEnvironmentVariables(value) is var file
+                    && Path.GetExtension(file).ToLowerInvariant() is ".cur" or ".ani"
+                    && File.Exists(file)
+                    && !IsWindowsCursor(file))
+                {
+                    cursors.Add((role, file));
+                }
+            }
+
+            return cursors;
         }
     }
 }

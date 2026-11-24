@@ -37,6 +37,11 @@ namespace SophiApp.Helpers
         public DataTemplate UserFoldersTemplate { get; set; } = new();
 
         /// <summary>
+        /// Gets or sets the template for <see cref="UIAssociationsModel"/>.
+        /// </summary>
+        public DataTemplate AssociationsTemplate { get; set; } = new();
+
+        /// <summary>
         /// Gets or sets the template for <see cref="UICheckListModel"/>.
         /// </summary>
         public DataTemplate CheckListTemplate { get; set; } = new();
@@ -60,6 +65,7 @@ namespace SophiApp.Helpers
             SettingsGroupHeader { IsFirst: true } => FirstGroupHeaderTemplate,
             SettingsGroupHeader => GroupHeaderTemplate,
             UIUserFoldersModel => UserFoldersTemplate,
+            UIAssociationsModel => AssociationsTemplate,
             UICheckListModel => CheckListTemplate,
             UICheckBoxModel or UIIconCheckBoxModel => CheckBoxTemplate,
             UIActionModel => ActionTemplate,
