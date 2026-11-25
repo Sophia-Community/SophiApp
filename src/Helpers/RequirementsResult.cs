@@ -30,6 +30,11 @@ namespace SophiApp.Helpers
         HarmfulTweakerFound,
 
         /// <summary>
+        /// Some addresses the app gets its data from did not answer.
+        /// </summary>
+        ExternalDataUnavailable,
+
+        /// <summary>
         /// The hosts file blocks resources that the app uses.
         /// </summary>
         HostsEntriesFound,

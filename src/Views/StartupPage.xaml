@@ -3,27 +3,119 @@
     x:Class="SophiApp.Views.StartupPage"
     xmlns:controls="using:SophiApp.ControlTemplates"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:SophiApp.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:SophiApp.Models"
+    xmlns:views="using:SophiApp.Views"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:interaction="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d">
-    <Grid>
-        <!-- The logo keeps its place whatever is shown under it: the page is split into three parts, and the text takes the lower one -->
+
+    <Page.Resources>
+        <MenuFlyout x:Name="StartupPageCommandsFlyout">
+            <MenuFlyoutItem x:Uid="Page_ContextMenu_OpenLogFile"
+                            Icon="OpenFile"
+                            Click="ContextMenuOpenLogFile_Clicked"/>
+            <MenuFlyoutItem x:Uid="Page_ContextMenu_OpenLogFolder"
+                            Icon="Folder"
+                            Click="ContextMenuOpenLogFolder_Clicked"/>
+        </MenuFlyout>
+    </Page.Resources>
+
+    <Grid ContextRequested="StartupPage_ContextRequested"
+          Background="Transparent"
+          RowSpacing="16"
+          Margin="0, 8, 0, 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <controls:AnimatedLogo Grid.Row="1"
-                               HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="2"
-                   Text="{x:Bind ViewModel.StatusText, Mode=OneWay}"
-                   Style="{StaticResource BodyTextBlockStyle}"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   TextAlignment="Center"
-                   Margin="10, 0, 10, 0"/>
+        <!-- The logo is smaller than on the other pages: the whole list of checks has to fit under it -->
+        <Viewbox Height="110"
+                 HorizontalAlignment="Center">
+            <controls:AnimatedLogo/>
+        </Viewbox>
+        <ScrollViewer x:Name="ChecksScroll"
+                      Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <!-- A fixed width: a panel that only has a maximum width is centered by the width of its longest line, and the list would jump -->
+            <StackPanel Width="560"
+                        HorizontalAlignment="Center"
+                        Margin="24, 0, 24, 16">
+                <ItemsControl ItemsSource="{x:Bind ViewModel.Checks}"
+                              IsTabStop="False">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="models:StartupCheck">
+                            <StackPanel>
+                                <Grid MinHeight="28"
+                                      ColumnSpacing="12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{x:Bind Title}"
+                                               AutomationProperties.Name="{x:Bind AccessibleName, Mode=OneWay}"
+                                               Style="{StaticResource BodyTextBlockStyle}"
+                                               VerticalAlignment="Center"
+                                               TextWrapping="NoWrap"
+                                               TextTrimming="CharacterEllipsis"/>
+                                    <ProgressRing Grid.Column="1"
+                                                  Width="16"
+                                                  Height="16"
+                                                  IsActive="{x:Bind IsRunning, Mode=OneWay}"
+                                                  Visibility="{x:Bind IsRunning, Mode=OneWay}"/>
+                                    <!-- The marks are the stock status badges of WinUI -->
+                                    <InfoBadge Grid.Column="1"
+                                               Style="{ThemeResource SuccessIconInfoBadgeStyle}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Visibility="{x:Bind IsPassed, Mode=OneWay}"/>
+                                    <InfoBadge Grid.Column="1"
+                                               Style="{ThemeResource CriticalIconInfoBadgeStyle}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Visibility="{x:Bind IsFailed, Mode=OneWay}"/>
+                                    <InfoBadge Grid.Column="1"
+                                               Style="{ThemeResource CautionIconInfoBadgeStyle}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Visibility="{x:Bind IsContinued, Mode=OneWay}"/>
+                                </Grid>
+                                <!-- The notice of a failed check waits for an answer, so it cannot be closed -->
+                                <InfoBar IsOpen="{x:Bind NoticeIsOpen, Mode=OneWay}"
+                                         IsClosable="False"
+                                         Severity="{x:Bind NoticeSeverity, Mode=OneWay}"
+                                         Message="{x:Bind Notice, Mode=OneWay}"
+                                         Visibility="{x:Bind NoticeIsOpen, Mode=OneWay}"
+                                         Margin="0, 4, 0, 8">
+                                    <ItemsControl ItemsSource="{x:Bind Actions, Mode=OneWay}"
+                                                  Visibility="{x:Bind HasActions, Mode=OneWay}"
+                                                  IsTabStop="False"
+                                                  Margin="0, 0, 0, 12">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"
+                                                            Spacing="8"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate x:DataType="helpers:StartupCheckAction">
+                                                <Button Content="{x:Bind Text}"
+                                                        Command="{x:Bind Command}"
+                                                        Style="{x:Bind views:StartupPage.GetActionStyle(IsPrimary)}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </InfoBar>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <controls:SupportLinks HorizontalAlignment="Center"
+                                       Margin="0, 8, 0, 0"
+                                       Visibility="{x:Bind ViewModel.SupportIsVisible, Mode=OneWay}"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

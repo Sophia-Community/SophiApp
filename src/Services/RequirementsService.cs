@@ -51,7 +51,8 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public List<RequirementAction> GetActions() =>
         [
-            new(action: GetExternalServicesData, displayText: "OsRequirements_GetExternalServicesData".GetLocalized()),
+            // The downloads start at once and have no line: their line comes when everything is downloaded
+            new(action: GetExternalServicesData),
             new(action: GetWindowsComponentStability, displayText: "OsRequirements_GetWindowsComponentStability".GetLocalized()),
             new(action: GetCpuArchitecture, displayText: "OsRequirements_GetCpuArchitecture".GetLocalized()),
             new(action: GetAppRelease, displayText: "OsRequirements_GetAppNewVersion".GetLocalized()),
@@ -65,6 +66,7 @@ namespace SophiApp.Services
             new(action: GetWindowsBuild, displayText: "OsRequirements_GetWindowsBuild".GetLocalized()),
 
             // The checks that ask the user whether to continue go last: by that moment everything else has already passed
+            new(action: GetExternalDataAvailability, displayText: "OsRequirements_GetExternalServicesData".GetLocalized()),
             new(action: GetHostFileEntries, displayText: "OsRequirements_GetHostFileEntries".GetLocalized()),
             new(action: GetSystemDriveEncryptedBitLocker, displayText: "OsRequirements_GetSystemDriveEncryptedBitLocker".GetLocalized()),
             new(action: GetUEFICertificates, displayText: "OsRequirements_GetUEFICertificates".GetLocalized()),
@@ -77,6 +79,29 @@ namespace SophiApp.Services
             powerShellService.BeginCheck();
             dataService.BeginGetExternalServicesData();
             return RequirementsResult.AllCorrect;
+        }
+
+        private RequirementsResult GetExternalDataAvailability()
+        {
+            var addresses = dataService.GetUnavailableAddresses();
+
+            if (addresses.Count == 0)
+            {
+                return RequirementsResult.AllCorrect;
+            }
+
+            // The log gets the whole addresses, the user is shown the sites and what the app wanted from each
+            foreach (var (url, _) in addresses)
+            {
+                App.Logger.LogUrlIsAvailable(url, false);
+            }
+
+            var sites = addresses
+                .GroupBy(address => new Uri(address.Url).Host)
+                .Select(site => $"• {site.Key}: {string.Join(", ", site.Select(address => address.Purpose))}");
+            dataService.RequirementsResult_1 = string.Join(Environment.NewLine, sites);
+
+            return RequirementsResult.ExternalDataUnavailable;
         }
 
         private RequirementsResult GetWindowsComponentStability()

@@ -103,7 +103,12 @@ public sealed partial class ShellPage : Page
     private static bool IsBackAllowed(bool canGoBack, bool navigationIsAllowed) => canGoBack && navigationIsAllowed;
 
     // The question about applying is hidden while the app is busy: the progress line takes its place
-    private static Visibility GetApplyPanelVisibility(int chosenSettings, bool appIsBusy) => chosenSettings > 0 && !appIsBusy ? Visibility.Visible : Visibility.Collapsed;
+    private static Visibility GetApplyPanelVisibility(int chosenSettings, bool appIsBusy, bool restorePointIsAsked)
+        => chosenSettings > 0 && !appIsBusy && !restorePointIsAsked ? Visibility.Visible : Visibility.Collapsed;
+
+    // The question about a restore point takes the place of the question about applying
+    private static Visibility GetQuestionVisibility(int chosenSettings, bool appIsBusy, bool restorePointIsAsked)
+        => chosenSettings > 0 && !appIsBusy && restorePointIsAsked ? Visibility.Visible : Visibility.Collapsed;
 
     private static Visibility GetReminderVisibility(bool appIsBusy) => appIsBusy ? Visibility.Collapsed : Visibility.Visible;
 
@@ -132,6 +137,7 @@ public sealed partial class ShellPage : Page
         TitleBarHelper.UpdateTitleBar(RequestedTheme);
         FitPaneToMenuItems();
         ShowSearchBoxOrButton();
+        ShowPaneInNarrowWindow();
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
         KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
 
@@ -177,6 +183,20 @@ public sealed partial class ShellPage : Page
             SystemBackdrop = new DesktopAcrylicBackdrop(),
             CornerRadius = (CornerRadius)Application.Current.Resources["OverlayCornerRadius"],
         });
+    }
+
+    // In a window that is narrow from the start the menu keeps its place but is not drawn until the window is made wider.
+    // Opening the menu and closing it at once makes it draw itself
+    private void ShowPaneInNarrowWindow()
+    {
+        if (NavigationViewControl.DisplayMode != NavigationViewDisplayMode.Compact)
+        {
+            return;
+        }
+
+        // Both changes come in one frame, so nothing blinks
+        NavigationViewControl.IsPaneOpen = true;
+        NavigationViewControl.IsPaneOpen = false;
     }
 
     // The menu is as wide as its longest name needs, whatever the language is

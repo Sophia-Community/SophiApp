@@ -104,6 +104,12 @@ namespace SophiApp.Contracts.Services
         void LogStartApplicableModelsSetState();
 
         /// <summary>
+        /// Write that a restore point was created before the settings are applied.
+        /// </summary>
+        /// <param name="timer">The time it took.</param>
+        void LogRestorePointCreated(Stopwatch timer);
+
+        /// <summary>
         /// Write the spent time taken by all models to get the state in the log.
         /// </summary>
         /// <param name="timer">Models get state spent time.</param>
@@ -340,6 +346,12 @@ namespace SophiApp.Contracts.Services
         /// </summary>
         /// <param name="text">The text as the user sees it.</param>
         void LogUserNotice(string text);
+
+        /// <summary>
+        /// Write that the user has accepted the terms shown at the first start.
+        /// </summary>
+        /// <param name="version">The version of the terms.</param>
+        void LogTermsAccepted(int version);
 
         /// <summary>
         /// Write whether the window of Windows Search came up after File Explorer was restarted and had to be closed.

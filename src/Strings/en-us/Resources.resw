@@ -123,8 +123,113 @@
   <data name="AppDescription" xml:space="preserve">
     <value>SophiApp for Windows</value>
   </data>
-  <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
-    <value>Getting data from the Internet…</value>
+  <data name="Welcome_Intro.Text" xml:space="preserve">
+    <value>Before you start, read every item and select its check box to agree.</value>
+  </data>
+  <data name="Welcome_Term_NoHarm.Text" xml:space="preserve">
+    <value>SophiApp for Windows will not harm your PC.</value>
+  </data>
+  <data name="Welcome_Term_FineTuning.Text" xml:space="preserve">
+    <value>SophiApp for Windows can fine-tune your PC.</value>
+  </data>
+  <data name="Welcome_Term_Responsibility.Text" xml:space="preserve">
+    <value>Team Sophia is responsible for how the app works, so let us know if you run into a problem.</value>
+  </data>
+  <data name="Welcome_Term_UserProfile.Text" xml:space="preserve">
+    <value>The app configures the user profile it is run from.</value>
+  </data>
+  <data name="Welcome_Term_Administrator.Text" xml:space="preserve">
+    <value>Your account must have administrator rights.</value>
+  </data>
+  <data name="Welcome_Term_WindowsUpgrade.Text" xml:space="preserve">
+    <value>After Windows is upgraded to a new version, apply the settings again.</value>
+  </data>
+  <data name="Welcome_Term_NoDataCollection.Text" xml:space="preserve">
+    <value>We do not collect user data.</value>
+  </data>
+  <data name="Welcome_Term_PrivacyPolicy.Text" xml:space="preserve">
+    <value>You have read and accept the privacy policy.</value>
+  </data>
+  <data name="Welcome_ReadPolicy.Content" xml:space="preserve">
+    <value>Read the policy</value>
+  </data>
+  <data name="Welcome_Back.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Welcome_Back.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="PrivacyPolicy_Title" xml:space="preserve">
+    <value>Privacy policy</value>
+  </data>
+  <data name="PrivacyPolicy_Updated" xml:space="preserve">
+    <value>Last updated: November 25, 2026</value>
+  </data>
+  <data name="PrivacyPolicy_1_Title" xml:space="preserve">
+    <value>In short</value>
+  </data>
+  <data name="PrivacyPolicy_1_Text" xml:space="preserve">
+    <value>SophiApp for Windows does not collect, store, sell, or share your personal data. The app has no user accounts, telemetry, analytics, or advertising, and Team Sophia has no servers that receive data from it.</value>
+  </data>
+  <data name="PrivacyPolicy_2_Title" xml:space="preserve">
+    <value>What stays on your PC</value>
+  </data>
+  <data name="PrivacyPolicy_2_Text" xml:space="preserve">
+    <value>The app keeps two things in its own folder: the `Settings.json` file with the app settings (window size and position, theme, language, the notes you closed, and the fact that you accepted these terms) and the `Log` folder with a log of what the app checked and changed. The log contains the names of your PC and your user account, your Windows version, and the settings you applied. These files never leave your PC unless you send them to us yourself, and you can delete them at any time.</value>
+  </data>
+  <data name="PrivacyPolicy_3_Title" xml:space="preserve">
+    <value>Connections the app makes</value>
+  </data>
+  <data name="PrivacyPolicy_3_Text" xml:space="preserve">
+    <value>At every start and when you install something, the app connects to third-party servers: GitHub, to check for new versions of the app and of the components it installs, to get the lists of supported Windows builds and Linux distributions, and to download the cursors; Microsoft, to download the installers you chose, such as .NET, Visual C++, OneDrive, and WSL; and the DNS-over-HTTPS provider you chose, to make sure its server responds. Windows features that the app starts, such as Windows Update, connect to Microsoft in their usual way. As with any Internet connection, these servers see your IP address and the technical details of the request. The app sends them no information about you, your PC, or your settings. Each company handles this data under its own privacy policy.</value>
+  </data>
+  <data name="PrivacyPolicy_4_Title" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="PrivacyPolicy_4_Text" xml:space="preserve">
+    <value>The links to GitHub, Telegram, Discord, Microsoft, and other sites open in your browser. Those sites have their own privacy policies.</value>
+  </data>
+  <data name="PrivacyPolicy_5_Title" xml:space="preserve">
+    <value>When you contact us</value>
+  </data>
+  <data name="PrivacyPolicy_5_Text" xml:space="preserve">
+    <value>If you report a problem on GitHub, in Telegram, or in Discord, we see what you post there, including the log file if you attach it. We use it only to solve the problem. Look through the log before you share it. Those platforms handle your account data under their own policies.</value>
+  </data>
+  <data name="PrivacyPolicy_6_Title" xml:space="preserve">
+    <value>European Union, EEA, and United Kingdom</value>
+  </data>
+  <data name="PrivacyPolicy_6_Text" xml:space="preserve">
+    <value>The app does not send your personal data to us, so Team Sophia does not act as a controller of your personal data under the GDPR and the UK GDPR while you use the app. If you have sent us something and want it removed, write to us and we will delete what we control. You also have the right to lodge a complaint with your data protection authority.</value>
+  </data>
+  <data name="PrivacyPolicy_7_Title" xml:space="preserve">
+    <value>United States</value>
+  </data>
+  <data name="PrivacyPolicy_7_Text" xml:space="preserve">
+    <value>We do not sell or share personal information and do not use it for targeted advertising or profiling, as these terms are defined by the California Consumer Privacy Act (CCPA) and similar state laws.</value>
+  </data>
+  <data name="PrivacyPolicy_8_Title" xml:space="preserve">
+    <value>Canada</value>
+  </data>
+  <data name="PrivacyPolicy_8_Text" xml:space="preserve">
+    <value>We do not collect, use, or disclose personal information through the app within the meaning of the Personal Information Protection and Electronic Documents Act (PIPEDA) and Quebec's Law 25.</value>
+  </data>
+  <data name="PrivacyPolicy_9_Title" xml:space="preserve">
+    <value>Children</value>
+  </data>
+  <data name="PrivacyPolicy_9_Text" xml:space="preserve">
+    <value>The app is a tool for administrators of Windows PCs and is not directed to children. We do not knowingly collect data from anyone, including children.</value>
+  </data>
+  <data name="PrivacyPolicy_10_Title" xml:space="preserve">
+    <value>Changes and contact</value>
+  </data>
+  <data name="PrivacyPolicy_10_Text" xml:space="preserve">
+    <value>When this policy changes, the date above is updated, and the app asks you to accept the new version at the next start. Questions about this policy: [GitHub]({0}) or [Telegram]({1}).</value>
+  </data>
+  <data name="StartupCheck_Passed" xml:space="preserve">
+    <value>passed</value>
+  </data>
+  <data name="StartupCheck_Failed" xml:space="preserve">
+    <value>not passed</value>
   </data>
   <data name="OsRequirements_GetWindowsComponentStability" xml:space="preserve">
     <value>Checking Windows component stability…</value>
@@ -266,6 +371,30 @@
   </data>
   <data name="OsRequirements_RunWinUpdate.Text" xml:space="preserve">
     <value>Run Windows Update and try again.</value>
+  </data>
+  <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
+    <value>Getting data from the Internet…</value>
+  </data>
+  <data name="OsRequirements_ExternalDataUnavailable_1.Text" xml:space="preserve">
+    <value>Connection could not be established with these sites:</value>
+  </data>
+  <data name="OsRequirements_ExternalDataUnavailable_2.Text" xml:space="preserve">
+    <value>The settings that need this data will tell so on their cards. Check your Internet connection, VPN, firewall, and the hosts file.</value>
+  </data>
+  <data name="OsRequirements_Data_AppRelease" xml:space="preserve">
+    <value>the latest version of SophiApp for Windows</value>
+  </data>
+  <data name="OsRequirements_Data_WindowsBuilds" xml:space="preserve">
+    <value>supported Windows builds</value>
+  </data>
+  <data name="OsRequirements_Data_DotNet" xml:space="preserve">
+    <value>the latest versions of .NET</value>
+  </data>
+  <data name="OsRequirements_Data_VisualC" xml:space="preserve">
+    <value>the latest version of Visual C++</value>
+  </data>
+  <data name="OsRequirements_Data_Linux" xml:space="preserve">
+    <value>the list of Linux distributions</value>
   </data>
   <data name="OsRequirements_GetHostFileEntries" xml:space="preserve">
     <value>Checking the hosts file for third-party entries…</value>
@@ -1225,7 +1354,7 @@
     <value>Prevent desktop shortcut creation upon Microsoft Edge update</value>
   </data>
   <data name="UIModel_PreventEdgeShortcutCreation_Description" xml:space="preserve">
-    <value>Microsoft Edge puts its shortcut back on the desktop after some updates. The setting applies to every installed channel of Microsoft Edge: Stable, Beta, Dev and Canary.</value>
+    <value>Microsoft Edge puts its shortcut back on the desktop after some updates. The setting applies to every installed channel of Microsoft Edge: Stable, Beta, Dev, and Canary.</value>
   </data>
   <data name="UIModel_BSoDStopError_Title" xml:space="preserve">
     <value>Display the Stop error parameters when a BSoD occurs</value>
@@ -1531,7 +1660,7 @@
     <value>Lead Developer: Dmitry "Inestic" Dyomin</value>
   </data>
   <data name="AppTeam_UxDeveloper.Text" xml:space="preserve">
-    <value>UI/UX Design: Vladimir Nameless</value>
+    <value>UI/UX Design: Vladimir Palii</value>
   </data>
   <data name="AppTeam_Tester.Text" xml:space="preserve">
     <value>QC: Yevhenii "lowlif3" Zabronskyi</value>
@@ -1547,6 +1676,15 @@
   </data>
   <data name="Button_Apply.Content" xml:space="preserve">
     <value>Apply</value>
+  </data>
+  <data name="Panel_RestorePointQuestion.Text" xml:space="preserve">
+    <value>Create a restore point before applying?</value>
+  </data>
+  <data name="Panel_Status_CreatingRestorePoint" xml:space="preserve">
+    <value>Creating a restore point</value>
+  </data>
+  <data name="Panel_RestorePointFailure.Message" xml:space="preserve">
+    <value>The restore point could not be created, so the settings were not applied. See the log file for details.</value>
   </data>
   <data name="Panel_Status_ApplyingOne" xml:space="preserve">
     <value>Applying: {0}</value>
@@ -1610,6 +1748,12 @@
   </data>
   <data name="Panel_RestartReminder.Message" xml:space="preserve">
     <value>Make sure to restart your PC.</value>
+  </data>
+  <data name="Panel_ShadowStorageNotice" xml:space="preserve">
+    <value>Shadow copies (including restore points) for the system drive take up {0} GB.</value>
+  </data>
+  <data name="Button_OpenSystemProtection.Content" xml:space="preserve">
+    <value>Open System Protection</value>
   </data>
   <data name="UIModel_Exception_InstallFailed" xml:space="preserve">
     <value>The operation failed. Check your Internet connection and try again.</value>

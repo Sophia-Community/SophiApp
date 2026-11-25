@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Navigation;
 using SophiApp.Contracts.Services;
 using SophiApp.Extensions;
+using SophiApp.Helpers;
 using SophiApp.Models;
 using SophiApp.Views;
 using System.Collections.ObjectModel;
@@ -23,15 +24,6 @@ using System.ServiceProcess;
 /// </summary>
 public partial class ShellViewModel : ObservableRecipient
 {
-    private const string AppDeveloperUrl = "https://github.com/Inestic";
-    private const string AppSupporterUrl = "https://github.com/BenchTweakGaming";
-    private const string AppDiscordUrl = "https://discord.gg/sSryhaEv79";
-    private const string AppGitHubUrl = "https://github.com/Sophia-Community/SophiApp";
-    private const string AppLatestReleaseUrl = "https://github.com/Sophia-Community/SophiApp/releases/latest";
-    private const string AppProjectManagerUrl = "https://github.com/farag2";
-    private const string AppTelegramUrl = "https://t.me/sophia_chat";
-    private const string AppTesterUrl = "https://github.com/lowl1f3";
-    private const string AppUxDeveloperUrl = "https://www.linkedin.com/in/vladimir-palii-132745a1";
     private readonly AppActivity activity;
     private readonly ChosenSettingsViewModel chosenSettings;
     private readonly IAppxPackagesService packagesService;
@@ -90,17 +82,17 @@ public partial class ShellViewModel : ObservableRecipient
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
         activity.PropertyChanged += OnActivityChanged;
-        OpenAppDeveloperPage_Command = new RelayCommand(() => httpService.OpenUrl(AppDeveloperUrl));
-        OpenAppSupporterPage_Command = new RelayCommand(() => httpService.OpenUrl(AppSupporterUrl));
-        OpenAppDiscordPage_Command = new RelayCommand(() => httpService.OpenUrl(AppDiscordUrl));
-        OpenAppGitHubPage_Command = new RelayCommand(() => httpService.OpenUrl(AppGitHubUrl));
-        OpenAppProjectManagerPage_Command = new RelayCommand(() => httpService.OpenUrl(AppProjectManagerUrl));
-        OpenAppTelegramPage_Command = new RelayCommand(() => httpService.OpenUrl(AppTelegramUrl));
-        OpenAppTesterPage_Command = new RelayCommand(() => httpService.OpenUrl(AppTesterUrl));
-        OpenAppUxDeveloperPage_Command = new RelayCommand(() => httpService.OpenUrl(AppUxDeveloperUrl));
+        OpenAppDeveloperPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Developer));
+        OpenAppSupporterPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Supporter));
+        OpenAppDiscordPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Discord));
+        OpenAppGitHubPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.GitHub));
+        OpenAppProjectManagerPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.ProjectManager));
+        OpenAppTelegramPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Telegram));
+        OpenAppTesterPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Tester));
+        OpenAppUxDeveloperPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.UxDeveloper));
         OpenEventViewer_Command = new AsyncRelayCommand(() => Task.Run(() => processService.StartProcessByName(name: "mmc.exe", arguments: "eventvwr.msc")));
         OpenTaskScheduler_Command = new AsyncRelayCommand(() => Task.Run(() => processService.StartProcessByName(name: "control.exe", arguments: "schedtasks")));
-        OpenLatestAppRelease_Command = new RelayCommand(() => httpService.OpenUrl(AppLatestReleaseUrl));
+        OpenLatestAppRelease_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.LatestRelease));
         UIUwpAppModelClicked_Command = new RelayCommand<UIUwpAppModel>(model => UIUwpAppModelClicked(model!));
         UwpForAllUsersClicked_Command = new RelayCommand(UwpForAllUsersClicked);
         UwpAppsUninstall_Command = new AsyncRelayCommand(UwpAppsUninstallAsync);
@@ -227,6 +219,9 @@ public partial class ShellViewModel : ObservableRecipient
     /// </summary>
     public async Task ExecuteAsync()
     {
+        // The terms come first: nothing is checked before the user accepts them
+        await startup.ShowTermsAsync();
+        _ = NavigationService.NavigateTo<StartupPage>(clearHistory: true, disablePageAnimation: true);
         await startup.RunRequirementActionsAsync();
         await RunPostActionsAsync();
         await GenerateUIAsync();
@@ -261,11 +256,11 @@ public partial class ShellViewModel : ObservableRecipient
 
     private async Task GenerateUIAsync()
     {
-        _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => startup.StatusText = "OsRequirements_ReadWindowsSettings".GetLocalized());
+        startup.ShowStep("OsRequirements_ReadWindowsSettings".GetLocalized());
         SettingModels = await modelService.BuildSettingModelsAsync();
         chosenSettings.Settings = SettingModels;
         await modelService.GetModelsState(SettingModels);
-        _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => startup.StatusText = "OsRequirements_GeneratingUserInterface".GetLocalized());
+        startup.ShowStep("OsRequirements_GeneratingUserInterface".GetLocalized());
         await ReadUwpAppsAsync();
         _ = App.MainWindow.DispatcherQueue.TryEnqueue(() =>
         {

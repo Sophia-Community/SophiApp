@@ -15,6 +15,7 @@ using Windows.Storage;
 /// <inheritdoc/>
 public class SettingsService : ISettingsService
 {
+    private const string AcceptedTerms = "AcceptedTerms";
     private const string AppTheme = "AppTheme";
     private const string AppWindowHeight = "AppWindowHeight";
     private const string AppWindowPositionX = "AppWindowPositionX";
@@ -129,6 +130,26 @@ public class SettingsService : ISettingsService
 
     /// <inheritdoc/>
     public async Task SaveLanguageAsync(string language) => await SaveSettingAsync(AppLanguage.SettingsKey, language);
+
+    /// <inheritdoc/>
+    public int ReadAcceptedTerms()
+    {
+        string? saved = null;
+
+        if (RuntimeHelper.IsMSIX)
+        {
+            saved = ApplicationData.Current.LocalSettings.Values.TryGetValue(AcceptedTerms, out var value) ? value as string : null;
+        }
+        else if (settings != null && settings.TryGetValue(AcceptedTerms, out var text))
+        {
+            saved = text;
+        }
+
+        return int.TryParse(saved, out var version) ? version : 0;
+    }
+
+    /// <inheritdoc/>
+    public async Task SaveAcceptedTermsAsync(int version) => await SaveSettingAsync(AcceptedTerms, version);
 
     private async Task<T?> ReadSettingAsync<T>(string key)
     {

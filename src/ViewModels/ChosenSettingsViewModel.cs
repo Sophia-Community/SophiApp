@@ -12,21 +12,34 @@ namespace SophiApp.ViewModels
     using SophiApp.Helpers;
     using SophiApp.Models;
     using System.Collections.ObjectModel;
+    using System.Diagnostics;
+    using System.Globalization;
 
     /// <summary>
     /// The settings the user chose to change: they are applied together, or the choice is canceled.
     /// </summary>
     public partial class ChosenSettingsViewModel : ObservableObject
     {
+        private const double ShadowStorageNoticeGigabytes = 1;
+
         private readonly AppActivity activity;
         private readonly IGroupPolicyService groupPolicyService;
         private readonly IModelService modelService;
         private readonly IProcessService processService;
+        private readonly IRestorePointService restorePointService;
 
         [ObservableProperty]
         private bool eventViewerButtonIsVisible;
         [ObservableProperty]
         private bool restartReminderIsVisible;
+        [ObservableProperty]
+        private bool restorePointQuestionIsVisible;
+        [ObservableProperty]
+        private bool restorePointFailureIsVisible;
+        [ObservableProperty]
+        private bool shadowStorageNoticeIsVisible;
+        [ObservableProperty]
+        private string shadowStorageNotice = string.Empty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChosenSettingsViewModel"/> class.
@@ -35,15 +48,23 @@ namespace SophiApp.ViewModels
         /// <param name="groupPolicyService">A service for working with group policy API.</param>
         /// <param name="modelService">A service for working with UI models using MVVM pattern.</param>
         /// <param name="processService">A service for working with Windows process API.</param>
-        public ChosenSettingsViewModel(AppActivity activity, IGroupPolicyService groupPolicyService, IModelService modelService, IProcessService processService)
+        /// <param name="restorePointService">A service for working with restore points.</param>
+        public ChosenSettingsViewModel(AppActivity activity, IGroupPolicyService groupPolicyService, IModelService modelService, IProcessService processService, IRestorePointService restorePointService)
         {
             this.activity = activity;
             this.groupPolicyService = groupPolicyService;
             this.modelService = modelService;
             this.processService = processService;
+            this.restorePointService = restorePointService;
             ChoiceChanged_Command = new RelayCommand<UIModel>(model => ChoiceChanged(model!));
-            Apply_Command = new AsyncRelayCommand(ApplyAsync);
+            Apply_Command = new RelayCommand(AskAboutRestorePoint);
+            ApplyWithRestorePoint_Command = new AsyncRelayCommand(() => ApplyAsync(createRestorePoint: true));
+            ApplyWithoutRestorePoint_Command = new AsyncRelayCommand(() => ApplyAsync(createRestorePoint: false));
             Clear_Command = new AsyncRelayCommand(ClearAsync);
+            OpenSystemProtection_Command = new RelayCommand(restorePointService.OpenSettings);
+
+            // With nothing left to apply there is nothing to ask about
+            ApplicableModels.CollectionChanged += (_, _) => RestorePointQuestionIsVisible &= ApplicableModels.Count > 0;
         }
 
         /// <summary>
@@ -52,9 +73,24 @@ namespace SophiApp.ViewModels
         public IRelayCommand<UIModel> ChoiceChanged_Command { get; }
 
         /// <summary>
-        /// Gets <see cref="IAsyncRelayCommand"/> to apply the chosen settings.
+        /// Gets <see cref="IRelayCommand"/> of the "Apply" button: the app asks about a restore point before it applies anything.
         /// </summary>
-        public IAsyncRelayCommand Apply_Command { get; }
+        public IRelayCommand Apply_Command { get; }
+
+        /// <summary>
+        /// Gets <see cref="IAsyncRelayCommand"/> to create a restore point and apply the chosen settings.
+        /// </summary>
+        public IAsyncRelayCommand ApplyWithRestorePoint_Command { get; }
+
+        /// <summary>
+        /// Gets <see cref="IAsyncRelayCommand"/> to apply the chosen settings without a restore point.
+        /// </summary>
+        public IAsyncRelayCommand ApplyWithoutRestorePoint_Command { get; }
+
+        /// <summary>
+        /// Gets <see cref="IRelayCommand"/> to open the window of Windows where restore points are managed.
+        /// </summary>
+        public IRelayCommand OpenSystemProtection_Command { get; }
 
         /// <summary>
         /// Gets <see cref="IAsyncRelayCommand"/> to cancel the choice of all settings.
@@ -160,7 +196,38 @@ namespace SophiApp.ViewModels
             }
         }
 
-        private async Task ApplyAsync()
+        private void AskAboutRestorePoint()
+        {
+            // Settings are already being applied or read
+            if (activity.IsIdle && ApplicableModels.Count > 0)
+            {
+                RestorePointQuestionIsVisible = true;
+            }
+        }
+
+        // The restore point is created first. Without the one the user asked for nothing is applied
+        private async Task<bool> TryCreateRestorePointAsync()
+        {
+            App.Status.SetOperation("Panel_Status_CreatingRestorePoint".GetLocalized());
+            var timer = Stopwatch.StartNew();
+
+            try
+            {
+                await Task.Run(restorePointService.Create);
+                App.Logger.LogRestorePointCreated(timer);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                App.Logger.LogSkippedException("Creating a restore point", ex);
+
+                // The policies of System Restore are already removed from the registry, so they leave the policy editor too
+                groupPolicyService.UpdatePolicy();
+                return false;
+            }
+        }
+
+        private async Task ApplyAsync(bool createRestorePoint)
         {
             // Settings are already being applied or read
             if (!activity.IsIdle)
@@ -169,8 +236,21 @@ namespace SophiApp.ViewModels
             }
 
             activity.IsIdle = false;
+            RestorePointQuestionIsVisible = false;
+            RestorePointFailureIsVisible = false;
+            ShadowStorageNoticeIsVisible = false;
             activity.ProgressText = string.Empty;
             activity.ProgressIsVisible = true;
+
+            if (createRestorePoint && !await TryCreateRestorePointAsync())
+            {
+                activity.ProgressIsVisible = false;
+                RestorePointFailureIsVisible = true;
+                App.Logger.LogUserNotice("Panel_RestorePointFailure/Message".GetLocalized());
+                activity.IsIdle = true;
+                return;
+            }
+
             App.Logger.LogStartApplicableModelsSetState();
             StartMenuHelper.Reset();
 
@@ -206,9 +286,20 @@ namespace SophiApp.ViewModels
 
             // Windows Search is restarted too, a little later, so it is watched for after the settings are applied
             _ = CloseSearchWindowAsync();
+
+            // Restore points pile up: the user is told when the shadow copies of the system drive take a gigabyte or more
+            var shadowStorage = await Task.Run(restorePointService.GetShadowStorageGigabytes);
             activity.ProgressIsVisible = false;
             RestartReminderIsVisible = true;
             App.Logger.LogUserNotice("Panel_RestartReminder/Message".GetLocalized());
+
+            if (shadowStorage >= ShadowStorageNoticeGigabytes)
+            {
+                ShadowStorageNotice = string.Format("Panel_ShadowStorageNotice".GetLocalized(), shadowStorage.ToString("0.##", CultureInfo.CurrentCulture));
+                ShadowStorageNoticeIsVisible = true;
+                App.Logger.LogUserNotice(ShadowStorageNotice);
+            }
+
             EventViewerButtonIsVisible |= eventViewCreated;
             activity.IsIdle = true;
         }
@@ -222,6 +313,7 @@ namespace SophiApp.ViewModels
             }
 
             activity.IsIdle = false;
+            RestorePointQuestionIsVisible = false;
             App.Logger.LogApplicableModelsCanceled();
             App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
             activity.ProgressIsVisible = true;

@@ -60,6 +60,7 @@ public partial class App : Application
         _ = services.AddTransient<IProcessService, ProcessService>();
         _ = services.AddTransient<IRedistributablePackageService, RedistributablePackageService>();
         _ = services.AddTransient<IRegistryService, RegistryService>();
+        _ = services.AddTransient<IRestorePointService, RestorePointService>();
         _ = services.AddTransient<IScheduledTaskService, ScheduledTaskService>();
         _ = services.AddTransient<IUpdateService, UpdateService>();
         _ = services.AddTransient<IXmlService, XmlService>();
@@ -72,7 +73,6 @@ public partial class App : Application
         _ = services.AddSingleton<ShellViewModel>();
         _ = services.AddSingleton<StartupViewModel>();
         _ = services.AddTransient<FatalErrorViewModel>();
-        _ = services.AddTransient<RequirementsFailureModel>();
 
         _ = services.AddTransient<SettingsViewModel>();
 

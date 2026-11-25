@@ -346,6 +346,18 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public void LogRestorePointCreated(Stopwatch timer)
+        {
+            Log.Information("A restore point for the system drive was created in {Elapsed:l}", timer.Elapsed.ToString());
+        }
+
+        /// <inheritdoc/>
+        public void LogTermsAccepted(int version)
+        {
+            Log.Information("The user has accepted the terms and the privacy policy, version {Version}", version);
+        }
+
+        /// <inheritdoc/>
         public void LogSearchWindowWatch(bool closed, string seen)
         {
             Log.Information("Windows Search window after File Explorer restart was closed: {Closed}. Foreground: {Seen}", closed, seen);

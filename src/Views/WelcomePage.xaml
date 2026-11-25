@@ -1,0 +1,131 @@
+﻿<Page
+    x:Name="PageWelcome"
+    x:Class="SophiApp.Views.WelcomePage"
+    xmlns:controls="using:SophiApp.ControlTemplates"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    mc:Ignorable="d">
+
+    <Grid RowSpacing="16"
+          Margin="0, 8, 0, 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- The same small logo as on the page of the startup checks, which comes next -->
+        <Viewbox Height="110"
+                 HorizontalAlignment="Center">
+            <controls:AnimatedLogo/>
+        </Viewbox>
+
+        <!-- The terms: the app goes on when every item is checked -->
+        <ScrollViewer x:Name="TermsView"
+                      Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <!-- A fixed width keeps the items in the middle of the page whatever their length is -->
+            <StackPanel x:Name="TermsPanel"
+                        Width="640"
+                        HorizontalAlignment="Center"
+                        Margin="24, 0, 24, 16">
+                <TextBlock x:Uid="Welcome_Intro"
+                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                           TextWrapping="Wrap"
+                           Margin="0, 0, 0, 8"/>
+                <CheckBox Checked="Term_Changed"
+                          Unchecked="Term_Changed">
+                    <TextBlock x:Uid="Welcome_Term_NoHarm"
+                               TextWrapping="Wrap"/>
+                </CheckBox>
+                <CheckBox Checked="Term_Changed"
+                          Unchecked="Term_Changed">
+                    <TextBlock x:Uid="Welcome_Term_FineTuning"
+                               TextWrapping="Wrap"/>
+                </CheckBox>
+                <CheckBox Checked="Term_Changed"
+                          Unchecked="Term_Changed">
+                    <TextBlock x:Uid="Welcome_Term_Responsibility"
+                               TextWrapping="Wrap"/>
+                </CheckBox>
+                <CheckBox Checked="Term_Changed"
+                          Unchecked="Term_Changed">
+                    <TextBlock x:Uid="Welcome_Term_UserProfile"
+                               TextWrapping="Wrap"/>
+                </CheckBox>
+                <CheckBox Checked="Term_Changed"
+                          Unchecked="Term_Changed">
+                    <TextBlock x:Uid="Welcome_Term_Administrator"
+                               TextWrapping="Wrap"/>
+                </CheckBox>
+                <CheckBox Checked="Term_Changed"
+                          Unchecked="Term_Changed">
+                    <TextBlock x:Uid="Welcome_Term_WindowsUpgrade"
+                               TextWrapping="Wrap"/>
+                </CheckBox>
+                <CheckBox Checked="Term_Changed"
+                          Unchecked="Term_Changed">
+                    <TextBlock x:Uid="Welcome_Term_NoDataCollection"
+                               TextWrapping="Wrap"/>
+                </CheckBox>
+                <!-- The policy is opened on this page, so the checked items are kept -->
+                <StackPanel Orientation="Horizontal"
+                            Spacing="8">
+                    <CheckBox Checked="Term_Changed"
+                              Unchecked="Term_Changed">
+                        <TextBlock x:Uid="Welcome_Term_PrivacyPolicy"
+                                   TextWrapping="Wrap"/>
+                    </CheckBox>
+                    <HyperlinkButton x:Name="ReadPolicyButton"
+                                     x:Uid="Welcome_ReadPolicy"
+                                     VerticalAlignment="Center"
+                                     Click="ReadPolicy_Click"/>
+                </StackPanel>
+                <Button x:Name="ContinueButton"
+                        x:Uid="Button_Continue"
+                        Style="{StaticResource AccentButtonStyle}"
+                        HorizontalAlignment="Right"
+                        MinWidth="120"
+                        Margin="0, 16, 0, 0"
+                        IsEnabled="False"
+                        Command="{x:Bind ViewModel.AcceptTerms_Command}"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- The privacy policy takes the place of the terms. "Back" returns to them -->
+        <Grid x:Name="PolicyView"
+              Grid.Row="1"
+              MaxWidth="720"
+              RowSpacing="12"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- The stock back button of WinUI: its name and its tooltip come from the strings -->
+            <Button x:Name="BackButton"
+                    x:Uid="Welcome_Back"
+                    Style="{StaticResource NavigationBackButtonNormalStyle}"
+                    HorizontalAlignment="Left"
+                    Margin="0"
+                    Click="Back_Click"/>
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <!-- The sections are added from the strings when the page is created -->
+                <StackPanel x:Name="PolicyPanel"
+                            Spacing="8"
+                            Margin="0, 0, 24, 16">
+                    <TextBlock x:Name="PolicyTitle"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               TextWrapping="Wrap"/>
+                    <TextBlock x:Name="PolicyUpdated"
+                               Style="{StaticResource CaptionTextBlockStyle}"
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

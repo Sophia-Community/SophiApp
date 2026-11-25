@@ -72,6 +72,20 @@ namespace SophiApp.Services
             => startedDownload = Task.Run(() => httpService.GetFromJsonAsync<JsonObject>(DistributionsUrl, TimeoutSeconds));
 
         /// <inheritdoc/>
+        public string? GetUnavailableAddress()
+        {
+            try
+            {
+                startedDownload?.Wait();
+                return null;
+            }
+            catch (AggregateException)
+            {
+                return DistributionsUrl;
+            }
+        }
+
+        /// <inheritdoc/>
         public IReadOnlyList<string> GetInstalledDistributions()
         {
             using var key = Registry.CurrentUser.OpenSubKey(InstalledDistributionsKey);

@@ -123,8 +123,113 @@
   <data name="AppDescription" xml:space="preserve">
     <value>SophiApp for Windows</value>
   </data>
-  <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
-    <value>Получение данных из интернета…</value>
+  <data name="Welcome_Intro.Text" xml:space="preserve">
+    <value>Перед началом работы прочтите каждый пункт и отметьте его флажком в знак согласия.</value>
+  </data>
+  <data name="Welcome_Term_NoHarm.Text" xml:space="preserve">
+    <value>SophiApp for Windows не навредит вашему ПК.</value>
+  </data>
+  <data name="Welcome_Term_FineTuning.Text" xml:space="preserve">
+    <value>SophiApp for Windows может отлично настроить ваш ПК.</value>
+  </data>
+  <data name="Welcome_Term_Responsibility.Text" xml:space="preserve">
+    <value>Team Sophia несет ответственность за работу программы, поэтому сообщите нам, если столкнетесь с проблемой.</value>
+  </data>
+  <data name="Welcome_Term_UserProfile.Text" xml:space="preserve">
+    <value>Программа настраивает профиль пользователя, из-под которого она запущена.</value>
+  </data>
+  <data name="Welcome_Term_Administrator.Text" xml:space="preserve">
+    <value>Ваша учетная запись должна обладать правами администратора.</value>
+  </data>
+  <data name="Welcome_Term_WindowsUpgrade.Text" xml:space="preserve">
+    <value>После обновления Windows до новой версии примените параметры заново.</value>
+  </data>
+  <data name="Welcome_Term_NoDataCollection.Text" xml:space="preserve">
+    <value>Мы не собираем данные пользователей.</value>
+  </data>
+  <data name="Welcome_Term_PrivacyPolicy.Text" xml:space="preserve">
+    <value>Вы прочитали и принимаете политику конфиденциальности.</value>
+  </data>
+  <data name="Welcome_ReadPolicy.Content" xml:space="preserve">
+    <value>Прочитать политику</value>
+  </data>
+  <data name="Welcome_Back.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="Welcome_Back.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="PrivacyPolicy_Title" xml:space="preserve">
+    <value>Политика конфиденциальности</value>
+  </data>
+  <data name="PrivacyPolicy_Updated" xml:space="preserve">
+    <value>Последнее обновление: 25 ноября 2026 г.</value>
+  </data>
+  <data name="PrivacyPolicy_1_Title" xml:space="preserve">
+    <value>Коротко</value>
+  </data>
+  <data name="PrivacyPolicy_1_Text" xml:space="preserve">
+    <value>SophiApp for Windows не собирает, не хранит, не продает и не передает ваши персональные данные. В программе нет учетных записей, телеметрии, аналитики и рекламы, а у Team Sophia нет серверов, которые получали бы от нее данные.</value>
+  </data>
+  <data name="PrivacyPolicy_2_Title" xml:space="preserve">
+    <value>Что остается на вашем ПК</value>
+  </data>
+  <data name="PrivacyPolicy_2_Text" xml:space="preserve">
+    <value>Программа хранит в своей папке две вещи: файл `Settings.json` с параметрами программы (размер и положение окна, тема, язык, закрытые вами заметки и отметка о том, что вы приняли эти условия) и папку `Log` с журналом того, что программа проверила и изменила. В журнале есть имена вашего ПК и учетной записи, версия Windows и примененные параметры. Эти файлы не покидают ваш ПК, пока вы сами не отправите их нам, и вы можете удалить их в любой момент.</value>
+  </data>
+  <data name="PrivacyPolicy_3_Title" xml:space="preserve">
+    <value>К чему подключается программа</value>
+  </data>
+  <data name="PrivacyPolicy_3_Text" xml:space="preserve">
+    <value>При каждом запуске и при установке компонентов программа подключается к сторонним серверам: GitHub — чтобы проверить новые версии программы и устанавливаемых ею компонентов, получить списки поддерживаемых сборок Windows и дистрибутивов Linux и скачать курсоры; Microsoft — чтобы скачать выбранные вами установщики, например .NET, Visual C++, OneDrive и WSL; выбранный вами поставщик DNS-over-HTTPS — чтобы убедиться, что его сервер отвечает. Компоненты Windows, которые запускает программа, например Центр обновления Windows, подключаются к Microsoft обычным для них образом. Как и при любом подключении к интернету, эти серверы видят ваш IP-адрес и технические сведения о запросе. Программа не отправляет им никаких сведений о вас, вашем ПК и ваших параметрах. Каждая компания обрабатывает эти данные по собственной политике конфиденциальности.</value>
+  </data>
+  <data name="PrivacyPolicy_4_Title" xml:space="preserve">
+    <value>Ссылки</value>
+  </data>
+  <data name="PrivacyPolicy_4_Text" xml:space="preserve">
+    <value>Ссылки на GitHub, Telegram, Discord, сайты Microsoft и другие сайты открываются в вашем браузере. У этих сайтов свои политики конфиденциальности.</value>
+  </data>
+  <data name="PrivacyPolicy_5_Title" xml:space="preserve">
+    <value>Когда вы обращаетесь к нам</value>
+  </data>
+  <data name="PrivacyPolicy_5_Text" xml:space="preserve">
+    <value>Если вы сообщаете о проблеме на GitHub, в Telegram или в Discord, мы видим то, что вы там публикуете, включая файл журнала, если вы его прикладываете. Мы используем это только для решения проблемы. Просмотрите журнал, прежде чем делиться им. Данные вашей учетной записи эти площадки обрабатывают по собственным политикам.</value>
+  </data>
+  <data name="PrivacyPolicy_6_Title" xml:space="preserve">
+    <value>Европейский союз, ЕЭЗ и Великобритания</value>
+  </data>
+  <data name="PrivacyPolicy_6_Text" xml:space="preserve">
+    <value>Программа не отправляет нам ваши персональные данные, поэтому при ее использовании Team Sophia не является контролером ваших персональных данных по GDPR и UK GDPR. Если вы что-то отправили нам и хотите это удалить, напишите нам, и мы удалим то, что находится под нашим контролем. Вы также вправе подать жалобу в свой надзорный орган по защите данных.</value>
+  </data>
+  <data name="PrivacyPolicy_7_Title" xml:space="preserve">
+    <value>США</value>
+  </data>
+  <data name="PrivacyPolicy_7_Text" xml:space="preserve">
+    <value>Мы не продаем и не передаем персональную информацию и не используем ее для таргетированной рекламы и профилирования в значении Закона штата Калифорния о защите конфиденциальности потребителей (CCPA) и аналогичных законов других штатов.</value>
+  </data>
+  <data name="PrivacyPolicy_8_Title" xml:space="preserve">
+    <value>Канада</value>
+  </data>
+  <data name="PrivacyPolicy_8_Text" xml:space="preserve">
+    <value>Мы не собираем, не используем и не раскрываем персональную информацию через программу в значении Закона о защите персональной информации и электронных документах (PIPEDA) и Закона 25 провинции Квебек.</value>
+  </data>
+  <data name="PrivacyPolicy_9_Title" xml:space="preserve">
+    <value>Дети</value>
+  </data>
+  <data name="PrivacyPolicy_9_Text" xml:space="preserve">
+    <value>Программа — это инструмент для администраторов компьютеров с Windows, она не предназначена для детей. Мы сознательно не собираем ничьи данные, включая данные детей.</value>
+  </data>
+  <data name="PrivacyPolicy_10_Title" xml:space="preserve">
+    <value>Изменения и связь</value>
+  </data>
+  <data name="PrivacyPolicy_10_Text" xml:space="preserve">
+    <value>При изменении этой политики дата выше обновляется, а программа при следующем запуске просит принять новую версию. Вопросы об этой политике: [GitHub]({0}) или [Telegram]({1}).</value>
+  </data>
+  <data name="StartupCheck_Passed" xml:space="preserve">
+    <value>пройдено</value>
+  </data>
+  <data name="StartupCheck_Failed" xml:space="preserve">
+    <value>не пройдено</value>
   </data>
   <data name="OsRequirements_GetWindowsComponentStability" xml:space="preserve">
     <value>Проверка стабильности компонентов Windows…</value>
@@ -267,6 +372,30 @@
   <data name="OsRequirements_RunWinUpdate.Text" xml:space="preserve">
     <value>Запустите обновление Windows и повторите попытку.</value>
   </data>
+  <data name="OsRequirements_GetExternalServicesData" xml:space="preserve">
+    <value>Получение данных из интернета…</value>
+  </data>
+  <data name="OsRequirements_ExternalDataUnavailable_1.Text" xml:space="preserve">
+    <value>Невозможно установить соединение с этими сайтами:</value>
+  </data>
+  <data name="OsRequirements_ExternalDataUnavailable_2.Text" xml:space="preserve">
+    <value>Параметры, которым нужны эти данные, сообщат об этом на своих карточках. Проверьте соединение с интернетом, VPN, брандмауэр и файл hosts.</value>
+  </data>
+  <data name="OsRequirements_Data_AppRelease" xml:space="preserve">
+    <value>последняя версия SophiApp for Windows</value>
+  </data>
+  <data name="OsRequirements_Data_WindowsBuilds" xml:space="preserve">
+    <value>поддерживаемые сборки Windows</value>
+  </data>
+  <data name="OsRequirements_Data_DotNet" xml:space="preserve">
+    <value>последние версии .NET</value>
+  </data>
+  <data name="OsRequirements_Data_VisualC" xml:space="preserve">
+    <value>последняя версия Visual C++</value>
+  </data>
+  <data name="OsRequirements_Data_Linux" xml:space="preserve">
+    <value>список дистрибутивов Linux</value>
+  </data>
   <data name="OsRequirements_GetHostFileEntries" xml:space="preserve">
     <value>Проверка файла hosts на сторонние записи…</value>
   </data>
@@ -304,7 +433,7 @@
     <value>Открыть параметры BitLocker</value>
   </data>
   <data name="OsRequirements_SystemDriveDecryptionFailed.Message" xml:space="preserve">
-    <value>Windows не удалось начать расшифровку диска. Перезагрузите компьютер и попробуйте ещё раз, отключите BitLocker в его параметрах или продолжите без расшифровки.</value>
+    <value>Windows не удалось начать расшифровку диска. Перезагрузите компьютер и попробуйте еще раз, отключите BitLocker в его параметрах или продолжите без расшифровки.</value>
   </data>
   <data name="OsRequirements_GetUEFICertificates" xml:space="preserve">
     <value>Проверка срока действия сертификатов UEFI…</value>
@@ -859,7 +988,7 @@
     <value>{0} (установлен)</value>
   </data>
   <data name="UIModel_Exception_WslDistributionNotInstalled" xml:space="preserve">
-    <value>Дистрибутив пока не установлен. Если компоненты WSL были установлены только что, перезагрузите компьютер и выберите дистрибутив ещё раз.</value>
+    <value>Дистрибутив пока не установлен. Если компоненты WSL были установлены только что, перезагрузите компьютер и выберите дистрибутив еще раз.</value>
   </data>
   <data name="UIModel_InstallVisualC_x86_Title" xml:space="preserve">
     <value>Распространяемые пакеты Microsoft Visual C++ 2017–2026 x86</value>
@@ -1051,7 +1180,7 @@
     <value>Изменить расположение пользовательских папок</value>
   </data>
   <data name="UIModel_UserShellFolderLocation_Description" xml:space="preserve">
-    <value>Выберите папку на другом диске или введите путь к любой другой папке и нажмите Enter. Файлы не будут перенесены в новое расположение: переместите их вручную. В папку снимков экрана сохраняются скриншоты, сделанные по нажатию Win+PrtScn или Win+Shift+S.</value>
+    <value>Выберите папку на другом диске или введите путь к любой другой папке и нажмите Enter. `Файлы не будут перенесены в новое расположение: переместите их вручную`. В папку снимков экрана сохраняются скриншоты, сделанные по нажатию Win+PrtScn или Win+Shift+S.</value>
   </data>
   <data name="UIModel_UserShellFolderLocation_RootNotAllowed" xml:space="preserve">
     <value>Пользовательская папка не может быть корнем диска. Выберите папку на диске.</value>
@@ -1129,7 +1258,7 @@
     <value>Сделать программу приложением по умолчанию для расширения файла или протокола без всплывающего окна "Каким образом вы хотите открыть этот файл?". Нажмите **Добавить**, затем укажите программу, расширение и при желании значок для файлов. Все приложения по умолчанию можно экспортировать в файл и импортировать из него, например после переустановки Windows: сначала нужно установить приложения, перечисленные в файле.</value>
   </data>
   <data name="Association_Program.Header" xml:space="preserve">
-    <value>Путь к программе или её ProgId</value>
+    <value>Путь к программе или ее ProgId</value>
   </data>
   <data name="Association_Program.PlaceholderText" xml:space="preserve">
     <value>C:\Program Files\App\app.exe</value>
@@ -1192,7 +1321,7 @@
     <value>Windows не удалось экспортировать приложения по умолчанию (код завершения DISM: {0}).</value>
   </data>
   <data name="UIModel_SetAssociation_ImportIncomplete" xml:space="preserve">
-    <value>Не импортировано приложений по умолчанию: {0} из {1}, так как их приложения не установлены: {2}. Установите приложения и импортируйте файл ещё раз.</value>
+    <value>Не импортировано приложений по умолчанию: {0} из {1}, так как их приложения не установлены: {2}. Установите приложения и импортируйте файл еще раз.</value>
   </data>
   <data name="UIModel_DefaultTerminalApp_Title" xml:space="preserve">
     <value>Приложение терминала по умолчанию</value>
@@ -1528,10 +1657,10 @@
     <value>Project Lead, Development &amp; QA: Dmitry Nefedov</value>
   </data>
   <data name="AppTeam_Developer.Text" xml:space="preserve">
-    <value>Lead Developer: Dmitry "Inestic" Demin</value>
+    <value>Lead Developer: Dmitry "Inestic" Dyomin</value>
   </data>
   <data name="AppTeam_UxDeveloper.Text" xml:space="preserve">
-    <value>UI/UX Design: Vladimir Nameless</value>
+    <value>UI/UX Design: Vladimir Palii</value>
   </data>
   <data name="AppTeam_Tester.Text" xml:space="preserve">
     <value>QC: Yevhenii "lowlif3" Zabronskyi</value>
@@ -1547,6 +1676,15 @@
   </data>
   <data name="Button_Apply.Content" xml:space="preserve">
     <value>Применить</value>
+  </data>
+  <data name="Panel_RestorePointQuestion.Text" xml:space="preserve">
+    <value>Создать точку восстановления перед применением?</value>
+  </data>
+  <data name="Panel_Status_CreatingRestorePoint" xml:space="preserve">
+    <value>Создание точки восстановления</value>
+  </data>
+  <data name="Panel_RestorePointFailure.Message" xml:space="preserve">
+    <value>Не удалось создать точку восстановления, поэтому параметры не применены. Подробности смотрите в файле журнала.</value>
   </data>
   <data name="Panel_Status_ApplyingOne" xml:space="preserve">
     <value>Применение: {0}</value>
@@ -1611,6 +1749,12 @@
   <data name="Panel_RestartReminder.Message" xml:space="preserve">
     <value>Обязательно перезагрузите ваш ПК.</value>
   </data>
+  <data name="Panel_ShadowStorageNotice" xml:space="preserve">
+    <value>Теневые копии (включая точки восстановления) на системном диске занимают {0} ГБ.</value>
+  </data>
+  <data name="Button_OpenSystemProtection.Content" xml:space="preserve">
+    <value>Открыть защиту системы</value>
+  </data>
   <data name="UIModel_Exception_InstallFailed" xml:space="preserve">
     <value>Не удалось выполнить операцию. Проверьте соединение с интернетом и повторите попытку.</value>
   </data>
@@ -1621,7 +1765,7 @@
     <value>Скачивание отменено.</value>
   </data>
   <data name="UIModel_Notice_SetByAnotherSetting" xml:space="preserve">
-    <value>Значение задаёт выбранный вами параметр "{0}". Отмените его выбор, чтобы изменить этот параметр.</value>
+    <value>Значение задает выбранный вами параметр "{0}". Отмените его выбор, чтобы изменить этот параметр.</value>
   </data>
   <data name="UIModel_Exception_ActiveNetworkAdapterNotFound" xml:space="preserve">
     <value>Не удалось определить используемый сетевой адаптер: активное сетевое подключение не найдено. Подключитесь к сети.</value>

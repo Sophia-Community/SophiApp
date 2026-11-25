@@ -21,6 +21,12 @@ namespace SophiApp.Contracts.Services
         void BeginGetDistributions();
 
         /// <summary>
+        /// Waits for the download started by <see cref="BeginGetDistributions"/>. The list stays for the first <see cref="GetDistributions"/>.
+        /// </summary>
+        /// <returns>The address of the list if it could not be downloaded, otherwise null.</returns>
+        string? GetUnavailableAddress();
+
+        /// <summary>
         /// Gets the names of the distributions that are already installed for the current user.
         /// </summary>
         IReadOnlyList<string> GetInstalledDistributions();

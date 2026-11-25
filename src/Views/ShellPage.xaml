@@ -40,6 +40,7 @@
                         SelectedItem="{x:Bind ViewModel.SelectedNavigationViewItem, Mode=OneWay}"
                         IsSettingsVisible="False"
                         PaneDisplayMode="Auto"
+                        CompactModeThresholdWidth="0"
                         DisplayModeChanged="NavigationViewControl_DisplayModeChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Uid="NavigationItem_Privacy"
@@ -204,13 +205,29 @@
                              Severity="Informational"
                              IsOpen="{x:Bind Choices.RestartReminderIsVisible, Mode=TwoWay}"
                              Visibility="{x:Bind views:ShellPage.GetReminderVisibility(ViewModel.SetUpCustomizationsPanelIsVisible), Mode=OneWay}"/>
+                    <!-- After the settings are applied: the shadow copies of the system drive, restore points among them, take much space -->
+                    <InfoBar x:Name="Panel_ShadowStorageNotice"
+                             Severity="Warning"
+                             Message="{x:Bind Choices.ShadowStorageNotice, Mode=OneWay}"
+                             IsOpen="{x:Bind Choices.ShadowStorageNoticeIsVisible, Mode=TwoWay}"
+                             Visibility="{x:Bind views:ShellPage.GetReminderVisibility(ViewModel.SetUpCustomizationsPanelIsVisible), Mode=OneWay}">
+                        <InfoBar.ActionButton>
+                            <Button x:Uid="Button_OpenSystemProtection"
+                                    Command="{x:Bind Choices.OpenSystemProtection_Command}"/>
+                        </InfoBar.ActionButton>
+                    </InfoBar>
+                    <InfoBar x:Name="Panel_RestorePointFailure"
+                             x:Uid="Panel_RestorePointFailure"
+                             Severity="Error"
+                             IsOpen="{x:Bind Choices.RestorePointFailureIsVisible, Mode=TwoWay}"
+                             Visibility="{x:Bind views:ShellPage.GetReminderVisibility(ViewModel.SetUpCustomizationsPanelIsVisible), Mode=OneWay}"/>
                     <Grid x:Name="Panel_ApplyCustomizations"
                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                           BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                           BorderThickness="0, 1, 0, 0"
                           Padding="16, 8, 24, 8"
                           ColumnSpacing="8"
-                          Visibility="{x:Bind views:ShellPage.GetApplyPanelVisibility(Choices.ApplicableModels.Count, ViewModel.SetUpCustomizationsPanelIsVisible), Mode=OneWay}">
+                          Visibility="{x:Bind views:ShellPage.GetApplyPanelVisibility(Choices.ApplicableModels.Count, ViewModel.SetUpCustomizationsPanelIsVisible, Choices.RestorePointQuestionIsVisible), Mode=OneWay}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -232,6 +249,37 @@
                                 Grid.Column="3"
                                 Style="{StaticResource AccentButtonStyle}"
                                 Command="{x:Bind Choices.Apply_Command, Mode=OneWay}"/>
+                    </Grid>
+                    <!-- "Apply" asks about a restore point first: the answer starts the applying -->
+                    <Grid x:Name="Panel_RestorePointQuestion"
+                          Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                          BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                          BorderThickness="0, 1, 0, 0"
+                          Padding="16, 8, 24, 8"
+                          ColumnSpacing="8"
+                          Visibility="{x:Bind views:ShellPage.GetQuestionVisibility(Choices.ApplicableModels.Count, ViewModel.SetUpCustomizationsPanelIsVisible, Choices.RestorePointQuestionIsVisible), Mode=OneWay}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Grid.Column="0"
+                                  Glyph="&#xE946;"
+                                  FontSize="16"/>
+                        <TextBlock x:Uid="Panel_RestorePointQuestion"
+                                   Grid.Column="1"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="NoWrap"
+                                   TextTrimming="CharacterEllipsis"/>
+                        <Button x:Uid="Button_Yes"
+                                Grid.Column="2"
+                                Style="{StaticResource AccentButtonStyle}"
+                                Command="{x:Bind Choices.ApplyWithRestorePoint_Command, Mode=OneWay}"/>
+                        <Button x:Uid="Button_No"
+                                Grid.Column="3"
+                                Command="{x:Bind Choices.ApplyWithoutRestorePoint_Command, Mode=OneWay}"/>
                     </Grid>
                     <Grid x:Name="Panel_SetUpCustomizations"
                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"

@@ -6,6 +6,7 @@ namespace SophiApp.Services
 {
     using Microsoft.UI.Input;
     using SophiApp.Contracts.Services;
+    using SophiApp.Extensions;
     using SophiApp.Helpers;
     using System;
     using System.Reflection;
@@ -14,10 +15,15 @@ namespace SophiApp.Services
     /// <inheritdoc/>
     public class CommonDataService : ICommonDataService
     {
+        private const string DotNetReleasesUrl = "https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json";
+        private const string VisualCReleaseUrl = "https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json";
+
         private readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
         private readonly IHttpService httpService;
         private readonly IInstrumentationService instrumentationService;
         private readonly IWslService wslService;
+        // The addresses that did not answer, and the string that names what was wanted from each
+        private readonly System.Collections.Concurrent.ConcurrentDictionary<string, string> unavailableAddresses = new();
         private Task appReleaseTask = Task.CompletedTask;
         private Task externalDataTask = Task.CompletedTask;
 
@@ -99,6 +105,22 @@ namespace SophiApp.Services
         public void WaitForExternalServicesData() => externalDataTask.Wait();
 
         /// <inheritdoc/>
+        public IReadOnlyList<(string Url, string Purpose)> GetUnavailableAddresses()
+        {
+            WaitForExternalServicesData();
+
+            if (wslService.GetUnavailableAddress() is string address)
+            {
+                unavailableAddresses[address] = "OsRequirements_Data_Linux";
+            }
+
+            // What matters most goes first
+            string[] order = ["OsRequirements_Data_AppRelease", "OsRequirements_Data_WindowsBuilds", "OsRequirements_Data_DotNet", "OsRequirements_Data_VisualC", "OsRequirements_Data_Linux"];
+
+            return unavailableAddresses.OrderBy(item => Array.IndexOf(order, item.Value)).Select(item => (item.Key, item.Value.GetLocalized())).ToList();
+        }
+
+        /// <inheritdoc/>
         public string GetFullName() => "SophiApp for Windows (Preview 1)";
 
         private async Task SetDefenderStateAsync()
@@ -138,12 +160,13 @@ namespace SophiApp.Services
         {
             try
             {
-                LatestAppRelease = await httpService.GetFromJsonAsync<AppVersion>("https://raw.githubusercontent.com/Sophia-Community/SophiApp/refs/heads/dev-SophiApp2/SophiApp_Releases.json", 5);
+                LatestAppRelease = await httpService.GetFromJsonAsync<AppVersion>(AppLinks.ReleasesData, 5);
             }
             catch (Exception ex)
             {
                 // No connection: the app goes on without this data
                 App.Logger.LogSkippedException("Getting the latest app release", ex);
+                unavailableAddresses[AppLinks.ReleasesData] = "OsRequirements_Data_AppRelease";
             }
         }
 
@@ -153,13 +176,14 @@ namespace SophiApp.Services
             {
                 // The index is a few kilobytes and names the latest release of every .NET version.
                 // The full lists of releases are hundreds of times larger and do not come in time on a slow connection
-                var index = await httpService.GetFromJsonAsync<DotNetReleaseIndex>("https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json", 10);
+                var index = await httpService.GetFromJsonAsync<DotNetReleaseIndex>(DotNetReleasesUrl, 10);
                 LatestReleaseNET10 = index.Releases.Find(release => release.Channel == "10.0");
                 LatestReleaseNET11 = index.Releases.Find(release => release.Channel == "11.0");
             }
             catch (Exception ex)
             {
                 App.Logger.LogSkippedException("Getting the latest .NET releases", ex);
+                unavailableAddresses[DotNetReleasesUrl] = "OsRequirements_Data_DotNet";
             }
         }
 
@@ -167,11 +191,12 @@ namespace SophiApp.Services
         {
             try
             {
-                LatestReleaseVC = await httpService.GetFromJsonAsync<VCRelease>("https://raw.githubusercontent.com/ScoopInstaller/Extras/refs/heads/master/bucket/vcredist2022.json", 5);
+                LatestReleaseVC = await httpService.GetFromJsonAsync<VCRelease>(VisualCReleaseUrl, 5);
             }
             catch (Exception ex)
             {
                 App.Logger.LogSkippedException("Getting the latest Visual C++ Redistributable release", ex);
+                unavailableAddresses[VisualCReleaseUrl] = "OsRequirements_Data_VisualC";
             }
         }
 
@@ -179,12 +204,13 @@ namespace SophiApp.Services
         {
             try
             {
-                SupportedOs = await httpService.GetFromJsonAsync<SupportedOs>("https://raw.githubusercontent.com/Sophia-Community/SophiApp/refs/heads/dev-SophiApp2/Windows_Builds.json", 5);
+                SupportedOs = await httpService.GetFromJsonAsync<SupportedOs>(AppLinks.SupportedBuildsData, 5);
             }
             catch (Exception ex)
             {
                 // The builds known to the app are used
                 App.Logger.LogSkippedException("Getting the supported Windows builds", ex);
+                unavailableAddresses[AppLinks.SupportedBuildsData] = "OsRequirements_Data_WindowsBuilds";
             }
         }
     }

@@ -82,6 +82,12 @@ namespace SophiApp.Contracts.Services
         void WaitForExternalServicesData();
 
         /// <summary>
+        /// Waits until all the data is received and gets the addresses that did not answer.
+        /// </summary>
+        /// <returns>The address and what the app wanted from it, in the language of the app.</returns>
+        IReadOnlyList<(string Url, string Purpose)> GetUnavailableAddresses();
+
+        /// <summary>
         /// Gets the app name shown in the window title and on the Settings page.
         /// </summary>
         string GetFullName();

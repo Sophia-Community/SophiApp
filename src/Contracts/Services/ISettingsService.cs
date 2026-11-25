@@ -104,4 +104,16 @@ public interface ISettingsService
     /// </summary>
     /// <param name="language">A language tag, such as "en-US". An empty tag stands for the language of Windows.</param>
     Task SaveLanguageAsync(string language);
+
+    /// <summary>
+    /// Reads from a settings file which version of the terms the user has accepted.
+    /// </summary>
+    /// <returns>The version, or 0 if the terms have not been accepted.</returns>
+    int ReadAcceptedTerms();
+
+    /// <summary>
+    /// Writes to a settings file that the user has accepted the terms.
+    /// </summary>
+    /// <param name="version">The version of the accepted terms.</param>
+    Task SaveAcceptedTermsAsync(int version);
 }

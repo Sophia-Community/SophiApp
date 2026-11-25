@@ -6,33 +6,38 @@ namespace SophiApp.ViewModels
 {
     using CommunityToolkit.Mvvm.ComponentModel;
     using CommunityToolkit.Mvvm.Input;
+    using Microsoft.UI.Xaml.Controls;
     using SophiApp.Contracts.Services;
     using SophiApp.Extensions;
     using SophiApp.Helpers;
+    using SophiApp.Models;
     using SophiApp.Views;
+    using System.Collections.ObjectModel;
     using System.Diagnostics;
 
     /// <summary>
-    /// The start of the app: the checks of Windows that run before the settings are shown, and what the user answers when a check fails.
+    /// The start of the app: the terms the user accepts, the checks of Windows that run before the settings are shown,
+    /// and what the user answers when a check fails.
     /// </summary>
     public partial class StartupViewModel : ObservableRecipient
     {
-        private const string AppLatestReleaseUrl = "https://github.com/Sophia-Community/SophiApp/releases/latest";
-        private const string UpdateUEFICertificatesUrl = "https://techcommunity.microsoft.com/blog/windows-itpro-blog/updating-microsoft-secure-boot-keys/4055324";
-        private const string SigningUEFICertificatesUrl = "https://techcommunity.microsoft.com/blog/hardware-dev-center/signing-with-the-new-2023-microsoft-uefi-certificates-what-submitters-need-to-kn/4455787";
-        private const string EnableSecureBootUrl = "https://support.microsoft.com/en-us/windows/security/devicesecurity/windows-11-and-secure-boot";
+        // Increased when the terms or the privacy policy change: the user is asked to accept them again
+        private const int TermsVersion = 1;
 
         private readonly IInstrumentationService instrumentationService;
         private readonly INavigationService navigationService;
         private readonly IRequirementsService requirementsService;
+        private readonly ISettingsService settingsService;
         private readonly IUpdateService updateService;
-        private string? statusText;
         private TaskCompletionSource<bool>? taskContinueSource;
+        private TaskCompletionSource<bool>? termsSource;
+        private StartupCheck? failedCheck;
+        private StartupCheck? currentStep;
 
         [ObservableProperty]
         private RequirementsResult requirementsResult;
         [ObservableProperty]
-        private bool decryptionFailed;
+        private bool supportIsVisible;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StartupViewModel"/> class.
@@ -42,6 +47,7 @@ namespace SophiApp.ViewModels
         /// <param name="navigationService">Page navigation service.</param>
         /// <param name="processService">A service for working with Windows process API.</param>
         /// <param name="requirementsService">Service for working with OS requirements.</param>
+        /// <param name="settingsService">A service for working with app settings.</param>
         /// <param name="updateService">Determines whether the Windows Update API is used to obtain updates for other Microsoft products.</param>
         public StartupViewModel(
             IHttpService httpService,
@@ -49,13 +55,16 @@ namespace SophiApp.ViewModels
             INavigationService navigationService,
             IProcessService processService,
             IRequirementsService requirementsService,
+            ISettingsService settingsService,
             IUpdateService updateService)
         {
             this.instrumentationService = instrumentationService;
             this.navigationService = navigationService;
             this.requirementsService = requirementsService;
+            this.settingsService = settingsService;
             this.updateService = updateService;
-            AppUpdate_Command = new RelayCommand(() => httpService.OpenUrl(AppLatestReleaseUrl));
+            AcceptTerms_Command = new RelayCommand(() => termsSource?.TrySetResult(true));
+            AppUpdate_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.LatestRelease));
             ContinueRequirementActionsExecute_Command = new RelayCommand(ContinueRequirementActionsExecute);
             DecryptSystemDrive_Command = new AsyncRelayCommand(DecryptSystemDriveAsync);
             OpenBitLockerSettings_Command = new RelayCommand(() => processService.StartProcessByName("control.exe", "/name Microsoft.BitLockerDriveEncryption"));
@@ -63,14 +72,19 @@ namespace SophiApp.ViewModels
             OpenHostsFolder_Command = new RelayCommand(() => processService.StartProcessByName("explorer.exe", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "drivers\\etc")));
             UpdateUEFICertificates_Command = new RelayCommand(() =>
             {
-                httpService.OpenUrl(UpdateUEFICertificatesUrl);
-                httpService.OpenUrl(SigningUEFICertificatesUrl);
+                httpService.OpenUrl(AppLinks.UpdateUefiCertificates);
+                httpService.OpenUrl(AppLinks.SigningUefiCertificates);
             });
-            EnableSecureBoot_Command = new RelayCommand(() => httpService.OpenUrl(EnableSecureBootUrl));
+            EnableSecureBoot_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.EnableSecureBoot));
         }
 
         /// <summary>
-        /// Gets <see cref="IRelayCommand"/> to click an "Update" button in the RequirementsFailurePage.
+        /// Gets <see cref="IRelayCommand"/> to accept the terms: all their items are checked.
+        /// </summary>
+        public IRelayCommand AcceptTerms_Command { get; }
+
+        /// <summary>
+        /// Gets <see cref="IRelayCommand"/> to open the page of the latest release of the app.
         /// </summary>
         public IRelayCommand AppUpdate_Command { get; }
 
@@ -110,33 +124,44 @@ namespace SophiApp.ViewModels
         public IRelayCommand EnableSecureBoot_Command { get; }
 
         /// <summary>
-        /// Gets or sets the text that tells what the app is doing while it starts.
+        /// Gets the checks that have been started, in the order they run. Each one gets its mark when it is over.
         /// </summary>
-        public string StatusText
+        public ObservableCollection<StartupCheck> Checks { get; } = [];
+
+        /// <summary>
+        /// Shows the terms and waits until the user accepts them. Accepted terms are not shown again until they change.
+        /// Nothing is checked and nothing is requested from the Internet before that.
+        /// </summary>
+        public async Task ShowTermsAsync()
         {
-            get
+            if (settingsService.ReadAcceptedTerms() >= TermsVersion)
             {
-                return statusText!;
+                return;
             }
 
-            set
-            {
-                if (value is not null && statusText != value)
-                {
-                    statusText = value;
-                    OnPropertyChanged(nameof(StatusText));
-                }
-            }
+            termsSource = new();
+            _ = navigationService.NavigateTo<WelcomePage>(clearHistory: true, disablePageAnimation: true);
+            await termsSource.Task;
+            await settingsService.SaveAcceptedTermsAsync(TermsVersion);
+            App.Logger.LogTermsAccepted(TermsVersion);
         }
 
         /// <summary>
-        /// Runs the checks of Windows one by one. When a check fails, its page is shown and the checks wait for the user.
+        /// Runs the checks of Windows one by one. When a check fails, its notice is shown and the checks wait for the user.
         /// </summary>
         public async Task RunRequirementActionsAsync()
         {
             foreach (var action in requirementsService.GetActions())
             {
-                _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => StatusText = action.DisplayText!);
+                // An action without a text only starts something in the background, so it has no line
+                var check = new StartupCheck(action.DisplayText ?? string.Empty);
+
+                if (action.DisplayText is not null)
+                {
+                    Checks.Add(check);
+                }
+
+                // The line is drawn before the check takes the processor
                 await Task.Delay(100);
                 var timer = Stopwatch.StartNew();
 
@@ -145,22 +170,67 @@ namespace SophiApp.ViewModels
                 timer.Stop();
                 App.Logger.LogRequirementsActionExecute(action.Execute.Method.Name, timer);
 
-                if (RequirementsResult != RequirementsResult.AllCorrect)
+                if (RequirementsResult == RequirementsResult.AllCorrect)
                 {
-                    App.Logger.LogRequirementsFailureResult(RequirementsResult);
-                    LogRequirementsFailureTexts(RequirementsResult);
-                    _ = App.MainWindow.DispatcherQueue.TryEnqueue(() => navigationService.NavigateTo<RequirementsFailurePage>(clearHistory: true, disablePageAnimation: true));
-                    updateService.RunUpdateByReason(RequirementsResult);
-                    taskContinueSource = new();
-                    await taskContinueSource.Task;
+                    check.State = StartupCheckState.Passed;
+                    continue;
                 }
+
+                var texts = GetFailureTexts(RequirementsResult);
+                App.Logger.LogRequirementsFailureResult(RequirementsResult);
+                App.Logger.LogUserNotice(string.Join(" ", texts));
+
+                // A question can be passed by and has the mark of a warning, anything else stops the start
+                var isQuestion = CanBeContinued(RequirementsResult);
+                check.Actions = GetFailureActions(RequirementsResult);
+                check.NoticeSeverity = isQuestion ? InfoBarSeverity.Warning : InfoBarSeverity.Error;
+                check.Notice = string.Join(Environment.NewLine, texts);
+                check.State = isQuestion ? StartupCheckState.Continued : StartupCheckState.Failed;
+                failedCheck = check;
+                SupportIsVisible = true;
+                updateService.RunUpdateByReason(RequirementsResult);
+                taskContinueSource = new();
+                await taskContinueSource.Task;
+
+                // The user chose to go on
+                failedCheck = null;
+                SupportIsVisible = false;
+                check.Notice = string.Empty;
+                check.Actions = [];
+                check.State = StartupCheckState.Continued;
             }
         }
 
-        // The log gets the same texts as the page of a failed startup check shows
-        private static void LogRequirementsFailureTexts(RequirementsResult result)
+        /// <summary>
+        /// Adds a line for what the app does after the checks. The line before it gets its mark.
+        /// </summary>
+        /// <param name="text">What the app is doing.</param>
+        public void ShowStep(string text)
         {
-            // The log gets the texts without the markup
+            // It is called from the thread that reads the settings of Windows
+            _ = App.MainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                if (currentStep is not null)
+                {
+                    currentStep.State = StartupCheckState.Passed;
+                }
+
+                currentStep = new StartupCheck(text);
+                Checks.Add(currentStep);
+            });
+        }
+
+        private static bool CanBeContinued(RequirementsResult result) => result
+            is RequirementsResult.ExternalDataUnavailable
+            or RequirementsResult.HostsEntriesFound
+            or RequirementsResult.SystemDriveEncryptedBitLockerDisabled
+            or RequirementsResult.UpdateUEFICertificates
+            or RequirementsResult.EnableSecureBoot;
+
+        // What the user is told when a check fails. The log gets the same texts
+        private static string[] GetFailureTexts(RequirementsResult result)
+        {
+            // A notice is a plain text, so the markup is dropped
             static string Text(string key) => FormattedText.ToPlainText($"{key}/Text".GetLocalized());
             var data = App.GetService<ICommonDataService>();
 
@@ -170,6 +240,7 @@ namespace SophiApp.ViewModels
                     => [data.RequirementsResult_1, Text("OsRequirements_ReinstallWindows")],
                 RequirementsResult.NewAppVersionFound => [data.RequirementsResult_1, Text("OsRequirements_NewAppVersionFound_2")],
                 RequirementsResult.LoggedUserNotAdmin => [data.RequirementsResult_1, data.RequirementsResult_2, Text("OsRequirements_LoggedUserNotAdmin_3")],
+                RequirementsResult.ExternalDataUnavailable => [Text("OsRequirements_ExternalDataUnavailable_1"), data.RequirementsResult_1, Text("OsRequirements_ExternalDataUnavailable_2"), Text("OsRequirements_DoYouWantToContinue")],
                 RequirementsResult.HostsEntriesFound => [Text("OsRequirements_HostsEntriesFound_1"), Text("OsRequirements_HostsEntriesFound_2"), Text("OsRequirements_DoYouWantToContinue")],
                 RequirementsResult.DisableControlledFolderAccess => [Text("OsRequirements_DisableControlledFolderAccessPanel_1"), Text("OsRequirements_DisableControlledFolderAccessPanel_2")],
                 RequirementsResult.RebootPending => [Text("OsRequirements_RebootPending")],
@@ -182,18 +253,48 @@ namespace SophiApp.ViewModels
                 _ => [],
             };
 
-            App.Logger.LogUserNotice(string.Join(" ", texts.Where(text => text.Length > 0)));
+            return [.. texts.Where(text => text.Length > 0)];
+        }
+
+        // The buttons of the notice of a failed check. The answer the app suggests goes first
+        private StartupCheckAction[] GetFailureActions(RequirementsResult result)
+        {
+            static string Text(string key) => $"{key}/Content".GetLocalized();
+            var goOn = new StartupCheckAction(Text("Button_Continue"), ContinueRequirementActionsExecute_Command, IsPrimary: true);
+
+            return result switch
+            {
+                RequirementsResult.NewAppVersionFound => [new(Text("Button_Update"), AppUpdate_Command, IsPrimary: true)],
+                RequirementsResult.ExternalDataUnavailable => [goOn],
+                RequirementsResult.HostsEntriesFound => [goOn, new(Text("Button_OpenHostFileFolder"), OpenHostsFolder_Command)],
+                RequirementsResult.DisableControlledFolderAccess => [new(Text("Button_OpenControlledFolderSettings"), OpenDefenderControlledFolder_Command, IsPrimary: true)],
+                RequirementsResult.SystemDriveEncryptedBitLockerDisabled =>
+                [
+                    new(Text("Button_Yes"), DecryptSystemDrive_Command, IsPrimary: true),
+                    new(Text("Button_No"), ContinueRequirementActionsExecute_Command),
+                    new(Text("Button_OpenBitLockerSettings"), OpenBitLockerSettings_Command),
+                ],
+                RequirementsResult.UpdateUEFICertificates => [goOn, new(Text("Button_UpdateUEFICertificates"), UpdateUEFICertificates_Command)],
+                RequirementsResult.EnableSecureBoot => [goOn, new(Text("Button_EnableSecureBoot"), EnableSecureBoot_Command)],
+                _ => [],
+            };
         }
 
         private async Task DecryptSystemDriveAsync()
         {
-            DecryptionFailed = false;
-
             // Windows can refuse to decrypt the drive. The user is told, and decides what to do next
             if (!await Task.Run(instrumentationService.TryDecryptSystemDrive))
             {
-                DecryptionFailed = true;
-                App.Logger.LogUserNotice("OsRequirements_SystemDriveDecryptionFailed/Message".GetLocalized());
+                var refusal = "OsRequirements_SystemDriveDecryptionFailed/Message".GetLocalized();
+                App.Logger.LogUserNotice(refusal);
+
+                if (failedCheck is not null && !failedCheck.Notice.Contains(refusal))
+                {
+                    failedCheck.NoticeSeverity = InfoBarSeverity.Error;
+                    failedCheck.Notice = string.Join(Environment.NewLine, failedCheck.Notice, refusal);
+                    failedCheck.State = StartupCheckState.Failed;
+                }
+
                 return;
             }
 
@@ -201,15 +302,7 @@ namespace SophiApp.ViewModels
             ContinueRequirementActionsExecute();
         }
 
-        private void ContinueRequirementActionsExecute()
-        {
-            // The button pressed twice continues once
-            if (taskContinueSource?.TrySetResult(true) == false)
-            {
-                return;
-            }
-
-            App.MainWindow.DispatcherQueue.TryEnqueue(() => navigationService.NavigateTo<StartupPage>(clearHistory: true, disablePageAnimation: true));
-        }
+        // The button pressed twice continues once
+        private void ContinueRequirementActionsExecute() => taskContinueSource?.TrySetResult(true);
     }
 }
