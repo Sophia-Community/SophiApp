@@ -30,6 +30,7 @@ namespace SophiApp.Views
             InitializeComponent();
             FindTerms(TermsPanel);
             FillPolicy();
+            RestoreChoice();
 
             // The keyboard starts from the first item, not from the search box of the menu
             Loaded += (_, _) => terms.FirstOrDefault()?.Focus(FocusState.Pointer);
@@ -85,21 +86,48 @@ namespace SophiApp.Views
             }
         }
 
+        // When the language is changed the page is created anew: what was checked and what was opened stays
+        private void RestoreChoice()
+        {
+            for (var number = 0; number < terms.Count; number++)
+            {
+                terms[number].IsChecked = ViewModel.CheckedTerms.Contains(number);
+            }
+
+            ShowContinue();
+            ShowPolicy(ViewModel.PolicyIsOpen);
+        }
+
         // The app goes on only when every item is checked
-        private void Term_Changed(object sender, RoutedEventArgs args)
+        private void ShowContinue()
             => ContinueButton.IsEnabled = terms.Count > 0 && terms.TrueForAll(box => box.IsChecked == true);
+
+        private void ShowPolicy(bool show)
+        {
+            ViewModel.PolicyIsOpen = show;
+            TermsView.Visibility = show ? Visibility.Collapsed : Visibility.Visible;
+            PolicyView.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void Term_Changed(object sender, RoutedEventArgs args)
+        {
+            if (sender is CheckBox box && terms.IndexOf(box) is >= 0 and var number)
+            {
+                _ = box.IsChecked == true ? ViewModel.CheckedTerms.Add(number) : ViewModel.CheckedTerms.Remove(number);
+            }
+
+            ShowContinue();
+        }
 
         private void ReadPolicy_Click(object sender, RoutedEventArgs args)
         {
-            TermsView.Visibility = Visibility.Collapsed;
-            PolicyView.Visibility = Visibility.Visible;
+            ShowPolicy(true);
             _ = BackButton.Focus(FocusState.Programmatic);
         }
 
         private void Back_Click(object sender, RoutedEventArgs args)
         {
-            PolicyView.Visibility = Visibility.Collapsed;
-            TermsView.Visibility = Visibility.Visible;
+            ShowPolicy(false);
             _ = ReadPolicyButton.Focus(FocusState.Programmatic);
         }
     }

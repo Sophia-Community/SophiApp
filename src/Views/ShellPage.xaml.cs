@@ -63,6 +63,15 @@ public sealed partial class ShellPage : Page
         searchTimer.IsRepeating = false;
         searchTimer.Tick += (_, _) => Search.Search_Command.Execute(AutoSuggestBox.Text);
         ViewModel.PropertyChanged += OnViewModelPropertyChanged;
+        Choices.SettingsApplied += OnSettingsApplied;
+
+        // The window is filled anew when the language is changed on a startup page: the page it had before lets everything go
+        Unloaded += (_, _) =>
+        {
+            App.MainWindow.Activated -= MainWindow_Activated;
+            ViewModel.PropertyChanged -= OnViewModelPropertyChanged;
+            Choices.SettingsApplied -= OnSettingsApplied;
+        };
     }
 
     /// <summary>
@@ -249,6 +258,46 @@ public sealed partial class ShellPage : Page
         {
             announcedStatus = status;
             FrameworkElementAutomationPeer.FromElement(StatusText)?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+        }
+    }
+
+    // After the settings are applied the user gets the list: what was applied and what was not, with the reason
+    private async void OnSettingsApplied(object? sender, IReadOnlyList<AppliedSetting> applied)
+    {
+        if (applied.Count == 0 || XamlRoot is null)
+        {
+            return;
+        }
+
+        var dialog = new ContentDialog
+        {
+            XamlRoot = XamlRoot,
+            Style = (Style)Application.Current.Resources["DefaultContentDialogStyle"],
+            RequestedTheme = ActualTheme,
+            Title = string.Format("Dialog_Applied_Title".GetLocalized(), applied.Count(setting => setting.IsApplied), applied.Count),
+            CloseButtonText = "Dialog_Applied_Close".GetLocalized(),
+            DefaultButton = ContentDialogButton.Close,
+            Content = new ScrollViewer
+            {
+                MaxHeight = 360,
+                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                Content = new ItemsControl
+                {
+                    ItemsSource = applied,
+                    ItemTemplate = (DataTemplate)Resources["AppliedSettingTemplate"],
+                    IsTabStop = false,
+                },
+            },
+        };
+
+        try
+        {
+            _ = await dialog.ShowAsync();
+        }
+        catch (Exception ex)
+        {
+            // Another dialog is open: the settings are applied anyway, and the log has their list
+            App.Logger.LogSkippedException("Showing the list of the applied settings", ex);
         }
     }
 

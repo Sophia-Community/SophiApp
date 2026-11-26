@@ -123,6 +123,12 @@
   <data name="AppDescription" xml:space="preserve">
     <value>SophiApp for Windows</value>
   </data>
+  <data name="LanguageSwitch.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="LanguageSwitch.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="Welcome_Intro.Text" xml:space="preserve">
     <value>Before you start, read every item and select its check box to agree.</value>
   </data>
@@ -240,6 +246,18 @@
   <data name="OsRequirements_ReinstallWindows.Text" xml:space="preserve">
     <value>Reinstall Windows using only a genuine ISO image.</value>
   </data>
+  <data name="OsRequirements_PowerShellBlocked_1.Text" xml:space="preserve">
+    <value>Windows PowerShell was not allowed to start, so some settings cannot be read or applied.</value>
+  </data>
+  <data name="OsRequirements_PowerShellBlocked_Antivirus" xml:space="preserve">
+    <value>It is most likely blocked by the antivirus: {0}.</value>
+  </data>
+  <data name="OsRequirements_PowerShellBlocked_Unknown" xml:space="preserve">
+    <value>It is most likely blocked by a security program.</value>
+  </data>
+  <data name="OsRequirements_PowerShellBlocked_2.Text" xml:space="preserve">
+    <value>Allow SophiApp for Windows to start Windows PowerShell in that program, then start the app again.</value>
+  </data>
   <data name="OsRequirements_GetCpuArchitecture" xml:space="preserve">
     <value>Checking CPU architecture…</value>
   </data>
@@ -326,6 +344,12 @@
   </data>
   <data name="OsRequirements_DefenderComponentsMissing" xml:space="preserve">
     <value>The "{0}" component of Microsoft Defender is missing.</value>
+  </data>
+  <data name="OsRequirements_GetThirdPartyAntiviruses" xml:space="preserve">
+    <value>Looking for third-party antiviruses…</value>
+  </data>
+  <data name="OsRequirements_AntivirusTurnedOff" xml:space="preserve">
+    <value>{0} (turned off)</value>
   </data>
   <data name="OsRequirements_GetControlledFolderAccess" xml:space="preserve">
     <value>Checking Controlled Folder access status…</value>
@@ -518,6 +542,9 @@
   </data>
   <data name="Page_AboutPolicies.Message" xml:space="preserve">
     <value>SophiApp for Windows keeps the use of policies to a minimum. The settings that do create policies also show them in the Local Group Policy Editor snap-in (`gpedit.msc`), if it is available in your Windows edition.</value>
+  </data>
+  <data name="Setting_New.Text" xml:space="preserve">
+    <value>New</value>
   </data>
   <data name="UIModel_ContextMenu_CopyTitle.Text" xml:space="preserve">
     <value>Copy title</value>
@@ -747,6 +774,9 @@
   <data name="UIModel_TaskbarAlignment_Title" xml:space="preserve">
     <value>Set the taskbar alignment</value>
   </data>
+  <data name="UIModel_TaskbarAlignment_Description" xml:space="preserve">
+    <value>The Start button moves together with the taskbar icons.</value>
+  </data>
   <data name="UIModel_TaskbarAlignment_Title_1" xml:space="preserve">
     <value>Center</value>
   </data>
@@ -764,9 +794,6 @@
   </data>
   <data name="UIModel_TaskbarSearch_Title" xml:space="preserve">
     <value>Search button on the taskbar</value>
-  </data>
-  <data name="UIModel_TaskbarSearch_Description" xml:space="preserve">
-    <value>Changes will be made via Windows API without disabling the UCPD driver.</value>
   </data>
   <data name="UIModel_TaskbarSearch_Title_1" xml:space="preserve">
     <value>Hide</value>
@@ -1145,6 +1172,12 @@
   </data>
   <data name="UIModel_StickyShift_Description" xml:space="preserve">
     <value>Pressing the Shift key 5 times in a row brings up a pop-up that may interrupt your work.</value>
+  </data>
+  <data name="UIModel_MouseAcceleration_Title" xml:space="preserve">
+    <value>Enable mouse acceleration</value>
+  </data>
+  <data name="UIModel_MouseAcceleration_Description" xml:space="preserve">
+    <value>This is the "Enhance pointer precision" option of Windows: the faster the mouse is moved, the farther the pointer goes. Players of shooters such as CS2 usually turn it off, so the same hand movement always moves the pointer the same distance.</value>
   </data>
   <data name="SettingsGroup_Storage" xml:space="preserve">
     <value>Folders and storage</value>
@@ -1617,6 +1650,18 @@
   <data name="Control_SloganEnd.Text" xml:space="preserve">
     <value>Wisely.</value>
   </data>
+  <data name="SettingsPage_ReportBug.Text" xml:space="preserve">
+    <value>Found a bug? Let us know!</value>
+  </data>
+  <data name="App_GitHub.Text" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="App_Telegram.Text" xml:space="preserve">
+    <value>Telegram</value>
+  </data>
+  <data name="App_Discord.Text" xml:space="preserve">
+    <value>Discord</value>
+  </data>
   <data name="SettingsPage_SelectedTheme.Header" xml:space="preserve">
     <value>Theme</value>
   </data>
@@ -1629,26 +1674,35 @@
   <data name="Settings_Themes_Dark" xml:space="preserve">
     <value>Dark</value>
   </data>
+  <data name="SettingsPage_RememberTheme.Content" xml:space="preserve">
+    <value>Remember the chosen theme</value>
+  </data>
   <data name="SettingsPage_Language.Header" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="Settings_Languages_Default" xml:space="preserve">
     <value>Follow Windows language</value>
   </data>
-  <data name="SettingsPage_LanguageRestart.Message" xml:space="preserve">
-    <value>Restart SophiApp for Windows to change the language.</value>
+  <data name="SettingsPage_LanguageDropsChoices.Message" xml:space="preserve">
+    <value>Changing the language will cancel the settings that are chosen but not applied yet.</value>
   </data>
-  <data name="SettingsPage_AboutApp.Header" xml:space="preserve">
-    <value>About</value>
+  <data name="SettingsPage_RestorePoint.Header" xml:space="preserve">
+    <value>Restore point</value>
   </data>
-  <data name="App_GitHub.Text" xml:space="preserve">
-    <value>GitHub</value>
+  <data name="SettingsPage_RestorePoint.Description" xml:space="preserve">
+    <value>Create a system restore point now.</value>
   </data>
-  <data name="App_Telegram.Text" xml:space="preserve">
-    <value>Telegram</value>
+  <data name="Button_CreateRestorePoint.Content" xml:space="preserve">
+    <value>Create</value>
   </data>
-  <data name="App_Discord.Text" xml:space="preserve">
-    <value>Discord</value>
+  <data name="SettingsPage_SkipRestorePointQuestion.Content" xml:space="preserve">
+    <value>Do not ask about a restore point before applying settings</value>
+  </data>
+  <data name="SettingsPage_RestorePointCreated.Message" xml:space="preserve">
+    <value>The restore point has been created.</value>
+  </data>
+  <data name="SettingsPage_RestorePointNotCreated.Message" xml:space="preserve">
+    <value>The restore point could not be created. See the log file for details.</value>
   </data>
   <data name="SettingsPage_Team.Header" xml:space="preserve">
     <value>Team Sophia</value>
@@ -1667,6 +1721,9 @@
   </data>
   <data name="AppTeam_Supporter.Text" xml:space="preserve">
     <value>Financial &amp; Moral Support: David "BenchTweakGaming" Nguyen</value>
+  </data>
+  <data name="AppTeam_Promoter.Text" xml:space="preserve">
+    <value>Product promotion: Pavel "Rourshah" Shokun</value>
   </data>
   <data name="Panel_ApplyCustomizations_Apply.Text" xml:space="preserve">
     <value>Apply changes?</value>
@@ -1749,6 +1806,12 @@
   <data name="Panel_RestartReminder.Message" xml:space="preserve">
     <value>Make sure to restart your PC.</value>
   </data>
+  <data name="Dialog_Applied_Title" xml:space="preserve">
+    <value>Applied settings: {0} of {1}</value>
+  </data>
+  <data name="Dialog_Applied_Close" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Panel_ShadowStorageNotice" xml:space="preserve">
     <value>Shadow copies (including restore points) for the system drive take up {0} GB.</value>
   </data>
@@ -1760,6 +1823,9 @@
   </data>
   <data name="UIModel_Exception_LocationServicesDisabled" xml:space="preserve">
     <value>Network shell commands need location permission to access WLAN information. Turn on Location services on the Location page in Privacy &amp; security settings.</value>
+  </data>
+  <data name="UIModel_Action_OpenLocationSettings" xml:space="preserve">
+    <value>Open Location settings</value>
   </data>
   <data name="UIModel_Exception_DownloadCanceled" xml:space="preserve">
     <value>The download was canceled.</value>

@@ -55,6 +55,11 @@ namespace SophiApp.Helpers
         WindowsComponentStabilityDisrupted,
 
         /// <summary>
+        /// Windows PowerShell is not allowed to start, most likely by an antivirus.
+        /// </summary>
+        PowerShellBlocked,
+
+        /// <summary>
         /// Controlled folder access is turned on and has to be turned off.
         /// </summary>
         DisableControlledFolderAccess,

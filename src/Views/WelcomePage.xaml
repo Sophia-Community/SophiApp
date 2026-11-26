@@ -19,6 +19,10 @@
                  HorizontalAlignment="Center">
             <controls:AnimatedLogo/>
         </Viewbox>
+        <!-- The terms can be read in another language at once -->
+        <controls:LanguageSwitch HorizontalAlignment="Right"
+                                 VerticalAlignment="Top"
+                                 Margin="0, 0, 24, 0"/>
 
         <!-- The terms: the app goes on when every item is checked -->
         <ScrollViewer x:Name="TermsView"

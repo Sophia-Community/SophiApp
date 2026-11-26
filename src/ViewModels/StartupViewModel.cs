@@ -28,16 +28,20 @@ namespace SophiApp.ViewModels
         private readonly INavigationService navigationService;
         private readonly IRequirementsService requirementsService;
         private readonly ISettingsService settingsService;
+        private readonly IThemesService themesService;
         private readonly IUpdateService updateService;
         private TaskCompletionSource<bool>? taskContinueSource;
         private TaskCompletionSource<bool>? termsSource;
         private StartupCheck? failedCheck;
+        private RequirementAction? failedAction;
         private StartupCheck? currentStep;
 
         [ObservableProperty]
         private RequirementsResult requirementsResult;
         [ObservableProperty]
         private bool supportIsVisible;
+        [ObservableProperty]
+        private bool languageCanBeChanged = true;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StartupViewModel"/> class.
@@ -48,6 +52,7 @@ namespace SophiApp.ViewModels
         /// <param name="processService">A service for working with Windows process API.</param>
         /// <param name="requirementsService">Service for working with OS requirements.</param>
         /// <param name="settingsService">A service for working with app settings.</param>
+        /// <param name="themesService">A service for working with app themes.</param>
         /// <param name="updateService">Determines whether the Windows Update API is used to obtain updates for other Microsoft products.</param>
         public StartupViewModel(
             IHttpService httpService,
@@ -56,13 +61,16 @@ namespace SophiApp.ViewModels
             IProcessService processService,
             IRequirementsService requirementsService,
             ISettingsService settingsService,
+            IThemesService themesService,
             IUpdateService updateService)
         {
             this.instrumentationService = instrumentationService;
             this.navigationService = navigationService;
             this.requirementsService = requirementsService;
             this.settingsService = settingsService;
+            this.themesService = themesService;
             this.updateService = updateService;
+            ChangeLanguage_Command = new AsyncRelayCommand<string>(ChangeLanguageAsync);
             AcceptTerms_Command = new RelayCommand(() => termsSource?.TrySetResult(true));
             AppUpdate_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.LatestRelease));
             ContinueRequirementActionsExecute_Command = new RelayCommand(ContinueRequirementActionsExecute);
@@ -76,12 +84,18 @@ namespace SophiApp.ViewModels
                 httpService.OpenUrl(AppLinks.SigningUefiCertificates);
             });
             EnableSecureBoot_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.EnableSecureBoot));
+            OpenLogFile_Command = new RelayCommand(() => ContextMenuHelper.OpenInExplorer(App.Logger.LogFile));
         }
 
         /// <summary>
         /// Gets <see cref="IRelayCommand"/> to accept the terms: all their items are checked.
         /// </summary>
         public IRelayCommand AcceptTerms_Command { get; }
+
+        /// <summary>
+        /// Gets <see cref="IAsyncRelayCommand"/> to change the language of the app while it starts. Its parameter is the language tag.
+        /// </summary>
+        public IAsyncRelayCommand<string> ChangeLanguage_Command { get; }
 
         /// <summary>
         /// Gets <see cref="IRelayCommand"/> to open the page of the latest release of the app.
@@ -124,9 +138,24 @@ namespace SophiApp.ViewModels
         public IRelayCommand EnableSecureBoot_Command { get; }
 
         /// <summary>
+        /// Gets <see cref="IRelayCommand"/> to open the log file: it tells why a check has stopped the start.
+        /// </summary>
+        public IRelayCommand OpenLogFile_Command { get; }
+
+        /// <summary>
         /// Gets the checks that have been started, in the order they run. Each one gets its mark when it is over.
         /// </summary>
         public ObservableCollection<StartupCheck> Checks { get; } = [];
+
+        /// <summary>
+        /// Gets the terms that are checked, by their numbers. They are kept while the page of the terms is created anew.
+        /// </summary>
+        public HashSet<int> CheckedTerms { get; } = [];
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the privacy policy is opened on the page of the terms.
+        /// </summary>
+        public bool PolicyIsOpen { get; set; }
 
         /// <summary>
         /// Shows the terms and waits until the user accepts them. Accepted terms are not shown again until they change.
@@ -154,9 +183,9 @@ namespace SophiApp.ViewModels
             foreach (var action in requirementsService.GetActions())
             {
                 // An action without a text only starts something in the background, so it has no line
-                var check = new StartupCheck(action.DisplayText ?? string.Empty);
+                var check = new StartupCheck(action.DisplayKey ?? string.Empty, action.Details);
 
-                if (action.DisplayText is not null)
+                if (action.DisplayKey is not null)
                 {
                     Checks.Add(check);
                 }
@@ -172,6 +201,8 @@ namespace SophiApp.ViewModels
 
                 if (RequirementsResult == RequirementsResult.AllCorrect)
                 {
+                    // What the check has found is shown under its line
+                    check.ShowDetails();
                     check.State = StartupCheckState.Passed;
                     continue;
                 }
@@ -187,6 +218,7 @@ namespace SophiApp.ViewModels
                 check.Notice = string.Join(Environment.NewLine, texts);
                 check.State = isQuestion ? StartupCheckState.Continued : StartupCheckState.Failed;
                 failedCheck = check;
+                failedAction = action;
                 SupportIsVisible = true;
                 updateService.RunUpdateByReason(RequirementsResult);
                 taskContinueSource = new();
@@ -194,6 +226,7 @@ namespace SophiApp.ViewModels
 
                 // The user chose to go on
                 failedCheck = null;
+                failedAction = null;
                 SupportIsVisible = false;
                 check.Notice = string.Empty;
                 check.Actions = [];
@@ -204,20 +237,40 @@ namespace SophiApp.ViewModels
         /// <summary>
         /// Adds a line for what the app does after the checks. The line before it gets its mark.
         /// </summary>
-        /// <param name="text">What the app is doing.</param>
-        public void ShowStep(string text)
+        /// <param name="textKey">The resource key of the text that tells what the app is doing.</param>
+        public void ShowStep(string textKey)
         {
             // It is called from the thread that reads the settings of Windows
             _ = App.MainWindow.DispatcherQueue.TryEnqueue(() =>
             {
+                // The settings are read with their names, so from here on the language stays
+                LanguageCanBeChanged = false;
+
                 if (currentStep is not null)
                 {
                     currentStep.State = StartupCheckState.Passed;
                 }
 
-                currentStep = new StartupCheck(text);
+                currentStep = new StartupCheck(textKey);
                 Checks.Add(currentStep);
             });
+        }
+
+        /// <summary>
+        /// Fills the window anew, with the menu and the panels in the language of the app. A page reads its texts when it is created.
+        /// </summary>
+        public async Task ReloadWindowAsync()
+        {
+            // The selected menu item belongs to the menu that is going away. Given to the new menu, it crashes the app
+            App.GetService<ShellViewModel>().SelectedNavigationViewItem = null;
+            var shell = App.GetService<ShellPage>();
+            var loaded = new TaskCompletionSource<bool>();
+            shell.Loaded += (_, _) => loaded.TrySetResult(true);
+            App.MainWindow.Content = shell;
+            await themesService.SetRequestedThemeAsync();
+
+            // A page is opened only when the menu is on the screen: a menu that gets its selected item earlier mixes its items up
+            await loaded.Task;
         }
 
         private static bool CanBeContinued(RequirementsResult result) => result
@@ -238,6 +291,7 @@ namespace SophiApp.ViewModels
             {
                 RequirementsResult.WindowsComponentStabilityDisrupted or RequirementsResult.HarmfulTweakerFound or RequirementsResult.UWPComponentsMissing or RequirementsResult.DefenderComponentsMissing
                     => [data.RequirementsResult_1, Text("OsRequirements_ReinstallWindows")],
+                RequirementsResult.PowerShellBlocked => [Text("OsRequirements_PowerShellBlocked_1"), data.RequirementsResult_1, Text("OsRequirements_PowerShellBlocked_2")],
                 RequirementsResult.NewAppVersionFound => [data.RequirementsResult_1, Text("OsRequirements_NewAppVersionFound_2")],
                 RequirementsResult.LoggedUserNotAdmin => [data.RequirementsResult_1, data.RequirementsResult_2, Text("OsRequirements_LoggedUserNotAdmin_3")],
                 RequirementsResult.ExternalDataUnavailable => [Text("OsRequirements_ExternalDataUnavailable_1"), data.RequirementsResult_1, Text("OsRequirements_ExternalDataUnavailable_2"), Text("OsRequirements_DoYouWantToContinue")],
@@ -276,8 +330,44 @@ namespace SophiApp.ViewModels
                 ],
                 RequirementsResult.UpdateUEFICertificates => [goOn, new(Text("Button_UpdateUEFICertificates"), UpdateUEFICertificates_Command)],
                 RequirementsResult.EnableSecureBoot => [goOn, new(Text("Button_EnableSecureBoot"), EnableSecureBoot_Command)],
-                _ => [],
+
+                // A check that cannot be passed by and has nothing to open: the log tells the details
+                _ => [new("Page_ContextMenu_OpenLogFile/Text".GetLocalized(), OpenLogFile_Command)],
             };
+        }
+
+        private async Task ChangeLanguageAsync(string? tag)
+        {
+            if (tag is null || !LanguageCanBeChanged || !AppLanguage.IsSupported(tag) || tag.Equals(AppLanguage.Current, StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
+            AppLanguage.Apply(tag);
+            await settingsService.SaveLanguageAsync(tag);
+            App.Logger.LogChangeLanguage(tag);
+
+            foreach (var check in Checks)
+            {
+                check.Relocalize();
+            }
+
+            // The check that waits for an answer is run again, so its notice comes in the new language
+            if (failedCheck is StartupCheck waiting && failedAction is RequirementAction action)
+            {
+                var result = await Task.Run(action.Execute);
+
+                if (result == RequirementsResult && ReferenceEquals(waiting, failedCheck))
+                {
+                    waiting.Actions = GetFailureActions(result);
+                    waiting.Notice = string.Join(Environment.NewLine, GetFailureTexts(result));
+                }
+            }
+
+            // A page reads its texts when it is created, so the window is filled anew: the menu, and the page that was shown
+            var page = termsSource is { Task.IsCompleted: false } ? typeof(WelcomePage) : typeof(StartupPage);
+            await ReloadWindowAsync();
+            _ = navigationService.NavigateTo(page, clearHistory: true, disablePageAnimation: true);
         }
 
         private async Task DecryptSystemDriveAsync()

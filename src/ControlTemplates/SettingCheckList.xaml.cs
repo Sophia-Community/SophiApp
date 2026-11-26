@@ -9,6 +9,7 @@ namespace SophiApp.ControlTemplates
     using Microsoft.UI.Xaml;
     using Microsoft.UI.Xaml.Automation;
     using Microsoft.UI.Xaml.Controls;
+    using SophiApp.Extensions;
     using SophiApp.Helpers;
     using SophiApp.Models;
     using SophiApp.ViewModels;
@@ -75,6 +76,7 @@ namespace SophiApp.ControlTemplates
             }
 
             ShowAllState();
+            ShowNoticeAction();
         }
 
         // The items are read anew when the settings are applied or the choice is canceled
@@ -84,6 +86,24 @@ namespace SophiApp.ControlTemplates
             {
                 ShowAllState();
             }
+            else if (args.PropertyName is nameof(UIModel.NoticeAction))
+            {
+                ShowNoticeAction();
+            }
+        }
+
+        // The notice has a button only when there is something to open
+        private void ShowNoticeAction()
+        {
+            if (followed?.NoticeAction is not NoticeAction action)
+            {
+                Notice.ActionButton = null;
+                return;
+            }
+
+            var button = new Button { Content = action.ResourceKey.GetLocalized() };
+            button.Click += (_, _) => ExplorerHelper.Open(action.Address);
+            Notice.ActionButton = button;
         }
 
         // The check box of the card is checked if all items are, and shows a dash if only some of them are

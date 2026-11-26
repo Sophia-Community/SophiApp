@@ -84,6 +84,7 @@ public partial class ShellViewModel : ObservableRecipient
         activity.PropertyChanged += OnActivityChanged;
         OpenAppDeveloperPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Developer));
         OpenAppSupporterPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Supporter));
+        OpenAppPromoterPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Promoter));
         OpenAppDiscordPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.Discord));
         OpenAppGitHubPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.GitHub));
         OpenAppProjectManagerPage_Command = new RelayCommand(() => httpService.OpenUrl(AppLinks.ProjectManager));
@@ -108,6 +109,11 @@ public partial class ShellViewModel : ObservableRecipient
     /// Gets <see cref="IRelayCommand"/> to open the page of the person who supports the app.
     /// </summary>
     public IRelayCommand OpenAppSupporterPage_Command { get; private set; }
+
+    /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to open the page of the person who promotes the app.
+    /// </summary>
+    public IRelayCommand OpenAppPromoterPage_Command { get; private set; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to open app Discord page.
@@ -228,6 +234,44 @@ public partial class ShellViewModel : ObservableRecipient
     }
 
     /// <summary>
+    /// Changes the language of the app while it runs. The settings are built anew behind the page the user looks at,
+    /// so their names come in the new language; what was chosen but not applied is dropped.
+    /// </summary>
+    /// <param name="tag">The language tag, such as "en-US". An empty tag stands for the language of Windows.</param>
+    public async Task ChangeLanguageAsync(string tag)
+    {
+        // Settings are being applied or read: the language is used when the app starts next time
+        if (!activity.IsIdle)
+        {
+            return;
+        }
+
+        // If the language cannot be changed, the app stays as it is
+        AppLanguage.Apply(tag);
+        activity.IsIdle = false;
+        chosenSettings.DropChoices();
+        App.GetService<SearchViewModel>().FoundModels.Clear();
+
+        // The apps have no texts of the app, so their lists stay; only the choice is dropped
+        foreach (var app in UwpAppsToUninstall)
+        {
+            app.IsSelected = false;
+            app.IsChecked = false;
+        }
+
+        UwpAppsToUninstall.Clear();
+
+        // The page stays as it is while the settings are built and read: it takes a moment
+        var models = await modelService.BuildSettingModelsAsync();
+        await modelService.GetModelsState(models);
+        SettingModels = models;
+        chosenSettings.Settings = SettingModels;
+        await startup.ReloadWindowAsync();
+        activity.IsIdle = true;
+        _ = NavigationService.NavigateTo<SettingsPage>(clearHistory: true, disablePageAnimation: true);
+    }
+
+    /// <summary>
     /// Show a page with a message about a fatal error.
     /// </summary>
     public void FatalErrorHandling()
@@ -256,11 +300,11 @@ public partial class ShellViewModel : ObservableRecipient
 
     private async Task GenerateUIAsync()
     {
-        startup.ShowStep("OsRequirements_ReadWindowsSettings".GetLocalized());
+        startup.ShowStep("OsRequirements_ReadWindowsSettings");
         SettingModels = await modelService.BuildSettingModelsAsync();
         chosenSettings.Settings = SettingModels;
         await modelService.GetModelsState(SettingModels);
-        startup.ShowStep("OsRequirements_GeneratingUserInterface".GetLocalized());
+        startup.ShowStep("OsRequirements_GeneratingUserInterface");
         await ReadUwpAppsAsync();
         _ = App.MainWindow.DispatcherQueue.TryEnqueue(() =>
         {

@@ -1,4 +1,4 @@
-// <copyright file="SettingAction.xaml.cs" company="Team Sophia">
+﻿// <copyright file="SettingAction.xaml.cs" company="Team Sophia">
 // Copyright (c) Team Sophia. All rights reserved.
 // </copyright>
 
@@ -105,6 +105,16 @@ namespace SophiApp.ControlTemplates
 
             if (args.NewValue is UIActionModel action)
             {
+                // An action that has an icon of its own shows it as the other cards show their logos
+                if (Customizations.SettingLooks.GetGlyph(action.Name) is string glyph)
+                {
+                    Card.HeaderIcon = new FontIcon { Glyph = glyph };
+                }
+                else
+                {
+                    Card.ClearValue(SettingsCard.HeaderIconProperty);
+                }
+
                 // A screen reader says what the button does to what: "Unpin, Unpin all Start tiles"
                 AutomationProperties.SetName(ActionButton, $"{action.ButtonText}, {action.Title}");
                 AutomationProperties.SetHelpText(ActionButton, FormattedText.ToPlainText(description));

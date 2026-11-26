@@ -18,19 +18,57 @@
             </Grid.ColumnDefinitions>
             <StackPanel IsHitTestVisible="{x:Bind ViewModel.NavigationViewHitTestVisible, Mode=OneWay}"
                         Spacing="4">
-                <controls:Slogan Margin="2, 0, 0, 10"/>
+                <!-- The small animated logo, with the slogan and the version beside it -->
+                <Grid ColumnSpacing="20"
+                      Margin="2, 0, 0, 12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox Height="56"
+                             VerticalAlignment="Center">
+                        <controls:AnimatedLogo/>
+                    </Viewbox>
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center">
+                        <controls:Slogan/>
+                        <HyperlinkButton Padding="0"
+                                         Command="{x:Bind ViewModel.OpenLatestAppRelease_Command}">
+                            <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"
+                                       Style="{StaticResource CaptionTextBlockStyle}"/>
+                        </HyperlinkButton>
+                    </StackPanel>
+                </Grid>
 
-                <toolkit:SettingsCard x:Uid="SettingsPage_SelectedTheme">
-                    <toolkit:SettingsCard.HeaderIcon>
+                <!-- Where to write about a bug: right under the logo -->
+                <StackPanel Orientation="Horizontal"
+                            Spacing="8"
+                            Margin="2, 0, 0, 8">
+                    <TextBlock x:Uid="SettingsPage_ReportBug"
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               VerticalAlignment="Center"/>
+                    <controls:SupportLinks/>
+                </StackPanel>
+
+                <!-- The theme, and whether it is kept for the next start -->
+                <toolkit:SettingsExpander x:Uid="SettingsPage_SelectedTheme"
+                                          IsExpanded="True">
+                    <toolkit:SettingsExpander.HeaderIcon>
                         <FontIcon Glyph="&#xE790;"/>
-                    </toolkit:SettingsCard.HeaderIcon>
+                    </toolkit:SettingsExpander.HeaderIcon>
                     <helpers:NoWheelComboBox Style="{StaticResource DefaultComboBoxStyle}"
                                              MinWidth="200"
                                              ItemsSource="{x:Bind ViewModel.Themes, Mode=OneWay}"
                                              SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}"
                                              DisplayMemberPath="Description"
                                              DropDownOpened="ThemeSelector_DropDownOpened"/>
-                </toolkit:SettingsCard>
+                    <toolkit:SettingsExpander.Items>
+                        <toolkit:SettingsCard ContentAlignment="Left">
+                            <CheckBox x:Uid="SettingsPage_RememberTheme"
+                                      IsChecked="{x:Bind ViewModel.RememberTheme, Mode=TwoWay}"/>
+                        </toolkit:SettingsCard>
+                    </toolkit:SettingsExpander.Items>
+                </toolkit:SettingsExpander>
 
                 <StackPanel>
                     <toolkit:SettingsCard x:Uid="SettingsPage_Language">
@@ -44,50 +82,48 @@
                                                  DisplayMemberPath="Name"
                                                  DropDownOpened="ThemeSelector_DropDownOpened"/>
                     </toolkit:SettingsCard>
-                    <!-- The texts are loaded when the app starts, so a new language needs a restart -->
-                    <InfoBar x:Uid="SettingsPage_LanguageRestart"
+                    <!-- A new language is used at once: the settings are read again, and what is chosen but not applied is dropped -->
+                    <InfoBar x:Uid="SettingsPage_LanguageDropsChoices"
                              Margin="0, 2, 0, 0"
                              Severity="Informational"
                              IsClosable="False"
-                             IsOpen="{x:Bind ViewModel.LanguageRestartIsNeeded, Mode=OneWay}"/>
+                             IsOpen="{x:Bind Choices.HasChoices, Mode=OneWay}"
+                             Visibility="{x:Bind Choices.HasChoices, Mode=OneWay}"/>
                 </StackPanel>
 
-                <toolkit:SettingsExpander x:Uid="SettingsPage_AboutApp"
-                                          IsExpanded="True">
-                    <toolkit:SettingsExpander.HeaderIcon>
-                        <FontIcon Glyph="&#xE946;"/>
-                    </toolkit:SettingsExpander.HeaderIcon>
-                    <toolkit:SettingsExpander.Items>
-                        <toolkit:SettingsCard ContentAlignment="Left">
-                            <StackPanel>
-                                <HyperlinkButton Command="{x:Bind ViewModel.OpenLatestAppRelease_Command}">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <Image Source="/Assets/AppLogo.svg" Width="16" Height="16"/>
-                                        <TextBlock Text="{x:Bind ViewModel.Version, Mode=OneWay}"/>
-                                    </StackPanel>
-                                </HyperlinkButton>
-                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppGitHubPage_Command}">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <Image Source="/Assets/GitHub.svg" Width="16" Height="16"/>
-                                        <TextBlock x:Uid="App_GitHub"/>
-                                    </StackPanel>
-                                </HyperlinkButton>
-                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppTelegramPage_Command}">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <Image Source="/Assets/Telegram.svg" Width="16" Height="16"/>
-                                        <TextBlock x:Uid="App_Telegram"/>
-                                    </StackPanel>
-                                </HyperlinkButton>
-                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppDiscordPage_Command}">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <Image Source="/Assets/Discord.svg" Width="16" Height="16"/>
-                                        <TextBlock x:Uid="App_Discord"/>
-                                    </StackPanel>
-                                </HyperlinkButton>
-                            </StackPanel>
-                        </toolkit:SettingsCard>
-                    </toolkit:SettingsExpander.Items>
-                </toolkit:SettingsExpander>
+                <!-- A restore point is created by the app itself; the window of Windows is for managing the points -->
+                <StackPanel>
+                    <toolkit:SettingsExpander x:Uid="SettingsPage_RestorePoint"
+                                              IsExpanded="True">
+                        <toolkit:SettingsExpander.HeaderIcon>
+                            <FontIcon Glyph="&#xE81C;"/>
+                        </toolkit:SettingsExpander.HeaderIcon>
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="8">
+                            <HyperlinkButton x:Uid="Button_OpenSystemProtection"
+                                             Command="{x:Bind Choices.OpenSystemProtection_Command}"/>
+                            <Button x:Uid="Button_CreateRestorePoint"
+                                    MinWidth="100"
+                                    Command="{x:Bind Choices.CreateRestorePoint_Command}"/>
+                        </StackPanel>
+                        <toolkit:SettingsExpander.Items>
+                            <toolkit:SettingsCard ContentAlignment="Left">
+                                <CheckBox x:Uid="SettingsPage_SkipRestorePointQuestion"
+                                          IsChecked="{x:Bind Choices.SkipRestorePointQuestion, Mode=TwoWay}"/>
+                            </toolkit:SettingsCard>
+                        </toolkit:SettingsExpander.Items>
+                    </toolkit:SettingsExpander>
+                    <InfoBar x:Uid="SettingsPage_RestorePointCreated"
+                             Margin="0, 2, 0, 0"
+                             Severity="Success"
+                             IsOpen="{x:Bind Choices.RestorePointCreatedIsVisible, Mode=TwoWay}"
+                             Visibility="{x:Bind Choices.RestorePointCreatedIsVisible, Mode=OneWay}"/>
+                    <InfoBar x:Uid="SettingsPage_RestorePointNotCreated"
+                             Margin="0, 2, 0, 0"
+                             Severity="Error"
+                             IsOpen="{x:Bind Choices.RestorePointNotCreatedIsVisible, Mode=TwoWay}"
+                             Visibility="{x:Bind Choices.RestorePointNotCreatedIsVisible, Mode=OneWay}"/>
+                </StackPanel>
 
                 <toolkit:SettingsExpander x:Uid="SettingsPage_Team"
                                           IsExpanded="True">
@@ -127,10 +163,17 @@
                                         <TextBlock x:Uid="AppTeam_Supporter"/>
                                     </StackPanel>
                                 </HyperlinkButton>
+                                <HyperlinkButton Command="{x:Bind ViewModel.OpenAppPromoterPage_Command}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Image Source="/Assets/LinkedIn.svg" Width="16" Height="16"/>
+                                        <TextBlock x:Uid="AppTeam_Promoter"/>
+                                    </StackPanel>
+                                </HyperlinkButton>
                             </StackPanel>
                         </toolkit:SettingsCard>
                     </toolkit:SettingsExpander.Items>
                 </toolkit:SettingsExpander>
+
             </StackPanel>
         </Grid>
     </ScrollView>

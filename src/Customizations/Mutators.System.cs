@@ -337,6 +337,12 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Set mouse acceleration ("Enhance pointer precision") state.
+        /// </summary>
+        /// <param name="enable">Mouse acceleration state.</param>
+        public static void MouseAcceleration(bool enable) => MouseHelper.SetAcceleration(enable);
+
+        /// <summary>
         /// Set autoplay state.
         /// </summary>
         /// <param name="enable">Autoplay state.</param>

@@ -77,7 +77,7 @@ namespace SophiApp.Services
         /// <inheritdoc/>
         public void LogChangeLanguage(string language)
         {
-            Log.Information("Change language to: {Language:l}. It is used after the app is restarted", language.Length > 0 ? language : "the language of Windows");
+            Log.Information("Change language to: {Language:l}", language.Length > 0 ? language : "the language of Windows");
         }
 
         /// <inheritdoc/>
@@ -282,6 +282,18 @@ namespace SophiApp.Services
         public void LogDefenderIsDefault(bool isDefault)
         {
             Log.Information("Microsoft Defender is default AV: {IsDefault}", isDefault);
+        }
+
+        /// <inheritdoc/>
+        public void LogThirdPartyAntivirus(string name, bool isOn)
+        {
+            Log.Information("Third-party antivirus: {Name:l}, turned on: {IsOn}", name, isOn);
+        }
+
+        /// <inheritdoc/>
+        public void LogFileExplorerRestart(bool isNeeded)
+        {
+            Log.Information("File Explorer restart is needed by the chosen settings: {IsNeeded}", isNeeded);
         }
 
         /// <inheritdoc/>

@@ -20,7 +20,6 @@ namespace SophiApp.Services
     public class ModelService : IModelService
     {
         private readonly ICommonDataService dataService;
-        private readonly ResourceMap resourceMap = new ResourceManager().MainResourceMap.GetSubtree("Resources");
         private readonly IAppxPackagesService packagesService;
 
         /// <summary>
@@ -116,6 +115,7 @@ namespace SophiApp.Services
                         ? single
                         : string.Format("Panel_Status_Applying".GetLocalized(), number, models.Count, title));
                     model.IsSelected = false;
+                    model.BeginApply();
                     var timer = Stopwatch.StartNew();
                     model.SetState();
                     timer.Stop();
@@ -221,7 +221,7 @@ namespace SophiApp.Services
             return options;
         }
 
-        private string GetResourceValueOrDefault(string pattern) => resourceMap.TryGetValue(pattern)?.ValueAsString ?? string.Empty;
+        private string GetResourceValueOrDefault(string pattern) => pattern.GetLocalized();
 
         private Task GetStateByTagAsync(ObservableCollection<UIModel> models, UICategoryTag tag)
         {

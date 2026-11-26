@@ -46,6 +46,11 @@ namespace SophiApp.Contracts.Services
         List<ManagementObject> GetAntivirusProducts();
 
         /// <summary>
+        /// Gets every antivirus that is not Microsoft Defender: its name, and whether it is turned on.
+        /// </summary>
+        IReadOnlyList<(string Name, bool IsOn)> GetThirdPartyAntiviruses();
+
+        /// <summary>
         /// Gets the WMI/CIM class instances.
         /// </summary>
         /// <param name="nameSpace">The target CIM namespace.</param>

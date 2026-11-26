@@ -5,17 +5,17 @@
 namespace SophiApp.Extensions;
 
 using Microsoft.Windows.ApplicationModel.Resources;
+using SophiApp.Helpers;
 
 /// <summary>
 /// Implements app resources extensions.
 /// </summary>
 public static class Resource
 {
-    private static readonly ResourceLoader ResourceLoader = new();
-
     /// <summary>
-    /// Gets a localized string.
+    /// Gets a localized string in the language of the app.
     /// </summary>
     /// <param name="resourceKey">Key to search for a localized string.</param>
-    public static string GetLocalized(this string resourceKey) => ResourceLoader.GetString(resourceKey);
+    public static string GetLocalized(this string resourceKey)
+        => AppResources.Instance.Strings.TryGetValue(resourceKey, AppResources.Instance.Context)?.ValueAsString ?? string.Empty;
 }

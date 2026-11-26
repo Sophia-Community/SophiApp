@@ -15,6 +15,36 @@
 
     <Page.Resources>
         <converter:GreaterThanZeroToVisibility x:Key="GreaterThanZeroToVisibilityConverter"/>
+        <!-- A line of the list shown after the settings are applied: the stock status badge, the title, and the reason of a failure -->
+        <DataTemplate x:Key="AppliedSettingTemplate"
+                      x:DataType="helpers:AppliedSetting">
+            <Grid ColumnSpacing="12"
+                  Margin="0, 4, 12, 4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <InfoBadge Style="{ThemeResource SuccessIconInfoBadgeStyle}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="0, 2, 0, 0"
+                           Visibility="{x:Bind IsApplied}"/>
+                <InfoBadge Style="{ThemeResource CriticalIconInfoBadgeStyle}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="0, 2, 0, 0"
+                           Visibility="{x:Bind Failed}"/>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="{x:Bind Title}"
+                               TextWrapping="Wrap"/>
+                    <TextBlock Text="{x:Bind Notice}"
+                               Style="{StaticResource CaptionTextBlockStyle}"
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                               TextWrapping="Wrap"
+                               Visibility="{x:Bind HasNotice}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
     </Page.Resources>
 
     <Grid>
@@ -52,7 +82,7 @@
                                    Visibility="{x:Bind Choices.InfoBadgeCounters.Privacy, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE705;"/>
+                        <FontIcon Glyph="&#xE72E;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_Personalization"
@@ -102,7 +132,7 @@
                                    Visibility="{x:Bind Choices.InfoBadgeCounters.TaskScheduler, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEFFF;"/>
+                        <FontIcon Glyph="&#xE823;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_Security"
@@ -114,7 +144,7 @@
                                    Visibility="{x:Bind Choices.InfoBadgeCounters.Security, Mode=OneWay, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}"/>
                     </NavigationViewItem.InfoBadge>
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE730;"/>
+                        <FontIcon Glyph="&#xEA18;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="NavigationItem_ContextMenu"
@@ -202,7 +232,7 @@
                     <!-- While the app is busy only the progress line is shown: the reminder and the question come back when it is done -->
                     <InfoBar x:Name="Panel_RestartReminder"
                              x:Uid="Panel_RestartReminder"
-                             Severity="Informational"
+                             Severity="Warning"
                              IsOpen="{x:Bind Choices.RestartReminderIsVisible, Mode=TwoWay}"
                              Visibility="{x:Bind views:ShellPage.GetReminderVisibility(ViewModel.SetUpCustomizationsPanelIsVisible), Mode=OneWay}"/>
                     <!-- After the settings are applied: the shadow copies of the system drive, restore points among them, take much space -->

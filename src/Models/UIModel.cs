@@ -29,6 +29,7 @@ namespace SophiApp.Models
         private bool isSelected = false;
         private string title;
         private string applyFailure = string.Empty;
+        private NoticeAction? applyFailureAction;
 
         // What the setting showed before another setting locked it
         private object? choiceBeforeLock;
@@ -156,6 +157,21 @@ namespace SophiApp.Models
         public bool ExceptionTextIsVisible { get; private set; }
 
         /// <summary>
+        /// Gets the button of the text under the setting, or null if the text has no button.
+        /// </summary>
+        public NoticeAction? NoticeAction { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether the setting is new in this version of the app: its card has a mark.
+        /// </summary>
+        public bool IsNew => Customizations.SettingLooks.IsNew(Name);
+
+        /// <summary>
+        /// Gets a value indicating whether the setting could not be applied the last time.
+        /// </summary>
+        public bool ApplyFailed { get; private set; }
+
+        /// <summary>
         /// Gets a value indicating whether the choice is made by another chosen setting, so the user cannot change it here.
         /// </summary>
         public bool IsLocked { get; private set; }
@@ -249,6 +265,11 @@ namespace SophiApp.Models
         }
 
         /// <summary>
+        /// Forgets the result of the previous apply. It is called right before the setting is applied.
+        /// </summary>
+        public void BeginApply() => ApplyFailed = false;
+
+        /// <summary>
         /// Returns a value indicating whether a specified text occurs within this model.
         /// </summary>
         /// <param name="text">The text to seek.</param>
@@ -274,15 +295,23 @@ namespace SophiApp.Models
         protected void ShowNotice(string notice)
         {
             var text = applyFailure.Length > 0 ? applyFailure : notice;
+            var action = applyFailure.Length > 0 ? applyFailureAction : null;
             applyFailure = string.Empty;
-            SetExceptionText(text);
+            applyFailureAction = null;
+            SetExceptionText(text, action);
         }
 
         /// <summary>
         /// Remembers why the setting could not be applied. The text is shown when the state is read again.
         /// </summary>
         /// <param name="reason">A localized text.</param>
-        protected void SetApplyFailure(string reason) => applyFailure = reason;
+        /// <param name="action">A button for the text: it opens the place where the user can remove the cause.</param>
+        protected void SetApplyFailure(string reason, NoticeAction? action = null)
+        {
+            applyFailure = reason;
+            applyFailureAction = action;
+            ApplyFailed = true;
+        }
 
         /// <summary>
         /// <see cref="PropertyChanged"/> event handler.
@@ -305,8 +334,12 @@ namespace SophiApp.Models
                 || (OtherNames.TryGetValue(Name, out var otherName) && otherName.Contains(wanted, StringComparison.OrdinalIgnoreCase));
         }
 
-        private void SetExceptionText(string text)
+        private void SetExceptionText(string text, NoticeAction? action = null)
         {
+            // The button goes first: the card takes it when the text changes
+            NoticeAction = action;
+            OnPropertyChanged(nameof(NoticeAction));
+
             // The log gets the same text as the user sees under the setting
             if (text.Length > 0 && text != ExceptionText)
             {

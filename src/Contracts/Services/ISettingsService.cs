@@ -116,4 +116,26 @@ public interface ISettingsService
     /// </summary>
     /// <param name="version">The version of the accepted terms.</param>
     Task SaveAcceptedTermsAsync(int version);
+
+    /// <summary>
+    /// Reads from a settings file whether the chosen theme is kept for the next start of the app. It is, unless the user said otherwise.
+    /// </summary>
+    bool ReadRememberTheme();
+
+    /// <summary>
+    /// Writes to a settings file whether the chosen theme is kept for the next start of the app.
+    /// </summary>
+    /// <param name="remember">True to keep the theme.</param>
+    Task SaveRememberThemeAsync(bool remember);
+
+    /// <summary>
+    /// Reads from a settings file whether the settings are applied without the question about a restore point.
+    /// </summary>
+    bool ReadSkipRestorePointQuestion();
+
+    /// <summary>
+    /// Writes to a settings file whether the settings are applied without the question about a restore point.
+    /// </summary>
+    /// <param name="skip">True to apply without the question.</param>
+    Task SaveSkipRestorePointQuestionAsync(bool skip);
 }

@@ -39,6 +39,11 @@ namespace SophiApp.Helpers
         public object[] Arguments { get; init; } = [];
 
         /// <summary>
+        /// Gets the button to show with the text: it opens the place where the user can remove the cause. Null if there is none.
+        /// </summary>
+        public NoticeAction? Action { get; init; }
+
+        /// <summary>
         /// Gets the localized text to show to the user.
         /// </summary>
         public string GetText()

@@ -19,6 +19,7 @@ public partial class SettingsViewModel : ObservableRecipient
 {
     private readonly IThemesService themesService;
     private readonly ISettingsService settingsService;
+    private readonly ShellViewModel shellViewModel;
 
     [ObservableProperty]
     private ElementTheme elementTheme;
@@ -40,12 +41,10 @@ public partial class SettingsViewModel : ObservableRecipient
     ];
 
     [ObservableProperty]
-    private bool languageRestartIsNeeded = AppLanguage.Chosen != AppLanguage.Applied;
-
-    [ObservableProperty]
     private string version;
     private AppTheme selectedTheme;
     private AppLanguage selectedLanguage;
+    private bool rememberTheme;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsViewModel"/> class.
@@ -63,6 +62,7 @@ public partial class SettingsViewModel : ObservableRecipient
         NavigationViewHitTestVisible = shellViewModel.NavigationViewHitTestVisible;
         OpenAppDeveloperPage_Command = shellViewModel.OpenAppDeveloperPage_Command;
         OpenAppSupporterPage_Command = shellViewModel.OpenAppSupporterPage_Command;
+        OpenAppPromoterPage_Command = shellViewModel.OpenAppPromoterPage_Command;
         OpenAppDiscordPage_Command = shellViewModel.OpenAppDiscordPage_Command;
         OpenAppGitHubPage_Command = shellViewModel.OpenAppGitHubPage_Command;
         OpenAppProjectManagerPage_Command = shellViewModel.OpenAppProjectManagerPage_Command;
@@ -74,6 +74,8 @@ public partial class SettingsViewModel : ObservableRecipient
         selectedLanguage = languages.First(language => language.Tag.Equals(AppLanguage.Chosen, StringComparison.OrdinalIgnoreCase));
         this.themesService = themesService;
         this.settingsService = settingsService;
+        this.shellViewModel = shellViewModel;
+        rememberTheme = settingsService.ReadRememberTheme();
         version = dataService.GetFullName();
     }
 
@@ -98,7 +100,27 @@ public partial class SettingsViewModel : ObservableRecipient
     }
 
     /// <summary>
-    /// Gets or sets the app language. A new one is used after the app is restarted.
+    /// Gets or sets a value indicating whether the chosen theme is kept for the next start of the app.
+    /// Without it the app starts with the theme of Windows.
+    /// </summary>
+    public bool RememberTheme
+    {
+        get
+        {
+            return rememberTheme;
+        }
+
+        set
+        {
+            if (SetProperty(ref rememberTheme, value))
+            {
+                _ = SaveRememberThemeAsync(value);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the app language. A new one is used at once: the app reads the settings of Windows again.
     /// </summary>
     public AppLanguage SelectedLanguage
     {
@@ -113,9 +135,10 @@ public partial class SettingsViewModel : ObservableRecipient
             {
                 selectedLanguage = value;
                 AppLanguage.Chosen = value.Tag;
-                LanguageRestartIsNeeded = AppLanguage.Chosen != AppLanguage.Applied;
-                _ = settingsService.SaveLanguageAsync(value.Tag);
                 App.Logger.LogChangeLanguage(value.Tag);
+
+                // The window is filled anew, so the list is let to close first
+                _ = App.MainWindow.DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () => _ = ChangeLanguageAsync(value.Tag));
             }
         }
     }
@@ -129,6 +152,11 @@ public partial class SettingsViewModel : ObservableRecipient
     /// Gets <see cref="IRelayCommand"/> to open the page of the person who supports the app.
     /// </summary>
     public IRelayCommand OpenAppSupporterPage_Command { get; }
+
+    /// <summary>
+    /// Gets <see cref="IRelayCommand"/> to open the page of the person who promotes the app.
+    /// </summary>
+    public IRelayCommand OpenAppPromoterPage_Command { get; }
 
     /// <summary>
     /// Gets <see cref="IRelayCommand"/> to open app Discord page.
@@ -164,4 +192,26 @@ public partial class SettingsViewModel : ObservableRecipient
     /// Gets <see cref="IRelayCommand"/> to open latest app release URL.
     /// </summary>
     public IRelayCommand OpenLatestAppRelease_Command { get; }
+
+    private async Task ChangeLanguageAsync(string tag)
+    {
+        await settingsService.SaveLanguageAsync(tag);
+
+        try
+        {
+            await shellViewModel.ChangeLanguageAsync(tag);
+        }
+        catch (Exception ex)
+        {
+            // The language is saved, so it is used when the app starts next time
+            App.Logger.LogSkippedException("Changing the language while the app runs", ex);
+        }
+    }
+
+    // The file keeps the theme only while it is to be remembered
+    private async Task SaveRememberThemeAsync(bool remember)
+    {
+        await settingsService.SaveRememberThemeAsync(remember);
+        await settingsService.SaveThemeAsync(remember ? themesService.Theme : ElementTheme.Default);
+    }
 }

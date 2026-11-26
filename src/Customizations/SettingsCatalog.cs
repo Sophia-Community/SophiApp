@@ -114,6 +114,7 @@ namespace SophiApp.Customizations
             CheckBox(nameof(Accessors.NumLock), UICategoryTag.System, Accessors.NumLock, Mutators.NumLock, group: "Input"),
             CheckBox(nameof(Accessors.CapsLock), UICategoryTag.System, Accessors.CapsLock, Mutators.CapsLock, group: "Input"),
             CheckBox(nameof(Accessors.StickyShift), UICategoryTag.System, Accessors.StickyShift, Mutators.StickyShift, group: "Input"),
+            CheckBox(nameof(Accessors.MouseAcceleration), UICategoryTag.System, Accessors.MouseAcceleration, Mutators.MouseAcceleration, group: "Input"),
 
             // System: Storage
             CheckBox(nameof(Accessors.StorageSense), UICategoryTag.System, Accessors.StorageSense, Mutators.StorageSense, group: "Storage"),

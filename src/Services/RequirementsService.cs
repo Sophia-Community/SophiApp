@@ -19,12 +19,17 @@ namespace SophiApp.Services
         // A part of the stability check that takes longer gets a line in the log
         private const int SlowCheckMilliseconds = 100;
 
+        // The error of Windows "Access is denied"
+        private const int AccessDenied = 5;
+        private const string PowerShellComponent = "Windows PowerShell";
+
         private readonly IAppxPackagesService packagesService;
         private readonly ICommonDataService dataService;
         private readonly IInstrumentationService instrumentationService;
         private readonly IOsService osService;
         private readonly IPowerShellService powerShellService;
         private System.Management.ManagementObject? defenderPreference;
+        private IReadOnlyList<(string Name, bool IsOn)> thirdPartyAntiviruses = [];
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RequirementsService"/> class.
@@ -53,23 +58,24 @@ namespace SophiApp.Services
         [
             // The downloads start at once and have no line: their line comes when everything is downloaded
             new(action: GetExternalServicesData),
-            new(action: GetWindowsComponentStability, displayText: "OsRequirements_GetWindowsComponentStability".GetLocalized()),
-            new(action: GetCpuArchitecture, displayText: "OsRequirements_GetCpuArchitecture".GetLocalized()),
-            new(action: GetAppRelease, displayText: "OsRequirements_GetAppNewVersion".GetLocalized()),
-            new(action: RunFromLoggedUser, displayText: "OsRequirements_RunFromLoggedUser".GetLocalized()),
-            new(action: GetHarmfulTweakers, displayText: "OsRequirements_GetHarmfulTweaker".GetLocalized()),
-            new(action: GetUWPComponents, displayText: "OsRequirements_GetUWPComponents".GetLocalized()),
-            new(action: GetDefenderComponents, displayText: "OsRequirements_GetDefenderComponents".GetLocalized()),
-            new(action: GetControlledFolderAccess, displayText: "OsRequirements_GetControlledFolderAccess".GetLocalized()),
-            new(action: GetRebootPending, displayText: "OsRequirements_GetRebootPending".GetLocalized()),
-            new(action: GetWindowsVersion, displayText: "OsRequirements_GetWindowsVersion".GetLocalized()),
-            new(action: GetWindowsBuild, displayText: "OsRequirements_GetWindowsBuild".GetLocalized()),
+            new(action: GetWindowsComponentStability, displayKey: "OsRequirements_GetWindowsComponentStability"),
+            new(action: GetCpuArchitecture, displayKey: "OsRequirements_GetCpuArchitecture"),
+            new(action: GetAppRelease, displayKey: "OsRequirements_GetAppNewVersion"),
+            new(action: RunFromLoggedUser, displayKey: "OsRequirements_RunFromLoggedUser"),
+            new(action: GetHarmfulTweakers, displayKey: "OsRequirements_GetHarmfulTweaker"),
+            new(action: GetUWPComponents, displayKey: "OsRequirements_GetUWPComponents"),
+            new(action: GetDefenderComponents, displayKey: "OsRequirements_GetDefenderComponents"),
+            new(action: GetThirdPartyAntiviruses, displayKey: "OsRequirements_GetThirdPartyAntiviruses", details: GetThirdPartyAntivirusNames),
+            new(action: GetControlledFolderAccess, displayKey: "OsRequirements_GetControlledFolderAccess"),
+            new(action: GetRebootPending, displayKey: "OsRequirements_GetRebootPending"),
+            new(action: GetWindowsVersion, displayKey: "OsRequirements_GetWindowsVersion"),
+            new(action: GetWindowsBuild, displayKey: "OsRequirements_GetWindowsBuild"),
 
             // The checks that ask the user whether to continue go last: by that moment everything else has already passed
-            new(action: GetExternalDataAvailability, displayText: "OsRequirements_GetExternalServicesData".GetLocalized()),
-            new(action: GetHostFileEntries, displayText: "OsRequirements_GetHostFileEntries".GetLocalized()),
-            new(action: GetSystemDriveEncryptedBitLocker, displayText: "OsRequirements_GetSystemDriveEncryptedBitLocker".GetLocalized()),
-            new(action: GetUEFICertificates, displayText: "OsRequirements_GetUEFICertificates".GetLocalized()),
+            new(action: GetExternalDataAvailability, displayKey: "OsRequirements_GetExternalServicesData"),
+            new(action: GetHostFileEntries, displayKey: "OsRequirements_GetHostFileEntries"),
+            new(action: GetSystemDriveEncryptedBitLocker, displayKey: "OsRequirements_GetSystemDriveEncryptedBitLocker"),
+            new(action: GetUEFICertificates, displayKey: "OsRequirements_GetUEFICertificates"),
         ];
 
         private RequirementsResult GetExternalServicesData()
@@ -155,7 +161,7 @@ namespace SophiApp.Services
                 defenderPreference = GetDefenderPreference() ?? throw new InvalidOperationException("Microsoft Defender settings are not available");
             }));
 
-            checks.Add(("Windows PowerShell", () =>
+            checks.Add((PowerShellComponent, () =>
             {
                 // Some settings are applied with cmdlets: Windows PowerShell must start and find them.
                 // The check was started by the first action, here its result is taken
@@ -199,12 +205,52 @@ namespace SophiApp.Services
                 if (errors[i].Result is { } error)
                 {
                     App.Logger.LogComponentStabilityException(checks[i].Component, error);
+
+                    // Windows PowerShell that is not let to start is not broken: a security program stands in its way
+                    if (checks[i].Component == PowerShellComponent && IsAccessDenied(error))
+                    {
+                        SetPowerShellBlockedMessage();
+                        return RequirementsResult.PowerShellBlocked;
+                    }
+
                     SetWindowsComponentStabilityMessage(checks[i].Component);
                     return RequirementsResult.WindowsComponentStabilityDisrupted;
                 }
             }
 
             return RequirementsResult.AllCorrect;
+        }
+
+        private bool IsAccessDenied(Exception error)
+        {
+            // The text of the error comes in the language of Windows, and it can be only a part of a longer message
+            var deniedText = new System.ComponentModel.Win32Exception(AccessDenied).Message;
+
+            for (Exception? exception = error; exception is not null; exception = exception.InnerException)
+            {
+                if (exception is UnauthorizedAccessException
+                    || exception is System.ComponentModel.Win32Exception { NativeErrorCode: AccessDenied }
+                    || exception.Message.Contains(deniedText, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // The user is told which antivirus to look into, if Windows knows one that is turned on
+        private void SetPowerShellBlockedMessage()
+        {
+            var antiviruses = instrumentationService.GetThirdPartyAntiviruses()
+                .Where(antivirus => antivirus.IsOn)
+                .Select(antivirus => antivirus.Name)
+                .Distinct(StringComparer.CurrentCultureIgnoreCase)
+                .ToList();
+
+            dataService.RequirementsResult_1 = antiviruses.Count > 0
+                ? string.Format("OsRequirements_PowerShellBlocked_Antivirus".GetLocalized(), string.Join(", ", antiviruses))
+                : "OsRequirements_PowerShellBlocked_Unknown".GetLocalized();
         }
 
         private void SetWindowsComponentStabilityMessage(string component)
@@ -360,6 +406,27 @@ namespace SophiApp.Services
 
             return componentsExist ? RequirementsResult.AllCorrect : RequirementsResult.DefenderComponentsMissing;
         }
+
+        // A third-party antivirus is not a failure: its name is shown, because with it the settings of Microsoft Defender are unavailable
+        private RequirementsResult GetThirdPartyAntiviruses()
+        {
+            var antiviruses = instrumentationService.GetThirdPartyAntiviruses();
+
+            foreach (var (name, isOn) in antiviruses)
+            {
+                App.Logger.LogThirdPartyAntivirus(name, isOn);
+            }
+
+            thirdPartyAntiviruses = antiviruses;
+
+            return RequirementsResult.AllCorrect;
+        }
+
+        // An antivirus can be registered several times under one name
+        private IReadOnlyList<string> GetThirdPartyAntivirusNames() => thirdPartyAntiviruses
+            .Select(antivirus => antivirus.IsOn ? antivirus.Name : string.Format("OsRequirements_AntivirusTurnedOff".GetLocalized(), antivirus.Name))
+            .Distinct(StringComparer.CurrentCultureIgnoreCase)
+            .ToList();
 
         // The settings that Get-MpPreference shows, read from the same WMI class without starting PowerShell
         private System.Management.ManagementObject? GetDefenderPreference()

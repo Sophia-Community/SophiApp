@@ -33,7 +33,9 @@ public class ThemesService : IThemesService
     {
         Theme = theme;
         await SetRequestedThemeAsync();
-        await settingsService.SaveThemeAsync(theme);
+
+        // A theme that is not to be remembered is used until the app is closed
+        await settingsService.SaveThemeAsync(settingsService.ReadRememberTheme() ? theme : ElementTheme.Default);
         App.Logger.LogChangeTheme(Theme);
     }
 

@@ -24,6 +24,9 @@ public partial class App : Application
     {
         // The language is chosen before the first text is loaded
         AppLanguage.ApplySaved();
+
+        // The pages take their texts from the same place as the code, so both follow a language chosen while the app runs
+        ResourceManagerRequested += (_, args) => args.CustomResourceManager = AppResources.Instance;
         InitializeComponent();
         var services = new ServiceCollection();
 

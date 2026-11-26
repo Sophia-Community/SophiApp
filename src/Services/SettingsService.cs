@@ -23,6 +23,8 @@ public class SettingsService : ISettingsService
     private const string AppWindowState = "AppWindowState";
     private const string AppWindowWidth = "AppWindowWidth";
     private const string ClosedNote = "ClosedNote";
+    private const string RememberTheme = "RememberTheme";
+    private const string SkipRestorePointQuestion = "SkipRestorePointQuestion";
     private const string SettingsFile = "Settings.json";
 
     private readonly IFileService fileService;
@@ -151,20 +153,56 @@ public class SettingsService : ISettingsService
     /// <inheritdoc/>
     public async Task SaveAcceptedTermsAsync(int version) => await SaveSettingAsync(AcceptedTerms, version);
 
+    /// <inheritdoc/>
+    public bool ReadRememberTheme() => ReadFlag(RememberTheme, true);
+
+    /// <inheritdoc/>
+    public async Task SaveRememberThemeAsync(bool remember) => await SaveSettingAsync(RememberTheme, remember);
+
+    /// <inheritdoc/>
+    public bool ReadSkipRestorePointQuestion() => ReadFlag(SkipRestorePointQuestion, false);
+
+    /// <inheritdoc/>
+    public async Task SaveSkipRestorePointQuestionAsync(bool skip) => await SaveSettingAsync(SkipRestorePointQuestion, skip);
+
+    // A choice that is either made or not. Without a record it has its usual value
+    private bool ReadFlag(string key, bool usual)
+    {
+        string? saved = null;
+
+        if (RuntimeHelper.IsMSIX)
+        {
+            saved = ApplicationData.Current.LocalSettings.Values.TryGetValue(key, out var value) ? value as string : null;
+        }
+        else if (settings != null && settings.TryGetValue(key, out var text))
+        {
+            saved = text;
+        }
+
+        return bool.TryParse(saved, out var flag) ? flag : usual;
+    }
+
+    // A text is kept as it is. The files of the earlier versions have it in quotes
+    private async Task<T?> ToValueAsync<T>(string saved)
+        => typeof(T) == typeof(string) && !saved.StartsWith('"') ? (T)(object)saved : await Json.ToObjectAsync<T>(saved);
+
+    private async Task<string> ToTextAsync<T>(T value)
+        => value is string text ? text : await Json.StringifyAsync(value!);
+
     private async Task<T?> ReadSettingAsync<T>(string key)
     {
         if (RuntimeHelper.IsMSIX)
         {
             if (ApplicationData.Current.LocalSettings.Values.TryGetValue(key, out var obj))
             {
-                return await Json.ToObjectAsync<T>((string)obj);
+                return await ToValueAsync<T>((string)obj);
             }
         }
         else
         {
             if (settings != null && settings.TryGetValue(key, out var value))
             {
-                return await Json.ToObjectAsync<T>(value);
+                return await ToValueAsync<T>(value);
             }
         }
 
@@ -175,11 +213,11 @@ public class SettingsService : ISettingsService
     {
         if (RuntimeHelper.IsMSIX)
         {
-            ApplicationData.Current.LocalSettings.Values[key] = await Json.StringifyAsync(value!);
+            ApplicationData.Current.LocalSettings.Values[key] = await ToTextAsync(value);
         }
         else
         {
-            settings![key] = await Json.StringifyAsync(value!);
+            settings![key] = await ToTextAsync(value);
             fileService.SaveToJson(settingsFolder, SettingsFile, settings);
         }
     }

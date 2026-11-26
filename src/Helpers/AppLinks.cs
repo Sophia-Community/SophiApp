@@ -65,6 +65,11 @@ namespace SophiApp.Helpers
         public const string Supporter = "https://github.com/BenchTweakGaming";
 
         /// <summary>
+        /// The page of the person who promotes the app.
+        /// </summary>
+        public const string Promoter = "https://www.linkedin.com/in/pavel-shovkun-190438292/";
+
+        /// <summary>
         /// How to update the Secure Boot certificates.
         /// </summary>
         public const string UpdateUefiCertificates = "https://techcommunity.microsoft.com/blog/windows-itpro-blog/updating-microsoft-secure-boot-keys/4055324";

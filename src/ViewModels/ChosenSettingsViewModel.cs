@@ -27,6 +27,10 @@ namespace SophiApp.ViewModels
         private readonly IModelService modelService;
         private readonly IProcessService processService;
         private readonly IRestorePointService restorePointService;
+        private readonly ISettingsService settingsService;
+
+        // Read from the settings file when it is asked for the first time: this view model is created before the file is loaded
+        private bool? skipRestorePointQuestion;
 
         [ObservableProperty]
         private bool eventViewerButtonIsVisible;
@@ -40,6 +44,12 @@ namespace SophiApp.ViewModels
         private bool shadowStorageNoticeIsVisible;
         [ObservableProperty]
         private string shadowStorageNotice = string.Empty;
+        [ObservableProperty]
+        private bool hasChoices;
+        [ObservableProperty]
+        private bool restorePointCreatedIsVisible;
+        [ObservableProperty]
+        private bool restorePointNotCreatedIsVisible;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChosenSettingsViewModel"/> class.
@@ -49,13 +59,23 @@ namespace SophiApp.ViewModels
         /// <param name="modelService">A service for working with UI models using MVVM pattern.</param>
         /// <param name="processService">A service for working with Windows process API.</param>
         /// <param name="restorePointService">A service for working with restore points.</param>
-        public ChosenSettingsViewModel(AppActivity activity, IGroupPolicyService groupPolicyService, IModelService modelService, IProcessService processService, IRestorePointService restorePointService)
+        /// <param name="settingsService">A service for working with app settings.</param>
+        public ChosenSettingsViewModel(
+            AppActivity activity,
+            IGroupPolicyService groupPolicyService,
+            IModelService modelService,
+            IProcessService processService,
+            IRestorePointService restorePointService,
+            ISettingsService settingsService)
         {
             this.activity = activity;
             this.groupPolicyService = groupPolicyService;
             this.modelService = modelService;
             this.processService = processService;
             this.restorePointService = restorePointService;
+            this.settingsService = settingsService;
+
+            CreateRestorePoint_Command = new AsyncRelayCommand(CreateRestorePointAsync);
             ChoiceChanged_Command = new RelayCommand<UIModel>(model => ChoiceChanged(model!));
             Apply_Command = new RelayCommand(AskAboutRestorePoint);
             ApplyWithRestorePoint_Command = new AsyncRelayCommand(() => ApplyAsync(createRestorePoint: true));
@@ -65,7 +85,16 @@ namespace SophiApp.ViewModels
 
             // With nothing left to apply there is nothing to ask about
             ApplicableModels.CollectionChanged += (_, _) => RestorePointQuestionIsVisible &= ApplicableModels.Count > 0;
+
+            // Something is chosen but not applied yet: settings, or apps to uninstall
+            ApplicableModels.CollectionChanged += (_, _) => HasChoices = ApplicableModels.Count + InfoBadgeCounters.Uwp > 0;
+            InfoBadgeCounters.PropertyChanged += (_, _) => HasChoices = ApplicableModels.Count + InfoBadgeCounters.Uwp > 0;
         }
+
+        /// <summary>
+        /// Occurs when the chosen settings have been applied. The window shows the list: what was applied and what was not.
+        /// </summary>
+        public event EventHandler<IReadOnlyList<AppliedSetting>>? SettingsApplied;
 
         /// <summary>
         /// Gets <see cref="IRelayCommand"/> that a setting calls when the user chose something in it or took the choice back.
@@ -86,6 +115,11 @@ namespace SophiApp.ViewModels
         /// Gets <see cref="IAsyncRelayCommand"/> to apply the chosen settings without a restore point.
         /// </summary>
         public IAsyncRelayCommand ApplyWithoutRestorePoint_Command { get; }
+
+        /// <summary>
+        /// Gets <see cref="IAsyncRelayCommand"/> to create a restore point right now, apart from applying settings.
+        /// </summary>
+        public IAsyncRelayCommand CreateRestorePoint_Command { get; }
 
         /// <summary>
         /// Gets <see cref="IRelayCommand"/> to open the window of Windows where restore points are managed.
@@ -111,6 +145,42 @@ namespace SophiApp.ViewModels
         /// Gets the info badges counters state by <see cref="UICategoryTag"/>.
         /// </summary>
         public InfoBadgeCounters InfoBadgeCounters { get; } = new();
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the settings are applied at once, without the question about a restore point.
+        /// </summary>
+        public bool SkipRestorePointQuestion
+        {
+            get
+            {
+                return skipRestorePointQuestion ??= settingsService.ReadSkipRestorePointQuestion();
+            }
+
+            set
+            {
+                if (value != SkipRestorePointQuestion)
+                {
+                    skipRestorePointQuestion = value;
+                    OnPropertyChanged();
+                    _ = settingsService.SaveSkipRestorePointQuestionAsync(value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Forgets what the user chose and what the app told about restore points: the settings are going to be read from scratch.
+        /// </summary>
+        public void DropChoices()
+        {
+            ApplicableModels.Clear();
+            InfoBadgeCounters.ResetAll();
+            InfoBadgeCounters.ResetUwp();
+            RestorePointQuestionIsVisible = false;
+            RestorePointCreatedIsVisible = false;
+            RestorePointNotCreatedIsVisible = false;
+            ShadowStorageNoticeIsVisible = false;
+            App.Logger.LogApplicableModelsClear();
+        }
 
         private static async Task CloseSearchWindowAsync()
         {
@@ -199,9 +269,54 @@ namespace SophiApp.ViewModels
         private void AskAboutRestorePoint()
         {
             // Settings are already being applied or read
-            if (activity.IsIdle && ApplicableModels.Count > 0)
+            if (!activity.IsIdle || ApplicableModels.Count == 0)
             {
-                RestorePointQuestionIsVisible = true;
+                return;
+            }
+
+            // The user chose not to be asked: the settings are applied at once, and no restore point is created
+            if (SkipRestorePointQuestion)
+            {
+                _ = ApplyAsync(createRestorePoint: false);
+                return;
+            }
+
+            RestorePointQuestionIsVisible = true;
+        }
+
+        // A restore point made by hand, with the button of the settings page
+        private async Task CreateRestorePointAsync()
+        {
+            // Settings are already being applied or read
+            if (!activity.IsIdle)
+            {
+                return;
+            }
+
+            activity.IsIdle = false;
+            RestorePointCreatedIsVisible = false;
+            RestorePointNotCreatedIsVisible = false;
+            ShadowStorageNoticeIsVisible = false;
+            activity.ProgressText = string.Empty;
+            activity.ProgressIsVisible = true;
+            var created = await TryCreateRestorePointAsync();
+            var shadowStorage = created ? await Task.Run(restorePointService.GetShadowStorageGigabytes) : 0;
+            activity.ProgressIsVisible = false;
+            RestorePointCreatedIsVisible = created;
+            RestorePointNotCreatedIsVisible = !created;
+            App.Logger.LogUserNotice((created ? "SettingsPage_RestorePointCreated/Message" : "SettingsPage_RestorePointNotCreated/Message").GetLocalized());
+            ShowShadowStorageNotice(shadowStorage);
+            activity.IsIdle = true;
+        }
+
+        // Restore points pile up: the user is told when the shadow copies of the system drive take a gigabyte or more
+        private void ShowShadowStorageNotice(double shadowStorage)
+        {
+            if (shadowStorage >= ShadowStorageNoticeGigabytes)
+            {
+                ShadowStorageNotice = string.Format("Panel_ShadowStorageNotice".GetLocalized(), shadowStorage.ToString("0.##", CultureInfo.CurrentCulture));
+                ShadowStorageNoticeIsVisible = true;
+                App.Logger.LogUserNotice(ShadowStorageNotice);
             }
         }
 
@@ -263,9 +378,17 @@ namespace SophiApp.ViewModels
                 ApplicableModels.Move(ApplicableModels.IndexOf(scan), ApplicableModels.Count - 1);
             }
 
+            // File Explorer and the Start menu are restarted only if a setting that is applied needs it
+            var restartExplorer = ApplicableModels.Any(model => Customizations.SettingNeeds.RestartsFileExplorer(model.Name));
+            App.Logger.LogFileExplorerRestart(restartExplorer);
             await modelService.SetModelsStateAsync(ApplicableModels);
             App.Status.SetOperation("OsRequirements_ReadWindowsSettings".GetLocalized());
             await modelService.GetModelsStateAsync(GetSettingsToRead());
+
+            // What the user is shown when everything is over: every setting with its result
+            var applied = ApplicableModels
+                .Select(model => new AppliedSetting(model.Title, model.ApplyFailed, model.ApplyFailed ? model.ExceptionText : string.Empty))
+                .ToList();
             ApplicableModels.Clear();
             InfoBadgeCounters.ResetAll();
             App.Logger.LogApplicableModelsClear();
@@ -275,33 +398,35 @@ namespace SophiApp.ViewModels
             await Task.Run(() => processService.CloseManagementConsoles("taskschd.msc", "eventvwr.msc", "gpedit.msc"));
             groupPolicyService.UpdatePolicy();
 
-            // Save all opened folders in order to restore them after File Explorer restart
-            App.Status.SetOperation("Panel_Status_RestartingExplorer".GetLocalized());
-            var openedFolders = ExplorerHelper.GetOpenedFolders();
-            EnvironmentHelper.RefreshUserDesktop();
-            EnvironmentHelper.ForcedRefresh();
-            processService.KillProcessByName("StartMenuExperienceHost");
-            processService.KillProcessByName("explorer");
-            await ExplorerHelper.RestoreAsync(openedFolders);
+            if (restartExplorer)
+            {
+                // Save all opened folders in order to restore them after File Explorer restart
+                App.Status.SetOperation("Panel_Status_RestartingExplorer".GetLocalized());
+                var openedFolders = ExplorerHelper.GetOpenedFolders();
+                EnvironmentHelper.RefreshUserDesktop();
+                EnvironmentHelper.ForcedRefresh();
+                processService.KillProcessByName("StartMenuExperienceHost");
+                processService.KillProcessByName("explorer");
+                await ExplorerHelper.RestoreAsync(openedFolders);
 
-            // Windows Search is restarted too, a little later, so it is watched for after the settings are applied
-            _ = CloseSearchWindowAsync();
+                // Windows Search is restarted too, a little later, so it is watched for after the settings are applied
+                _ = CloseSearchWindowAsync();
+            }
+            else
+            {
+                // The running programs are told that the settings and the environment variables have changed
+                EnvironmentHelper.ForcedRefresh();
+            }
 
-            // Restore points pile up: the user is told when the shadow copies of the system drive take a gigabyte or more
             var shadowStorage = await Task.Run(restorePointService.GetShadowStorageGigabytes);
             activity.ProgressIsVisible = false;
             RestartReminderIsVisible = true;
             App.Logger.LogUserNotice("Panel_RestartReminder/Message".GetLocalized());
 
-            if (shadowStorage >= ShadowStorageNoticeGigabytes)
-            {
-                ShadowStorageNotice = string.Format("Panel_ShadowStorageNotice".GetLocalized(), shadowStorage.ToString("0.##", CultureInfo.CurrentCulture));
-                ShadowStorageNoticeIsVisible = true;
-                App.Logger.LogUserNotice(ShadowStorageNotice);
-            }
-
+            ShowShadowStorageNotice(shadowStorage);
             EventViewerButtonIsVisible |= eventViewCreated;
             activity.IsIdle = true;
+            SettingsApplied?.Invoke(this, applied);
         }
 
         private async Task ClearAsync()

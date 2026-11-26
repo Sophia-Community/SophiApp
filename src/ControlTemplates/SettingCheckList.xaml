@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <UserControl
     x:Class="SophiApp.ControlTemplates.SettingCheckList"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:local="using:SophiApp.ControlTemplates"
     xmlns:helpers="using:SophiApp.Helpers"
     xmlns:models="using:SophiApp.Models"
     mc:Ignorable="d">
@@ -52,8 +53,17 @@
                                       AutomationProperties.Name="{Binding Title}"
                                       IsEnabled="{Binding IsEnabled}">
                 <toolkit:SettingsExpander.Header>
-                    <TextBlock Text="{Binding Title, Converter={StaticResource UnbrokenShortcutsConverter}}"
-                               TextWrapping="Wrap"/>
+                    <!-- The mark of a new setting stands before the title and takes no room when it is hidden -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <local:NewBadge/>
+                        <TextBlock Grid.Column="1"
+                                   Text="{Binding Title, Converter={StaticResource UnbrokenShortcutsConverter}}"
+                                   TextWrapping="Wrap"/>
+                    </Grid>
                 </toolkit:SettingsExpander.Header>
                 <toolkit:SettingsExpander.Description>
                     <TextBlock x:Name="DescriptionText"

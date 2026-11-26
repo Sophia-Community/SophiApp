@@ -92,6 +92,29 @@ namespace SophiApp.Services
         }
 
         /// <inheritdoc/>
+        public IReadOnlyList<(string Name, bool IsOn)> GetThirdPartyAntiviruses()
+        {
+            try
+            {
+                return SecurityCenter.GetThirdPartyAntiviruses();
+            }
+            catch (Exception ex)
+            {
+                // The same list is in WMI. {D68DDC3A-831F-4fae-9E44-DA132C1ACF46} is Microsoft Defender,
+                // bits 12-15 of productState are 1 for an antivirus that is turned on
+                App.Logger.LogSkippedException("Reading the antiviruses from Windows Security Center", ex);
+
+                return GetAntivirusProducts()
+                    .Where(product => !"{D68DDC3A-831F-4fae-9E44-DA132C1ACF46}".Equals(product.GetPropertyValue("instanceGuid") as string, StringComparison.OrdinalIgnoreCase))
+                    .Select(product => (
+                        Name: (product.GetPropertyValue("displayName") as string ?? string.Empty).Trim(),
+                        IsOn: (Convert.ToUInt32(product.GetPropertyValue("productState")) & 0xF000) == 0x1000))
+                    .Where(product => product.Name.Length > 0)
+                    .ToList();
+            }
+        }
+
+        /// <inheritdoc/>
         public IEnumerable<ManagementObject> GetCimInstance(string nameSpace, string className) => new ManagementObjectSearcher(scope: nameSpace, queryString: $"SELECT * FROM {className}")
             .Get()
             .Cast<ManagementObject>();

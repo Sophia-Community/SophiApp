@@ -277,6 +277,11 @@ namespace SophiApp.Customizations
         }
 
         /// <summary>
+        /// Get mouse acceleration ("Enhance pointer precision") state.
+        /// </summary>
+        public static bool MouseAcceleration() => MouseHelper.GetAcceleration();
+
+        /// <summary>
         /// Get autoplay state.
         /// </summary>
         public static bool Autoplay()

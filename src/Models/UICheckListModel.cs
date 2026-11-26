@@ -96,7 +96,7 @@ namespace SophiApp.Models
             catch (CustomizationException ex)
             {
                 // The setting stays available: the user can try again when the cause is gone
-                SetApplyFailure(ex.GetText());
+                SetApplyFailure(ex.GetText(), ex.Action);
                 App.Logger.LogModelSetStateException(ex, Name, ChosenValue);
             }
             catch (Exception ex)

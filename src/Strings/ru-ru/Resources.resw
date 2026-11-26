@@ -123,6 +123,12 @@
   <data name="AppDescription" xml:space="preserve">
     <value>SophiApp for Windows</value>
   </data>
+  <data name="LanguageSwitch.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="LanguageSwitch.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Язык</value>
+  </data>
   <data name="Welcome_Intro.Text" xml:space="preserve">
     <value>Перед началом работы прочтите каждый пункт и отметьте его флажком в знак согласия.</value>
   </data>
@@ -240,6 +246,18 @@
   <data name="OsRequirements_ReinstallWindows.Text" xml:space="preserve">
     <value>Переустановите Windows, используя только подлинный ISO-образ.</value>
   </data>
+  <data name="OsRequirements_PowerShellBlocked_1.Text" xml:space="preserve">
+    <value>Запуск Windows PowerShell запрещен, поэтому часть параметров нельзя прочитать и применить.</value>
+  </data>
+  <data name="OsRequirements_PowerShellBlocked_Antivirus" xml:space="preserve">
+    <value>Скорее всего, его блокирует антивирус: {0}.</value>
+  </data>
+  <data name="OsRequirements_PowerShellBlocked_Unknown" xml:space="preserve">
+    <value>Скорее всего, его блокирует защитная программа.</value>
+  </data>
+  <data name="OsRequirements_PowerShellBlocked_2.Text" xml:space="preserve">
+    <value>Разрешите SophiApp for Windows запускать Windows PowerShell в этой программе и запустите приложение снова.</value>
+  </data>
   <data name="OsRequirements_GetCpuArchitecture" xml:space="preserve">
     <value>Проверка архитектуры процессора…</value>
   </data>
@@ -326,6 +344,12 @@
   </data>
   <data name="OsRequirements_DefenderComponentsMissing" xml:space="preserve">
     <value>Отсутствует компонент "{0}" для Microsoft Defender.</value>
+  </data>
+  <data name="OsRequirements_GetThirdPartyAntiviruses" xml:space="preserve">
+    <value>Поиск сторонних антивирусов…</value>
+  </data>
+  <data name="OsRequirements_AntivirusTurnedOff" xml:space="preserve">
+    <value>{0} (выключен)</value>
   </data>
   <data name="OsRequirements_GetControlledFolderAccess" xml:space="preserve">
     <value>Проверка состояния контролируемого доступа к папкам…</value>
@@ -518,6 +542,9 @@
   </data>
   <data name="Page_AboutPolicies.Message" xml:space="preserve">
     <value>SophiApp for Windows сводит использование политик к минимуму. Параметры, которые все же создают политики, отображают их также в оснастке Редактора локальной групповой политики (`gpedit.msc`), если она доступна в вашей редакции Windows.</value>
+  </data>
+  <data name="Setting_New.Text" xml:space="preserve">
+    <value>Новое</value>
   </data>
   <data name="UIModel_ContextMenu_CopyTitle.Text" xml:space="preserve">
     <value>Копировать заголовок</value>
@@ -747,6 +774,9 @@
   <data name="UIModel_TaskbarAlignment_Title" xml:space="preserve">
     <value>Выравнивание панели задач</value>
   </data>
+  <data name="UIModel_TaskbarAlignment_Description" xml:space="preserve">
+    <value>Кнопка "Пуск" перемещается вместе со значками панели задач.</value>
+  </data>
   <data name="UIModel_TaskbarAlignment_Title_1" xml:space="preserve">
     <value>По центру</value>
   </data>
@@ -764,9 +794,6 @@
   </data>
   <data name="UIModel_TaskbarSearch_Title" xml:space="preserve">
     <value>Поиск на панели задач</value>
-  </data>
-  <data name="UIModel_TaskbarSearch_Description" xml:space="preserve">
-    <value>Изменения вносятся через Windows API без отключения драйвера UCPD.</value>
   </data>
   <data name="UIModel_TaskbarSearch_Title_1" xml:space="preserve">
     <value>Скрыть</value>
@@ -1145,6 +1172,12 @@
   </data>
   <data name="UIModel_StickyShift_Description" xml:space="preserve">
     <value>Пять нажатий клавиши Shift подряд вызывают всплывающее окно, которое может прервать вашу работу.</value>
+  </data>
+  <data name="UIModel_MouseAcceleration_Title" xml:space="preserve">
+    <value>Включить ускорение мыши</value>
+  </data>
+  <data name="UIModel_MouseAcceleration_Description" xml:space="preserve">
+    <value>Это параметр Windows "Повышенная точность установки указателя": чем быстрее движется мышь, тем дальше перемещается указатель. Игроки в шутеры, например в CS2, обычно отключают его, чтобы одно и то же движение руки всегда перемещало указатель на одно и то же расстояние.</value>
   </data>
   <data name="SettingsGroup_Storage" xml:space="preserve">
     <value>Папки и хранилище</value>
@@ -1617,6 +1650,18 @@
   <data name="Control_SloganEnd.Text" xml:space="preserve">
     <value>Wisely.</value>
   </data>
+  <data name="SettingsPage_ReportBug.Text" xml:space="preserve">
+    <value>Нашли ошибку? Сообщите нам!</value>
+  </data>
+  <data name="App_GitHub.Text" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="App_Telegram.Text" xml:space="preserve">
+    <value>Telegram</value>
+  </data>
+  <data name="App_Discord.Text" xml:space="preserve">
+    <value>Discord</value>
+  </data>
   <data name="SettingsPage_SelectedTheme.Header" xml:space="preserve">
     <value>Цвет темы</value>
   </data>
@@ -1629,26 +1674,35 @@
   <data name="Settings_Themes_Dark" xml:space="preserve">
     <value>Темная</value>
   </data>
+  <data name="SettingsPage_RememberTheme.Content" xml:space="preserve">
+    <value>Запоминать выбранную тему</value>
+  </data>
   <data name="SettingsPage_Language.Header" xml:space="preserve">
     <value>Язык интерфейса</value>
   </data>
   <data name="Settings_Languages_Default" xml:space="preserve">
     <value>Как в Windows</value>
   </data>
-  <data name="SettingsPage_LanguageRestart.Message" xml:space="preserve">
-    <value>Перезапустите SophiApp for Windows, чтобы сменить язык.</value>
+  <data name="SettingsPage_LanguageDropsChoices.Message" xml:space="preserve">
+    <value>Смена языка отменит выбранные, но еще не примененные параметры.</value>
   </data>
-  <data name="SettingsPage_AboutApp.Header" xml:space="preserve">
-    <value>О программе</value>
+  <data name="SettingsPage_RestorePoint.Header" xml:space="preserve">
+    <value>Точка восстановления</value>
   </data>
-  <data name="App_GitHub.Text" xml:space="preserve">
-    <value>GitHub</value>
+  <data name="SettingsPage_RestorePoint.Description" xml:space="preserve">
+    <value>Создать точку восстановления системы сейчас.</value>
   </data>
-  <data name="App_Telegram.Text" xml:space="preserve">
-    <value>Telegram</value>
+  <data name="Button_CreateRestorePoint.Content" xml:space="preserve">
+    <value>Создать</value>
   </data>
-  <data name="App_Discord.Text" xml:space="preserve">
-    <value>Discord</value>
+  <data name="SettingsPage_SkipRestorePointQuestion.Content" xml:space="preserve">
+    <value>Не спрашивать о точке восстановления перед применением параметров</value>
+  </data>
+  <data name="SettingsPage_RestorePointCreated.Message" xml:space="preserve">
+    <value>Точка восстановления создана.</value>
+  </data>
+  <data name="SettingsPage_RestorePointNotCreated.Message" xml:space="preserve">
+    <value>Не удалось создать точку восстановления. Подробности смотрите в файле журнала.</value>
   </data>
   <data name="SettingsPage_Team.Header" xml:space="preserve">
     <value>Участники проекта</value>
@@ -1667,6 +1721,9 @@
   </data>
   <data name="AppTeam_Supporter.Text" xml:space="preserve">
     <value>Financial &amp; Moral Support: David "BenchTweakGaming" Nguyen</value>
+  </data>
+  <data name="AppTeam_Promoter.Text" xml:space="preserve">
+    <value>Product promotion: Pavel "Rourshah" Shokun</value>
   </data>
   <data name="Panel_ApplyCustomizations_Apply.Text" xml:space="preserve">
     <value>Применить изменения?</value>
@@ -1749,6 +1806,12 @@
   <data name="Panel_RestartReminder.Message" xml:space="preserve">
     <value>Обязательно перезагрузите ваш ПК.</value>
   </data>
+  <data name="Dialog_Applied_Title" xml:space="preserve">
+    <value>Применено параметров: {0} из {1}</value>
+  </data>
+  <data name="Dialog_Applied_Close" xml:space="preserve">
+    <value>ОК</value>
+  </data>
   <data name="Panel_ShadowStorageNotice" xml:space="preserve">
     <value>Теневые копии (включая точки восстановления) на системном диске занимают {0} ГБ.</value>
   </data>
@@ -1760,6 +1823,9 @@
   </data>
   <data name="UIModel_Exception_LocationServicesDisabled" xml:space="preserve">
     <value>Командам сетевой оболочки требуется разрешение на определение местоположения для доступа к сведениям о беспроводной сети. Включите службы определения местоположения на странице "Расположение" в параметрах конфиденциальности и защиты.</value>
+  </data>
+  <data name="UIModel_Action_OpenLocationSettings" xml:space="preserve">
+    <value>Открыть параметры расположения</value>
   </data>
   <data name="UIModel_Exception_DownloadCanceled" xml:space="preserve">
     <value>Скачивание отменено.</value>

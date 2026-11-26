@@ -27,6 +27,11 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public SettingsViewModel ViewModel { get; }
 
+    /// <summary>
+    /// Gets the view model of the chosen settings: it creates restore points.
+    /// </summary>
+    public ChosenSettingsViewModel Choices { get; } = App.GetService<ChosenSettingsViewModel>();
+
     // The list opens under the mouse as a separate window, like a menu
     private void ThemeSelector_DropDownOpened(object? sender, object e) => PopupCursor.Reset();
 }

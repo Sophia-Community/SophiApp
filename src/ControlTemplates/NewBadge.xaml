@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="SophiApp.ControlTemplates.NewBadge"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Visibility="Collapsed"
+    IsTabStop="False"
+    mc:Ignorable="d">
+
+    <!-- The mark stands before the title of a setting that is new in this version. Its colors come from the theme -->
+    <Border Background="{ThemeResource AccentFillColorDefaultBrush}"
+            CornerRadius="4"
+            Padding="6, 1, 6, 2"
+            Margin="0, 0, 8, 0"
+            VerticalAlignment="Top">
+        <TextBlock x:Uid="Setting_New"
+                   Style="{StaticResource CaptionTextBlockStyle}"
+                   FontWeight="SemiBold"
+                   Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"/>
+    </Border>
+</UserControl>

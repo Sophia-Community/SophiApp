@@ -277,6 +277,19 @@ namespace SophiApp.Contracts.Services
         void LogDefenderIsDefault(bool isDefault);
 
         /// <summary>
+        /// Write a third-party antivirus found in Windows Security Center in the log.
+        /// </summary>
+        /// <param name="name">The name of the antivirus.</param>
+        /// <param name="isOn">The antivirus is turned on.</param>
+        void LogThirdPartyAntivirus(string name, bool isOn);
+
+        /// <summary>
+        /// Write in the log whether File Explorer is restarted after the chosen settings are applied.
+        /// </summary>
+        /// <param name="isNeeded">A setting that is applied needs the restart.</param>
+        void LogFileExplorerRestart(bool isNeeded);
+
+        /// <summary>
         /// Handles occur exception of writing the Registry.pol files.
         /// </summary>
         /// <param name="exception">Represents errors that occur during app executing.</param>

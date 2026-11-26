@@ -69,6 +69,9 @@ namespace SophiApp.Views
             }
 
             ShowLastLine();
+
+            // The page is created anew when the language is changed: a question that waits for an answer keeps the keyboard
+            DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () => FindNoticeButton(ChecksScroll)?.Focus(FocusState.Pointer));
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs args)
